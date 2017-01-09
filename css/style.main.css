@@ -439,6 +439,10 @@
         .single .featured-article-big {
             margin-bottom: 0;
         }
+        
+    article.featured-article-big img {
+        width: 100%;
+    }
 
     .featured-article-big-container {
         top: 65%;

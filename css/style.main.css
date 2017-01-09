@@ -796,6 +796,14 @@
         border-radius: 3px;
     }
 
+    h2.widgettitle {
+        font-family: var(--font-condensed);
+        font-weight: bold;
+        font-size: 3rem;
+        text-transform: uppercase;
+        float: left;
+    }
+
 
 
 /***********************************************************************************************************************

@@ -760,7 +760,14 @@
             background: rgba(255, 255, 255, 0.7);
             padding: 3rem;
         }
+    
+    .single .post-categories li {
+        display: inline;
+    }
 
+    .single .featured-article-big-container .post-cat li:nth-of-type(n+1) a {
+        padding-left: 1rem;
+    }
 
     .post-categories li a:hover,
     .featured-article-small .featured-article-image .post-cat a:hover {

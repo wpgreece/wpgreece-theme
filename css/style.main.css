@@ -439,8 +439,8 @@
         .single .featured-article-big {
             margin-bottom: 0;
         }
-        
-    article.featured-article-big img {
+
+    article.featured-article-big > img {
         width: 100%;
     }
 

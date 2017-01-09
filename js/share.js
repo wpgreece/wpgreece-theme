@@ -15,7 +15,7 @@
     
     // Set values for popup window
     intWidth = intWidth || '500';
-    intHeight = intHeight || 'auto';
+    intHeight = intHeight || '400';
     strResize = (blnResize ? 'yes' : 'no');
 
     // Set title and open popup with focus on it

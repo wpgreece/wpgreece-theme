@@ -1486,8 +1486,15 @@
 	    padding-left: 2rem;
 	    padding-right: 2rem;
 	    border-bottom: .7rem solid #394263;
-	    float: right;
 	}
+
+        a.button.logout-link {
+            float: left;
+        }
+
+        button#user-submit {
+            float: right;
+        }
 
         a.button.logout-link:hover,
         button#user-submit:hover {

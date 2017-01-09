@@ -4,7 +4,7 @@
 
     <!-- POSTS -->
 
-    <div class="featured-news tablet-column-100 laptop-column-65 laptop-push-15">
+    <div class="featured-news tablet-column-100 laptop-column-65 laptop-push-15" style="background: <?php the_field('bg_color', 'option');?>">
 
         <!-- FEATURED POSTS -->
 

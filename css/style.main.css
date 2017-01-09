@@ -765,7 +765,7 @@
         display: inline;
     }
 
-    .single .featured-article-big-container .post-cat li:nth-of-type(n+1) a {
+    .single .featured-article-big-container .post-cat li:not(:first-child) a {
         padding-left: 1rem;
     }
 

@@ -1,0 +1,108 @@
+/*
+    ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗
+    ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
+    ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗
+    ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║
+     ╚████╔╝ ██║  ██║██║  ██║██║██║  ██║██████╔╝███████╗███████╗███████║
+      ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
+
+ */
+
+    :root {
+        --font-scale         : 1.15;    /* How the headings font size scales up. */
+        --root-font-size     : 10px;   /* The root element, ie HTML, font size. */
+        --base-font-size     : 1.6rem; /* The body element base font size. */
+        --base-line-height   : 1.5;    /* The default line height of all elements. */
+        --text-line-height   : 1.75;   /* The line height of block text elements. */
+        --heading-line-height: 1.2;    /* The line height of heading elements. */
+
+        --text-rhythm        : 3rem;   /* Vertical margins between text elements. */
+
+        --grid-gutter        : 1rem;   /* Paddings between columns, the grid gutters. */
+    }
+
+
+
+/*
+     ██████╗ ██████╗ ██╗      ██████╗ ██╗   ██╗██████╗ ███████╗
+    ██╔════╝██╔═══██╗██║     ██╔═══██╗██║   ██║██╔══██╗██╔════╝
+    ██║     ██║   ██║██║     ██║   ██║██║   ██║██████╔╝███████╗
+    ██║     ██║   ██║██║     ██║   ██║██║   ██║██╔══██╗╚════██║
+    ╚██████╗╚██████╔╝███████╗╚██████╔╝╚██████╔╝██║  ██║███████║
+     ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+ */
+
+    :root {
+        --color-blue         : rgb(  0, 150, 215);
+        --color-blue-light   : rgb( 50, 180, 240);
+        --color-green        : rgb(180, 190,   0);
+        --color-green-light  : rgb(220, 220,   0);
+        --color-yellow       : rgb(250, 200,   0);
+        --color-yellow-light : rgb(255, 230,   0);
+        --color-orange       : rgb(230, 120,   0);
+        --color-orange-light : rgb(245, 160,   0);
+        --color-red          : rgb(200,   0,  10);
+        --color-red-light    : rgb(230,   0,   0);
+        --color-white        : rgb(255, 255, 255);
+        --color-gray-light   : rgb(248, 248, 248);
+        --color-gray         : rgb(165, 165, 165);
+        --color-gray-dark    : rgb(109, 109, 109);
+        --color-black        : rgb(  0,   0,   0);
+    }
+
+
+
+/*
+    ██╗      █████╗ ██╗   ██╗ ██████╗ ██╗   ██╗████████╗
+    ██║     ██╔══██╗╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
+    ██║     ███████║ ╚████╔╝ ██║   ██║██║   ██║   ██║
+    ██║     ██╔══██║  ╚██╔╝  ██║   ██║██║   ██║   ██║
+    ███████╗██║  ██║   ██║   ╚██████╔╝╚██████╔╝   ██║
+    ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝
+
+ */
+    
+
+
+    .header-credits {
+        color: var(--color-gray-light);
+        background-color: var(--color-red);
+        font-size: 80%;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+        .header-credits a {
+            color: var(--color-gray-light);
+        }
+
+    .footer-credits { 
+        color: var(--color-gray-light);
+        background-color: var(--color-blue);
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+
+
+/*
+    ██████╗ ██████╗ ██╗███████╗███╗   ███╗
+    ██╔══██╗██╔══██╗██║██╔════╝████╗ ████║
+    ██████╔╝██████╔╝██║███████╗██╔████╔██║
+    ██╔═══╝ ██╔══██╗██║╚════██║██║╚██╔╝██║
+    ██║     ██║  ██║██║███████║██║ ╚═╝ ██║
+    ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝
+
+ */
+
+    pre[class*="language-"] {
+        background: rgb(245, 245, 245);
+        border-radius: 3px;
+        margin-bottom: var(--text-rhythm);
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }

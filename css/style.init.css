@@ -1,0 +1,215 @@
+/**************************************************************************
+
+    ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗
+    ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
+    ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗
+    ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║
+     ╚████╔╝ ██║  ██║██║  ██║██║██║  ██║██████╔╝███████╗███████╗███████║
+      ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
+                                                                        
+ **************************************************************************/
+
+
+
+/* Default variable values for all breakpoints. */
+
+:root {
+    /* The color palette of the general theme design. */
+
+    --color-primary   : rgb( 60,  60,  60); /* black      */
+    --color-secondary : rgb(115, 115, 115); /* dark gray  */
+    --color-tertiary  : rgb(165, 165, 165); /* gray       */
+    --color-quaternary: rgb(245, 245, 245); /* light gray */
+    --color-quinary   : rgb(255, 255, 255); /* white      */
+    --color-blue      : rgb(109, 170, 255); /* WPGreece color */
+    --color-dark-blue : rgb(57, 66, 100); /* WPGreece secondary blue color */
+    --color-darker-blue : rgb(46, 55, 87); /* WPGreece secondary darker blue color */
+
+
+    --panel-width     : 1024px; /* The width of the panel element. */
+
+
+    --font-regular    : 'Open Sans', Arial, sans-serif;
+    --font-condensed  : 'Open Sans Condensed', sans-serif;
+    --font-icon       : 'icomoon' !important;
+}
+
+
+
+    /* 
+        Override the default CSS variables which control the basic vertical
+        rhythm of the grid and the basic typographic styles of the texts.
+    */
+
+    :root,
+    .small {
+        --font-scale         : 1.1;    /* How the headings font size scales up. */
+        --root-font-size     : 10px;   /* The root element, ie HTML, font size. */
+        --base-font-size     : 1.4rem; /* The body element base font size. */
+        --base-line-height   : 1.5;    /* The default line height of all elements. */
+        --text-line-height   : 1.5;    /* The line height of block text elements. */
+        --heading-line-height: 1.3;    /* The line height of heading elements. */
+        --text-rhythm        : 2rem;   /* Vertical margins between text elements. */
+
+        --grid-gutter        : 1rem;   /* Paddings between columns, the grid gutters. */
+        --vertical-rhythm    : 3rem;   /* Vertical margins between major grid sections. */
+    }
+
+    .tablet {
+        --font-scale         : 1.125;  /* How the headings font size scales up. */
+        --base-font-size     : 1.5rem; /* The body element base font size. */
+        --text-line-height   : 1.6;    /* The line height of block text elements. */
+        --heading-line-height: 1.25;   /* The line height of heading elements. */
+        --text-rhythm        : 3rem;   /* Vertical margins between text elements. */
+
+        --grid-gutter        : 1.5rem; /* Paddings between columns, the grid gutters. */
+        --vertical-rhythm    : 4rem;   /* Vertical margins between major grid sections. */
+    }
+
+    .laptop {
+        --font-scale         : 1.2;    /* How the headings font size scales up. */
+        --base-font-size     : 1.6rem; /* The body element base font size. */
+        --text-line-height   : 1.7;    /* The line height of block text elements. */
+        --heading-line-height: 1.2;    /* The line height of heading elements. */
+        --text-rhythm        : 4rem;   /* Vertical margins between text elements. */
+
+        --grid-gutter        : 2rem;   /* Paddings between columns, the grid gutters. */
+        --vertical-rhythm    : 5rem;   /* Vertical margins between major grid sections. */
+    }
+
+
+
+/******************************************************************************************************
+
+     ██████╗ ██████╗ ██╗██████╗     ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
+    ██╔════╝ ██╔══██╗██║██╔══██╗    ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
+    ██║  ███╗██████╔╝██║██║  ██║    ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗
+    ██║   ██║██╔══██╗██║██║  ██║    ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║
+    ╚██████╔╝██║  ██║██║██████╔╝    ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║
+     ╚═════╝ ╚═╝  ╚═╝╚═╝╚═════╝     ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+                                                                                                    
+ ******************************************************************************************************/
+
+
+
+    /* The panel that restrains contents to a maximum width. */
+
+    .panel {
+        max-width: var(--panel-width);
+    }
+
+    .panel-full {
+        max-width: 100%;
+        margin-top: var(--vertical-rhythm);
+        margin-bottom: var(--vertical-rhythm);
+    }
+
+    /* Rows inside full width panels already span full width.  */
+
+    .panel-full .row {
+        margin: 0;
+    }
+
+
+
+/*******************************************************************************************
+
+    ████████╗██╗   ██╗██████╗  ██████╗  ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗██╗   ██╗
+    ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║  ██║╚██╗ ██╔╝
+       ██║    ╚████╔╝ ██████╔╝██║   ██║██║  ███╗██████╔╝███████║██████╔╝███████║ ╚████╔╝ 
+       ██║     ╚██╔╝  ██╔═══╝ ██║   ██║██║   ██║██╔══██╗██╔══██║██╔═══╝ ██╔══██║  ╚██╔╝  
+       ██║      ██║   ██║     ╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║     ██║  ██║   ██║   
+       ╚═╝      ╚═╝   ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝   
+
+ *******************************************************************************************/
+
+
+
+    /* Global base stylings. */
+
+    html {
+        font-size: 10px;
+        font-size: var(--root-font-size);
+    }
+
+    body {
+        color: rgb(60, 60, 60);
+        font-family: var(--font-regular);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-regular);
+    }
+
+    .small .text blockquote {
+        font-size: 115%;
+    }
+
+    .tablet .text blockquote {
+        font-size: 125%;
+    }
+
+
+
+    /* Links global and inside text. */
+
+    a {
+        color: rgb(60, 60, 60);
+    }
+
+    a:hover {
+        opacity: 1;
+    }
+
+    .text a {
+        border-bottom-width: 0.1rem;
+        border-bottom-style: dotted;
+    }
+
+    .text a:hover {
+        border-bottom-width: 0.1rem;
+        border-bottom-style: solid;
+    }
+
+    .text .button,
+    .text .button:hover,
+    .text .gallery a,
+    .text .gallery a:hover,
+    .text .wp-caption a,
+    .text .wp-caption a:hover {
+        border-bottom-width: 0;
+    }
+
+
+
+    /* Text selection colour. */
+
+    ::selection {
+        background: rgb(115, 115, 115);
+        color: white;
+    }
+
+    ::-moz-selection {
+        background: rgb(115, 115, 115);
+        color: white;
+    }
+
+
+
+    /* Buttons. */
+
+    input, 
+    textarea,
+    select,
+    button, 
+    .button {
+        border-color: rgb(165, 165, 165);
+        border-radius: 2px;
+    }
+
+    input:focus, 
+    textarea:focus,
+    select:focus {
+        border-color: rgb(115, 115, 115);
+        box-shadow: 0 0 1rem -0.3rem rgb(60, 60, 60);
+    }

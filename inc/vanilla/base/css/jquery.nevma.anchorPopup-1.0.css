@@ -1,0 +1,81 @@
+/*
+ * Nevma jQuery anchor popup default stylings.
+ *
+ * Copyright (c) 2012 Nevma.Gr
+ * http://www.nevma.gr
+ *
+ * All right reserved!
+ *
+ */
+
+.popup-loader {
+    padding: 25px;
+    margin: 0;
+}
+
+.popup-loader-image-gallery {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin: 0; 
+    margin-left: -18px;
+    padding: 0;
+    text-align: center;
+}
+
+    .popup-loader span, 
+    .popup-loader-image-gallery span {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        text-indent: -9999px;
+        background: url('jquery.nevma.anchorPopup.css.images/loader.gif') 50% 50% no-repeat;
+    }
+
+.popup-error { 
+    padding: 20px;
+}
+
+.popup-next, 
+.popup-previous { 
+    position: absolute; 
+    top: 30%; 
+    width: 30px; 
+    height: 30px; 
+    text-indent: 30px;
+    overflow: hidden; 
+    display: none; 
+    background-color: #F8F7F7;
+    background-repeat: no-repeat;
+    border-radius: 20px; 
+    -moz-border-radius: 20px; 
+    -webkit-border-radius: 20px; 
+    box-shadow: 0 0 5px 1px #A0A0A0; 
+    -webkit-box-shadow: 0 0 5px 1px #A0A0A0; 
+    -moz-box-shadow: 0 0 5px 1px #A0A0A0;
+}
+
+.popup-next { 
+    right: 10px; 
+    background-position: 9px 4px;
+    background-image: url('jquery.nevma.anchorPopup.css.images/next.png');
+}
+
+.popup-previous { 
+    left: 10px; 
+    background-position: 6px 50%;
+    background-image: url('jquery.nevma.anchorPopup.css.images/previous.png');
+}
+
+.popup-contents:hover .popup-next, 
+.popup-contents:hover .popup-previous { 
+    display: block; 
+}
+
+.popup-image-info { 
+    background: #F8F7F7; 
+    margin: 0; 
+    padding: 2px 5px; 
+    font-size: 10px;
+    color: #9E9E9E;
+}

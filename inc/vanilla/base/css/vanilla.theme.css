@@ -1,0 +1,593 @@
+/******************************************************************************************************************
+
+    ███████╗    ████████╗    ██████╗     ██╗   ██╗     ██████╗    ████████╗    ██╗   ██╗    ██████╗     ███████╗
+    ██╔════╝    ╚══██╔══╝    ██╔══██╗    ██║   ██║    ██╔════╝    ╚══██╔══╝    ██║   ██║    ██╔══██╗    ██╔════╝
+    ███████╗       ██║       ██████╔╝    ██║   ██║    ██║            ██║       ██║   ██║    ██████╔╝    █████╗  
+    ╚════██║       ██║       ██╔══██╗    ██║   ██║    ██║            ██║       ██║   ██║    ██╔══██╗    ██╔══╝  
+    ███████║       ██║       ██║  ██║    ╚██████╔╝    ╚██████╗       ██║       ╚██████╔╝    ██║  ██║    ███████╗
+    ╚══════╝       ╚═╝       ╚═╝  ╚═╝     ╚═════╝      ╚═════╝       ╚═╝        ╚═════╝     ╚═╝  ╚═╝    ╚══════╝
+                                                                                                                
+*******************************************************************************************************************/
+
+
+
+    /* The panel that restrains contents to a maximum width. */
+
+    .panel {
+        max-width: 1024px;
+        padding: 0;
+    }
+
+    /* Sometimes this panel needs to stretch full width. */
+
+    .panel-full {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+
+    /* Floated elements inside text. */
+
+    .alignnone {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .text .aligncenter {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        display: block;
+    }
+
+    .text .alignright {
+        float: right;
+        width: auto;
+        margin-left: 4rem;
+        margin-top: 0.7rem;
+        margin-bottom: 2rem;
+    }
+
+    .text .alignleft {
+        float: left;
+        width: auto;
+        margin-right: 4rem;
+        margin-top: 0.7rem;
+        margin-bottom: 2rem;
+    }
+
+
+
+    /* 
+        Floated elements inside text should not span more than half their 
+        parent's width. These elements are floated by the core TinyMCE editor 
+        functions and can be images (captioned or not) and tables. Other 
+        elements, which we float ourselves, are found elsewhere.
+    */
+
+    .small .text .alignleft,
+    .small .text .alignright,
+    .small .text .wp-caption.alignleft,
+    .small .text .wp-caption.alignright {
+        width: auto;
+        max-width: 100%;
+        margin-top: 0;
+        margin-bottom: var(--text-rhythm);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .tablet .text .alignleft,
+    .tablet .text .alignright,
+    .tablet .text .wp-caption.alignleft,
+    .tablet .text .wp-caption.alignright {
+        max-width: 50%;
+        margin-bottom: calc(0.5 * var(--text-rhythm));
+    }
+
+    .tablet .text .alignleft, 
+    .tablet .text .wp-caption.alignleft {
+        margin-right: calc(0.5 * var(--text-rhythm));
+    }
+
+    .tablet .text .alignright,
+    .tablet .text .wp-caption.alignright {
+        margin-left: calc(0.5 * var(--text-rhythm));
+    }
+
+
+
+    /* Blockquotes floated. */
+
+    .tablet .text blockquote.alignright {
+        padding-left: 6rem;
+        padding-right: 0;
+    }
+    
+    .tablet .text blockquote.alignleft {
+        margin-left: 0;
+        padding-left: 6rem;
+        padding-right: 2rem;
+    }
+
+    .laptop .text blockquote.alignright {
+        padding-right: 0;
+    }
+    
+    .laptop .text blockquote.alignleft {
+        padding-left: 6rem;
+        padding-right: 4rem;
+    }
+
+    
+
+    /* Tables floated */
+
+    .tablet .text table.alignleft,
+    .tablet .text table.alignright {
+        margin-top: 1rem;
+    }
+
+
+
+    /* Rows and columns inside text. */
+
+    .small .tinymce-row [class*=column] {
+        padding: 0 calc(0.5 * var(--grid-gutter));
+    } 
+
+    .small .row.tinymce-row {
+        margin: 0 calc(-0.5 * var(--grid-gutter));
+    } 
+
+    .small .panel-full .row.tinymce-row {
+        margin: 0;
+    }     
+
+    .small .text .column-50 {
+        width: 100% !important;
+    }
+
+    .tablet .text .column-50 {
+        width: 50% !important;
+    }
+
+    .small .text .column-33 {
+        width: 100% !important;
+    }
+
+    .tablet .text .column-33 {
+        width: calc(100%/3) !important;
+    }
+    
+    .small .text .column-25 {
+        width: 100% !important;
+    }
+
+    .tablet .text .column-25 {
+        width: 50% !important;
+    }
+
+    .tablet .text .column-25:nth-of-type(2n+1) {
+        clear: left;
+    }
+
+    .laptop .text .column-25 {
+        width: 25% !important;
+    }
+
+    .laptop .text .column-25:nth-of-type(2n+1) {
+        clear: none;
+    }
+
+
+/*******************************************************************************************************************************
+
+    ████████╗    ██╗   ██╗    ██████╗      ██████╗      ██████╗     ██████╗      █████╗     ██████╗     ██╗  ██╗    ██╗   ██╗
+    ╚══██╔══╝    ╚██╗ ██╔╝    ██╔══██╗    ██╔═══██╗    ██╔════╝     ██╔══██╗    ██╔══██╗    ██╔══██╗    ██║  ██║    ╚██╗ ██╔╝
+       ██║        ╚████╔╝     ██████╔╝    ██║   ██║    ██║  ███╗    ██████╔╝    ███████║    ██████╔╝    ███████║     ╚████╔╝ 
+       ██║         ╚██╔╝      ██╔═══╝     ██║   ██║    ██║   ██║    ██╔══██╗    ██╔══██║    ██╔═══╝     ██╔══██║      ╚██╔╝  
+       ██║          ██║       ██║         ╚██████╔╝    ╚██████╔╝    ██║  ██║    ██║  ██║    ██║         ██║  ██║       ██║   
+       ╚═╝          ╚═╝       ╚═╝          ╚═════╝      ╚═════╝     ╚═╝  ╚═╝    ╚═╝  ╚═╝    ╚═╝         ╚═╝  ╚═╝       ╚═╝   
+                                                                                                                             
+ *******************************************************************************************************************************/
+
+
+
+    /* Blockquotes normal. */
+
+    .small .text blockquote {
+        padding-left: 4rem;
+        padding-right: 3rem;
+    }
+
+        .small .text blockquote::before {
+            font-size: 7rem;
+            left: 0;
+            top: -0.8rem;
+        }
+
+    .tablet .text blockquote {
+        padding-left: 8rem;
+        padding-right: 6rem;
+    }
+
+        .tablet .text blockquote::before {
+            font-size: 9rem;
+            left: 1.5rem;
+            top: -1.5rem;
+        }
+
+        .tablet .text blockquote.alignright::before,
+        .tablet .text blockquote.alignleft::before {
+            left: 0;
+        }
+
+
+
+    /* Blockquotes shouting. */
+
+    .small .text blockquote.shout {
+        font-size: 150%;
+    }
+
+    .small .text blockquote.shout::before {
+        top: -1.5rem;
+    }
+
+    .tablet .text blockquote.shout {
+        font-size: 250%;
+    }
+
+
+
+    /* Mobile lists. */
+
+    .small .text ul,
+    .small .text ol,
+    .small .text dl {
+        padding-left: 2rem;
+        padding-right: 0;
+    }
+
+        .small .text ul ul, .small .text ul ol, .small .text ul dl, 
+        .small .text ol ul, .small .text ol ol, .small .text ol dl, 
+        .small .text dl ul, .small .text dl ol, .small .text dl dl {
+            padding-left: 2rem;
+        }
+
+    .tablet .text ul,
+    .tablet .text ol,
+    .tablet .text dl {
+        padding-left: 6rem;
+        padding-right: 3rem;
+    }
+
+        .tablet .text ul ul, .tablet .text ul ol, .tablet .text ul dl, 
+        .tablet .text ol ul, .tablet .text ol ol, .tablet .text ol dl, 
+        .tablet .text dl ul, .tablet .text dl ol, .tablet .text dl dl {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+
+
+    /* Tables */
+
+    .small table {
+        table-layout: fixed;
+    }
+
+    .tablet table {
+        table-layout: inherit;
+    }
+
+        .small table td,
+        .small table th {
+            word-break: break-all;
+            word-break: break-word; /* Non-standard, webkit-only, more graceful. */
+        }
+
+        .tablet table td,
+        .tablet table th {
+            word-break: inherit;
+        }
+
+
+
+    /* Preformatted content, usually for code. */
+    
+    pre {
+        font-family: Consolas, monospace;
+    }
+
+
+
+/*************************************************************************
+
+    ██╗    ███╗   ███╗     █████╗      ██████╗     ███████╗    ███████╗
+    ██║    ████╗ ████║    ██╔══██╗    ██╔════╝     ██╔════╝    ██╔════╝
+    ██║    ██╔████╔██║    ███████║    ██║  ███╗    █████╗      ███████╗
+    ██║    ██║╚██╔╝██║    ██╔══██║    ██║   ██║    ██╔══╝      ╚════██║
+    ██║    ██║ ╚═╝ ██║    ██║  ██║    ╚██████╔╝    ███████╗    ███████║
+    ╚═╝    ╚═╝     ╚═╝    ╚═╝  ╚═╝     ╚═════╝     ╚══════╝    ╚══════╝
+                                                                   
+ *************************************************************************/
+
+
+
+    .text .wp-caption {
+        margin-bottom: var(--text-rhythm);
+    }
+
+        .text .wp-caption p {
+            margin: 0;
+            padding: 1.5rem 0;
+            line-height: 1.3;
+            font-size: 85%;
+            font-weight: bold;
+        }
+
+        .text .wp-caption a {
+            display: block;
+        }
+
+
+
+/**********************************************************************************************************
+
+     ██████╗      █████╗     ██╗         ██╗         ███████╗    ██████╗     ██╗    ███████╗    ███████╗
+    ██╔════╝     ██╔══██╗    ██║         ██║         ██╔════╝    ██╔══██╗    ██║    ██╔════╝    ██╔════╝
+    ██║  ███╗    ███████║    ██║         ██║         █████╗      ██████╔╝    ██║    █████╗      ███████╗
+    ██║   ██║    ██╔══██║    ██║         ██║         ██╔══╝      ██╔══██╗    ██║    ██╔══╝      ╚════██║
+    ╚██████╔╝    ██║  ██║    ███████╗    ███████╗    ███████╗    ██║  ██║    ██║    ███████╗    ███████║
+     ╚═════╝     ╚═╝  ╚═╝    ╚══════╝    ╚══════╝    ╚══════╝    ╚═╝  ╚═╝    ╚═╝    ╚══════╝    ╚══════╝
+                                                                                                    
+ **********************************************************************************************************/
+
+
+
+    /* General galleries. */
+
+    .text .gallery {
+        width: calc(100% + 2rem);
+        margin: 0 -1rem calc(0.5 * var(--text-rhythm)) -1rem;
+        padding: 0 !important;
+    }
+
+    .panel-full .text .gallery {
+        width: calc(100% + 0rem);
+        margin: 0px 0rem;
+    }
+
+        .text .gallery-item {
+            float: left;
+            margin: 0 0 calc(0.5 * var(--text-rhythm)) 0 !important;
+            padding: 0 1rem !important;
+            border: none;
+            width: auto !important;
+        }
+
+            .text .gallery-item img {
+                border-width: 0.1rem;
+                padding: 1rem;
+                border-radius: 0.2rem;
+                width: 100%;
+            }
+
+
+
+        /* Two column galleries in text responsive. */
+
+        .small .text .gallery-columns-2 .gallery-item {
+            width: 100% !important;
+        }
+
+        .tablet .text .gallery-columns-2 .gallery-item {
+            width: 50% !important;
+        }
+
+
+
+        /* Three columns galleries in text responsive. */
+
+        .small .text .gallery-columns-3 .gallery-item {
+            width: 100% !important;
+        }
+
+        .mobile .text .gallery-columns-3 .gallery-item {
+            width: 50% !important;
+        }
+
+        .tablet .text .gallery-columns-3 .gallery-item {
+            width: 33.333333% !important;
+        }
+
+        
+
+        /* Four column galeries in text responsive.*/
+
+        .small .text .gallery-columns-4 .gallery-item {
+            width: 100% !important;
+        }
+
+        .mobile .text .gallery-columns-4 .gallery-item {
+            width: 50% !important;
+        }
+
+        .tablet .text .gallery-columns-4 .gallery-item {
+            width: 33.333333% !important;
+        }
+
+        .laptop .text .gallery-columns-4 .gallery-item {
+            width: 25% !important;
+        }
+
+
+        
+        /* Five column galleries in text responsive. */
+
+        .small .text .gallery-columns-5 .gallery-item {
+            width: 100% !important;
+        }
+
+        .mobile .text .gallery-columns-5 .gallery-item {
+            width: 50% !important;
+        }
+
+        .tablet .text .gallery-columns-5 .gallery-item {
+            width: 33.333333% !important;
+        }
+
+        .laptop .text .gallery-columns-5 .gallery-item {
+            width: 20% !important;
+        }
+
+
+
+/*************************************************************************************************************
+
+     ██████╗ ██████╗  █████╗ ██╗   ██╗██╗████████╗██╗   ██╗    ███████╗ ██████╗ ██████╗ ███╗   ███╗███████╗
+    ██╔════╝ ██╔══██╗██╔══██╗██║   ██║██║╚══██╔══╝╚██╗ ██╔╝    ██╔════╝██╔═══██╗██╔══██╗████╗ ████║██╔════╝
+    ██║  ███╗██████╔╝███████║██║   ██║██║   ██║    ╚████╔╝     █████╗  ██║   ██║██████╔╝██╔████╔██║███████╗
+    ██║   ██║██╔══██╗██╔══██║╚██╗ ██╔╝██║   ██║     ╚██╔╝      ██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║╚════██║
+    ╚██████╔╝██║  ██║██║  ██║ ╚████╔╝ ██║   ██║      ██║       ██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████║
+     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝   ╚═╝      ╚═╝       ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+                                                                                                                                                                                                                                                              
+ *************************************************************************************************************/
+
+
+
+    .gform_wrapper {
+        margin: 0 0 var(--text-rhythm) 0;
+        padding: 0;
+    }
+
+        /*
+            Silly and annoying!importants are necessary here because Gravity 
+            forms outputs their fields in an unordered list, to which some 
+            margins and paddings are added when they are found inside a text 
+            block.
+         */
+
+        .gform_wrapper ul {
+            list-style-type: none;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .gform_wrapper ul li {
+            margin: 0;
+            padding: 0 0 1.5rem 0;
+        }
+
+        .gfield_required {
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .gform_wrapper .validation_error {
+            font-size: 80%;
+            margin-bottom: 1rem;
+        }
+
+        .gform_wrapper .validation_message {
+            margin-bottom: 0;
+            font-size: 80%;
+            display: inline-block;
+            border-bottom-width: 0.1rem;
+            border-bottom-style: dotted;
+        }
+
+        .gfield_description {
+            font-size: 80%;
+        }
+
+        .gform_wrapper input, 
+        .gform_wrapper textarea,
+        .gform_wrapper select {
+            width: 100%;
+        }
+
+        .gform_wrapper input[type="submit"] {
+            display: inline-block !important;
+            width: auto;
+            font-size: inherit;
+        }
+
+        .gfield_error input,
+        .gfield_error textarea,
+        .gfield_error select {
+            background: repeating-linear-gradient(-45deg, rgb(255, 255, 255) 0px, rgb(255, 244, 244) 1rem) repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+
+        .gform_ajax_spinner {
+            width: auto !important;
+            height: auto !important;
+            margin-left: 2rem;
+        }
+
+        .gform_confirmation_message {
+            font-size: 4rem;
+            margin-top: calc(1.25 * var(--text-rhythm));
+        }
+
+
+
+/*****************************************************************************
+
+    ███████╗    ███╗   ███╗    ██████╗     ███████╗    ██████╗     ███████╗
+    ██╔════╝    ████╗ ████║    ██╔══██╗    ██╔════╝    ██╔══██╗    ██╔════╝
+    █████╗      ██╔████╔██║    ██████╔╝    █████╗      ██║  ██║    ███████╗
+    ██╔══╝      ██║╚██╔╝██║    ██╔══██╗    ██╔══╝      ██║  ██║    ╚════██║
+    ███████╗    ██║ ╚═╝ ██║    ██████╔╝    ███████╗    ██████╔╝    ███████║
+    ╚══════╝    ╚═╝     ╚═╝    ╚═════╝     ╚══════╝    ╚═════╝     ╚══════╝
+                                                                           
+ *****************************************************************************/
+
+
+
+    .text .twitter-tweet-rendered {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    iframe[src*="speakerdeck.com"] {
+        max-width: 100%;
+    }
+
+
+
+/****************************************************************
+
+    ██████╗     ███████╗    ██████╗     ██╗   ██╗     ██████╗ 
+    ██╔══██╗    ██╔════╝    ██╔══██╗    ██║   ██║    ██╔════╝ 
+    ██║  ██║    █████╗      ██████╔╝    ██║   ██║    ██║  ███╗
+    ██║  ██║    ██╔══╝      ██╔══██╗    ██║   ██║    ██║   ██║
+    ██████╔╝    ███████╗    ██████╔╝    ╚██████╔╝    ╚██████╔╝
+    ╚═════╝     ╚══════╝    ╚═════╝      ╚═════╝      ╚═════╝ 
+                                                          
+ ****************************************************************/
+
+
+
+    pre.vanilla-debug {
+        padding: 2rem;
+        outline: 0.1rem dotted red;
+        margin: 0 0 2rem 0;
+        position: relative;
+        font-size: 90%;
+    }
+
+    pre.vanilla-debug::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "vanilla";
+        outline: 0.1rem dotted red;
+        font-size: 75%;
+    }

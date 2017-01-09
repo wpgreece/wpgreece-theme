@@ -1,0 +1,44 @@
+/*********************************************************************************************************
+
+    ███████╗██████╗ ██╗████████╗ ██████╗ ██████╗     ███████╗████████╗██╗   ██╗██╗     ███████╗███████╗
+    ██╔════╝██╔══██╗██║╚══██╔══╝██╔═══██╗██╔══██╗    ██╔════╝╚══██╔══╝╚██╗ ██╔╝██║     ██╔════╝██╔════╝
+    █████╗  ██║  ██║██║   ██║   ██║   ██║██████╔╝    ███████╗   ██║    ╚████╔╝ ██║     █████╗  ███████╗
+    ██╔══╝  ██║  ██║██║   ██║   ██║   ██║██╔══██╗    ╚════██║   ██║     ╚██╔╝  ██║     ██╔══╝  ╚════██║
+    ███████╗██████╔╝██║   ██║   ╚██████╔╝██║  ██║    ███████║   ██║      ██║   ███████╗███████╗███████║
+    ╚══════╝╚═════╝ ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝    ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚══════╝╚══════╝
+                                                                                                   
+ *********************************************************************************************************/
+
+
+
+    /* TinyMCE editing area shouyld have a usable width. */
+
+    @media screen and (min-width: 1000px) {
+    
+        body, body.wp-autoresize {
+            max-width: 80rem;
+        }
+
+    }
+
+
+
+    /* TinyMCE body font. */
+
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic&subset=latin,greek);
+
+    body {
+        font-family: 'Open Sans', Arial, sans-serif;
+        font-size: 16px;
+    }
+
+
+
+    /* TinyMCE headings font. */
+
+    @import url(https://fonts.googleapis.com/css?family=GFS+Didot&subset=latin,greek);
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'GFS Didot', Georgia, serif;
+        font-weight: normal;
+    }

@@ -1,0 +1,57 @@
+
+Vanilla changelog <developer's cut>
+===================================
+
+v-1.1
+=====
+
+    Upgrade
+    =======
+    In order for one to upgrade Vanilla to this version one needs to add the PHP
+    RESPONSIVILLE_AUTO_INIT definition to config.php and move the Javascript 
+    global variables RESPONSIVILLE_DEBUG and RESPONSIVILLE_AUTO_INIT to the head
+    element.
+
+    - The Responsiville auto init settings is now controlled via a PHP flag
+      named RESPONSIVILLE_AUTO_INIT, which is set in config.php. This way the
+      developers needs not worry about any additional knowledge of how to 
+      initialise the Responsiville framework within the Vanilla framework.
+
+    - Added RESPONSIVILLE_DEBUG flag in order to differentiate it from the
+      VANILLA_DEBUG flag (which is not yet used).
+
+    - All flags are now consistently declared in the config.php.
+
+    - Added Vanilla widgets which are generic widgets that are meant to be easy
+      to implement via ACF.
+
+    - Removed Pressidium Varnish cache purge addon.
+
+    - Corrected Nevma jQuery popup plugin bug when unbinding scroll events, due
+      to newer jQuery version.
+
+    - Removed ini set debug flags from config.php and put the WordPress debug
+      defines in the wp-config.php.
+
+    - A wp_nav_menu should have an extra resposniville-megamenu argument set to
+      true in order for the respective responsiville megamenu element to be
+      activated on it.
+
+v-1.0
+=====
+
+    - Added accordion shortcode to the TinyMCE via a button.
+
+    - Created a special page area for demoing Responsiville components.
+
+    - Incorporated latest Responsiville changes.
+
+v<1.0
+=====
+
+    - Lots of stuff, but we were not keeping a log those days, sorry.
+
+v-0.0
+=====
+
+    - It's the beginning of a fantastic journey.

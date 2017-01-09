@@ -1,0 +1,213 @@
+/***
+ *
+ * LAYOUT SETTINGS.
+ *
+ */
+
+    body {
+        margin: 0 auto;
+        background: rgb(245, 245, 245);
+        font-size: 1.6rem;
+        line-height: 1.7;
+    }
+
+    .wrapper {
+        width: 90%;
+        max-width: 1600px;
+        margin: 3rem auto;
+        background: white;
+        border-width: 1px;
+        border-radius: 0.3rem;
+    }
+
+        main section {
+            display: none;
+        }
+
+        main section:target,
+        main section.target {
+            display: block;
+        }
+
+        main section::after,
+        main section::before {
+            content: "";
+            display: table;
+            clear: both; 
+            width: 100%;
+            height: 0;
+            font-size: 0;
+            line-height: 0;
+        }
+
+            main > header {
+                border-bottom-width: 0.1rem;
+            }
+
+            main article {
+                margin-top: 3rem;
+            }
+
+            main > footer {
+                border-top-width: 0.1rem;
+            }
+
+            main > header,
+            main > section,
+            main > footer {
+                padding: 5rem 3rem !important;
+            }
+
+/*
+ * END LAYOUT SETTINGS.
+ *
+ ***/
+
+
+
+/***
+ *
+ * GRID SETTINGS.
+ *
+ */
+
+    .grid-showcase .row,
+    .grid-showcase .panel,
+    .grid-showcase [class*="column"] {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        outline: 0.1rem dotted rgb(115, 115, 115);
+    }
+
+            .grid-showcase [class*="column"] p {
+                text-align: center;
+                padding: 0;
+                margin: 0;
+            }
+
+/*
+ * END GRID SETTINGS.
+ *
+ ***/
+
+
+
+/***
+ *
+ * GENERAL STYLINGS.
+ *
+ */
+
+    .colours thead td {
+        padding: 3rem 0;
+    }
+
+    .colours tbody td {
+        background: rgb(255, 255, 255) !important;
+        font-size: 1.2rem;
+    }
+
+    a {
+        color: rgb(60, 60, 60);
+    }
+
+    article > h2 {
+        border-bottom-width: 0.1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 2rem !important;
+    }
+
+    p code,
+    li code {
+        background: rgb(245, 245, 245);
+        border-radius: 3px;
+        padding: 0 5px;
+        margin: 0;
+    }
+
+    code.pre {
+        white-space: pre;
+        display: block;
+    }
+
+/*    .slideshow nav {
+        display: none;
+    }
+*/
+    .mobile-menu-2 ul ul {
+        border-left-width: 0.1rem;
+        border-right-width: 0.1rem;
+        border-bottom-width: 0.1rem;
+        border-bottom-right-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+    }
+
+    .responsiville-menu-open.mobile-menu-2 ul ul {
+        border-width: 0;
+        font-size: 2.5rem;
+    }
+
+        .responsiville-menu-open.mobile-menu-2 ul ul a {
+            border-width: 0;
+            font-size: 3rem;
+        }
+
+/*
+ * END GENERAL STYLINGS.
+ *
+ ***/
+
+
+
+/***
+ *
+ * PRISM CODE HIGHLIGHTING.
+ *
+ */
+
+    pre[class*="language-"] {
+        background: rgb(245, 245, 245);
+        border-radius: 3px;
+        margin-bottom: var(--text-rhythm);
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        text-shadow: none;
+    }
+
+/*
+ * END PRISM CODE HIGHLIGHTING.
+ *
+ ***/
+
+
+
+/***
+ *
+ * NAVIGATION.
+ *
+ */
+
+    .navigation a {
+        padding: 0.5rem;
+    }
+
+    .main-navigation a:hover,
+    .main-navigation a.selected {
+        text-decoration: underline;
+    }
+
+    .responsiville-scrollmenu-wrapper {
+        background: white;
+        border-bottom-width: 1px;
+    }
+
+    .tablet [class*="megamenu"] {
+        background: inherit;
+    }
+
+/*
+ * END NAVIGATION.
+ *
+ ***/

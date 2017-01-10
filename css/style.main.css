@@ -1189,14 +1189,53 @@
         position: relative;
     }
 
-    .newsletter .gform_heading h3:before {
-        content: " ";
-        width: 71px;
-        height: 71px;
-        color: white;
-        position: absolute;
-        left: -1rem;
+        .newsletter .gform_heading h3:before {
+            content: " ";
+            width: 100px;
+            height: 1px;
+            background: white;
+            position: absolute;
+            left: -1rem;
+            top: 1rem;
+        }
+
+        .newsletter .gform_heading h3:after {
+            content: " ";
+            width: 100px;
+            height: 1px;
+            background: white;
+            position: absolute;
+            right: -1rem;
+            top: 1rem;
+        }
+
+    .newsletter label.gfield_label {
+        display: none!important;
     }
+
+    .newsletter input#input_2_1 {
+        max-width: 300px;
+        width: 100%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .newsletter .gform_wrapper .gform_footer {
+        padding: 0;
+        margin: 0;
+        clear: both;
+        width: 100%;
+    }
+
+    .newsletter input#gform_submit_button_2 {
+        border: 2px solid white;
+        background: transparent;
+        width: 100%;
+        font-family: var(--font-condensed);
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
 
 /***********************************************************************************************************************************************************************
 

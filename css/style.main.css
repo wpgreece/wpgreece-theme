@@ -1009,8 +1009,8 @@
 
     .join-forum-container {
         position: absolute;
-        top: 25%;
-        transform: translateY(-25%);
+        top: 50%;
+        transform: translateY(-50%);
     }
         .desktop .join-forum-container h6 strong {
             font-size: 1.6rem;

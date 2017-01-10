@@ -11,6 +11,10 @@
 
     <?php get_template_part( 'inc/sponsors' ); ?>
 
-    <?php gravity_form(2); ?>
+    <div class="column">
+
+        <?php gravity_form(2); ?>
+
+    </div>
 
 </div>

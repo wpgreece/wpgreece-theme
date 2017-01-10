@@ -1231,11 +1231,17 @@
     .newsletter input#gform_submit_button_2 {
         border: 2px solid white;
         background: transparent;
+        max-width: 300px;
         width: 100%;
         font-family: var(--font-condensed);
         font-weight: bold;
         text-transform: uppercase;
     }
+    
+        .newsletter input#gform_submit_button_2:hover {
+            background: white;
+            color: #ff8161;
+        }
 
     .gform_confirmation_message {
         font-family: var(--font-condensed);
@@ -1246,6 +1252,7 @@
         color: white;
         line-height: 1.2;
     }
+
 
 
 /***********************************************************************************************************************************************************************

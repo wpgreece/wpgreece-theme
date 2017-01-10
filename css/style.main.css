@@ -864,7 +864,8 @@
             color: var(--color-dark-blue);
         }
 
-    .archive article {
+    .archive article,
+    .search article {
         margin-bottom: 3rem;
     }
 

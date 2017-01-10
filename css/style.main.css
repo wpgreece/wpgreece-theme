@@ -578,10 +578,10 @@
         font-size: 2.5rem;
     }
 
-    .featured-article-small-container .post-meta {
-        margin-top: 6rem;
-        padding-bottom: 1rem;
-    }
+	.featured-article-small-container .post-meta {
+	    margin-top: 5rem;
+	    padding-bottom: 1rem;
+	}
 
     /*.featured-article-small-container*/ .post-author,
     /*.featured-article-small-container */.post-date {

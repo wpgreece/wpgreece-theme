@@ -128,7 +128,7 @@ if( !empty($banner_image) ): ?>
 <!-- MORE BLOG POSTS -->
 
 <div class="column text-center">
-    <a class="button read-more" href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"><?php _e('Περισσότερα Νέα'); ?></a>
+    <a class="button read-more" href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>"><?php _e('Περισσότερα Νέα', 'wpgc'); ?></a>
 </div>
 
 </div>

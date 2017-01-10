@@ -1,10 +1,10 @@
-<!-- Sponsors -->
+e<!-- Sponsors -->
 
 <?php
 
-if( have_rows('sponsors' , 'option') ):
-
-    while ( have_rows('sponsors', 'option' ) ) : the_row(); ?>
+if( have_rows('sponsors' , 'option') ): ?>
+<h2 class="column widgettitle"> <?php _e('Our Sponsors', 'wpgc'); ?> </h2>
+  <?php while ( have_rows('sponsors', 'option' ) ) : the_row(); ?>
 
     <div class="sponsors desktop-column xlarge-column-50">
 

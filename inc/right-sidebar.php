@@ -11,4 +11,6 @@
 
     <?php get_template_part( 'inc/sponsors' ); ?>
 
+    <?php gravity_form(2); ?>
+
 </div>

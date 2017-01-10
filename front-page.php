@@ -81,7 +81,7 @@ if( !empty($banner_image) ): ?>
 
 <div class="column full-width-banner">
 
-    <a href="<?php the_field('banner_link'); ?>">
+    <a href="<?php the_field('banner_link'); ?>" target="_blank" title="Βρείτε την ομάδα μας στο Facebook">
 
         <?php echo wp_get_attachment_image( $banner_image, 'full' ); ?>
 

@@ -1175,6 +1175,29 @@
         margin-bottom: calc(2*var(--grid-gutter));
     }
 
+    .newsletter {
+        background: #ff8161;
+    }
+
+    .newsletter .gform_heading h3 {
+        text-align: center;
+        font-family: var(--font-condensed);
+        font-weight: bold;
+        font-size: 2.3rem;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+    }
+
+    .newsletter .gform_heading:before {
+        content: " ";
+        width: 71px;
+        height: 71px;
+        color: white;
+        position: absolute;
+        left: -1rem;
+    }
+
 /***********************************************************************************************************************************************************************
 
 

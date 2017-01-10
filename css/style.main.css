@@ -1236,6 +1236,16 @@
         text-transform: uppercase;
     }
 
+    .newsletter .gform_confirmation_message {
+        font-family: var(--font-condensed);
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-top: calc(1.25 * var(--text-rhythm));
+        margin-bottom: calc(1.25 * var(--text-rhythm));
+        color: white;
+        line-height: 1.2;
+    }
+
 
 /***********************************************************************************************************************************************************************
 

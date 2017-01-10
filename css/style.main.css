@@ -1189,7 +1189,7 @@
         position: relative;
     }
 
-    .newsletter .gform_heading:before {
+    .newsletter .gform_heading h3:before {
         content: " ";
         width: 71px;
         height: 71px;

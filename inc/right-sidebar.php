@@ -13,7 +13,7 @@
 
     <div class="column newsletter">
 
-        <?php gravity_form('newsletter'); ?>
+        <?php gravity_form('Newsletter'); ?>
 
     </div>
 

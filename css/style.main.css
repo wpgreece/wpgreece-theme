@@ -692,11 +692,18 @@
     
     .more-news h2 {
         font-family: var(--font-condensed);
-        font-size: 4rem;
         position: relative;
         text-transform: uppercase;
         font-weight: bold;
     }
+
+        .small .more-news h2 {
+            font-size: 3rem;
+        }
+
+        .tablet .more-news h2 {
+            font-size: 4rem;
+        }
 
     .more-news h2:after {
         content: '';

@@ -1193,24 +1193,37 @@
         .newsletter .gform_heading h3:before {
             content: " ";
             max-width: 100px;
-            width: 25%;
             height: 1px;
             background: white;
             position: absolute;
             left: -1rem;
             top: 1.3rem;
         }
+            .desktop .newsletter .gform_heading h3:before {
+                width: 18%;
+            }
+
+            .large .newsletter .gform_heading h3:before {
+                width: 25%;
+            }
 
         .newsletter .gform_heading h3:after {
             content: " ";
             max-width: 100px;
-            width: 25%;
             height: 1px;
             background: white;
             position: absolute;
             right: -1rem;
             top: 1.3rem;
         }
+
+            .desktop .newsletter .gform_heading h3:after {
+                width: 18%;
+            }
+
+            .large .newsletter .gform_heading h3:after {
+                width: 25%;
+            }
 
     .newsletter label.gfield_label {
         display: none!important;

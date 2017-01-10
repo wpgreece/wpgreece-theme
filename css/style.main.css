@@ -1237,7 +1237,7 @@
         font-weight: bold;
         text-transform: uppercase;
     }
-    
+
         .newsletter input#gform_submit_button_2:hover {
             background: white;
             color: #ff8161;
@@ -1672,6 +1672,14 @@
 
     li.bbp-forum-info a:hover {
         color: var(--color-blue);
+    }
+
+    .bbp_widget_login {
+        display: none;
+    }
+
+    .bbpress .bbp_widget_login {
+        display: block;
     }
 
 

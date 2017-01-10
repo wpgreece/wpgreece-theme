@@ -322,7 +322,7 @@
         transform: translateY(-50%);
         left: 0;
     }
-        .mobile .menu-icon:before {
+        .small .menu-icon:before {
               font-size: 4rem;
         }
 
@@ -359,7 +359,7 @@
         word-break: break-word;
     }   
 
-        .mobile .main-sidebar-menu li a {
+        .small .main-sidebar-menu li a {
             font-size: 2rem;
         }
 

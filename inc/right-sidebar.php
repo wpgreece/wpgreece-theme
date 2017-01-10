@@ -11,9 +11,9 @@
 
     <?php get_template_part( 'inc/sponsors' ); ?>
 
-    <div class="column">
+    <div class="column newsletter">
 
-        <?php gravity_form(2); ?>
+        <?php gravity_form('newsletter'); ?>
 
     </div>
 

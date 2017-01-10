@@ -1536,11 +1536,11 @@
 	    margin-bottom: 0px;
 	    border: none;
 	    width: 3rem;
-	    border-radius: 50%;
+	    border-radius: 5rem;
 	}
 
 	#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar {
-	    border-radius: 50%;
+	    border-radius: 5rem;
 	}
 
 	#bbpress-forums {
@@ -1698,7 +1698,7 @@
     }
 
     .bbp-logged-in img.avatar {
-    	border-radius: 50%;
+    	border-radius: 5rem;
     }
 
 

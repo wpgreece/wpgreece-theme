@@ -7,6 +7,7 @@
         'post_type'     => 'post',
         'category_name' => 'meetup',
         'meta_key'      => 'meetup_datetime',
+        'meta_type'         => 'DATETIME'
     ));
     if ($posts): 
      foreach( $posts as $post ): 

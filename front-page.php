@@ -98,7 +98,7 @@ if( !empty($banner_image) ): ?>
     <h2><?php _e('Περισσότερα Νέα'); ?> </h2>
 </div>
 
-<div class = "tablet-group-2 laptop-group-3">
+<div class = "tablet-group-2 desktop-group-3">
 
     <?php $posts = get_posts( array( 'numberposts' => 6, 'suppress_filters' => 0 ) ); ?>
 
@@ -106,7 +106,7 @@ if( !empty($banner_image) ): ?>
 
     <?php setup_postdata( $post ); ?>
 
-    <article class = "small-column tablet-column-50 laptop-column-33 three-columns">
+    <article class = "small-column tablet-column-50 desktop-column-33 three-columns">
 
         <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
 

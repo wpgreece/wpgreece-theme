@@ -451,7 +451,6 @@
 
     .featured-article-big-container {
         top: 65%;
-        width: 85%;
         background: #fff;
         left: 50%;
         transform: translateX(-50%);
@@ -461,10 +460,12 @@
 
         .small .featured-article-big-container {
             position: relative;
+            width: 100%;
         }
 
         .laptop .featured-article-big-container {
             position: absolute;
+            width: 85%;
         }
 
     .single .featured-article-big-container {

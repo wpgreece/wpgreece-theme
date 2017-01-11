@@ -1,8 +1,20 @@
 <!-- Meetups -->
 
-<?php /*
+<?php 
 
-if( have_rows('meetups' , 'option') ):
+$posts = get_posts(array(
+    'numberposts'   => -1,
+    'post_type'     => 'post',
+    'category'      => 'meetup'
+    'meta_key'      => 'meetup_datetime',
+));
+if ($posts): 
+ foreach( $posts as $post ): 
+        
+        setup_postdata( $post ); ?>
+
+
+<?php /* if( have_rows('meetups' , 'option') ):
 
     while ( have_rows('meetups', 'option' ) ) : the_row(); */?>
 
@@ -38,10 +50,10 @@ if( have_rows('meetups' , 'option') ):
 
                     <?php endif; ?>
 
-                    <div class= "place">
+                    <?php /* <div class= "place">
                         <p><?php the_sub_field('meetup_place_title', 'option'); ?></p>
                         <p><?php the_sub_field('meetup_place_subtitle', 'option'); ?></p>
-                    </div>
+                    </div> */?>
 
                     <div class="meetup-date">
 
@@ -55,6 +67,13 @@ if( have_rows('meetups' , 'option') ):
             </div>
 
         </section>
+
+        <?php endforeach; ?>
+    
+    
+    <?php wp_reset_postdata(); ?>
+
+<?php endif; ?>
 
     <?php /* endwhile; ?>
 

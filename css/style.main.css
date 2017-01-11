@@ -999,6 +999,7 @@
 
     .join-forum {
         position: relative;
+        margin-bottom: 3rem;
     }
 
     .join-forum h6,
@@ -1057,10 +1058,6 @@
             padding-top: 1.1rem;
             padding-bottom: 1.1rem;
         }
-
-    .join-forum {
-        margin-bottom: 3rem;
-    }
 
     p.next-meetup {
         font-family: var(--font-condensed);

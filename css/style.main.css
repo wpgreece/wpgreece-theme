@@ -997,6 +997,10 @@
         border-radius: 0px;
     }
 
+    .bbpress .row.join-forum {
+        display: none;
+    }
+
     .row.join-forum {
         position: relative;
         margin-bottom: 3rem;

@@ -28,7 +28,7 @@ if( have_rows('meetups' , 'option') ):
 
                     <?php if( get_sub_field('meetup_title', 'option') ) :?>
 
-                        <p class="next-meetup"><?php _e('Next Meetup '); ?><?php the_sub_field( 'city_name', 'option' ); ?></p>
+                        <p class="next-meetup"><?php _e('Next Meetup ', 'wpgc'); ?><?php the_sub_field( 'city_name', 'option' ); ?></p>
 
                         <h5><?php the_sub_field('meetup_title', 'option'); ?></h5>
 

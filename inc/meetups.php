@@ -42,6 +42,9 @@ if( have_rows('meetups' , 'option') ):
                      <div class="meetup-date">
                          <p><?php the_sub_field('meetup_date_and_time', 'option'); ?></p>
                      </div>
+                       <div class="meetup-date">
+                         <p><?php the_sub_field('meetup_date', 'option'); ?></p>
+                     </div>
 
                  </div>
 

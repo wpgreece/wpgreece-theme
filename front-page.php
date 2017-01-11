@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="home-page-features row responsiville-equalheights" data-responsiville-equalheights-children=".test">
+<section class="home-page-features row responsiville-equalheights" data-responsiville-equalheights-elements=".test">
 
     <!-- POSTS -->
 

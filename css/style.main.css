@@ -1701,6 +1701,10 @@
         color: var(--color-blue);
 	}
 
+        .bbp-logged-in a:hover {
+            color: var(--color-dark-blue);
+        }
+
 	.bbp-breadcrumb-current {
 		font-family: var(--font-condensed);
 		color: var(--color-blue);

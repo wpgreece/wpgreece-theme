@@ -26,7 +26,7 @@ if ($posts):
 
                 if( get_field('meetup_city') == 'athens' ):  ?>
 
-                    <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetups/athens.jpg" alt = "Athens Meetup" />
+                    <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/athens.jpg" alt = "Athens Meetup" />
 
                 <?php endif; ?>
 

@@ -15,7 +15,7 @@
 
             $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$shortURL. '&amp;media='.$WPGCThumbnail.'&amp;description='.$shortTitle;
 
-            $mailTo = 'mailto:?subject=Σου προτείνω να δεις αυτό το άρθρο&amp;body=Ρίξε μια ματιά' .$shortURL;
+            $mailTo = 'mailto:?subject=Σου προτείνω να δεις αυτό το άρθρο&amp;body=Ρίξε μια ματιά εδώ: ' .$shortURL;
 
         ?>
 

@@ -67,6 +67,11 @@
         transform: translateX(-50%);
     }
 
+    .tablet .responsiville-mobimenu-burger span {
+        font-family: var(--font-condensed);
+        font-weight: bold;
+    }
+
 
 /**************************************************************************
 

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-    <section class="page-container row responsiville-equalheights">
+    <section class="page-container row responsiville-equalheights" data-responsiville-equalheights-elements=".test">
 
 
 

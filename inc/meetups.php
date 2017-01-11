@@ -32,25 +32,15 @@
 
                 <?php endif; ?>
 
-                <?php /* if( !empty($meetup_img) ): ?>
-
-                    <img src="<?php echo $meetup_img['url']; ?>" alt="<?php echo $meetup_img['alt']; ?>" />
-
-                <?php endif; ?> */ ?>
-
             </div>
 
             <div class="column-100">
 
                 <div class="city-meetup-container">
 
-                    <?php if( get_sub_field('meetup_title', 'option') ) :?>
+                        <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php the_field( 'meetup_city'); ?></p>
 
-                        <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php the_sub_field( 'city_name', 'option' ); ?></p>
-
-                        <h5><?php the_sub_field('meetup_title', 'option'); ?></h5>
-
-                    <?php endif; ?>
+                        <h5><?php the_title();?> </h5>
 
                     <?php /* <div class= "place">
                         <p><?php the_sub_field('meetup_place_title', 'option'); ?></p>

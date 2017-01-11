@@ -44,14 +44,14 @@
 
                         <h5><?php the_title();?> </h5>
 
-                    <?php /* <div class= "place">
-                        <p><?php the_sub_field('meetup_place_title', 'option'); ?></p>
-                        <p><?php the_sub_field('meetup_place_subtitle', 'option'); ?></p>
-                    </div> */?>
+                    <div class= "place">
+                        <p><?php the_field('meetup_place'); ?></p>
+                        <p><?php the_field('meetup_address'); ?></p>
+                    </div> 
 
                     <div class="meetup-date">
 
-                        <?php $meetup_date = get_sub_field('meetup_date', 'option'); ?>
+                        <?php $meetup_date = get_field('meetup_datetime'); ?>
                         <p><?php echo $meetup_date; ?></p>
 
                     </div>

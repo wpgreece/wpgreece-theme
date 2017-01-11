@@ -1,10 +1,10 @@
 <!-- Meetups -->
 
-<?php 
+<?php /*
 
 if( have_rows('meetups' , 'option') ):
 
-    while ( have_rows('meetups', 'option' ) ) : the_row(); ?>
+    while ( have_rows('meetups', 'option' ) ) : the_row(); */?>
 
         <section class="row">
             
@@ -56,6 +56,6 @@ if( have_rows('meetups' , 'option') ):
 
         </section>
 
-    <?php endwhile; ?>
+    <?php /* endwhile; ?>
 
-<?php endif; ?>
+<?php endif; */?>

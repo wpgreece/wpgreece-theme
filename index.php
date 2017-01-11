@@ -2,7 +2,7 @@
 
 
 
-<section class = "content row page-container responsiville-equalheights">
+<section class = "content row page-container responsiville-equalheights" data-responsiville-equalheights-elements=".test">
 
     <div class = "text tablet-column-100 laptop-column-65 laptop-push-15">
 

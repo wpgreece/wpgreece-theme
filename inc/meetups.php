@@ -36,6 +36,8 @@
             setup_postdata( $post ); ?>
 
         <section class="row">
+
+            <a href="<?php the_permalink(); ?>">
             
             <div class="column-100 city-meetup">
 
@@ -77,6 +79,8 @@
                  </div>
 
             </div>
+
+            </a>
 
         </section>
 

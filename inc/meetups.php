@@ -2,11 +2,31 @@
 
 <?php 
 
+    $date_now = date('Y-m-d H:i:s');
+    $time_now = strtotime($date_now);
+
+
+    // find date time in 7 days
+    $time_next_week = strtotime('+365 day', $time_now);
+    $date_next_week = date('Y-m-d H:i:s', $time_next_week);
+
+
+    // query events
     $posts = get_posts(array(
-        'numberposts'   => -1,
-        'post_type'     => 'post',
-        'category_name' => 'meetup',
-        'meta_key'      => 'meetup_datetime',
+        'posts_per_page'    => -1,
+        'post_type'         => 'post',
+        'category_name'     => 'meetup',
+        'meta_query'        => array(
+            array(
+                'key'           => 'meetup_datetime',
+                'compare'       => 'BETWEEN',
+                'value'         => array( $date_now, $date_next_week ),
+                'type'          => 'DATETIME'
+            )
+        ),
+        'order'             => 'ASC',
+        'orderby'           => 'meta_value',
+        'meta_key'          => 'meetup_datetime',
         'meta_type'         => 'DATETIME'
     ));
     if ($posts): 

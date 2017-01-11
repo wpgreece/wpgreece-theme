@@ -2,16 +2,16 @@
 
 <?php 
 
-$posts = get_posts(array(
-    'numberposts'   => -1,
-    'post_type'     => 'post',
-    'category_name'      => 'meetup',
-    'meta_key'      => 'meetup_datetime',
-));
-if ($posts): 
- foreach( $posts as $post ): 
-        
-        setup_postdata( $post ); ?>
+    $posts = get_posts(array(
+        'numberposts'   => -1,
+        'post_type'     => 'post',
+        'category_name'      => 'meetup',
+        'meta_key'      => 'meetup_datetime',
+    ));
+    if ($posts): 
+     foreach( $posts as $post ): 
+            
+            setup_postdata( $post ); ?>
 
 
 <?php /* if( have_rows('meetups' , 'option') ):

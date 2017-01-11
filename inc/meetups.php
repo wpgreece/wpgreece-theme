@@ -21,12 +21,14 @@
         <section class="row">
             
             <div class="column-100 city-meetup">
+                
+                <?php $city = get_field('meetup_city'); ?>
 
-                <?php if( get_field('meetup_city') == 'athens' ): ?>
+                <?php if( $city['value'] == 'athens' ): ?>
 
                     <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/athens.jpg" alt = "Athens Meetup" />
 
-                <?php elseif ( get_field('meetup_city') == 'larissa' ): ?>
+                <?php elseif ( $city['value'] == 'larissa' ): ?>
 
                     <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/larissa.jpg" alt = "Athens Meetup" />
 
@@ -38,7 +40,6 @@
 
                 <div class="city-meetup-container">
 
-                    <?php $city = get_field('meetup_city'); ?>
 
                         <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php echo $city['label']; ?></p>
 

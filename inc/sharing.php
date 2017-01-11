@@ -15,7 +15,7 @@
 
             $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$shortURL. '&amp;media='.$WPGCThumbnail.'&amp;description='.$shortTitle;
 
-            $mailTo = 'mailto:your@friend.com?subject=I wanted you to see this site&amp;body=Check out this site ' .$shortURL;
+            $mailTo = 'mailto:?subject=I wanted you to see this site&amp;body=Check out this site ' .$shortURL;
 
         ?>
 
@@ -38,6 +38,11 @@
                 <li>
                     <a class="share-link pinterest" href="<?php echo $pinterestURL ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/pinterest.png" alt = "Pin it!" /></a>
                 </li>
+
+                 <li>
+                    <a class="share-link mail" href="<?php echo $mailTo?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/web.png" alt = "Pin it!" /></a>
+                </li>
+
 
             </ul>
 

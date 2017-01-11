@@ -22,11 +22,13 @@
             
             <div class="column-100 city-meetup">
 
-                <?php 
-
-                if( get_field('meetup_city') == 'athens' ):  ?>
+                <?php if( get_field('meetup_city') == 'athens' ): ?>
 
                     <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/athens.jpg" alt = "Athens Meetup" />
+
+                <?php elseif ( get_field('meetup_city') == 'larissa' ): ?>
+
+                    <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/larissa.jpg" alt = "Athens Meetup" />
 
                 <?php endif; ?>
 

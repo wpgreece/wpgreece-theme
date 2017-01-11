@@ -1,4 +1,3 @@
-    <?php if(!get_field('disable_social')): ?>
 
         <?php 
 
@@ -43,5 +42,3 @@
             </ul>
 
         </div>
-
-    <?php endif; ?>

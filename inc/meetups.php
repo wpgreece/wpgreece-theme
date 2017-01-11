@@ -5,7 +5,7 @@
 $posts = get_posts(array(
     'numberposts'   => -1,
     'post_type'     => 'post',
-    'category_name'      => 'meetup'
+    'category_name'      => 'meetup',
     'meta_key'      => 'meetup_datetime',
 ));
 if ($posts): 

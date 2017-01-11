@@ -1013,16 +1013,12 @@
         transform: translateY(-50%);
     }
         .desktop .join-forum-container h6 strong {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             font-weight: bold;
         }
 
         .large .join-forum-container h6 strong {
-            font-size: 1.8rem;
-        }
-
-        .xlarge .join-forum-container h6 strong {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
         }
 
         .desktop .join-forum-container p {

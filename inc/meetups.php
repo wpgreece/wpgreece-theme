@@ -12,13 +12,17 @@ if( have_rows('meetups' , 'option') ):
 
                 <?php 
 
-                $meetup_img = get_sub_field('image_map', 'option');
+                if( get_field('meetup_city') == 'athens' ):  ?>
 
-                if( !empty($meetup_img) ): ?>
+                    <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetups/athens.jpg" alt = "Athens Meetup" />
+
+                <?php endif; ?>
+
+                <?php /* if( !empty($meetup_img) ): ?>
 
                     <img src="<?php echo $meetup_img['url']; ?>" alt="<?php echo $meetup_img['alt']; ?>" />
 
-                <?php endif; ?>
+                <?php endif; ?> */ ?>
 
             </div>
 

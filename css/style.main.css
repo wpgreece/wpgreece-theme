@@ -1274,6 +1274,10 @@
         padding-bottom: 1rem;
     }
 
+    .tablet .newsletter input#input_2_1 {
+        max-width: 243px;
+    }
+
     .laptop .newsletter input#input_2_1 {
         max-width: 300px;
     }

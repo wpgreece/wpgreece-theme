@@ -38,7 +38,9 @@
 
                 <div class="city-meetup-container">
 
-                        <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php the_field( 'meetup_city'); ?></p>
+                    <?php $city = get_field('meetup_city'); ?>
+
+                        <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php echo $city['label']; ?></p>
 
                         <h5><?php the_title();?> </h5>
 

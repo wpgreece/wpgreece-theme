@@ -23,11 +23,7 @@
             
             <div class="column-100 city-meetup">
 
-                <?php $city = get_field('meetup_city'); 
-
-                echo $city;?>
-
-
+                <?php $city = get_field('meetup_city'); ?>
 
                 <?php if( $city['value'] == 'athens' ): ?>
 

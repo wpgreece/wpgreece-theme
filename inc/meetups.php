@@ -5,11 +5,9 @@
     $date_now = date('Y-m-d H:i:s');
     $time_now = strtotime($date_now);
 
-
-    // find date time in 7 days
-    $time_next_week = strtotime('+365 day', $time_now);
-    $date_next_week = date('Y-m-d H:i:s', $time_next_week);
-
+    // find date time in 365 days
+    $time_next_year = strtotime('+365 day', $time_now);
+    $date_next_year = date('Y-m-d H:i:s', $time_next_year);
 
     // query events
     $posts = get_posts(array(
@@ -20,7 +18,7 @@
             array(
                 'key'           => 'meetup_datetime',
                 'compare'       => 'BETWEEN',
-                'value'         => array( $date_now, $date_next_week ),
+                'value'         => array( $date_now, $date_next_year ),
                 'type'          => 'DATETIME'
             )
         ),
@@ -29,15 +27,13 @@
         'meta_key'          => 'meetup_datetime',
         'meta_type'         => 'DATETIME'
     ));
+
+
     if ($posts): 
+
      foreach( $posts as $post ): 
             
             setup_postdata( $post ); ?>
-
-
-<?php /* if( have_rows('meetups' , 'option') ):
-
-    while ( have_rows('meetups', 'option' ) ) : the_row(); */?>
 
         <section class="row">
             
@@ -90,7 +86,3 @@
     <?php wp_reset_postdata(); ?>
 
 <?php endif; ?>
-
-    <?php /* endwhile; ?>
-
-<?php endif; */?>

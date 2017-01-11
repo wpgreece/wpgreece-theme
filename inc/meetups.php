@@ -34,17 +34,17 @@ if( have_rows('meetups' , 'option') ):
 
                     <?php endif; ?>
 
-                     <div class= "place">
-                         <p><?php the_sub_field('meetup_place_title', 'option'); ?></p>
-                         <p><?php the_sub_field('meetup_place_subtitle', 'option'); ?></p>
-                     </div>
+                    <div class= "place">
+                        <p><?php the_sub_field('meetup_place_title', 'option'); ?></p>
+                        <p><?php the_sub_field('meetup_place_subtitle', 'option'); ?></p>
+                    </div>
 
-                     <div class="meetup-date">
+                     <?php /* <div class="meetup-date">
                          <p><?php the_sub_field('meetup_date_and_time', 'option'); ?></p>
-                     </div>
-                       <div class="meetup-date">
-                         <p><?php the_sub_field('meetup_date', 'option'); ?></p>
-                     </div>
+                     </div> */?>
+                    <div class="meetup-date">
+                        <p><?php the_sub_field('meetup_date', 'option'); ?></p>
+                    </div>
 
                  </div>
 

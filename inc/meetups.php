@@ -1,6 +1,6 @@
 <!-- Meetups -->
 
-<?php $meetup_date = get_sub_field('meetup_date', 'option');
+<?php 
 
 if( have_rows('meetups' , 'option') ):
 
@@ -44,8 +44,10 @@ if( have_rows('meetups' , 'option') ):
                      </div> */?>
                     <div class="meetup-date">
 
-                         
+                        <?php $meetup_date = get_sub_field('meetup_date', 'option'); ?>
+                        <?php if ($meetup_date < current_time() ) : ?>
                         <p><?php echo date_i18n( $meetup_date ); ?></p>
+                        <?php endif; ?>
                     </div>
 
                  </div>

@@ -2,7 +2,7 @@
 
 <?php $meetup_date = get_sub_field('meetup_date', 'option');
 
-if( have_rows('meetups' , 'option') && ( $meetup_date > current_time( ) )  ):
+if( have_rows('meetups' , 'option') ):
 
     while ( have_rows('meetups', 'option' ) ) : the_row(); ?>
 

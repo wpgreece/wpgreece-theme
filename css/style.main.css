@@ -1663,8 +1663,13 @@
 	    border-bottom: .7rem solid #394263;
 	}
 
-        a.button.logout-link {
-            float: left;
+    .bbp_widget_login {
+        background: white;
+    }
+
+        .bbp_widget_login img.avatar {
+            padding-top: 0.5rem;
+            margin-left: 1rem;
         }
 
         button#user-submit {
@@ -1693,6 +1698,7 @@
 	.bbp-logged-in a {
 	    font-size: 1.6rem;
 	    font-weight: bold;
+        color: var(--color-blue);
 	}
 
 	.bbp-breadcrumb-current {
@@ -1757,7 +1763,9 @@
     	border-radius: 5rem;
     }
 
-
+    .bbp-logged-in h4 {
+        padding-top: 1rem;
+    }
 
 
 

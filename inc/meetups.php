@@ -24,15 +24,13 @@
 
                 <?php 
 
-                $cities = get_field_object('meetup_city');
-                $value = $cities['value'];
-                $label = $cities['choices'][ $value ];
+                $city = get_field('meetup_city');
 
-                if( get_field('meetup_city') == 'athens' ): ?>
+                if( $city == 'athens' ): ?>
 
                     <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/athens.jpg" alt = "Athens Meetup" />
 
-                <?php elseif ( get_field('meetup_city') == 'larissa' ): ?>
+                <?php elseif ( $city == 'larissa' ): ?>
 
                     <img src = "<?php bloginfo ( 'template_url' ) ?>/img/meetup/larissa.jpg" alt = "Athens Meetup" />
 
@@ -44,7 +42,7 @@
 
                 <div class="city-meetup-container">
 
-                        <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php echo $label;  ); ?></p>
+                        <p class="next-meetup"><?php _e('Επόμενο Meetup ', 'wpgc'); ?><?php echo $city['label'];  ); ?></p>
 
                         <h5><?php the_title();?> </h5>
 

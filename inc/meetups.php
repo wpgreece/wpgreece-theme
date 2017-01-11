@@ -45,8 +45,8 @@ if( have_rows('meetups' , 'option') ):
                     <div class="meetup-date">
 
                         <?php $meetup_date = get_sub_field('meetup_date', 'option'); ?>
-                        <p><?php echo date_i18n( $meetup_date ); ?></p>
-                        
+                        <p><?php echo $meetup_date; ?></p>
+
                     </div>
 
                  </div>

@@ -1194,6 +1194,15 @@
         margin-bottom: calc(2*var(--grid-gutter));
     }
 
+    .home-sidebar .sponsors:nth-of-type(even) {
+        padding-left: 0;
+    }
+    
+    .home-sidebar .sponsors:nth-of-type(odd) {
+        padding-right: 0;
+    }
+
+
     .newsletter {
         background: #ff8161;
         margin-bottom: 3rem;

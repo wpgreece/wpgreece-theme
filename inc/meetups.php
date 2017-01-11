@@ -48,6 +48,8 @@ if( have_rows('meetups' , 'option') ):
                         <?php if ($meetup_date < current_time() ) : ?>
                         <p><?php echo date_i18n( $meetup_date ); ?></p>
                         <?php endif; ?>
+
+                        <?php echo current_time();?>
                     </div>
 
                  </div>

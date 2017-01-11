@@ -1013,7 +1013,19 @@
         top: 50%;
         transform: translateY(-50%);
     }
+
+        .small .join-forum-container h6 strong {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .laptop .join-forum-container h6 strong {
+            display: none;
+        }
+
         .desktop .join-forum-container h6 strong {
+            display: block;
             font-size: 1.3rem;
             font-weight: bold;
         }
@@ -1022,8 +1034,18 @@
             font-size: 1.6rem;
         }
 
+        .small .join-forum-container p {
+            display: block;
+            font-size: 1.4rem;
+        }
+
+        .laptop .join-forum-container p {
+            display: none;
+        }
+        
         .desktop .join-forum-container p {
-           font-size: 1.4rem;
+            display: block;
+            font-size: 1.4rem;
         }
 
         .large .join-forum-container p {

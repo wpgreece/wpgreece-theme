@@ -1,7 +1,7 @@
 <!-- SIDEBAR -->
 
 
-<div class="home-sidebar tablet-column-50 laptop-column-20">
+<div class="home-sidebar test tablet-column-50 laptop-column-20">
 
     <?php get_sidebar(); ?>
 

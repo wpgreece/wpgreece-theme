@@ -1,6 +1,6 @@
 <!-- LEFT MENU COLUMN -->
 
-<div class="sidebar-menu tablet-column-50 laptop-column-15 laptop-pull-65">
+<div class="sidebar-menu test tablet-column-50 laptop-column-15 laptop-pull-65">
     
     <?php
         wp_nav_menu( array(

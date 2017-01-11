@@ -1200,7 +1200,7 @@
     }
 
     .xlarge .home-sidebar .sponsors:nth-of-type(even) {
-        padding-right: auto;
+        padding-right: inherit;
     }
 
     .small .home-sidebar .sponsors:nth-of-type(odd) {
@@ -1209,7 +1209,7 @@
     }
 
     .xlarge .home-sidebar .sponsors:nth-of-type(odd) {
-        padding-left: auto;
+        padding-left: inherit;
     }
 
 

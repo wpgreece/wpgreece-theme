@@ -1194,12 +1194,22 @@
         margin-bottom: calc(2*var(--grid-gutter));
     }
 
-    .home-sidebar .sponsors:nth-of-type(even) {
+    .small .home-sidebar .sponsors:nth-of-type(even) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .xlarge .home-sidebar .sponsors:nth-of-type(even) {
+        padding-right: auto;
+    }
+
+    .small .home-sidebar .sponsors:nth-of-type(odd) {
+        padding-right: 0;
         padding-left: 0;
     }
-    
-    .home-sidebar .sponsors:nth-of-type(odd) {
-        padding-right: 0;
+
+    .xlarge .home-sidebar .sponsors:nth-of-type(odd) {
+        padding-left: auto;
     }
 
 

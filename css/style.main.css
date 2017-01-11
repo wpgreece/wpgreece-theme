@@ -1528,12 +1528,18 @@
     }
 
     div.bbp-template-notice.info {
-        border: none;
+       border: none;
+        border-width: 0px !important;
         border-left: #3383f3 5px solid !important;
         background-color: #6daaff !important;
-        border-radius: 0;
-        padding-top: 1px;
-        padding-bottom: 1px;
+        border-radius: 0 !important;
+        padding-top: 1px !important;
+        padding-bottom: 1px !important;
+        
+    }
+
+    div.bbp-template-notice p {
+        color: white;
     }
 
     div.bbp-template-notice.info a {

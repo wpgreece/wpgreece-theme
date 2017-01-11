@@ -113,6 +113,12 @@ Responsiville.Main = function ( options ) {
     this.$debugPerformance = null;
     this.$debugToggle      = null;
 
+
+
+    // Adjust to the current viewport and device characteristics for the first time.
+
+    this.adjust();
+
 };
 
 
@@ -173,18 +179,12 @@ Responsiville.Main.defaults = {
 
 Responsiville.Main.autoRun = function () {
 
-    // Create Responsiville framework main singleton instance.
+    // Create, but not yet initialise the Responsiville framework main singleton instance.
 
     var responsiville = new Responsiville.Main({
         debug   : RESPONSIVILLE_DEBUG,
         debugUI : RESPONSIVILLE_DEBUG
     });
-
-
-
-    // Adjust to the current viewport and device characteristics for the first time.
-
-    responsiville.adjust();
 
 
 

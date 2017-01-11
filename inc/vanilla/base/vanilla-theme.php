@@ -116,6 +116,7 @@
         wp_enqueue_script( 'hammer-jquery',              get_template_directory_uri() . '/inc/vanilla/base/js/jquery.hammer.js',                       array( 'hammer' ),                   $version, $in_footer );
         wp_enqueue_script( 'cssutilities',               get_template_directory_uri() . '/inc/vanilla/base/js/cssutilities.nevma.min.js',              array( 'jquery' ),                   $version, $in_footer );
         wp_enqueue_script( 'nevma-fixcssvars',           get_template_directory_uri() . '/inc/vanilla/base/js/nevma.fixcssvars.js',                    array( 'cssutilities' ),             $version, $in_footer );
+        wp_enqueue_script( 'nevma-fixcssvars-run',       get_template_directory_uri() . '/inc/vanilla/base/js/nevma.fixcssvars.run.js',                array( 'nevma-fixcssvars' ),         $version, $in_footer );
 
         wp_enqueue_script( 'nevma-greekUppercase',       get_template_directory_uri() . '/inc/vanilla/base/js/jquery.nevma.greekUppercase-1.0.min.js', array( 'jquery' ),                   $version, $in_footer );
         wp_enqueue_script( 'nevma-noScrollLayer',        get_template_directory_uri() . '/inc/vanilla/base/js/jquery.nevma.noScrollLayer-1.0.min.js',  array( 'jquery' ),                   $version, $in_footer );

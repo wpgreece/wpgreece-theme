@@ -17,31 +17,43 @@
  *
  * @param {Object} options The initialisation options of the module.
  * 
- * @property {Object}  options            The options that define the object
- *                                        behaviour.
- * @property {boolean} options.debug      Whether to print debug messages in the 
- *                                        browser console.
- * @property {string}  options.element    Selector for the element that actually 
- *                                        is the element to be fixed.
- * @property {string}  options.wrapper    The class of the wrapper element that
- *                                        will wrap around the actual element. 
- * @property {string}  options.enabled    The class added to the cloned element
- *                                        when the scrollmenu is enabled. Note
- *                                        that the scrollmenu might be there
- *                                        without being enabled. Enabled does
- *                                        not mean active and visible. Enabled
- *                                        means having the readiness to become
- *                                        active  upon the desired page scroll.
- * @property {string}  options.active     The class added to the scrollmenu when
- *                                        it becomes active. 
- * @property {string}  options.activeBody The class added to the body element 
- *                                        when the scrollmenu becomes active.
- * @property {string}  options.enter      Comma separated list of breakpoints in 
- *                                        which the module enters, wihch means
- *                                        it is enabled (not activated).
- * @property {string}  options.leave      Comma separated list of breakpoints in 
- *                                        which the module leaves, which means 
- *                                        it is disabled.
+ * @property {Object}  options              The options that define the object
+ *                                          behaviour.
+ * @property {boolean} options.debug        Whether to print debug messages in
+ *                                          the browser console.
+ * @property {string}  options.element      Selector for the element that
+ *                                          actually is the element to be fixed.
+ * @property {string}  options.wrapper      The class of the wrapper element
+ *                                          that will wrap around the actual
+ *                                          element. 
+ * @property {string}  options.enabled      The class added to the cloned
+ *                                          element when the scrollmenu is 
+ *                                          enabled. Note that the scrollmenu
+ *                                          might be there without being
+ *                                          enabled. Enabled does not mean
+ *                                          active and visible. Enabled means
+ *                                          having the readiness to become 
+ *                                          active  upon the desired page 
+ *                                          scroll.
+ * @property {string}  options.active       The class added to the scrollmenu 
+ *                                          whenit becomes active. 
+ * @property {string}  options.activeBody   The class added to the body element 
+ *                                          when the scrollmenu becomes active.
+ * @property {string}  options.offsetTop    The extra space to wait for the user
+ *                                          to scroll down to, after the
+ *                                          original element is out of sight, 
+ *                                          before showing the scrollmenu.
+ * @property {string}  options.offsetBottom The reverse of offsetTop, the extra
+ *                                          space before the original element
+ *                                          would be back in sight, as the user 
+ *                                          scrolls up, where the scrollmenu
+ *                                          will be hidden.
+ * @property {string}  options.enter        Comma separated list of breakpoints
+ *                                          in which the module enters, wihch
+ *                                          means it is enabled (not activated).
+ * @property {string}  options.leave        Comma separated list of breakpoints
+ *                                          in which the module leaves, which
+ *                                          means it is disabled.
  */
 
 Responsiville.Scrollmenu = function ( options ) {
@@ -58,8 +70,7 @@ Responsiville.Scrollmenu = function ( options ) {
 
     // General settings setup.
 
-    this.options = jQuery.extend( this.options, Responsiville.Scrollmenu.defaults, options );
-
+    this.options  = jQuery.extend( this.options, Responsiville.Scrollmenu.defaults, options );
     this.codeName = 'responsiville.scrollmenu';
 
     this.responsiville = Responsiville.Main.getInstance();
@@ -68,8 +79,8 @@ Responsiville.Scrollmenu = function ( options ) {
 
     // Cache important DOM elements.
 
-    this.$body    = this.responsiville.$body;
-    this.$window  = this.responsiville.$window;
+    this.$body   = this.responsiville.$body;
+    this.$window = this.responsiville.$window;
 
     this.$element = jQuery( this.options.element );
 
@@ -193,14 +204,16 @@ Responsiville.Scrollmenu.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefine
  */
 
 Responsiville.Scrollmenu.defaults = {
-    debug      : false, 
-    element    : '.responsiville-scrollmenu',
-    wrapper    : 'responsiville-scrollmenu-wrapper',
-    enabled    : 'responsiville-scrollmenu-enabled',
-    active     : 'responsiville-scrollmenu-active',
-    activeBody : 'responsiville-scrollmenu-active-body',
-    enter      : 'small, mobile, tablet, laptop, desktop, large, xlarge',
-    leave      : ''
+    debug        : false, 
+    element      : '.responsiville-scrollmenu',
+    wrapper      : 'responsiville-scrollmenu-wrapper',
+    enabled      : 'responsiville-scrollmenu-enabled',
+    active       : 'responsiville-scrollmenu-active',
+    activeBody   : 'responsiville-scrollmenu-active-body',
+    offsetTop    : 0,
+    offsetBottom : 0,
+    enter        : 'small, mobile, tablet, laptop, desktop, large, xlarge',
+    leave        : ''
 };
 
 
@@ -461,11 +474,11 @@ Responsiville.Scrollmenu.prototype.scroll = function () {
 
     
 
-    if ( this.$window.get( 0 ).scrollY > this.$element.data( 'offsetTop' ) ) {
+    if ( this.$window.get( 0 ).scrollY > this.$element.data( 'offsetTop' ) + this.options.offsetTop ) {
 
         this.activate();
         
-    } else {
+    } else if ( this.$window.get( 0 ).scrollY <= this.$element.data( 'offsetTop' ) + this.options.offsetBottom ) {
 
         this.deactivate();
         this.$element.data( 'offsetTop', Math.ceil( this.$element.offset().top ) );

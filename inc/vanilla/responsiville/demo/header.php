@@ -28,6 +28,10 @@
 
         <!-- Third party CSS decarlations -->
 
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Averia+Serif+Libre:300,300i">
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i">
+        <link rel = "stylesheet" href = "https://fonts.googleapis.com/css?family=Anonymous+Pro:400,400i">
+
         <link rel = "stylesheet" type = "text/css" href = "prism/prism.css" />
 
         <!-- Current page styles -->
@@ -74,7 +78,7 @@
 
         <!-- Entry script for tests -->
 
-        <script type = "text/javascript" charset = "utf-8" src = "js/functions.js"></script>
+        <script type = "text/javascript" charset = "utf-8" src = "js/functions1.js"></script>
 
 
 
@@ -84,84 +88,81 @@
 
     <body>
 
-
-
-        <header class = "header-credits row">
-
-            <div class = "small-column-100">
-                <p>The Responsiville &copy; framework is a <a href = "http://www.nevma.gr/" title = "Nevma">Nevma</a> project under the GPL open source license.</p>
-            </div>
-
-        </header> <!-- .header-credits -->
-
-
-
         <main class = "wrapper row">
 
 
 
-            <aside class = "sidebar small-column-20">
-                
-                <nav class = "navigation vertical">
+            <aside class = "sidebar small-column-15">
 
+                <header class = "sidebar-header row">
+                    <!-- <p>
+                        Responsiville &lt;{[]}&gt;
+                    </p> -->
+                    <div class = "column-60 center logo">
+                        <img src = "img/logo.png" alt = "Responsiville" />
+                    </div>
+                </header>
+
+                <!-- <h3>Menu</h3> -->
+                
+                <nav class = "main-navigation navigation vertical">
                     <ul>
-                        <li><a href = "demo.php">Home</a></li>
                         <li>
-                            <a href = "info.php">Info</a>
+                            <a href = "demo.php">About</a>
                             <ul>
                                 <li><a href = "installing.php">Installing</a></li>
                                 <li><a href = "initialising.php">Initialising</a></li>
-                                <li><a href = "settings.php">Settings</a></li>
+                                <li><a href = "api.php">API</a></li>
+                                <li><a href = "license.php">Licence</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href = "grid.php">Grid</a>
+                            <a href = "grid.php">The grid</a>
                             <ul>
-                                <li><a href = "grid-elements.php">Grid elements</a></li>
-                                <li><a href = "clearing-floats.php">Clearing floats</a></li>
                                 <li><a href = "grid-building.php">Grid building</a></li>
+                                <li><a href = "clearing-floats.php">Clearing floats</a></li>
+                                <li><a href = "grid-debugging.php">Grid debugging</a></li>
+                                <!--
+                                    Grid margins
+                                    Grid shifting
+                                -->
+                            </ul>
+                        </li>
+                        <li>
+                            <a href = "reset.php">CSS reset</a>
+                            <ul>
+                                <li><a href = "typography.php">Typography</a></li>
+                                <li><a href = "images.php">Images</a></li>
+                                <li><a href = "videos-iframes.php">Videos &amp; iframes</a></li>
+                                <li><a href = "tables.php">Tables</a></li>
+                                <li><a href = "forms.php">Forms</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href = "reset.php">Javascript modules</a>
+                            <ul>
+                                <li><a href = "main-events.php">Main/Events</a></li>
+                                <li><a href = "accordion.php">Accordion</a></li>
+                                <li><a href = "equalheights.php">Equalheights</a></li>
+                                <li><a href = "megamenu.php">Megamenu</a></li>
+                                <li><a href = "mobimenu.php">Mobimenu</a></li>
+                                <li><a href = "scrollmenu.php">Scrollmenu</a></li>
+                                <li><a href = "slideshow.php">Slideshow</a></li>
                             </ul>
                         </li>
                     </ul>
-
-                </nav>
-
-
-
-                <!--
-                    Home
-                    Info
-                        Installing
-                        Initialising
-                        Settings
-                    Grid
-                        Grid Elements
-                        Clearing floats
-                        Grid Building
-                    Reset
-                        Typography
-                        Images
-                        Videos & iframes
-                        Tables
-                        Forms
-                    Modules
-                        Main/Events
-                        Slideshow
-                        Megamenu
-                        Mobimenu
-                        Scrollmenu
-                        Equalheights
-                        Accordion
-
-
-                    Grid showcase
-                    Code
-                    Element showcase
-                    Licence (GPL)
-                -->
+                </nav> <!-- .main-navigation -->
 
             </aside> <!-- .sidebar -->
 
 
 
-            <section class = "content small-column-80">
+            <section class = "content small-column-85 small-margin-15">
+
+
+
+                <header class = "header-credits">
+                    <p>
+                        Responsiville framework &copy; 2014-<?php echo date( 'Y' ); ?> Nevma.gr
+                    </p>
+                </header> <!-- .header-credits -->

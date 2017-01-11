@@ -37,6 +37,9 @@ v-1.1
       true in order for the respective responsiville megamenu element to be
       activated on it.
 
+    - Put the fix CSS vars script inside Vanilla and removed it from the theme's
+      functions.js file for future conistency.
+
 v-1.0
 =====
 

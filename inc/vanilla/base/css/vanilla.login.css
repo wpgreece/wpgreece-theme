@@ -11,27 +11,27 @@
 
 
 
-   /*  #login {
-       padding-top: 5%;
-   }
-   
-   #login h1::before {
-       display: block;
-       margin: 0 auto 40px auto;
-       content: url('../img/logo.png');
-   }
-   
-   #login h1 a {
-       opacity: 0.5;
-       background-image: url('../../../../img/logo.png');
-       background-size: contain;
-       background-repeat: none;
-       display: block;
-       margin: 0 0 20px -10%;
-       width: 120% !important;
-       height: 100px;
-   }
-    */
+    #login {
+        padding-top: 5%;
+    }
+
+    #login h1::before {
+        display: block;
+        margin: 0 auto 40px auto;
+        content: url('../img/logo.png');
+    }
+
+    #login h1 a {
+        opacity: 0.5;
+        background-image: url('../../../../img/logo.png');
+        background-size: contain;
+        background-repeat: none;
+        display: block;
+        margin: 0 0 20px -10%;
+        width: 120% !important;
+        height: 100px;
+    }
+
     #loginform {
         margin-top: 0;
     }

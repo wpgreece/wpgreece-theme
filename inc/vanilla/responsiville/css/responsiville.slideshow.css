@@ -196,6 +196,7 @@
             }
 
                 .responsiville-slideshow-bullet-icon,
-                .responsiville-slideshow-bullet-text {
+                .responsiville-slideshow-bullet-text,
+                .responsiville-slideshow-bullet-number {
                     display: none;
                 }

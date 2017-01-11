@@ -57,11 +57,26 @@
 
 
 
-    /* Original mobimenu wrapper element. */
+    /* Original element is hidden while page loading. */
+
+    .responsiville-mobimenu {
+        /*display: none;*/
+    }
+
+    /* After page load and after the mobimenu module has run its hiding is undone, for instance because the browser window might have grown. */
+
+    .responsiville-mobimenu-wrapper .responsiville-mobimenu {
+        display: block;
+    }
+
+    /* But when the mobimenu is actually enabled the original element is hidden again. */
 
     .responsiville-mobimenu-enabled .responsiville-mobimenu {
         display: none;
     }
+
+
+    /* Mobimenu clone, ie the element that actually opens and closes. */
 
     .responsiville-mobimenu-open .responsiville-mobimenu {
         display: block;
@@ -145,11 +160,11 @@
         z-index: 999;
     }
 
-       .responsiville-mobimenu-close {
+   .responsiville-mobimenu-close {
         opacity: 0;
         transition-property: opacity;
         transition-duration: 0.5s;
-        transition-delay: 0.5s;
+        transition-delay: 2s;
         transition-timing-function: ease;
     }
     

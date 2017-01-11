@@ -215,7 +215,8 @@ Responsiville.Slideshow = function ( options ) {
         bulletsHTML +=
             '<button class = "responsiville-slideshow-bullet">' +
                 '<span class = "responsiville-slideshow-bullet-icon"></span>' +
-                '<span class = "responsiville-slideshow-bullet-text">' + this.options.bulletText + ' ' + (k+1) + '</span>' +
+                '<span class = "responsiville-slideshow-bullet-text">' + this.options.bulletText + '</span>' +
+                '<span class = "responsiville-slideshow-bullet-number">' + (k+1) + '</span>' +
             '</button>';
     }
     
@@ -523,8 +524,8 @@ Responsiville.Slideshow.prototype.enable = function () {
     if ( this.options.start ) {
         this.start();
     } else {
-        this.select( this.index );
-
+        var index = this.calculateNext();
+        this.select( index );
     }
 
 
@@ -655,13 +656,9 @@ Responsiville.Slideshow.prototype.start = function () {
     // Calculate whether the slideshow advances automatically or not.
 
     if ( this.paused === null ) {
-
         this.paused = ! this.options.start;
-
     } else {
-
         this.paused = false;
-
     }
     
 

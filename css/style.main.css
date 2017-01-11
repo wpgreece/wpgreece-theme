@@ -997,7 +997,7 @@
         border-radius: 0px;
     }
 
-    .join-forum {
+    .row.join-forum {
         position: relative;
         margin-bottom: 3rem;
     }

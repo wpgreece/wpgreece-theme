@@ -1539,7 +1539,12 @@
     }
 
     div.bbp-template-notice p {
-        font-size: 
+        color: black;
+        font-size: 1.4rem;
+    }
+
+    div.bbp-template-notice.info a {
+        color: white;
     }
 
     div.bbp-template-notice.info p {

@@ -1,5 +1,13 @@
 
-<?php the_post_thumbnail( 'medium' ); ?>
+<?php if ( has_post_thumbnail() ) : ?>
+
+        <?php the_post_thumbnail( 'medium' ); ?>
+
+    <?php else: ?>
+
+         <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+
+    <?php endif; ?>
 
 <h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
 
@@ -10,7 +18,7 @@
 <div class="more-news-container">
 
     <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
-        <h4><?php the_title(); ?></h4>
+        <h4 class="defined-title"><?php the_title(); ?></h4>
     </a>
 
     <div class="post-meta"> 

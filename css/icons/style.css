@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?yu6gvl');
-  src:  url('icomoon.eot?yu6gvl#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?yu6gvl') format('truetype'),
-    url('icomoon.woff?yu6gvl') format('woff'),
-    url('icomoon.svg?yu6gvl#icomoon') format('svg');
+  src:  url('icomoon.eot?y5gap6');
+  src:  url('icomoon.eot?y5gap6#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?y5gap6') format('truetype'),
+    url('icomoon.woff?y5gap6') format('woff'),
+    url('icomoon.svg?y5gap6#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -86,5 +86,14 @@
 }
 .icon-twitter:before {
   content: "\e914";
+}
+.icon-speakerdeck:before {
+  content: "\e915";
+}
+.icon-youtube:before {
+  content: "\e916";
+}
+.icon-ticket:before {
+  content: "\e939";
 }
 

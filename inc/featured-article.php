@@ -2,7 +2,15 @@
 
 <article class = "featured-article-big column tablet-column-100">
 
-    <?php the_post_thumbnail( 'featured-post-100' ); ?>
+    <?php if ( has_post_thumbnail() ) : ?>
+
+        <?php the_post_thumbnail( 'featured-post-100' ); ?>
+
+    <?php else: ?>
+
+         <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+
+    <?php endif; ?>
 
     <div class="featured-article-big-container <?php if ( is_front_page() ) { echo "homepage-enabled"; } ?>">
 
@@ -45,6 +53,47 @@
             <h3><?php the_title(); ?></h3>
 
             <?php get_template_part( 'inc/sharing' ); ?>
+
+
+                <?php if ( has_category( 'meetup') ) : ?>
+
+                <div class="meetup-info-container column nexus responsiville-equalheights">
+
+                    <?php if( get_field('meetup_datetime') ) : ?>
+                    
+                    <div class="small column laptop-column-33 inside-article meetup-date">
+
+                        <?php $meetup_date = get_field('meetup_datetime'); ?>
+                        <p><?php echo $meetup_date; ?></p>
+                        
+                    </div>
+
+                    <?php endif; ?>
+
+                    <?php if( get_field('meetup_place') ) : ?>
+
+                        <div class="small column laptop-column-33 inside-article place">
+
+                            <p><?php the_field('meetup_place'); ?></p>
+                            <p><?php the_field('meetup_address'); ?></p>
+                            
+                        </div>
+
+                    <?php endif; ?>
+
+                    <?php if ( get_field('meetupcom_link') ) : ?>
+
+                        <div class="small column laptop-column-33 inside-article book-ticket">
+
+                            <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση">Κλείσε θέση</a>
+                            
+                        </div>
+
+                    <?php endif; ?>
+
+                </div>
+
+                <?php endif; ?>
 
             <div class="text">
 

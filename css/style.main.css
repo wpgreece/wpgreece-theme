@@ -278,6 +278,17 @@
         font-size: 3rem;
     }
 
+    span.speakerdeck:before {
+        font-family: var(--font-icon);
+        content: "\e915";
+        font-size: 3rem;
+    }
+
+    span.youtube:before {
+        font-family: var(--font-icon);
+        content: "\e916";
+        font-size: 3rem;
+    }
 
 
 
@@ -1133,7 +1144,8 @@
     }
 
     .place,
-    .meetup-date {
+    .meetup-date,
+    .book-ticket {
         position: relative;
         background: #f2f2f2;
         margin-left: 1rem;
@@ -1141,6 +1153,13 @@
         padding-top: 0.2rem;
         padding-bottom: 0.2rem;
         margin-bottom: 0.5rem;
+    }
+
+    .inside-article.meetup-date,
+    .inside-article.place,
+    .inside-article.book-ticket {
+        margin-left: auto;
+        margin-right: auto; 
     }
 
     .place:before {
@@ -1159,7 +1178,7 @@
 
     .meetup-date:before {
         font-family: var(--font-icon);
-        font-size: 3.5rem;
+        font-size: 3rem;
         position: absolute;
         content: "\e912";
         left: 0;
@@ -1171,8 +1190,29 @@
         text-align: center;
     }
 
+    .inside-article.meetup-date:before {
+        padding-top: 0.3rem;
+    }
+
+    .book-ticket:before {
+        font-family: var(--font-icon);
+        font-size: 2.5rem;
+        padding-top: 0.6rem;
+        position: absolute;
+        content: "\e939";
+        left: 0;
+        top: 0;
+        width: 35px;
+        height: 100%;
+        background: var(--color-blue);
+        color: white;
+        text-align: center;
+    }
+
+
     .place p,
-    .meetup-date p {
+    .meetup-date p,
+    .book-ticket a {
         padding-left: 4.5rem;
     }
 
@@ -1188,12 +1228,18 @@
         font-weight: normal;
     }
 
-    .meetup-date p {
+    .meetup-date p,
+    .book-ticket a {
         font-family: var(--font-regular);
         font-size: 1.7rem;
         font-weight: bold;
         padding-top: 1rem;
         padding-bottom: 1rem;
+        display: block;
+    }
+
+    .meetup-info-container {
+        margin-bottom: 3rem;
     }
 
     .sponsors {
@@ -1355,13 +1401,17 @@
         color: white;
     }
 
-    /***** ΕΚΔΗΛΩΣΕΙΣ ID = 348 *****/
+    /***** ΕΚΔΗΛΩΣΕΙΣ ID = 348, MEETUP STAGING ID = 664, MEETUP LIVE ID = 740 *****/
 
-    .cat-348 {
+    .cat-348,
+    .cat-740,
+    .cat-664 {
         position: relative;
     }
 
-    .cat-348:before {
+    .cat-348:before,
+    .cat-740:before,
+    .cat-664:before {
         position: absolute;
         left: 2rem;
         top: 50%;
@@ -1396,6 +1446,10 @@
 
     .blog-container {
         background: #fff;
+    }
+
+    .three-columns a:hover {
+        
     }
 
 /************************************************
@@ -1528,16 +1582,23 @@
     }
 
     div.bbp-template-notice.info {
-        border: none;
+       border: none;
+        border-width: 0px !important;
         border-left: #3383f3 5px solid !important;
         background-color: #6daaff !important;
-        border-radius: 0;
-        padding-top: 1px;
-        padding-bottom: 1px;
+        border-radius: 0 !important;
+        padding-top: 1px !important;
+        padding-bottom: 1px !important;
+        
+    }
+
+    div.bbp-template-notice p {
+        color: black;
+        font-size: 1.4rem;
     }
 
     div.bbp-template-notice.info a {
-        color: white;
+        color: var(--color-dark-blue);
     }
 
     div.bbp-template-notice.info p {
@@ -1574,8 +1635,8 @@
     }
     
     #bbpress-forums li.bbp-body {
-    clear: both;
-    padding: 0px;
+        clear: both;
+        padding: 0px;
 	}
 
 	#bbpress-forums .bbp-forum-info .bbp-forum-content, #bbpress-forums p.bbp-topic-meta {
@@ -1596,7 +1657,7 @@
 	}
 
 	#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar {
-	    border-radius: 5rem;
+	    border-radius: 10rem;
 	}
 
 	#bbpress-forums {
@@ -1632,8 +1693,8 @@
 	.bbp-template-notice {
 	    border: none;
 	    border-width: 0px !important;
-	    border-left: #3383f3 5px solid !important;
-	    background-color: #6daaff !important;
+	    border-left: #e6db55 5px solid !important;
+	    background-color: #ffffe0 !important;
 	    border-radius: 0 !important;
 	    padding-top: 1px !important;
 	    padding-bottom: 1px !important;
@@ -1771,6 +1832,18 @@
         padding-top: 1rem;
     }
 
+    div#bbp-user-profile p {
+        margin-bottom: 1rem;
+    }
 
+    .vcard a:hover {
+        border-bottom-width: 0px;
+    }
 
+    .bbp-topic-freshness-author a:hover {
+        border-bottom-width: 0;
+    }
 
+    .bbp-author-avatar {
+       border-bottom-width: 0; 
+    }

@@ -152,6 +152,7 @@
     }
 
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
+<<<<<<< HEAD
 
     function wpgc_venue_taxonomy() {
         // Add new taxonomy for venues
@@ -186,4 +187,6 @@
 
 
  
+=======
+>>>>>>> origin/master
 ?>

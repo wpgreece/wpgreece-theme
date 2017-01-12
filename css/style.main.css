@@ -1178,7 +1178,7 @@
 
     .meetup-date:before {
         font-family: var(--font-icon);
-        font-size: 3.5rem;
+        font-size: 3rem;
         position: absolute;
         content: "\e912";
         left: 0;

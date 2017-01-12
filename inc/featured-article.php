@@ -58,6 +58,8 @@
                 <?php if ( has_category( 'meetup') ) : ?>
 
                 <div class="meetup-info-container column nexus responsiville-equalheights">
+
+                    <?php if( get_field('meetup_datetime') ) : ?>
                     
                     <div class="small column laptop-column-33 inside-article meetup-date">
 
@@ -66,12 +68,18 @@
                         
                     </div>
 
-                    <div class="small column laptop-column-33 inside-article place">
+                    <?php endif; ?>
 
-                        <p><?php the_field('meetup_place'); ?></p>
-                        <p><?php the_field('meetup_address'); ?></p>
-                        
-                    </div>
+                    <?php if( get_field('meetup_place') ) : ?>
+
+                        <div class="small column laptop-column-33 inside-article place">
+
+                            <p><?php the_field('meetup_place'); ?></p>
+                            <p><?php the_field('meetup_address'); ?></p>
+                            
+                        </div>
+
+                    <?php endif; ?>
 
                     <?php if ( get_field('meetupcom_link') ) : ?>
 

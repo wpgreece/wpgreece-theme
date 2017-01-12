@@ -1190,6 +1190,10 @@
         text-align: center;
     }
 
+    .inside-article.meetup-date:before {
+        padding-top: 0.3rem;
+    }
+
     .book-ticket:before {
         font-family: var(--font-icon);
         font-size: 2.5rem;

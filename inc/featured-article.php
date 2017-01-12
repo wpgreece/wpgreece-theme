@@ -48,6 +48,8 @@
 
 
                 <?php if ( has_category( 'meetup') ) : ?>
+
+                <div class="meetup-info-container">
                     
                     <div class="small column tablet-column-33 inside-article meetup-date">
 
@@ -72,6 +74,8 @@
                         </div>
 
                     <?php endif; ?>
+
+                </div>
 
                 <?php endif; ?>
 

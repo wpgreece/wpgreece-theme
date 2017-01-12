@@ -1233,6 +1233,10 @@
         display: block;
     }
 
+    .meetup-info-container {
+        margin-bottom: 3rem;
+    }
+
     .sponsors {
         margin-bottom: calc(2*var(--grid-gutter));
     }

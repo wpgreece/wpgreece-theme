@@ -1444,6 +1444,10 @@
         background: #fff;
     }
 
+    .three-columns a:hover {
+        
+    }
+
 /************************************************
 
     ██████╗      █████╗      ██████╗     ███████╗
@@ -1649,7 +1653,7 @@
 	}
 
 	#bbpress-forums #bbp-single-user-details #bbp-user-avatar img.avatar {
-	    border-radius: 5rem;
+	    border-radius: 10rem;
 	}
 
 	#bbpress-forums {

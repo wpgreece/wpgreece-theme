@@ -59,14 +59,14 @@
 
                 <div class="meetup-info-container column nexus responsiville-equalheights">
                     
-                    <div class="small column tablet-column-33 inside-article meetup-date">
+                    <div class="small column laptop-column-33 inside-article meetup-date">
 
                         <?php $meetup_date = get_field('meetup_datetime'); ?>
                         <p><?php echo $meetup_date; ?></p>
                         
                     </div>
 
-                    <div class="small column tablet-column-33 inside-article place">
+                    <div class="small column laptop-column-33 inside-article place">
 
                         <p><?php the_field('meetup_place'); ?></p>
                         <p><?php the_field('meetup_address'); ?></p>
@@ -75,7 +75,7 @@
 
                     <?php if ( get_field('meetupcom_link') ) : ?>
 
-                        <div class="small column tablet-column-33 inside-article book-ticket">
+                        <div class="small column laptop-column-33 inside-article book-ticket">
 
                             <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση">Κλείσε θέση</a>
                             

@@ -48,30 +48,26 @@
 
 
                 <?php if ( has_category( 'meetup') ) : ?>
-
-                <section class="row responsiville-equalheights">
                     
-                    <div class="small column tablet-column-33 meetup-date">
+                <div class="small column tablet-column-33 inside-article meetup-date">
 
-                        <?php $meetup_date = get_field('meetup_datetime'); ?>
-                        <p><?php echo $meetup_date; ?></p>
-                        
-                    </div>
+                    <?php $meetup_date = get_field('meetup_datetime'); ?>
+                    <p><?php echo $meetup_date; ?></p>
+                    
+                </div>
 
-                    <div class="small column tablet-column-33 place">
+                <div class="small column tablet-column-33 inside-article place">
 
-                        <p><?php the_field('meetup_place'); ?></p>
-                        <p><?php the_field('meetup_address'); ?></p>
-                        
-                    </div>
+                    <p><?php the_field('meetup_place'); ?></p>
+                    <p><?php the_field('meetup_address'); ?></p>
+                    
+                </div>
 
-                    <div class="small column tablet-column-33 book-ticket">
+                <div class="small column tablet-column-33 inside-article book-ticket">
 
-                        <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση"><p> Κλείσε θέση<p> </a>
-                        
-                    </div>
-
-                </section>
+                    <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση">Κλείσε θέση</a>
+                    
+                </div>
 
                 <?php endif; ?>
 

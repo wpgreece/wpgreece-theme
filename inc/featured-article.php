@@ -46,7 +46,6 @@
 
             <?php get_template_part( 'inc/sharing' ); ?>
 
-            <div class="text">
 
                 <?php if ( has_category( 'meetup') ) : ?>
                     
@@ -67,6 +66,8 @@
 
                 <?php endif; ?>
 
+            <div class="text">
+                
                 <?php the_content();?>
 
             </div>    

@@ -1825,7 +1825,7 @@
     }
 
     .bbp-logged-in img.avatar {
-    	border-radius: 5rem;
+    	border-radius: 50%;
     }
 
     .bbp-logged-in h4 {

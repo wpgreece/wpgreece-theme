@@ -49,7 +49,7 @@
 
                 <?php if ( has_category( 'meetup') ) : ?>
 
-                <div class="meetup-info-container">
+                <div class="meetup-info-container column nexus">
                     
                     <div class="small column tablet-column-33 inside-article meetup-date">
 

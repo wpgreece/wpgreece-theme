@@ -50,7 +50,20 @@
 
                 <?php if ( has_category( 'meetup') ) : ?>
                     
-                    <?php echo "DADAD"; ?>
+                    <div class="small column tablet-column-33 date">
+
+                        <?php $meetup_date = get_field('meetup_datetime'); ?>
+                        <p><?php echo $meetup_date; ?></p>
+                        
+                    </div>
+                    
+                    <div class="small column tablet-column-33 place">
+
+                        <p><?php the_field('meetup_place'); ?></p>
+                        <p><?php the_field('meetup_address'); ?></p>
+                        
+                    </div>
+
 
                 <?php endif; ?>
 

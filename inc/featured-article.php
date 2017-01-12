@@ -2,7 +2,15 @@
 
 <article class = "featured-article-big column tablet-column-100">
 
-    <?php the_post_thumbnail( 'featured-post-100' ); ?>
+    <?php if ( has_post_thumbnail() ) : ?>
+
+        <?php the_post_thumbnail( 'featured-post-100' ); ?>
+
+    <?php else: ?>
+
+         <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+
+    <?php endif; ?>
 
     <div class="featured-article-big-container <?php if ( is_front_page() ) { echo "homepage-enabled"; } ?>">
 

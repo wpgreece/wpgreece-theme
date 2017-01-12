@@ -117,7 +117,6 @@ if( !empty($banner_image) ): ?>
     </article>
 
 
-
 <?php endforeach; ?>
 
 <?php wp_reset_postdata(); ?>

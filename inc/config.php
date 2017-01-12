@@ -153,6 +153,36 @@
 
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
 
+    function wpgc_venue_taxonomy() {
+        // Add new taxonomy for venues
+        $labels = array(
+            'name'                       => _x( 'Venues', 'wpgc' ),
+            'singular_name'              => _x( 'Venue', 'wpgc' ),
+            'search_items'               => __( 'Search Venues', 'wpgc' ),
+            'popular_items'              => __( 'Popular Venues', 'wpgc' ),
+            'all_items'                  => __( 'All Venues', 'wpgc' ),
+            'parent_item'                => __( 'Parent Venue', 'wpgc' ),
+            'parent_item_colon'          => __( 'Parent Venue:', 'wpgc' ),
+            'edit_item'                  => __( 'Edit Venue', 'wpgc' ),
+            'update_item'                => __( 'Update Venue', 'wpgc' ),
+            'add_new_item'               => __( 'Add New Venue', 'wpgc' ),
+            'new_item_name'              => __( 'New Venue Name', 'wpgc' ),
+            'menu_name'                  => __( 'Venues', 'wpgc' ),
+        );
+
+        $args = array(
+            'hierarchical'          => true,
+            'labels'                => $labels,
+            'show_ui'               => true,
+            'show_admin_column'     => true,
+            'query_var'             => true,
+            'rewrite'               => array( 'slug' => 'venue' ),
+        );
+
+        register_taxonomy( 'venue', 'post', $args );
+    }
+
+    add_action( 'init', 'wpgc_venue_taxonomy', 0 );
 
 
  

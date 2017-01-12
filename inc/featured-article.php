@@ -50,13 +50,13 @@
 
                 <?php if ( has_category( 'meetup') ) : ?>
                     
-                    <div class="small column tablet-column-33 date">
+                    <div class="small column tablet-column-33 meetup-date">
 
                         <?php $meetup_date = get_field('meetup_datetime'); ?>
                         <p><?php echo $meetup_date; ?></p>
                         
                     </div>
-                    
+
                     <div class="small column tablet-column-33 place">
 
                         <p><?php the_field('meetup_place'); ?></p>

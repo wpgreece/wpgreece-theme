@@ -1192,7 +1192,8 @@
 
     .book-ticket:before {
         font-family: var(--font-icon);
-        font-size: 3rem;
+        font-size: 2.5rem;
+        padding-top: 0.6rem;
         position: absolute;
         content: "\e939";
         left: 0;

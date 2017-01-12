@@ -154,7 +154,7 @@
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
 
 
-	add_action ('bbp_template_before_forums_index' , 'wpgc_update_notice' ) ;
+	add_action ('bbp_before_main_content' , 'wpgc_update_notice' ) ;
 
 	Function wpgc_update_notice () {
 	Echo '<div class="bbp-template-notice"><p>Here is my intro text. This is lots of writing to introduce the forums and make people read this stuff</p></div>' ;

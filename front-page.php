@@ -98,7 +98,7 @@ if( !empty($banner_image) ): ?>
     <h2><?php _e('Περισσότερα Νέα'); ?> </h2>
 </div>
 
-<div class = "tablet-group-2 desktop-group-3">
+<div class = "tablet-group-2 desktop-group-3 responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
 
     <?php $posts = get_posts( array( 'numberposts' => 6, 'suppress_filters' => 0 ) ); ?>
 
@@ -110,7 +110,7 @@ if( !empty($banner_image) ): ?>
 
         <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
 
-            <?php get_template_part( 'inc/article', 'structure' ); ?>
+            <?php include( 'inc/article-structure.php' ); ?>
 
         </a>
 

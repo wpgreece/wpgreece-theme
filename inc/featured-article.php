@@ -48,6 +48,12 @@
 
             <div class="text">
 
+                <?php if ( has_category( 'meetup') ) : ?>
+                    
+                    <?php echo "DADAD"; ?>
+
+                <?php endif; ?>
+
                 <?php the_content();?>
 
             </div>    

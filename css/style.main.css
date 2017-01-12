@@ -1144,7 +1144,8 @@
     }
 
     .place,
-    .meetup-date {
+    .meetup-date,
+    .book-ticket {
         position: relative;
         background: #f2f2f2;
         margin-left: 1rem;
@@ -1182,8 +1183,24 @@
         text-align: center;
     }
 
+    .book-ticket:before {
+        font-family: var(--font-icon);
+        font-size: 3.5rem;
+        position: absolute;
+        content: "\e939";
+        left: 0;
+        top: 0;
+        width: 35px;
+        height: 100%;
+        background: var(--color-blue);
+        color: white;
+        text-align: center;
+    }
+
+
     .place p,
-    .meetup-date p {
+    .meetup-date p,
+    .book-ticket a {
         padding-left: 4.5rem;
     }
 
@@ -1199,7 +1216,8 @@
         font-weight: normal;
     }
 
-    .meetup-date p {
+    .meetup-date p,
+    .book-ticket a {
         font-family: var(--font-regular);
         font-size: 1.7rem;
         font-weight: bold;

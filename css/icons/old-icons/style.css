@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('icomoon.eot?y5gap6');
-  src:  url('icomoon.eot?y5gap6#iefix') format('embedded-opentype'),
-    url('icomoon.ttf?y5gap6') format('truetype'),
-    url('icomoon.woff?y5gap6') format('woff'),
-    url('icomoon.svg?y5gap6#icomoon') format('svg');
+  src:  url('icomoon.eot?5vyl3u');
+  src:  url('icomoon.eot?5vyl3u#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?5vyl3u') format('truetype'),
+    url('icomoon.woff?5vyl3u') format('woff'),
+    url('icomoon.svg?5vyl3u#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -92,8 +92,5 @@
 }
 .icon-youtube:before {
   content: "\e916";
-}
-.icon-ticket:before {
-  content: "\e939";
 }
 

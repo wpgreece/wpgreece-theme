@@ -63,11 +63,17 @@
                         
                     </div>
 
+                    <div class="small column tablet-column-33 book-ticket">
+
+                        <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση"> Κλείσε θέση </a>
+                        
+                    </div>
+
 
                 <?php endif; ?>
 
             <div class="text">
-                
+
                 <?php the_content();?>
 
             </div>    

@@ -171,6 +171,11 @@
         border-bottom-style: solid;
     }
 
+    .blog .text a:hover {
+        border-bottom-width: 0;
+        border-bottom-style: initial;
+    }
+
     .text .button,
     .text .button:hover,
     .text .gallery a,

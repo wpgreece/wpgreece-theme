@@ -1833,7 +1833,17 @@
     }
 
     div#bbp-user-profile p {
-    margin-bottom: 1rem;
+        margin-bottom: 1rem;
     }
 
+    .vcard a:hover {
+        border-bottom-width: 0px;
+    }
 
+    .bbp-topic-freshness-author a:hover {
+        border-bottom-width: 0;
+    }
+
+    .bbp-author-avatar {
+       border-bottom-width: 0; 
+    }

@@ -278,6 +278,17 @@
         font-size: 3rem;
     }
 
+    span.speakerdek:before {
+        font-family: var(--font-icon);
+        content: "\e915";
+        font-size: 3rem;
+    }
+
+    span.youtube:before {
+        font-family: var(--font-icon);
+        content: "\e916";
+        font-size: 3rem;
+    }
 
 
 

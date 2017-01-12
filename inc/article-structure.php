@@ -15,7 +15,7 @@
 
 </h5>
 
-<div class="more-news-container responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
+<div class="more-news-container responsiville-equalheights" data-responsiville-equalheights-children=".defined-title">
 
     <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
         <h4 class="defined-title"><?php the_title(); ?></h4>

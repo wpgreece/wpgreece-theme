@@ -154,6 +154,10 @@
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
 
 
+	add_action ('bbp_template_before_forums_index' , 'my_intro' ) ;
 
+	Function my_intro () {
+	Echo '<div class="entry-content"> Here is my intro text. This is lots of writing to introduce the forums and make people read this stuff </div>' ;
+	}
  
 ?>

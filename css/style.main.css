@@ -278,7 +278,7 @@
         font-size: 3rem;
     }
 
-    span.speakerdek:before {
+    span.speakerdeck:before {
         font-family: var(--font-icon);
         content: "\e915";
         font-size: 3rem;

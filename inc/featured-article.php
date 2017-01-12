@@ -48,6 +48,8 @@
 
 
                 <?php if ( has_category( 'meetup') ) : ?>
+
+                <section class="row responsiville-equalheights">
                     
                     <div class="small column tablet-column-33 meetup-date">
 
@@ -65,10 +67,11 @@
 
                     <div class="small column tablet-column-33 book-ticket">
 
-                        <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση"> Κλείσε θέση </a>
+                        <a href="<?php the_field('meetupcom_link'); ?>" title="Κάνε κράτηση"><p> Κλείσε θέση<p> </a>
                         
                     </div>
 
+                </section>
 
                 <?php endif; ?>
 

@@ -154,23 +154,56 @@
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
 
     function wpgc_related_posts() {
-        if (is_single()) {
+        if ( is_single() ) {
             global $post;
             $current_post = $post->ID;
             $categories = get_the_category();
+
         foreach ($categories as $category) :
             ?>
         <!-- RELATED POSTS -->
         <div class="more-news column">
             <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
         </div>
-            <?php
-            $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
-        foreach($posts as $post) :
-            ?>
-            <?php get_template_part( 'inc/article', 'structure' ); ?>
-            <?php
-                }
+
+        <?php $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
+        
+        foreach($posts as $post) : ?>
+
+            <?php if ( has_post_thumbnail() ) : ?>
+
+            <?php the_post_thumbnail( 'medium' ); ?>
+
+            <?php else: ?>
+
+                     <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+
+                <?php endif; ?>
+
+            <h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
+
+                <?php the_category(' / '); ?>
+
+            </h5>
+
+            <div class="more-news-container">
+
+                <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
+                    <h4 class="defined-title"><?php the_title(); ?></h4>
+                </a>
+
+                <div class="post-meta"> 
+               
+                    <h6 class= "post-author"> <?php _e('Απο', 'wpgc'); ?> <?php the_author(); ?></h6>
+
+                    <h6 class="post-date"><?php the_time('d/m/y'); ?></h6>
+
+                </div>
+                
+            </div>
+    
+        <?php
+        }
             wp_reset_query();
         }
     add_action('wpgc_add_to_content','wpgc_related_posts');

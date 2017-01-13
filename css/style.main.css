@@ -11,6 +11,9 @@
     .text a {
         border-bottom-width: 0;
         border-bottom-style: dotted;
+    }
+
+    .page-template-default .text a {
         color: var(--color-blue);
     }
 

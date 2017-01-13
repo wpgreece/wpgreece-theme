@@ -1561,8 +1561,8 @@
         display: block;
     }
 
-    .related-posts {
-        margin-bottom: 3rem;
+    .related-posts article {
+        margin-bottom: 6rem;
     }
 
     .related-posts .post-meta {

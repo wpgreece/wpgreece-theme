@@ -99,6 +99,8 @@
 
                 <?php the_content();?>
 
+                <?php get_template_part( 'inc/related', 'articles' ); ?>
+
                 <?php comments_template(); ?>
 
             </div>    

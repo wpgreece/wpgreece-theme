@@ -1569,6 +1569,21 @@
         display: none;
     }
 
+   .author-location {
+        position: relative;
+        color: #d1d1d1;
+        padding-left: 3rem;
+    }
+
+    .author-location:before {
+        font-family: var(--font-icon);
+        font-size: 3rem;
+        content: "\e90c";
+        position: absolute;
+        left: 0;
+        color: #d1d1d1;
+    }
+
 /************************************************************************************
 
  ██████╗     ██████╗         ██████╗     ██████╗     ███████╗    ███████╗    ███████╗

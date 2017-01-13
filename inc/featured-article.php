@@ -112,7 +112,8 @@
                     <div class="column-80">
 
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
-                        
+                        <a class="share-link facebook" href="<?php $id = get_current_user_id(); get_the_author_meta('facebook', $id); ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Facebook" /></a>
+                        <a class="share-link twitter" href="<?php $id = get_current_user_id(); get_the_author_meta('facebook', $id); ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Twitter" /></a>
                         <?php
                             $author_id = get_the_author_meta('ID');
                             $author_location = get_field('author_location', 'user_'. $author_id );

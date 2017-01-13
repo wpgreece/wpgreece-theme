@@ -169,6 +169,7 @@
     .text a:hover {
         border-bottom-width: 0.1rem;
         border-bottom-style: solid;
+        color: var(--color-blue);
     }
 
     .blog .text a:hover {
@@ -220,7 +221,7 @@
     }
 
     /* Style like Slack */
-    
+
     tt {
         color: red;
         background: #f2f2f2;

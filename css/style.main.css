@@ -1581,7 +1581,7 @@
         content: "\e90c";
         position: absolute;
         top: -1rem;
-        left: 0;
+        left: -0.5rem;
         color: #d1d1d1;
     }
 

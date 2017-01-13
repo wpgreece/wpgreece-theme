@@ -19,7 +19,7 @@
 
         ?>
 
-        <div class ="social-sharing mobile-column tablet-column-10">
+        <div class ="social-sharing mobile-column desktop-column-10">
 
             <ul>
 

@@ -12,7 +12,7 @@
 
                 <!-- RELATED ARTICLES -->
                                         
-                <div class="more-news">
+                <div class="more-news column">
                     <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
                 </div>
 

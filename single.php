@@ -11,7 +11,16 @@
                <?php include( 'inc/featured-article.php' ); ?>
                      
             </div>
-
+            <!-- AUTHOR META -->
+                <div class="row">
+                    <div class="column-25">
+                        <?php echo get_avatar( get_the_author_meta('user_email') , 90 ); ?>
+                    </div>
+                    <div class="column-75">
+                        test
+                    </div>
+                </div>
+                
         <?php endwhile; endif; ?>
 
     <?php include('inc/left-sidebar.php'); ?>

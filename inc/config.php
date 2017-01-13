@@ -171,7 +171,7 @@
 
         <div class = "tablet-group-2 desktop-group-3 related-posts responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
 
-            <?php $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
+            <?php $posts = get_posts('numberposts=3&category='. $category[0]->term_id . '&exclude=' . $current_post);
 
             foreach($posts as $post) : ?>
 

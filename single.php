@@ -10,6 +10,12 @@
 
                <?php include( 'inc/featured-article.php' ); ?>
 
+                <!-- RELATED ARTICLES -->
+                                        
+                <div class="more-news">
+                    <h2><?php _e('Σχτεικά Άρθρα', 'wpgc'); ?> </h2>
+                </div>          
+
             </div>
 
         <?php endwhile; endif; ?>

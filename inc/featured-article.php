@@ -99,7 +99,11 @@
 
                 <?php the_content();?>
 
-                <?php get_template_part( 'inc/related', 'articles' ); ?>
+                <?php if ( is_single( ) ) : ?>
+
+                    <?php get_template_part( 'inc/related', 'articles' ); ?>
+
+                <?php endif; ?>
 
                 <?php comments_template(); ?>
 

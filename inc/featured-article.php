@@ -99,7 +99,7 @@
 
                 <?php the_content();?>
 
-                <?php get_template_part( 'related', 'articles' ); ?>
+                <?php include( 'related-articles.php' ); ?>
 
                 <?php comments_template(); ?>
 

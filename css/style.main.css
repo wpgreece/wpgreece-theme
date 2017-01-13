@@ -1585,6 +1585,15 @@
         color: #d1d1d1;
     }
 
+    .author-name-details h3, .author-name-details a {
+        display: inline;
+    }
+
+    .author-name-details a img {
+	 height:32px;
+	 width:32px;
+     }
+
 /************************************************************************************
 
  ██████╗     ██████╗         ██████╗     ██████╗     ███████╗    ███████╗    ███████╗

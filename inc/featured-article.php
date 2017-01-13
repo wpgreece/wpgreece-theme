@@ -123,7 +123,12 @@
                             $author_id = get_the_author_meta('ID');
                             $author_location = get_field('author_location', 'user_'. $author_id );
                         ?>
-                        <div class="author-location"><?php echo $author_location; ?></div>
+
+                        <?php if ( $author_location ) : ?>
+
+                            <div class="author-location"><?php echo $author_location; ?></div>
+
+                        <?php endif; ?>
                         
                         <?php $user_description = get_the_author_meta( 'user_description', $post->post_author ); ?>
                         

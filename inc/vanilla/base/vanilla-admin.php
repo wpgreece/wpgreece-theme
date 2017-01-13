@@ -27,32 +27,7 @@
 
 
 
-    /**
-     * Fix various admin CSS stylings.
-     * 
-     * @return void
-     */
-
-    function vanilla_admin_css () { 
-
-        wp_enqueue_style( 'vanilla-wordpress-admin', get_template_directory_uri() . '/inc/vanilla/base/css/vanilla.admin.css', false ); 
-
-    }
-    
-
-
-    /**
-     * Sets the login screen logos to show the website logo and the Nevma logo.
-     * 
-     * @return void
-     */
-
-    function vanilla_admin_login_page_css () { 
-
-        wp_enqueue_style( 'vanilla-wordpress-login', get_template_directory_uri() . '/inc/vanilla/base/css/vanilla.login.css', false ); 
-
-    }
-
+ 
 
 
     /**

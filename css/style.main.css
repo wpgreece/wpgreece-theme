@@ -566,7 +566,7 @@
         position: relative;
         left: 50%;
         transform: translateX(-50%);
-        border-radius: 5rem;
+        border-radius: 50%;
     }
 
     .featured-article-big-container h6 {

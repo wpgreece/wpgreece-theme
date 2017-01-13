@@ -98,7 +98,15 @@
             <div class="text">
 
                 <?php the_content();?>
-
+                <!-- AUTHOR META -->
+                <div class="row">
+                    <div class="column-25">
+                        <?php echo get_avatar( get_the_author_meta('user_email') , 90 ); ?>
+                    </div>
+                    <div class="column-75">
+                        test
+                    </div>
+                </div>
                 <?php wpgc_related_posts(); ?>
 
                 <?php comments_template(); ?>

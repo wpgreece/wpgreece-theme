@@ -11,6 +11,7 @@
     .text a {
         border-bottom-width: 0;
         border-bottom-style: dotted;
+        color: var(--color-blue);
     }
 
 
@@ -18,16 +19,11 @@
         padding: 2.5rem 0 !important;
     }
 
-    main {
-        /* padding: var(--vertical-rhythm) 0 !important; */
-    }
-
         .home-content {
             margin-bottom: var(--vertical-rhythm);
         }
 
     .wrapper footer {
-        /* padding: var(--vertical-rhythm) 0 !important; */
         padding: 4rem 0rem 0rem 0rem;
         border-top-width: 0.1rem;
     }

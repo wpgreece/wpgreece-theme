@@ -16,7 +16,14 @@
 
 <h5 class="post-cat <?php foreach ( get_the_category() as $cat ) { echo "cat-" .$cat->term_id .' '; }  ?>">
 
-    <?php the_category(' / '); ?>
+    <?php 
+
+    echo $cat;
+
+    /*the_category(' / '); */
+
+
+    ?>
 
 </h5>
 

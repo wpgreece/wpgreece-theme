@@ -9,21 +9,9 @@
 
     <?php endif; ?>
 
-        <?php 
-            $cat = new WPSEO_Primary_Term('category', get_the_ID());
-            $cat = $cat->get_primary_term();
-        ?>
+<h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
 
-<h5 class="post-cat <?php foreach ( get_the_category() as $cat ) { echo "cat-" .$cat->term_id .' '; }  ?>">
-
-    <?php 
-
-    echo $cat;
-
-    /*the_category(' / '); */
-
-
-    ?>
+    <?php the_category(' / '); ?>
 
 </h5>
 

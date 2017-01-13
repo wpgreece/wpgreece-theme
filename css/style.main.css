@@ -1373,8 +1373,8 @@
         line-height: 1.2;
     }
 
-    .the-contact-form input.name-field,
-    .the-contact-form input.email-field {
+    .the-contact-form .name-field input,
+    .the-contact-form .email-field input {
         border: 2px solid #f2f2f2;
         padding-top: 1rem;
         padding-bottom: 1rem;

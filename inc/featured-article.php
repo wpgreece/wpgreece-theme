@@ -114,7 +114,7 @@
                         <div class="author-name-details">
 
                             <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
-                            <a href="<?php $id = get_current_user_id(); get_the_author_meta('facebook', $id ); ?>" class="facebook" title="Facebook"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στα Social" /></a>
+                            <a href="<?php $id = get_current_user_id(); echo get_the_author_meta('facebook', $id ); ?>" class="facebook" title="Facebook"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στα Social" /></a>
                             <a href=""><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στα Social" /></a>
 
                         </div>

@@ -103,13 +103,13 @@
 
                 <div class="row author-box">
 
-                    <div class="column-25">
+                    <div class="column-20">
 
                         <?php echo get_avatar( get_the_author_meta('user_email') , 90 ); ?>
 
                     </div>
 
-                    <div class="column-75">
+                    <div class="column-80">
 
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
                         <div class="author-location"><?php the_field('author_location'); ?></div>

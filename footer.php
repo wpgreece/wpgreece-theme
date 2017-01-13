@@ -26,7 +26,7 @@
 
             <nav class = "navigation vertical small-column-100 tablet-column-33">
 
-                <h4><?php _e( 'Articles', 'wpgc' ); ?></h4>
+                <h4><?php _e( 'Χρησιμα Αρθρα', 'wpgc' ); ?></h4>
 
                 <?php
                     wp_nav_menu ( array(
@@ -46,7 +46,7 @@
 
             <nav class = "navigation vertical small-column-100 tablet-column-33">
 
-                <h4><?php _e( 'Menu', 'wpgc' ); ?></h4>
+                <h4><?php _e( 'Μενου', 'wpgc' ); ?></h4>
 
                 <?php
                     wp_nav_menu ( array(

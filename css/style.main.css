@@ -1522,16 +1522,16 @@
             width: 40px;
         }
 
-    .tablet .social-sharing {
+    .desktop .social-sharing {
         position: absolute;
         left: -9rem;
     }
 
-        .tablet .social-sharing li {
+        .desktop .social-sharing li {
             display: block;
         }
 
-        .tablet .social-sharing li a img {
+        .desktop .social-sharing li a img {
             height: auto;
             width: auto;
         }

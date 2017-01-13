@@ -13,8 +13,10 @@
                 <!-- RELATED ARTICLES -->
                                         
                 <div class="more-news">
-                    <h2><?php _e('Σχτεικά Άρθρα', 'wpgc'); ?> </h2>
-                </div>          
+                    <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
+                </div>
+
+                <?php comments_template(); ?>         
 
             </div>
 

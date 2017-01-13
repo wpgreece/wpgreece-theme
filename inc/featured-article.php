@@ -111,7 +111,14 @@
 
                     <div class="column-80">
 
-                        <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
+                          <div class="author-name-details">
+
+                            <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
+                            <?php var_dump(get_author_meta('facebook')); ?>
+                            <a href="<?php the_author_meta('facebook'); ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στα Social" /></a>
+                            <a href=""><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στα Social" /></a>
+
+                        </div>
 
                         <?php
                             $author_id = get_the_author_meta('ID');

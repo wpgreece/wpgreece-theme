@@ -162,8 +162,7 @@
             global $post;
             $current_post = $post->ID;
             $categories = get_the_category();
-
-            foreach ($categories as $category) : ?>
+            $category = $categories[0]; ?>
 
         <div class="more-news column">
             <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
@@ -171,7 +170,7 @@
 
         <div class = "tablet-group-2 desktop-group-3 related-posts responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
 
-            <?php $posts = get_posts('numberposts=3&category='. $category[0]->term_id . '&exclude=' . $current_post);
+            <?php $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
 
             foreach($posts as $post) : ?>
 
@@ -185,7 +184,7 @@
 
             </article>
              
-            <?php endforeach; ?><?php endforeach; ?>
+            <?php endforeach; ?>
 
         </div>
         

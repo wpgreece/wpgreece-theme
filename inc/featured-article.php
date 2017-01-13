@@ -98,15 +98,29 @@
             <div class="text">
 
                 <?php the_content();?>
+
                 <!-- AUTHOR META -->
-                <div class="row">
+
+                <div class="row author-box">
+
                     <div class="column-25">
+
                         <?php echo get_avatar( get_the_author_meta('user_email') , 90 ); ?>
+
                     </div>
+
                     <div class="column-75">
-                        test
+
+                        <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
+
+                        <?php $user_description = get_the_author_meta( 'user_description', $post->post_author ); ?>
+
+                        <p><?php echo $user_description; ?></p>
+
                     </div>
+
                 </div>
+
                 <?php wpgc_related_posts(); ?>
 
                 <?php comments_template(); ?>

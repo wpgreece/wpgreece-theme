@@ -114,7 +114,7 @@
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
                         
                         <?php
-                            $author_id = get_the_author_meta($post->post_author);
+                            $author_id = get_the_author_meta('ID');
                             $author_location = get_field('author_location', 'user_'. $author_id );
                         ?>
                         <div class="author-location"><?php echo $author_location; ?></div>

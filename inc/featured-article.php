@@ -99,8 +99,6 @@
 
                 <?php the_content();?>
 
-                <?php wpgc_related_posts(); ?>
-
                 <?php comments_template(); ?>
 
             </div>    

@@ -112,7 +112,13 @@
                     <div class="column-80">
 
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
+                        
+                        <?php
+                            $author_id = get_the_author_meta('ID');
+                            $author_location = get_field('author_location', 'user_'. $author_id );
+                        ?>
                         <div class="author-location"><?php the_field('author_location'); ?></div>
+                        
                         <?php $user_description = get_the_author_meta( 'user_description', $post->post_author ); ?>
                         
                         <?php if ( $user_description ) : ?>

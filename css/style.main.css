@@ -1550,7 +1550,7 @@
 
     .single .featured-article-big-container h3.author-name {
         font-family: var(--font-condensed);
-        font-size: 2.8rem;
+        font-size: 2.5rem;
         font-weight: bold;
         color: var(--color-blue);
         text-align: left;

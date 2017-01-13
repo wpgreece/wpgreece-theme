@@ -153,4 +153,6 @@
 
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
 
+     
+
 ?>

@@ -163,15 +163,12 @@
         <!-- RELATED POSTS -->
         <div class="more-news column">
             <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
-        </div><ul>
+        </div>
             <?php
             $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
         foreach($posts as $post) :
             ?>
-        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-            <?php endforeach; ?><?php endforeach; ?>
-        </ul>
-        </div>
+            <?php get_template_part( 'inc/article', 'structure' ); ?>
             <?php
                 }
             wp_reset_query();

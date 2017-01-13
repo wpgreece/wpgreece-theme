@@ -114,8 +114,12 @@
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
 
                         <?php $user_description = get_the_author_meta( 'user_description', $post->post_author ); ?>
+                        
+                        <?php if ( $user_description ) : ?>
 
-                        <p><?php echo $user_description; ?></p>
+                            <p><?php echo $user_description; ?></p>
+
+                        <?php endif; ?>
 
                     </div>
 

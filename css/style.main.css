@@ -1374,7 +1374,8 @@
     }
 
     .the-contact-form .name-field input,
-    .the-contact-form .email-field input {
+    .the-contact-form .email-field input,
+    .the-contact-form textarea {
         border: 2px solid #f2f2f2;
         padding-top: 1rem;
         padding-bottom: 1rem;

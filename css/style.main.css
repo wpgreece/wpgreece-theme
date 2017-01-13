@@ -1580,6 +1580,7 @@
         font-size: 3rem;
         content: "\e90c";
         position: absolute;
+        top: -1rem;
         left: 0;
         color: #d1d1d1;
     }

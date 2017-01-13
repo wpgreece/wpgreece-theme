@@ -1595,8 +1595,10 @@
     }
 
     .author-name-details a img {
-    	 height: 28px;
-    	 width: 28px;
+        height: 28px;
+        width: 28px;
+        top: -0.5rem;
+        position: relative;
      }
 
 /************************************************************************************

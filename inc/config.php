@@ -153,29 +153,6 @@
 
     add_action('bbp_template_after_single_forum', 'wpgc_new_topic_login');
 
-    function wpgc_related_posts() {
-        if (is_single()) {
-            global $post;
-            $current_post = $post->ID;
-            $categories = get_the_category();
-        foreach ($categories as $category) :
-            ?>
-        <!-- RELATED POSTS -->
-        <div class="more-news column">
-            <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
-        </div>
-            <?php
-            $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post); 
-
-            foreach($posts as $post) :
-
-             include('inc/article-structure.php'); ?>
-        
-            <?php
-                }
-            wp_reset_query();
-        }
-    add_action('wpgc_add_to_content','wpgc_related_posts');
 
 
 ?>

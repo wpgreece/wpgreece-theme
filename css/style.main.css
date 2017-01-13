@@ -1554,7 +1554,7 @@
         font-weight: bold;
         color: var(--color-blue);
         text-align: left;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .featured-article-big-container .related-posts .post-cat {

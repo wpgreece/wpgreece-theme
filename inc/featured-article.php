@@ -112,7 +112,7 @@
                     <div class="column-75">
 
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
-
+                        <div class="author-location"><?php the_field('author_location'); ?></div>
                         <?php $user_description = get_the_author_meta( 'user_description', $post->post_author ); ?>
                         
                         <?php if ( $user_description ) : ?>

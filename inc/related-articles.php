@@ -1,39 +1,43 @@
-<div class="relatedposts">
-    <h3>Related posts</h3>
-    <?php
-    $orig_post = $post;
-    global $post;
-    $tags = wp_get_post_tags($post->ID);
+<!-- RELATED ARTICLES -->
 
-    if ($tags) {
-        $tag_ids = array();
-        foreach($tags as $individual_tag) $tag_ids[] = $individual_tag->term_id;
-        $args=array(
-            'tag__in' => $tag_ids,
-            'post__not_in' => array($post->ID),
-            'posts_per_page'=> 3, // Number of related posts to display.
-            'caller_get_posts'=>1
-            );
+<section class="row">
 
-        $my_query = new wp_query( $args );
+    <div class="panel">
 
-        while( $my_query->have_posts() ) {
-            $my_query->the_post();
-            ?>
+        <?php
+        // Default arguments
+        $args = array(
+            'posts_per_page' => 3, // How many items to display
+            'post__not_in'   => array( get_the_ID() ), // Exclude current post
+            'no_found_rows'  => true, // We don't ned pagination so this speeds up the query
+        );
 
-           <article class = "small-column tablet-column-50 desktop-column-33 three-columns">
-
-                <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
-
-                    <?php include( 'inc/article-structure.php' ); ?>
-
-                </a>
-
-            </article>
-
-            <? }
+        // Check for current post category and add tax_query to the query arguments
+        $cats = wp_get_post_terms( get_the_ID(), 'category' ); 
+        $cats_ids = array();  
+        foreach( $cats as $wpex_related_cat ) {
+            $cats_ids[] = $wpex_related_cat->term_id; 
         }
-        $post = $orig_post;
-        wp_reset_query();
-        ?>
+        if ( ! empty( $cats_ids ) ) {
+            $args['category__in'] = $cats_ids;
+        }
+
+        // Query posts
+        $wpex_query = new wp_query( $args );
+
+        // Loop through posts
+        foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); ?>
+            
+            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a>
+
+        <?php
+        // End loop
+        endforeach;
+
+        // Reset post data
+        wp_reset_postdata(); ?>
+        
+
     </div>
+    
+</section>

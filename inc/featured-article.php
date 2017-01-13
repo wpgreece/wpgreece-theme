@@ -99,11 +99,7 @@
 
                 <?php the_content();?>
 
-                <?php if ( is_single( ) ) : ?>
-
-                    <?php get_template_part( 'inc/related', 'articles' ); ?>
-
-                <?php endif; ?>
+                <?php wpgc_related_posts(); ?>
 
                 <?php comments_template(); ?>
 

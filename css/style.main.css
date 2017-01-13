@@ -1363,7 +1363,7 @@
             color: #ff8161;
         }
 
-    .gform_confirmation_message {
+    .newsletter .gform_confirmation_message {
         font-family: var(--font-condensed);
         font-size: 2rem;
         font-weight: bold;
@@ -1371,6 +1371,13 @@
         margin-bottom: calc(1.25 * var(--text-rhythm));
         color: white;
         line-height: 1.2;
+    }
+
+    .the-contact-form input.name-field,
+    .the-contact-form input.email-field {
+        border: 2px solid #f2f2f2;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
 

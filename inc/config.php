@@ -160,7 +160,10 @@
             $categories = get_the_category();
         foreach ($categories as $category) :
             ?>
-        <div class="my-recent-posts"><h4>Additional Reading...</h4><ul>
+        <!-- RELATED POSTS -->
+        <div class="more-news column">
+            <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
+        </div><ul>
             <?php
             $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
         foreach($posts as $post) :

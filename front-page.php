@@ -95,7 +95,7 @@ if( !empty($banner_image) ): ?>
 <!-- MORE NEWS -->
 
 <div class="more-news column">
-    <h2><?php _e('Περισσότερα Νέα'); ?> </h2>
+    <h2><?php _e('Περισσότερα Νέα', 'wpgc'); ?> </h2>
 </div>
 
 <div class = "tablet-group-2 desktop-group-3 responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">

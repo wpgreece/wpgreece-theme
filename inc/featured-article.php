@@ -16,11 +16,7 @@
 
         <div class="post-meta">
 
-            <h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
-
-                <?php include('inc/primary-category.php'); ?>
-
-            </h5>
+            <?php get_template_part( 'inc/primary' ); ?>
 
             <h5 class="post-date">
 

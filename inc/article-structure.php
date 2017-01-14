@@ -9,11 +9,7 @@
 
     <?php endif; ?>
 
-<h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
-
-    <?php the_category(' / '); ?>
-
-</h5>
+<?php get_template_part( 'inc/primary' ); ?>
 
 <div class="more-news-container">
 

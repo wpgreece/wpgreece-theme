@@ -32,7 +32,17 @@
         <div class="featured-article-image">
 
             <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
-                <?php the_post_thumbnail( 'medium' ); ?>
+
+                <?php if ( has_post_thumbnail() ) : ?>
+
+                    <?php the_post_thumbnail( 'medium' ); ?>
+
+                <?php else: ?>
+
+                     <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+
+                <?php endif; ?>
+
             </a>
 
           <?php get_template_part( 'inc/primary' ); ?>

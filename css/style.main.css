@@ -394,39 +394,39 @@
             font-size: 2rem;
         }
 
-    .themes:before {
+    .sidebar-menu .themes:before {
         content: "\e911";
     }
 
-    .plugins:before {
+    .sidebar-menu .plugins:before {
         content: "\e90d";
     }
 
-    .tips:before {
+    .sidebar-menu .tips:before {
        content: "\e913";
     }
 
-    .development:before {
+    .sidebar-menu .development:before {
         content: "\e902";
     }
 
-    .security:before {
+    .sidebar-menu .security:before {
         content: "\e90f";
     }
 
-    .resources:before {
+    .sidebar-menu .resources:before {
         content: "\e904";
     }
 
-    .community:before {
+    .sidebar-menu .community:before {
        content: "\e910";
     }
 
-    .meetups:before {
+    .sidebar-menu .meetups:before {
        content: "\e90a";
     }
 
-    .news:before {
+    .sidebar-menu .news:before {
         content: "\e90b";
     }
 

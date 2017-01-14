@@ -162,17 +162,20 @@
             global $post;
             $current_post = $post->ID;
             $categories = get_the_category();
-            $category = $categories[0]; ?>
+            $category = $categories[0]; 
+            $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post); ?>
+        
+        <?php if( $posts ) : ?>
 
-        <div class="more-news column">
-            <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
-        </div>
+            <div class="more-news column">
+                <h2><?php _e('Σχετικά Άρθρα', 'wpgc'); ?> </h2>
+            </div>
+
+        <?php endif; ?>
 
         <div class = "tablet-group-2 desktop-group-3 related-posts responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
 
-            <?php $posts = get_posts('numberposts=3&category='. $category->term_id . '&exclude=' . $current_post);
-
-            foreach($posts as $post) : ?>
+            <?php foreach($posts as $post) : ?>
 
              <article class = "small-column tablet-column-50 desktop-column-33 three-columns">
 

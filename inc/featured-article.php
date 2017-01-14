@@ -109,8 +109,6 @@
 
                         <div class="author-name-details">
 
-                        <div class="author-name-details">
-
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
                         
                         <?php if ( get_the_author_meta( 'facebook' ) ) { ?>
@@ -144,7 +142,6 @@
 
                     </div>
 
-                </div>
                 </div>
 
                 <?php wpgc_related_posts(); ?>

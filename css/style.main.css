@@ -1606,7 +1606,7 @@
         background: #f9f9f9;
     }
 
-    .author-box img {
+    .author-box img.avatar {
         margin-top: 4rem;
         margin-bottom: 4rem;
     }

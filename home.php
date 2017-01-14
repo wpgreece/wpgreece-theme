@@ -18,7 +18,7 @@
 
                 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-                <article class = "clear text column-33 three-columns">
+                <article class = "clear text small-column tablet-column-50 desktop-column-33 three-columns">
 
                         <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
                             

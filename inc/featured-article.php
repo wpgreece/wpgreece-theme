@@ -113,13 +113,13 @@
 
                         <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
                         
-                        
+                        <?php if ( get_the_author_meta( 'facebook' ) ) { ?>
                         <a href="<?php the_author_meta('facebook') ?>" target="_blank"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στο Facebook" /></a>
-                        
+                        <?php } ?>
 
-                        
+                        <?php if ( get_the_author_meta( 'twitter' ) ) { ?>
                         <a href="<?php the_author_meta('twitter') ?>" target="_blank"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στο Twitter" /></a>
-                      
+                        <?php } ?>
                         
                         </div>
 
@@ -144,6 +144,7 @@
 
                     </div>
 
+                </div>
                 </div>
 
                 <?php wpgc_related_posts(); ?>

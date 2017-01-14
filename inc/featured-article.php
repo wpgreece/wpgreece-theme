@@ -15,9 +15,13 @@
     <div class="featured-article-big-container <?php if ( is_front_page() ) { echo "homepage-enabled"; } ?>">
 
         <div class="post-meta">
-            
-            <?php include('inc/primary-category.php'); ?>
-           
+
+            <h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
+
+                <?php include('inc/primary-category.php'); ?>
+
+            </h5>
+
             <h5 class="post-date">
 
                 <?php the_time('d/m/y'); ?>

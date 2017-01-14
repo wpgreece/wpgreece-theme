@@ -111,8 +111,8 @@
 
                             <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
 
-                            <a href=""><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στα Social" /></a>
-                            <a href=""><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στα Social" /></a>
+                       <a href="<?php the_author_meta('facebook') ?>" target="_blank"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στο Facebook" /></a>
+                        <a href="<?php the_author_meta('twitter') ?>" target="_blank"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στο Twitter" /></a>
 
                         </div>
 

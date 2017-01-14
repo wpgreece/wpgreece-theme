@@ -15,13 +15,9 @@
     <div class="featured-article-big-container <?php if ( is_front_page() ) { echo "homepage-enabled"; } ?>">
 
         <div class="post-meta">
-
-            <h5 class="post-cat <?php foreach ( get_the_category() as $category ) { echo "cat-" .$category->term_id .' '; }  ?>">
-
-                <?php the_category(); ?>
-
-            </h5>
-
+            
+            <?php include('inc/primary-category.php'); ?>
+           
             <h5 class="post-date">
 
                 <?php the_time('d/m/y'); ?>
@@ -114,6 +110,7 @@
                         <div class="author-name-details">
 
                             <h3 class="author-name"> <?php echo get_author_name( ); ?> </h3>
+
                             <a href=""><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/facebook.png" alt = "Βρες με στα Social" /></a>
                             <a href=""><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στα Social" /></a>
 

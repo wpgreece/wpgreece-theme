@@ -1610,10 +1610,11 @@
         margin-top: 4rem;
         margin-bottom: 4rem;
     }
-
-    .author-name-details {
-        padding-top: 4rem;
+    
+    div#disqus_thread {
+        margin-top: 8rem;
     }
+
 
 /************************************************************************************
 

@@ -1520,6 +1520,8 @@
         text-transform: uppercase;
     }
 
+    .page-container h1,
+    .page-container h1 a,
     .page-container h2,
     .page-container h2 a,
     .page-container h3,
@@ -1533,10 +1535,15 @@
         font-family: var(--font-condensed);
         font-weight: bold;
     }
+
+    .page-container h1,
+    .page-container h1 a {
+        font-size: 3.5rem;
+    }
     
     .page-container h2,
     .page-container h2 a {
-        color: #909090;
+        color: #3c3c3c;
         font-size: 2.8rem;
     }
 
@@ -1558,6 +1565,15 @@
     .page-container h6,
     .page-container h6 a {
         font-size: 1.8rem;
+    }
+
+    .page-container h1 a,
+    .page-container h2 a,
+    .page-container h3 a,
+    .page-container h4 a,
+    .page-container h5 a,
+    .page-container h6 a {
+        color: #909090;
     }
 
 

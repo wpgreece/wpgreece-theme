@@ -491,7 +491,7 @@
         top: -15rem;
     }
 
-    .featured-article-big-container h3 {
+    .featured-article-big-container h3.featured-article-title {
         font-family: var(--font-regular);
         font-size: 3.5rem;
         text-align: center;

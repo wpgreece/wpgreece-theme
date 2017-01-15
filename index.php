@@ -16,19 +16,23 @@
 
         <!-- LATEST POSTS OF ANY POST TYPE -->
 
-        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+        <div class = "tablet-group-2 desktop-group-3 responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
 
-            <article class = " clear text small-column tablet-column-50 desktop-column-33 three-columns">
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-                <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
-                    
-                    <?php get_template_part( 'inc/article', 'structure' ); ?>
+                <article class = " clear text small-column tablet-column-50 desktop-column-33 three-columns">
 
-                </a>
+                    <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
+                        
+                        <?php get_template_part( 'inc/article', 'structure' ); ?>
 
-            </article>
+                    </a>
 
-        <?php endwhile; endif; ?>
+                </article>
+
+            <?php endwhile; endif; ?>
+
+        </div>
 
         <?php get_template_part( 'inc/pagination' ); ?>
 

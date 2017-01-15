@@ -159,8 +159,6 @@
 
                 <?php wpgc_related_posts(); ?>
 
-                <?php comments_template(); ?>
-
             </div>    
 
         <?php endif;?>

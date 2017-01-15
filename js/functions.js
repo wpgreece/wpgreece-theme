@@ -56,7 +56,7 @@ jQuery( function ( $ ) {
 
     // Fix greek uppercase characters.
     
-    $( '.xxx' ).greekUppercase();
+    $( '.forum-titles li, .page-container h1, .sidebar-menu li a, .widgettitle, .post-category a, .more-news h2, .read-more, footer h4, #footer-navigation li a, .newsletter input#gform_submit_button_2' ).greekUppercase();
 
 
 

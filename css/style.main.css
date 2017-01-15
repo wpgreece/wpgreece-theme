@@ -882,7 +882,13 @@
     .featured-article-big-container .text p a {
         border-bottom-width: 1px;
         border-bottom-style: solid;
-    }   
+    }
+
+    .text blockquote p:only-child, .text blockquote p:last-child {
+        margin-bottom: 0;
+        font-style: italic;
+        font-size: var(--base-font-size);
+    }
 
 
 /***********************************************************************************************************************

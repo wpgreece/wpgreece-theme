@@ -879,7 +879,7 @@
         text-align: center;
     }
 
-    .featured-article-big-container .text a {
+    .featured-article-big-container .text p a {
         border-bottom-width: 1px;
         border-bottom-style: solid;
     }   

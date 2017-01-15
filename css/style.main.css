@@ -701,7 +701,8 @@
         border-bottom: 1px solid #f2f2f2;
     }
 
-    .more-news-container h4 {
+    .more-news-container h4.defined-title {
+        font-family: var(--font-regular);
         font-size: 2rem;
     }
 

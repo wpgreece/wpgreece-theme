@@ -847,6 +847,25 @@
         margin-top: 3rem;
     }
 
+    table {
+        text-align: center;
+    }
+
+    tr th {
+        font-family: var(--font-condensed);
+        text-transform: uppercase;
+        color: white;
+        background: var(--color-blue);
+    }
+
+    table, td, th {
+        border: 1px solid white;
+        background: #f9f9f9;
+    }
+
+    tbody tr:nth-child(2n+1) td, tbody tr:nth-child(2n+1) th {
+        background: #f0f0f0;
+    }
 
 
 /***********************************************************************************************************************

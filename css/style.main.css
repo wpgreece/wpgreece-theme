@@ -1448,6 +1448,7 @@
         top: 50%;
         transform: translateY(-50%);
         font-family: var(--font-icon);
+        font-weight: normal;
         content: "\e90b";
         font-size: 3rem;
         color: white;
@@ -1469,6 +1470,7 @@
         top: 50%;
         transform: translateY(-50%);
         font-family: var(--font-icon);
+        font-weight: normal;
         content: "\e90a";
         font-size: 3rem;
         color: white;

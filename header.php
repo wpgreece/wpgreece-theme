@@ -35,7 +35,7 @@
       
             
             <!-- Main navigation -->
-            
+
             <div class="small-right laptop-column-55 large-column-60">
                 
                 <nav class = "navigation responsiville-mobimenu">
@@ -46,7 +46,8 @@
                             'theme_location' => 'main-navigation',
                             'container'      => '', 
                             'menu_class'     => 'main-navigation', 
-                            'menu_id'        => 'main-navigation'
+                            'menu_id'        => 'main-navigation',
+                            'responsiville_megamenu' => true,
                         ));
                     ?>
 

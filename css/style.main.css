@@ -151,7 +151,7 @@
 
             .main-navigation ul {
                 padding: 1rem;
-                box-shadow: 0 5px 7px lightgray;       
+                box-shadow: 0 5px 7px #f6f6f6;       
             }
 
                 .main-navigation ul li a {
@@ -301,8 +301,6 @@
         top: 3.5rem;
         border-radius: 0.4rem;
     }
-
-
 
 /***********************************************************************************************************
 

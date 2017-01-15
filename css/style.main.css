@@ -498,9 +498,7 @@
     }
 
     .single .featured-article-big-container h3 {
-        font-family: var(--font-condensed);
         margin-bottom: 5rem;
-        font-weight: bold;
     }
 
     .featured-article-big-container.homepage-enabled p {
@@ -1524,6 +1522,8 @@
 
     .page-container h2,
     .page-container h2 a,
+    .page-container h3,
+    .page-container h3 a,
     .page-container h4,
     .page-container h4 a,
     .page-container h5,

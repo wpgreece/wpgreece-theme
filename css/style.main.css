@@ -1517,7 +1517,13 @@
     }
 
     .page-container h2,
-    .page-container h2 a {
+    .page-container h2 a,
+    .page-container h4,
+    .page-container h4 a,
+    .page-container h5,
+    .page-container h5 a,
+    .page-container h6,
+    .page-container h6 a {
         font-family: var(--font-condensed);
         font-weight: bold;
     }

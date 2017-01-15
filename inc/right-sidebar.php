@@ -9,12 +9,12 @@
 
     <?php get_template_part( 'inc/meetups' ); ?>
 
-    <?php get_template_part( 'inc/sponsors' ); ?>
-
     <div class="column newsletter">
 
         <?php gravity_form('Newsletter'); ?>
 
     </div>
+    
+    <?php get_template_part( 'inc/sponsors' ); ?>
 
 </div>

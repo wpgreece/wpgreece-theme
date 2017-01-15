@@ -30,24 +30,13 @@
             <div class = "column-25 small-hidden laptop-right">
 
                 <?php get_template_part( 'inc/social', 'media' ); ?>
-            <?php /*
-
-                <form class = "search-form" action = "<?php echo home_url(); ?>" method = "get">
-
-                    <p>
-                        <input id = "search-field" type = "text" name = "s" value = "<?php if ( ! empty( $_GET['s'] ) ) { echo $_GET['s']; } ?>" placeholder = "<?php _e( 'Search' , 'wpgc' ); ?>" />
-                    </p>
-
-                </form>
-            */?>
 
             </div> 
-
-            
+      
             
             <!-- Main navigation -->
 
-            <nav class = "navigation responsiville-megamenu responsiville-mobimenu small-right laptop-column-55 large-column-60">
+            <nav class = "navigation responsiville-mobimenu small-right laptop-column-55 large-column-60">
 
                 <?php
                     wp_nav_menu( array(

@@ -154,6 +154,10 @@
                 box-shadow: 0 5px 7px lightgray;       
             }
 
+                .main-navigation ul li a {
+                    color: var(--color-blue);
+                }
+
             ul#main-navigation {
                 float: right;
             }

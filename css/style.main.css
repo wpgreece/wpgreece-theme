@@ -1893,7 +1893,11 @@
     .bbp-topic-started-by {
         font-size: 1.2rem;
     }
-
+    
+    .bbp-topic-started-in {
+    font-size: 1.2rem;
+    }
+    
     a.button.logout-link,
     button#user-submit {
         margin-bottom: 2rem;

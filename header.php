@@ -47,7 +47,7 @@
             
             <!-- Main navigation -->
 
-            <nav class = "navigation responsiville-mobimenu small-right laptop-column-55 large-column-60">
+            <nav class = "navigation responsiville-megamenu responsiville-mobimenu small-right laptop-column-55 large-column-60">
 
                 <?php
                     wp_nav_menu( array(

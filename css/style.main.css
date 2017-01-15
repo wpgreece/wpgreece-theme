@@ -1549,16 +1549,17 @@
     .page-container h4 a {
         font-size: 2rem;
     }
+    
+    .page-container h5,
+    .page-container h5 a {
+        font-size: 2rem;
+    }
 
     .page-container h6,
     .page-container h6 a {
         font-size: 1.8rem;
     }
 
-    .page-container h5,
-    .page-container h5 a {
-        font-size: 2rem;
-    }
 
     .desktop .page .page-container article {
         padding-left: 3rem;

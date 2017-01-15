@@ -856,6 +856,7 @@
         text-transform: uppercase;
         color: white;
         background: var(--color-blue);
+        text-align: center;
     }
 
     table, td, th {
@@ -865,6 +866,13 @@
 
     tbody tr:nth-child(2n+1) td, tbody tr:nth-child(2n+1) th {
         background: #f0f0f0;
+    }
+
+    tfoot {
+        font-family: var(--font-condensed);
+        text-transform: uppercase;
+        color: var(--color-primary);
+        text-align: center;
     }
 
 

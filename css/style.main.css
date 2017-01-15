@@ -1624,6 +1624,9 @@
         border-bottom-style: initial;
     }
 
+    /*.page-template-default #disqus_thread {
+        display: none;
+    }*/
 
 /************************************************************************************
 

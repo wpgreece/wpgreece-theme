@@ -8,7 +8,7 @@
 
     <?php else: ?>
 
-         <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+         <img src = "<?php the_field('default_featured_image', 'option');?>" height="556" width="997" alt = "<?php the_title(); ?>" />
 
     <?php endif; ?>
 

@@ -1,7 +1,7 @@
 
 <?php if ( has_post_thumbnail() ) : ?>
 
-        <?php the_post_thumbnail( 'medium' ); ?>
+        <?php the_post_thumbnail( 'front-page-rectangle' ); ?>
 
     <?php else: ?>
 

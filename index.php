@@ -34,10 +34,11 @@
 
         </div>
 
-        <?php get_template_part( 'inc/pagination' ); ?>
+        <div class = "column">
+            <?php get_template_part( 'inc/pagination' ); ?>
+        </div>
 
 
-        
     </div> <!-- text tablet-column-100 laptop-column-65 laptop-push-15 -->
 
     <?php include('inc/left-sidebar.php'); ?>

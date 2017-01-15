@@ -1620,7 +1620,7 @@
     }
 
     .related-posts a:hover,
-    .archive .three-columns a {
+    .archive .three-columns a:hover {
         border-bottom-width: 0;
         border-bottom-style: initial;
     }

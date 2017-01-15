@@ -884,8 +884,10 @@
     }
 
     .featured-article-big-container .text p a {
+        color: var(--color-blue);
         border-bottom-width: 1px;
         border-bottom-style: solid;
+        border-color: color: var(--color-blue);
     }
 
     .text blockquote p:only-child, .text blockquote p:last-child {

@@ -14,11 +14,7 @@
                 <?php _e( 'Η σελίδα που ζητήσατε είτε έχει διαγραφεί είτε δεν υπάρχει.', 'wpgc' ); ?>
             </h2>
 
-            <div class = "row">
-
-                <!-- MAIN MENU TO HELP USERS NAVIGATE -->
-
-            </div>
+            
 
         </article>
 

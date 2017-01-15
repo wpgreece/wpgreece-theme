@@ -42,7 +42,7 @@
                 <?php 
                     $image_acf = get_field('default_featured_image', 'option');
                     $size_img_acf = 'front-page-rectangle';
-                    $link_image_acf = vanilla_theme_get_image_src( $image_acf, $link_image_acf ); ?>
+                    $link_image_acf = vanilla_theme_get_image_src( $image_acf, $size_img_acf ); ?>
 
                      <img src = "<?php echo $link_image_acf; ?>" alt = "<?php the_title(); ?>" />
 

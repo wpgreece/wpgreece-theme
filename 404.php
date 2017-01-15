@@ -8,35 +8,17 @@
             
             <!-- ERROR 404 TITLES AND STUFF -->
 
-            <h1><?php _e( 'The page you requested was not found', 'nevma-theme' ); ?> <?php _e( '(error 404)', 'nevma-theme' ); ?></h1>
+            <h1><?php _e( 'Η σελίδα δεν βρέθηκε.', 'wpgc' ); ?> <?php _e( '(Σφάλμα 404)', 'wpgc' ); ?></h1>
 
-            <p>
-                <?php _e( 'Unfortunately the page you requested could not be found. We apologise for this.', 'nevma-theme' ); ?>
-            </p>
+            <h2>
+                <?php _e( 'Η σελίδα που ζητήσατε είτε έχει διαγραφεί είτε δεν υπάρχει.', 'wpgc' ); ?>
+            </h2>
 
             <div class = "row">
 
                 <!-- MAIN MENU TO HELP USERS NAVIGATE -->
 
-                <div class = "column">
-
-                    <h3><?php _e( 'Τry the main menu:', 'nevma-theme' ); ?></h3>
-
-                    <?php
-                        wp_nav_menu ( array(
-                            'menu'           => 'Main navigation',
-                            'theme_location' => 'main-navigation',
-                            'container'      => 'main-navigation-container', 
-                            'menu_class'     => 'main-navigation-404', 
-                            'menu_id'        => 'main-navigation-404'
-                        ));
-                    ?>
-
-                </div>
-
             </div>
-
-            <h3><?php _e( 'Happy browsing!', 'nevma-theme' ); ?></h3>
 
         </article>
 

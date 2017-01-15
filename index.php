@@ -18,34 +18,11 @@
 
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-            <article class = "clear text">
+            <article class = " clear text small-column tablet-column-50 desktop-column-33 three-columns">
 
                 <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
-
-                    <?php if ( has_post_thumbnail() ) : ?>
-
-                        <div class = "column tablet-column-40 text">
-                            <?php the_post_thumbnail( 'large' ); ?>
-                        </div>
-                        <div class = "column tablet-column-60 text">
-                            <h2><?php the_title(); ?></h2>
-                            <?php if ( get_post_type() == 'post' ) : ?>
-                                <p class = "article-date"><?php the_date( 'l, d F Y' ); ?></p>
-                            <?php endif; ?>
-                            <?php the_excerpt(); ?>
-                        </div>
-
-                    <?php else : ?>
-
-                        <div class = "column text">
-                            <h2><?php the_title(); ?></h2>
-                            <?php if ( get_post_type() == 'post' ) : ?>
-                                <p class = "article-date"><?php the_date( 'l, d F Y' ); ?></p>
-                            <?php endif; ?>
-                            <?php the_excerpt(); ?>
-                        </div>
-
-                    <?php endif; ?>
+                    
+                    <?php get_template_part( 'inc/article', 'structure' ); ?>
 
                 </a>
 

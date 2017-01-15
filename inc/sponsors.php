@@ -6,7 +6,7 @@ if( have_rows('sponsors' , 'option') ): ?>
 <h2 class="widgettitle"> <?php _e('Χορηγοί', 'wpgc'); ?> </h2>
   <?php while ( have_rows('sponsors', 'option' ) ) : the_row(); ?>
 
-    <div class="sponsors desktop-column xlarge-column-50">
+    <div class="sponsors small-column-50 desktop-column xlarge-column-50">
 
          <?php 
 

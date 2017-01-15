@@ -18,6 +18,7 @@
     // Add a custom thumbnail image size.
     
     add_image_size( 'featured-post-100', 997, 556, true );
+    add_image_size( 'front-page-rectangle', 460, 345, true );
 
     
     // Enqueue theme specific CSS with correct dependencies after all other styles.

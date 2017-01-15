@@ -1533,11 +1533,32 @@
         font-family: var(--font-condensed);
         font-weight: bold;
     }
-
+    
+    .page-container h2,
     .page-container h2 a {
         color: #909090;
+        font-size: 2.8rem;
     }
 
+    .page-container h3,
+    .page-container h3 a {
+        font-size: 2.5rem;
+    }
+
+    .page-container h4,
+    .page-container h4 a {
+        font-size: 2rem;
+    }
+
+    .page-container h6,
+    .page-container h6 a {
+        font-size: 1.8rem;
+    }
+
+    .page-container h5,
+    .page-container h5 a {
+        font-size: 2rem;
+    }
 
     .desktop .page .page-container article {
         padding-left: 3rem;

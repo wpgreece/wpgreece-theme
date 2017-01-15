@@ -1619,14 +1619,11 @@
         padding-top: 4rem;
     }
 
-    .related-posts a:hover {
+    .related-posts a:hover,
+    .archive .three-columns a {
         border-bottom-width: 0;
         border-bottom-style: initial;
     }
-
-    /*.page-template-default #disqus_thread {
-        display: none;
-    }*/
 
 /************************************************************************************
 

@@ -1621,6 +1621,7 @@
 
     .related-posts a:hover {
         border-bottom-width: 0;
+        border-bottom-style: initial;
     }
 
 

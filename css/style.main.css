@@ -1326,6 +1326,7 @@
         color: white;
         text-transform: uppercase;
         position: relative;
+        margin: 2rem 0;
     }
 
         .newsletter .gform_heading h3:before {

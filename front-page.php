@@ -35,7 +35,7 @@
 
                 <?php if ( has_post_thumbnail() ) : ?>
 
-                    <?php the_post_thumbnail( 'front-pane-rectangle' ); ?>
+                    <?php the_post_thumbnail( 'front-page-rectangle' ); ?>
 
                 <?php else: ?>
 

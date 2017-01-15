@@ -1663,8 +1663,9 @@
     }
 
     .related-posts a:hover,
-    .archive .three-columns a:hover {
-        border-bottom-width: 0;
+    .archive .three-columns a:hover,
+    .three-columns a {
+        border-bottom-width: 0!important;
         border-bottom-style: initial;
     }
 

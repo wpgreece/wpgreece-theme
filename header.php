@@ -35,24 +35,28 @@
       
             
             <!-- Main navigation -->
-
-            <nav class = "navigation responsiville-mobimenu small-right laptop-column-55 large-column-60">
-
-                <?php
-                    wp_nav_menu( array(
-                        'menu'           => 'Main navigation',
-                        'theme_location' => 'main-navigation',
-                        'container'      => '', 
-                        'menu_class'     => 'main-navigation', 
-                        'menu_id'        => 'main-navigation'
-                    ));
-                ?>
-
-                <div class = "language-switcher-wrapper small-block laptop-right">
-                    <?php echo vanilla_wpml_language_switcher(); ?>
-                </div>
+            
+            <div class="small-right laptop-column-55 large-column-60">
                 
-            </nav>
+                <nav class = "navigation responsiville-mobimenu">
+
+                    <?php
+                        wp_nav_menu( array(
+                            'menu'           => 'Main navigation',
+                            'theme_location' => 'main-navigation',
+                            'container'      => '', 
+                            'menu_class'     => 'main-navigation', 
+                            'menu_id'        => 'main-navigation'
+                        ));
+                    ?>
+
+                    <div class = "language-switcher-wrapper small-block laptop-right">
+                        <?php echo vanilla_wpml_language_switcher(); ?>
+                    </div>
+                    
+                </nav>
+
+            </div>
             
     </header>
 

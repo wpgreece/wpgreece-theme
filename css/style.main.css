@@ -495,7 +495,9 @@
 
         .single .featured-article-big-container h3 {
             margin-bottom: 5rem;
-        }
+            font-family: var(--font-condensed);
+            font-weight: bold;
+    }
 
     .featured-article-big-container.homepage-enabled p {
         font-size: 1.6rem;

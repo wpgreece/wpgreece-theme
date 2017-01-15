@@ -1299,7 +1299,13 @@
         padding-right: 0;
     }
 
+    .laptop .home-sidebar .sponsors:nth-of-type(even) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .xlarge .home-sidebar .sponsors:nth-of-type(even) {
+        padding-left: inherit;
         padding-right: 0;
     }
 
@@ -1308,7 +1314,13 @@
         padding-left: 0;
     }
 
+    .laptop .home-sidebar .sponsors:nth-of-type(odd) {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
     .xlarge .home-sidebar .sponsors:nth-of-type(odd) {
+        padding-right: inherit;
         padding-left: 0;
     }
 

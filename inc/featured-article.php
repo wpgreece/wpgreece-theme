@@ -8,7 +8,12 @@
 
     <?php else: ?>
 
-         <img src = "<?php the_field('default_featured_image', 'option');?>" alt = "<?php the_title(); ?>" />
+        <?php 
+            $image_acf = get_field('default_featured_image', 'option');
+            $size_img_acf_page = 'featured-post-100';
+            $link_image_acf = vanilla_theme_get_image_src( $image_acf, $size_img_acf_page ); ?>
+
+             <img src = "<?php echo $link_image_acf; ?>" alt = "<?php the_title(); ?>" />
 
     <?php endif; ?>
 

@@ -2,7 +2,7 @@
 
     // Vanilla theme framework flags.
 
-    define( 'VANILLA_DEBUG',       true );
+    define( 'VANILLA_DEBUG',       false );
     define( 'VANILLA_JPEG_QUALITY',   75 );
     define( 'VANILLA_EXCERPT_LENGTH', 25 );
     define( 'VANILLA_EXCERPT_MORE',   '&hellip;' );

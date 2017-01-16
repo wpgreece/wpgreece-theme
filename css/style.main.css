@@ -570,12 +570,14 @@
         .tablet .author-image{
             top: -1.5rem;
         }
-    .page-container .author-name-link a {
+    .page-container .author-name-link a,
+    .author-name-link a{
         font-weight: bold;
         color: var(--color-blue);
     }
 
-        .page-container .author-name-link a:hover {
+        .page-container .author-name-link a:hover,
+        .author-name-link a:hover {
             color: var(--color-dark-blue);
         }
 

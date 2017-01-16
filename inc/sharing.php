@@ -7,7 +7,7 @@
 
             $WPGCThumbnail = wp_get_attachment_url( get_post_thumbnail_id() );
 
-            $twitterURL = 'https://twitter.com/intent/tweet?text='.$shortTitle.'&amp;url='.$shortURL.'&amp;via=WPGreece';
+            $twitterURL = 'https://twitter.com/intent/tweet?text='.$shortTitle.'&amp;url='.$shortURL.'&amp;via=wpgreeceorg';
 
             $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$shortURL;
 

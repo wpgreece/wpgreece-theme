@@ -16,10 +16,14 @@
         $post_counter = 0;
 
         if ($posts) : ?>
+        
+        <?php $featured_post_ids = array(); ?>
 
         <?php foreach ( $posts as $post ) : ?>
 
         <?php setup_postdata( $post ); ?>
+        
+        <?php array_push( $featured_post_ids, $post->ID ); ?>
 
         <?php if( $post_counter == 0 ) : ?>
 
@@ -113,12 +117,12 @@ if( !empty($banner_image) ): ?>
 
 <div class = "tablet-group-2 desktop-group-3 responsiville-equalheights" data-responsiville-equalheights-elements=".defined-title">
 
-    <?php $posts = get_posts( array( 'numberposts' => 6, 'suppress_filters' => 0 ) ); ?>
-
+    <?php $posts = get_posts( array( 'numberposts' => 6, 'suppress_filters' => 0, 'exclude' => $featured_post_ids, ) ); ?>
+   
     <?php foreach ( $posts as $post ) : ?>
 
     <?php setup_postdata( $post ); ?>
-
+    
     <article class = "small-column tablet-column-50 desktop-column-33 three-columns">
 
         <a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
@@ -128,7 +132,6 @@ if( !empty($banner_image) ): ?>
         </a>
 
     </article>
-
 
 <?php endforeach; ?>
 

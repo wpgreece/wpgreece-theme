@@ -570,10 +570,14 @@
         .tablet .author-image{
             top: -1.5rem;
         }
-    .author-name-link a {
+    .page-container .author-name-link a {
         font-weight: bold;
         color: var(--color-blue);
     }
+
+        .page-container .author-name-link a:hover {
+            color: var(--color-dark-blue);
+        }
 
     .featured-article-big-container img.avatar {
         position: relative;

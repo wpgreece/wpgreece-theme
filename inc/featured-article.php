@@ -37,7 +37,7 @@
 
         </div>
 
-        <h6><?php _e('Απο ', 'wpgc'); ?><?php the_author_posts_link(); ?></h6>
+        <h6 class="author-name-link"><?php _e('Απο ', 'wpgc'); ?><?php the_author_posts_link(); ?></h6>
 
         <?php if (is_front_page()): ?>
 

@@ -129,6 +129,8 @@
                                 <a href="<?php the_author_meta('twitter') ?>" target="_blank">
                                     <img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Βρες με στο Twitter" />
                                 </a>
+                            
+                            <?php var_dump(get_the_author_meta('twitter');?>
 
                             <?php endif; ?>
                             

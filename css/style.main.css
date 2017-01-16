@@ -570,7 +570,7 @@
         .tablet .author-image{
             top: -1.5rem;
         }
-    .author-name-link {
+    .author-name-link a {
         font-weight: bold;
         color: var(--color-blue);
     }

@@ -2138,3 +2138,8 @@
         color: var(--color-blue);
     }
 
+    #bbpress-forums div.bbp-the-content-wrapper input {
+        display: inline-block;
+        width: auto;
+    }
+

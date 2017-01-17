@@ -9,6 +9,6 @@ This repository fot the new Greek WordPress Community theme https://wpgrece.org.
 
 # Changelog
 
-##Version.1.0
+##Version 1.0.0
 Launch site
 

@@ -1629,11 +1629,6 @@
         font-family: var(--font-condensed);
         font-weight: bold;
     }
-
-    .page-container h1,
-    .page-container h1 a {
-        font-size: 3.5rem;
-    }
     
     .page-container h2,
     .page-container h2 a {

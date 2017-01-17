@@ -2124,7 +2124,9 @@
        border-bottom-width: 0; 
     }
 
-    .widget_display_topics ul li {
+    .widget_display_topics ul li,
+    .widget_display_replies ul li,
+    .widget_display_forums ul li {
         list-style-type: square;
         margin-bottom: 1rem;
         margin-left: 2rem;

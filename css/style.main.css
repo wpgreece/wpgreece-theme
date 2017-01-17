@@ -2131,3 +2131,10 @@
         margin-bottom: 1rem;
         margin-left: 2rem;
     }
+
+    .widget_display_topics ul li a:hover,
+    .widget_display_replies ul li a:hover,
+    .widget_display_forums ul li a:hover {
+        color: var(--color-blue);
+    }
+

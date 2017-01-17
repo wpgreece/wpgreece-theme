@@ -1465,13 +1465,14 @@
 
 ***********************************************************************************************************************************************************************/
 
-    /***** AΝΑΚΟΙΝΩΣΕΙΣ ID = 2, ΓΕΝΙΚΑ ID = 1, WORDPRESS ID = 3, FRAMEWORK ID = 104 *****/
+    /***** AΝΑΚΟΙΝΩΣΕΙΣ ID = 2, ΓΕΝΙΚΑ ID = 1, WORDPRESS ID = 3, FRAMEWORK ID = 104, ΤΗΕΜΕS ID = 5 *****/
 
     .cat-2,
     .cat-12,
     .cat-3,
     .cat-104,
-    .cat-1 {
+    .cat-1,
+    .cat-5 {
         position: relative;
     }
 
@@ -1534,6 +1535,19 @@
         font-size: 3rem;
         color: white;
     }
+
+    .cat-5:before {
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-icon);
+        font-weight: normal;
+        content: "\e911";
+        font-size: 3rem;
+        color: white;
+    }
+
 
     /***** ΕΚΔΗΛΩΣΕΙΣ ID = 348, MEETUP STAGING ID = 664, MEETUP LIVE ID = 740 *****/
 

@@ -1468,7 +1468,8 @@
     /***** AΝΑΚΟΙΝΩΣΕΙΣ ID = 2 *****/
 
     .cat-2,
-    .cat-12 {
+    .cat-12,
+    .cat-3 {
         position: relative;
     }
 
@@ -1484,7 +1485,7 @@
         color: white;
     }
 
-     .cat-12:before {
+    .cat-12:before {
         position: absolute;
         left: 2rem;
         top: 50%;
@@ -1494,7 +1495,20 @@
         content: "\e913";
         font-size: 3rem;
         color: white;
-        }
+    }
+
+    .cat-3:before {
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-icon);
+        font-weight: normal;
+        content: "\e917";
+        font-size: 3rem;
+        color: white;
+    }
+
 
 
     /***** ΕΚΔΗΛΩΣΕΙΣ ID = 348, MEETUP STAGING ID = 664, MEETUP LIVE ID = 740 *****/

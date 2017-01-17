@@ -2123,3 +2123,9 @@
     .bbp-author-avatar {
        border-bottom-width: 0; 
     }
+
+    .widget_display_topics ul li {
+        list-style-type: square;
+        margin-bottom: 1rem;
+        margin-left: 2rem;
+    }

@@ -1469,7 +1469,8 @@
 
     .cat-2,
     .cat-12,
-    .cat-3 {
+    .cat-3,
+    .cat-104 {
         position: relative;
     }
 
@@ -1506,6 +1507,18 @@
         font-weight: normal;
         content: "\e917";
         font-size: 2rem;
+        color: white;
+    }
+
+    .cat-104:before {
+        position: absolute;
+        left: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-icon);
+        font-weight: normal;
+        content: "\e902";
+        font-size: 3rem;
         color: white;
     }
 

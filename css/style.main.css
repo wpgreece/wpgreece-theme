@@ -8,6 +8,14 @@
     ╚══════╝       ╚═╝       ╚═╝  ╚═╝     ╚═════╝      ╚═════╝       ╚═╝        ╚═════╝     ╚═╝  ╚═╝    ╚══════╝    
                                                                                                                     
  ******************************************************************************************************************/
+    .small nav.navigation {
+        display: none;
+    }
+
+    .laptop .nav.navigation {
+        display: block;
+    }
+
     .text a {
         border-bottom-width: 0;
         border-bottom-style: dotted;

@@ -9,6 +9,14 @@
                                                                                                                     
  ******************************************************************************************************************/
 
+    .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
+        display: none;
+    }
+
+    .responsiville-mobimenu-open-body .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
+        display: block;
+    }
+
     .text a {
         border-bottom-width: 0;
         border-bottom-style: dotted;

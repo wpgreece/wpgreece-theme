@@ -9,11 +9,11 @@
                                                                                                                     
  ******************************************************************************************************************/
 
-    .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
+    .small .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
         display: none;
     }
 
-    .responsiville-mobimenu-open-body .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
+    .small .responsiville-mobimenu-open-body .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
         display: block;
     }
 

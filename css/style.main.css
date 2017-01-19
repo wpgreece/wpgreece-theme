@@ -16,6 +16,10 @@
     .small .responsiville-mobimenu-open-body .responsiville-mobimenu-wrapper.responsiville-mobimenu-enabled #main-navigation {
         display: block;
     }
+    
+    .laptop #main-navigation {
+        display:block;
+    }
 
     .text a {
         border-bottom-width: 0;

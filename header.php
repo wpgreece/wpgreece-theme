@@ -38,7 +38,7 @@
 
             <div class="small-right laptop-column-55 large-column-60">
                 
-                <nav class = "navigation responsiville-mobimenu">
+                <nav class="navigation responsiville-mobimenu">
 
                     <?php
                         wp_nav_menu( array(
@@ -50,10 +50,6 @@
                             'responsiville_megamenu' => true,
                         ));
                     ?>
-
-                    <div class = "language-switcher-wrapper small-block laptop-right">
-                        <?php echo vanilla_wpml_language_switcher(); ?>
-                    </div>
                     
                 </nav>
 

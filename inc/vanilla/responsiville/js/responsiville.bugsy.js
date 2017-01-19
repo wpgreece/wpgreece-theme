@@ -25,27 +25,31 @@ if ( typeof console.group === 'undefined' || typeof console.groupEnd === 'undefi
 
 
 /**
- * @global
- *
- * Global setting for the framework debugging messages. If set before the
+ * @var {boolean} RESPONSIVILLE_DEBUG
+ * 
+ * Global setting/flag for the framework debugging messages. If set before the
  * framework runs then that value is taken into account, otherwise it is
  * initialised to "false". This setting is useful only when the framework 
  * initialises automatically. In other cases it is up to the developer to
  * set it properly or leave it to its default value.
+ *
+ * @global
  */
 
 var RESPONSIVILLE_DEBUG = typeof RESPONSIVILLE_DEBUG !== "undefined" ? RESPONSIVILLE_DEBUG : false;
-
+    
 
 
 /**
- * @global RESPONSIVILLE_AUTO_INIT
+ * @var {boolean} RESPONSIVILLE_AUTO_INIT
+ * 
+ * Global setting/flag for the framework automatic initialisation process. If 
+ * set before the framework scripts are included in the page HTML then that 
+ * value is taken into account, otherwise it is initialised to "true". It is 
+ * mainly useful when one wants to alter the default framework behaviour, which
+ * is set to automatically initialise.
  *
- * Global setting for the framework automatic initialisation process. If set
- * before the framework scripts are included in the page HTML then that value is
- * taken into account, otherwise it is initialised to "true". It is mainly
- * useful when one wants to alter the default framework behaviour, which is set 
- * to automatically initialise.
+ * @global
  */
 
 var RESPONSIVILLE_AUTO_INIT;
@@ -234,7 +238,7 @@ Responsiville.Debug.setupDebug = function () {
                 '</p>' +
                 '<p>' +
                     '<label for = "responsiville-debug-blocks">' +
-                        'Blocks debug <input type = "checkbox" id = "responsiville-debug-blocks" name = "responsiville-debug-blocks" value = "responsiville-debug-blocks">' +
+                        'Text debug <input type = "checkbox" id = "responsiville-debug-blocks" name = "responsiville-debug-blocks" value = "responsiville-debug-blocks">' +
                     '</label>' +
                 '</p>' +
             '</section>' +
@@ -255,7 +259,6 @@ Responsiville.Debug.setupDebug = function () {
 
             '<section class = "responsiville-debug-text">' +
                 '<p>' + 
-                    '<a class = "button" href = "http://codex.wordpress.org/Function_Reference/" title = "WordPress Codex" target = "_blank">Codex</a>' +
                     '<a class = "button" href = "http://codex.wordpress.org/Function_Reference/" title = "WordPress function reference" target = "_blank">Codex functions</a>' +
                     '<a class = "button" href = "http://codex.wordpress.org/Plugin_API/Action_Reference" title = "Codex hooks reference" target = "_blank">Codex hooks</a>' +
                     '<a class = "button" href = "https://codex.wordpress.org/Plugin_API/Filter_Reference" title = "Codex filters reference" target = "_blank">Codex filters</a>' +
@@ -334,7 +337,7 @@ Responsiville.Debug.setupDebug = function () {
 
     // Shows load performance data on page load (use jQuery ready function to make sure).
     
-    responsiville.$window.ready( (function () {
+    responsiville.$window.on( 'load', (function () {
 
         // Delay just a tad, so that the load event has had time to complete.
 
@@ -431,7 +434,7 @@ Responsiville.Debug.showDebugLoadPerformance = function () {
 
             // Requested statred receiving.
 
-            '<tr title = "Browser received the first byte of the response">' + 
+            '<tr title = "Time to first byte - browser received the first byte of the response">' + 
                 '<td>TtFB</td><td>&mdash;&gt;' + '</td><td>' + responseStart + '</td><td>' + responseStartDiff + '</td>' + 
             '</tr>' + 
                         
@@ -443,7 +446,7 @@ Responsiville.Debug.showDebugLoadPerformance = function () {
 
             // Page fully loaded.
 
-            '<tr title = "Page is fully loaded and rendered">' + 
+            '<tr title = "Page is fully loaded and rendered, images are loaded">' + 
                 '<td>Load</td><td>&mdash;&gt;' + '</td><td>' + load + '</td><td>' + loadDiff + '</td>' +
             '</tr>' +
         

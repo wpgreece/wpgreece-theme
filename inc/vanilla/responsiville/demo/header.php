@@ -36,7 +36,7 @@
 
         <!-- Current page styles -->
 
-        <link rel = "stylesheet" type = "text/css" href = "css/style1.css" />
+        <link rel = "stylesheet" type = "text/css" href = "css/style.css" />
 
 
 
@@ -78,7 +78,7 @@
 
         <!-- Entry script for tests -->
 
-        <script type = "text/javascript" charset = "utf-8" src = "js/functions1.js"></script>
+        <script type = "text/javascript" charset = "utf-8" src = "js/functions.js"></script>
 
 
 
@@ -95,20 +95,15 @@
             <aside class = "sidebar small-column-15">
 
                 <header class = "sidebar-header row">
-                    <!-- <p>
-                        Responsiville &lt;{[]}&gt;
-                    </p> -->
                     <div class = "column-60 center logo">
-                        <img src = "img/logo.png" alt = "Responsiville" />
+                        <div class = "responsiville-logo"></div>
                     </div>
                 </header>
 
-                <!-- <h3>Menu</h3> -->
-                
                 <nav class = "main-navigation navigation vertical">
                     <ul>
                         <li>
-                            <a href = "demo.php">About</a>
+                            <a href = "index.php">About</a>
                             <ul>
                                 <li><a href = "installing.php">Installing</a></li>
                                 <li><a href = "initialising.php">Initialising</a></li>
@@ -120,28 +115,16 @@
                             <a href = "grid.php">The grid</a>
                             <ul>
                                 <li><a href = "grid-building.php">Grid building</a></li>
-                                <li><a href = "clearing-floats.php">Clearing floats</a></li>
-                                <li><a href = "grid-debugging.php">Grid debugging</a></li>
-                                <!--
-                                    Grid margins
-                                    Grid shifting
-                                -->
+                                <li><a href = "responsive-grid.php">Responsive grid</a></li>
+                                <li><a href = "css-variables.php">CSS variables</a></li>
+                                <li><a href = "css-reset.php">CSS reset</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href = "reset.php">CSS reset</a>
+                            <a href = "modules.php">Modules</a>
                             <ul>
-                                <li><a href = "typography.php">Typography</a></li>
-                                <li><a href = "images.php">Images</a></li>
-                                <li><a href = "videos-iframes.php">Videos &amp; iframes</a></li>
-                                <li><a href = "tables.php">Tables</a></li>
-                                <li><a href = "forms.php">Forms</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href = "reset.php">Javascript modules</a>
-                            <ul>
-                                <li><a href = "main-events.php">Main/Events</a></li>
+                                <li><a href = "events.php">Events</a></li>
+                                <li><a href = "main.php">Main</a></li>
                                 <li><a href = "accordion.php">Accordion</a></li>
                                 <li><a href = "equalheights.php">Equalheights</a></li>
                                 <li><a href = "megamenu.php">Megamenu</a></li>

@@ -15,7 +15,9 @@
     
 
 
-    define( 'VANILLA_VERSION', '1.1' );
+    // Just a version flag.
+
+    define( 'VANILLA_VERSION', '1.2' );
     
 
 
@@ -75,7 +77,7 @@
     add_action( 'wp_loaded',                'vanilla_config_no_texturize', 999 );
     add_action( 'wp_loaded',                'vanilla_config_no_emojis', 999 );
     add_action( 'wp_loaded',                'vanilla_config_disable_admin_bar', 999 );
-    add_action( 'wp_loaded',                'vanilla_frontend_search_setup', 999 );
+    add_action( 'pre_get_posts',            'vanilla_frontend_search_setup', 999 );
     add_action( 'wp_loaded',                'vanilla_wpml_cleanup', 999 );
     add_action( 'wp_enqueue_scripts',       'vanilla_theme_head_scripts_and_styles',  10 );
     add_action( 'nav_menu_link_attributes', 'vanilla_theme_enable_responsiville_megamenus', 10, 3 );

@@ -34,5 +34,5 @@
 
     .responsiville-scrollmenu-active {
         transform: translateY(0);
-        -wekit-transform: translateY(0);
+        -webkit-transform: translateY(0);
     }

@@ -99,7 +99,7 @@
             .responsiville-slideshow-previous-icon::before {
                 display: inline-block;
                 font-family: "Responsiville icons";
-                color: rgb(60, 60, 60);
+                color: var(--color-gray-dark);
                 font-size: 6rem;
                 line-height: 1;
             }
@@ -183,16 +183,16 @@
                 display: inline-block;
                 width: 3rem;
                 height: 3rem;
-                background-color: rgb(255, 255, 255);
+                background-color: var(--color-white);
                 border-width: 0.2rem;
-                border-color: rgb(60, 60, 60);
+                border-color: var(--color-gray-dark);
                 border-radius: 50%;
                 border-style: solid;
             }
 
             .responsiville-slideshow-bullet:hover,
             .responsiville-slideshow-bullet.responsiville-slideshow-bullet-selected {
-                background-color: rgb(60, 60, 60);
+                background-color: var(--color-gray-dark);
             }
 
                 .responsiville-slideshow-bullet-icon,

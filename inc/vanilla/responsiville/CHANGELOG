@@ -4,6 +4,23 @@ Responsiville changelog <developer's cut>
 
 
 
+v-1.2
+================
+since 01/01/2017
+
+    Upgrade
+    =======
+    1) All scripts in config.php.
+    2) No scripts in theme header or footer.
+    3) Responsiville flags in config.php.
+    4) No Responsiville flags in theme header or footer.
+
+    - Revamped documentation. Finally!
+
+    - Added a z-index property to the Scrollmenu module.
+
+
+
 v-1.1
 ================
 since 01/09/2016
@@ -12,13 +29,14 @@ since 01/09/2016
     =======
     In order for one to upgrade Vanilla to this version of Responsiville one
     needs to follow these three steps:
-      1) Set the RESPONSIVILLE_DEBUG and RESPONSIVILLE_AUTO_INIT global 
-         settings right before the Responsiville scripts are output.
-      2) Remove the Responsiville initialisation declarations because the
-         framework now automatically initialises.
-      3) Set the correct classes to the HTML elements that define each
-         Responsiville module because these modules now automatically 
-         initialise.
+
+    1) Set the RESPONSIVILLE_DEBUG and RESPONSIVILLE_AUTO_INIT global 
+       settings right before the Responsiville scripts are output.
+    2) Remove the Responsiville initialisation declarations because the
+       framework now automatically initialises.
+    3) Set the correct classes to the HTML elements that define each
+       Responsiville module because these modules now automatically 
+       initialise.
 
     - Added push and pull grid classes to visually reorder columns as per 
       breakpoint.

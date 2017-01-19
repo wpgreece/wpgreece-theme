@@ -114,6 +114,8 @@ Vanilla TODOs list
             * state
         Methods
         =======
+            - log
+            - dir
             - loadDataAttributes
             - registerModule
             - setupHTML
@@ -123,6 +125,8 @@ Vanilla TODOs list
             - disable
             - activate
             - deactivate
+            - open
+            - close
             - setState
             - getState
         Static

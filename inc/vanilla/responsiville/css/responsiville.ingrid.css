@@ -133,6 +133,7 @@
     .block {
         float: none;
         display: block;
+        width: 100%;
     }
 
     .inline {
@@ -851,6 +852,7 @@
         .small-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .small-inline {
@@ -1571,6 +1573,7 @@
         .mobile-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .mobile-inline {
@@ -2291,6 +2294,7 @@
         .tablet-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .tablet-inline {
@@ -3009,6 +3013,7 @@
         .laptop-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .laptop-inline {
@@ -3727,6 +3732,7 @@
         .desktop-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .desktop-inline {
@@ -4445,6 +4451,7 @@
         .large-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .large-inline {
@@ -5163,6 +5170,7 @@
         .xlarge-block {
             float: none;
             display: block;
+            width: 100%;
         }
 
         .xlarge-inline {

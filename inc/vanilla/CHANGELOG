@@ -2,6 +2,20 @@
 Vanilla changelog <developer's cut>
 ===================================
 
+v-1.2
+=====
+
+    Upgrade
+    =======
+    - All scripts in config.php.
+    - No scripts in theme header or footer.
+    - Responsiville flags in config.php.
+    - No Responsiville flags in theme header or footer.
+
+    - Added Vanilla widgets which can play nicely with ACF fields.
+
+
+
 v-1.1
 =====
 

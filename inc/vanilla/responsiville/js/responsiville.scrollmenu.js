@@ -39,6 +39,8 @@
  *                                          whenit becomes active. 
  * @property {string}  options.activeBody   The class added to the body element 
  *                                          when the scrollmenu becomes active.
+ * @property {string}  options.zIndex       Specify a z-index property different
+ *                                          than the the default.
  * @property {string}  options.offsetTop    The extra space to wait for the user
  *                                          to scroll down to, after the
  *                                          original element is out of sight, 
@@ -116,7 +118,7 @@ Responsiville.Scrollmenu = function ( options ) {
     // Clone the element and work on the clone.
 
     this.$elementCloned = this.$element.clone( false ).
-                                        wrap( '<div class = "' + this.options.wrapper + '">' ).
+                                        wrap( '<div class = "' + this.options.wrapper + '" ' + ( this.options.zIndex > 0 ? 'style="z-index: ' + this.options.zIndex + ';"' : '' ) + '>' ).
                                         parent().
                                         appendTo( this.$body );
 
@@ -210,6 +212,7 @@ Responsiville.Scrollmenu.defaults = {
     enabled      : 'responsiville-scrollmenu-enabled',
     active       : 'responsiville-scrollmenu-active',
     activeBody   : 'responsiville-scrollmenu-active-body',
+    zIndex       : -1,
     offsetTop    : 0,
     offsetBottom : 0,
     enter        : 'small, mobile, tablet, laptop, desktop, large, xlarge',
@@ -253,11 +256,13 @@ Responsiville.Scrollmenu.autoRun = function () {
 
 Responsiville.Scrollmenu.prototype.setupEvents = function () {
 
+    var k, length;
+
     // Register to be enabled on the required breakpoints.
     
     var breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
 
-    for ( var k = 0, length=breakpointsEnter.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsEnter.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsEnter[k], this.getBoundFunction( this.enable ) );
     }
 
@@ -265,7 +270,7 @@ Responsiville.Scrollmenu.prototype.setupEvents = function () {
 
     var breakpointsLeave = Responsiville.splitAndTrim( this.options.leave );
 
-    for ( var k = 0, length=breakpointsLeave.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsLeave.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsLeave[k], this.getBoundFunction( this.disable ) );
     }
 

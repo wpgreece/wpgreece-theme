@@ -92,7 +92,7 @@
         max-height: 100%;
         margin: 0;
         padding: 0;
-        background: rgb(60, 60, 60);
+        background: var(--color-gray-dark);
     }
  
 
@@ -147,7 +147,7 @@
         padding: 0;
         margin: 0;
         box-shadow: none;
-        color: white;
+        color: var(--color-white);
         font-size: 8rem;
         line-height: 6rem;
         font-family: Georgia, serif;
@@ -206,7 +206,7 @@
     }
 
         .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) a {
-            color: white;
+            color: var(--color-white);
             font-size: 4rem;
             margin: 0;
             padding: 1.5rem;

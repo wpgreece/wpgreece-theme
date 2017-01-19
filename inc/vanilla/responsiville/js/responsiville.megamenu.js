@@ -254,11 +254,13 @@ Responsiville.Megamenu.autoRun = function () {
 
 Responsiville.Megamenu.prototype.setupEvents = function () {
 
+    var k, length;
+
     // Register to be enabled on the required breakpoints.
     
     var breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
 
-    for ( var k = 0, length=breakpointsEnter.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsEnter.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsEnter[k], this.getBoundFunction( this.enable ) );
     }
 
@@ -266,7 +268,7 @@ Responsiville.Megamenu.prototype.setupEvents = function () {
 
     var breakpointsLeave = Responsiville.splitAndTrim( this.options.leave );
 
-    for ( var k = 0, length=breakpointsLeave.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsLeave.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsLeave[k], this.getBoundFunction( this.disable ) );
     }
 

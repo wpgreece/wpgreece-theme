@@ -232,7 +232,7 @@ Responsiville.Main.prototype.init = function () {
 
     // In the case the framework was initialised automatically in the HEAD before the BODY was created.
 
-    var bodyElementNotCreated = typeof this.$body === 'undefined' || this.$body.length == 0;
+    var bodyElementNotCreated = typeof this.$body === 'undefined' || this.$body.length === 0;
 
     if ( bodyElementNotCreated ) {
         this.$body = jQuery( 'body' );
@@ -613,10 +613,8 @@ Responsiville.Main.prototype.isDevice = function () {
 
 Responsiville.Main.prototype.is = function ( breakpointNames ) {
 
-    var breakpointNamesArray;
-    var testBreakpointName;
     var k;
-
+    var testBreakpointName;
     var breakpointNamesArray = Responsiville.splitAndTrim( breakpointNames );
 
     for ( k in breakpointNamesArray ) {

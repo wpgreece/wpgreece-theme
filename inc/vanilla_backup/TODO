@@ -1,0 +1,13 @@
+
+Vanilla TODOs list
+==================
+
+Filter to add TinyMCE custom formats from functions.php.
+
+ACF layouts builder!
+
+ACF vanilla widgets in WordPress Customizer => a nice side effect, but could the
+                                               Customizer perhaps not reload so
+                                               often or even reload on demand?
+
+Filter for versioning static assets.

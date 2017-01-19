@@ -66,23 +66,29 @@
     
     function vanilla_theme_enqueue_css () {
 
-        wp_enqueue_style( 'style-css',                  get_bloginfo( 'stylesheet_url' ),                                                               array(), '', 'all' );
-
-        wp_enqueue_style( 'responsiville',              get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.def.css',          array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-bugsy',        get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.bugsy.css',        array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-moressette',   get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.moressette.css',   array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-ingrid',       get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.ingrid.css',       array(), '', 'all' );
-
-        wp_enqueue_style( 'responsiville-accordion',    get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.accordion.css',    array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-megamenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.megamenu.css',     array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-mobimenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.mobimenu.css',     array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-scrollmenu',   get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.scrollmenu.css',   array(), '', 'all' );
-        wp_enqueue_style( 'responsiville-slideshow',    get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.slideshow.css',    array(), '', 'all' );
-
-        wp_enqueue_style( 'vanilla-theme',              get_template_directory_uri() . '/inc/vanilla/base/css/vanilla.theme.css',                       array(), '', 'all' );
+        // Utility variables.
         
-        wp_enqueue_style( 'nevma-popup',                get_template_directory_uri() . '/inc/vanilla/base/css/jquery.nevma.popup-1.2.css',              array(), '', 'all' );
-        wp_enqueue_style( 'nevma-anchorPopup',          get_template_directory_uri() . '/inc/vanilla/base/css/jquery.nevma.anchorPopup-1.0.css',        array(), '', 'all' );
+        $version = '';
+
+
+
+        wp_enqueue_style( 'style-css',                  get_bloginfo( 'stylesheet_url' ),                                                               array(), $version, 'all' );
+
+        wp_enqueue_style( 'responsiville',              get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.def.css',          array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-bugsy',        get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.bugsy.css',        array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-moressette',   get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.moressette.css',   array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-ingrid',       get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.ingrid.css',       array(), $version, 'all' );
+
+        wp_enqueue_style( 'responsiville-accordion',    get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.accordion.css',    array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-megamenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.megamenu.css',     array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-mobimenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.mobimenu.css',     array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-scrollmenu',   get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.scrollmenu.css',   array(), $version, 'all' );
+        wp_enqueue_style( 'responsiville-slideshow',    get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.slideshow.css',    array(), $version, 'all' );
+
+        wp_enqueue_style( 'vanilla-theme',              get_template_directory_uri() . '/inc/vanilla/base/css/vanilla.theme.css',                       array(), $version, 'all' );
+        
+        wp_enqueue_style( 'nevma-popup',                get_template_directory_uri() . '/inc/vanilla/base/css/jquery.nevma.popup-1.2.css',              array(), $version, 'all' );
+        wp_enqueue_style( 'nevma-anchorPopup',          get_template_directory_uri() . '/inc/vanilla/base/css/jquery.nevma.anchorPopup-1.0.css',        array(), $version, 'all' );
 
     }
 
@@ -108,6 +114,8 @@
         // JQuery output in the head.
         
         wp_enqueue_script( 'jquery' ); 
+
+        wp_enqueue_script( 'polyfill-io', 'https://cdn.polyfill.io/v2/polyfill.min.js', array(), $version, $in_header );
 
         // General purpose and third-party Javascript libraries.
 

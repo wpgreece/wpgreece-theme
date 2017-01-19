@@ -16,12 +16,20 @@
             <a href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville Javascript API" target = "_blank" class = "button">Responsiville Javascript API</a>
         </p>
 
-
-
-        <h2>The Main Object</h2>
+        <p>
+            You can find the Responsiville icon fonts here:
+        </p>
 
         <p>
-            The Responsiville framework defines and depends on a <code>Responsiville.Main</code> object which is a singleton. This means that only one instance of it is available in each web page. This object is initialised as shown in the previous section.
+            <a href = "../fonts/demo.html" title = "Responsiville icon fonts" target = "_blank" class = "button">Responsiville icon fonts</a>
+        </p>
+
+
+
+        <h2>The Responsiville.Main Object</h2>
+
+        <p>
+            The Responsiville framework defines and depends on the <code>Responsiville.Main</code> object which is a singleton. This means that only one instance of it is available in each web page. This object is initialised as shown in the previous section.
         </p>
 
         <p>
@@ -89,7 +97,7 @@
         </code></pre>
 
         <p>
-            More on this in the API and in the chapters to follow.
+            You can read more on this in the API and in the chapters to follow.
         </p>
 
 

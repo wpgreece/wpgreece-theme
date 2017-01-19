@@ -212,11 +212,13 @@ Responsiville.Equalheights.autoRun = function () {
 
 Responsiville.Equalheights.prototype.setupEvents = function () {
 
+    var k, length;
+
     // Register to be enabled on the required breakpoints.
     
     var breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
 
-    for ( var k = 0, length=breakpointsEnter.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsEnter.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsEnter[k], this.getBoundFunction( this.enable ) );
     }
 
@@ -224,7 +226,7 @@ Responsiville.Equalheights.prototype.setupEvents = function () {
 
     var breakpointsLeave = Responsiville.splitAndTrim( this.options.leave );
 
-    for ( var k = 0, length=breakpointsLeave.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsLeave.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsLeave[k], this.getBoundFunction( this.disable ) );
     }
 
@@ -250,7 +252,7 @@ Responsiville.Equalheights.prototype.setupEvents = function () {
 
     // Check which images have loaded and wait for the rest of them.
     
-    for ( var k = 0, length = this.$images.length; k < length; k++ ) {
+    for ( k=0, length=this.$images.length; k < length; k++ ) {
 
         var image = this.$images.eq( k ).get( 0 );
 

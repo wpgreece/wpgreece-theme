@@ -1,57 +1,68 @@
 jQuery( function () {
 
-    // Setup navigation between sections based on the available sections.
+    // Set the selected menu element.
 
-    var navigation_html = '';
+    var page = document.location.href;
 
-    jQuery( 'section' ).each( function () {
-    
-        var title = jQuery( this ).find( 'h1' ).text();
-        var id    = jQuery( this ).attr( 'id' );
+    var from = page.lastIndexOf( '/' ) + 1;
+    var to   = page.indexOf( '#' );
 
-        if ( ! title || ! id ) {
-            
-            return;
-
-        }
-
-        navigation_html += '<li><a href = "#' + id + '" title = "' + title + '">' + title + '</a></li>';
-        
-    });
-    
-    jQuery( '.main-navigation ul' ).html( navigation_html );
-    
-    
-
-    // Menu selected action handler.
-    
-    jQuery( '.main-navigation a' ).on( 'click', function () {
-        
-        var $this = jQuery( this );
-        
-        jQuery( '.main-navigation a' ).removeClass( 'selected' );
-        $this.addClass( 'selected' );
-
-        jQuery( 'section' ).removeClass( 'target' );
-
-    });
-    
-    
-
-    // Show the selected section or the first available section on load.
-
-    if ( window.location.hash == '' ) {
-
-        jQuery( '.main-navigation a' ).removeClass( 'selected' );
-        jQuery( '.main-navigation a' ).eq( 0 ).addClass( 'selected' );
-        jQuery( 'section' ).eq( 0 ).addClass( 'target' );
-        
+    if ( to > -1 ) {
+        page = page.substring( from, to );
     } else {
+        page = page.substring( from );
+    }
+
+    $( '.sidebar a[href="' + page + '"]' ).
+        addClass( 'selected' ).
+        closest( 'ul' ).
+        siblings( 'a' ).
+        addClass( 'selected-parent' );
+
+
+
+    // Create the in-page navigation.
+
+    var counter = 1;
+    
+    var menuHTML = '<nav class = "navigation-inner navigation horizontal clear"><ul>';
+
+    $( 'h1, h2' ).each( function () {
+    
+        menuHTML += '<li><a href = "#' + counter + '">' + $( this ).text() + '</a></li>';
+
+        $( this ).before( '<a name = "' + counter + '"></a>' );
+
+        counter++;
         
-        jQuery( '.main-navigation a' ).removeClass( 'selected' );
-        jQuery( '.main-navigation a' ).filter( '[href="' + window.location.hash + '"]' ).addClass( 'selected' );
-        jQuery( window.location.hash ).addClass( 'target' );
+    })
+
+    menuHTML += '</ul></nav>';
+
+    $( '.header-credits' ).after( menuHTML );
+
+
+
+    // Make it a scrollmenu.
+
+    var navigationInnerScrollmenu = new Responsiville.Scrollmenu({
+        element : '.navigation-inner',
+        enter   : 'small, mobile, tablet, laptop, desktop, large, xlarge',
+        leave   : ''
+    });
+
+    $( '.navigation-inner a' ).click( function () {
+
+        var href = $( this ).attr( 'href' );
+        var name = href.substring( 1 );
+        $( 'a[name="' + name + '"]' ).velocity( 'scroll', { duration: 300, offset: -50 });
         
+    });
+
+    var hash = document.location.href.substring( document.location.href.indexOf( '#' ) + 1 );
+
+    if ( hash !== '' ) {
+        $( 'a[name="' + hash + '"]' ).velocity( 'scroll', { duration: 300, offset: -50 });
     }
 
 });

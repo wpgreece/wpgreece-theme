@@ -83,7 +83,7 @@
 
 
 
-        <h2>Basic grid divisions (columns)</h2>
+        <h2>Grid columns</h2>
 
         <p>
             The Responsiville grid is divided in simple columns. The columns are measured in measurements that refer mainly to percentages. One can either refer to these measurements as percentages like <code>33%</code>, or even as simple everyday fractions, like <code>one third</code> or <code>1/3</code>, etc. Each grid row is has a 100 units that can be divided in halves, thirds, quarters, fifths, sixths, eighths, tenths and twentieths. This is actually quite simple in practice. 
@@ -96,102 +96,127 @@
         <table class = "text-center">
             <thead>
                 <tr>
-                    <th>columns</th>
-                    <th>percentage</th>
+                    <th>columns row</th>
+                    <th>percentage of row</th>
                     <th>fraction</th>
-                    <th>width of parent taken</th>
                     <th>examples</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>100</td>
+                    <td>100%</td>
                     <td>1/1</td>
-                    <td>all of it</td>
                     <td>
-                        <code>.column-100</code><br />
+                        <code>.column-100</code> <br />
                         <code>.column-1-1</code>
                     </td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>50</td>
-                    <td>1/2</td>
-                    <td>half of it</td>
+                    <td>50%</td>
                     <td>
-                        <code>.column-50</code><br />
-                        <code>.column-1-2</code>
+                        1/2 <br />
+                        half
+                    </td>
+                    <td>
+                        <code>.column-50</code> <br />
+                        <code>.column-1-2</code> <br />
+                        <code>.column-2-4</code> <br />
+                        <code>.column-3-6</code> <br />
+                        <code>.column-4-8</code> <br />
+                        <code>.column-5-10</code> <br />
+                        <code>.column-10-20</code>
                     </td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>33</td>
-                    <td>1/3</td>
-                    <td>a third</td>
+                    <td>33%</td>
                     <td>
-                        <code>.column-33</code><br />
-                        <code>.column-1-3</code>
+                        1/3 <br />
+                        one third
+                    </td>
+                    <td>
+                        <code>.column-33</code> <br />
+                        <code>.column-1-3</code> <br />
+                        <code>.column-2-6</code>
                     </td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>25</td>
-                    <td>1/4</td>
-                    <td>a quarter</td>
+                    <td>25%</td>
                     <td>
-                        <code>.column-25</code><br />
-                        <code>.column-1-4</code>
+                        1/4 <br />
+                        one quarter
+                    </td>
+                    <td>
+                        <code>.column-25</code> <br />
+                        <code>.column-1-4</code> <br />
+                        <code>.column-2-8</code> <br />
+                        <code>.column-5-20</code>
                     </td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>20</td>
-                    <td>1/5</td>
-                    <td>a fifth</td>
+                    <td>20%</td>
                     <td>
-                        <code>.column-20</code><br />
-                        <code>.column-1-5</code>
+                        1/5 <br />
+                        one fifth
+                    </td>
+                    <td>
+                        <code>.column-20</code> <br />
+                        <code>.column-1-5</code> <br />
+                        <code>.column-2-10</code> <br />
+                        <code>.column-4-20</code>
                     </td>
                 </tr>
                 <tr>
                     <td>6</td>
-                    <td>16.666</td>
-                    <td>1-6</td>
-                    <td>a sixth</td>
+                    <td>16.666%</td>
                     <td>
-                        <code>.column-16</code><br />
+                        1-6 <br />
+                        one sixth
+                    </td>
+                    <td>
+                        <code>.column-16</code> <br />
                         <code>.column-1-6</code>
                     </td>
                 </tr>
                 <tr>
                     <td>8</td>
-                    <td>12.5</td>
-                    <td>1-8</td>
-                    <td>an eighth</td>
+                    <td>12.5%</td>
                     <td>
-                        <code>.column-12-5</code><br />
+                        1-8 <br />
+                        one eighth
+                    </td>
+                    <td>
+                        <code>.column-12-5</code> <br />
                         <code>.column-1-8</code>
                     </td>
                 </tr>
                 <tr>
                     <td>10</td>
-                    <td>10</td>
-                    <td>1-10</td>
-                    <td>a tenth</td>
+                    <td>10%</td>
                     <td>
-                        <code>.column-10</code><br />
-                        <code>.column-1-10</code>
+                        1-10 <br />
+                        one tenth
+                    </td>
+                    <td>
+                        <code>.column-10</code> <br />
+                        <code>.column-1-10</code> <br />
+                        <code>.column-2-20</code>
                     </td>
                 </tr>
                 <tr>
                     <td>20</td>
                     <td>5</td>
-                    <td>1-20</td>
-                    <td>a twentieth</td>
                     <td>
-                        <code>.column-5</code><br />
-                        <code>.column-1-6</code>
+                        1-20 <br />
+                        one twentieth
+                    </td>
+                    <td>
+                        <code>.column-5</code> <br />
+                        <code>.column-1-20</code>
                     </td>
                 </tr>
             </tbody>
@@ -229,7 +254,7 @@
         </ul>
 
         <p>
-            Using the same logic in the 10 column grid, one can use any of the following: 
+            Using the same logic, for instance in the 10 column grid, one can use any of the following: 
         </p>
 
         <ul>
@@ -246,7 +271,7 @@
         </ul>
 
         <p>
-            In the 4 column grid, one can use any of the following:
+            In the same way, in the 4 column grid, one can use any of the following:
         </p>
 
         <ul>
@@ -257,15 +282,15 @@
         </ul>
 
         <p>
-            And so on...
+            And so on for all the 20-10-8-6-5-4-3-2 columns.
         </p>
 
         <p>
-            Obviously <code>.column-100</code> is common for all grid divisions.
+            Obviously, <code>.column-100</code> is common for all grid divisions.
         </p>
 
         <p>
-            Of course there are a lot of equivalent values. For instance:
+            Of course, there are a lot of equivalent values. For instance:
         </p>
 
         <pre><code class = "language-markup"><!--
@@ -288,7 +313,7 @@
 
 
 
-        <h2>Responsive grid</h2>
+        <h2>Responsive columns</h2>
 
         <p>
             The grid re-defines all its column classes for each of the default available breakpoints. So, when these classes are used in a mobile-first manner one can accomplish a responsive layout by overriding declarations, starting from the smallest screens and working their way up to the bigger ones. Let&apos;s see some examples. 
@@ -338,7 +363,7 @@
         --></code></pre>
 
         <p>
-            One can use any of them they want on a given element and they will all stack up in a mobile first order, so that the one that belongs to the current breakpoint prevails. For instance, if our screen were currently in the <code>tablet</code> breakpoint:
+            One can use any of them they want on any given element and these classes will all stack up in a mobile first order, so that the one that belongs to the current breakpoint will prevail. For instance, if our screen waw currently in the <code>tablet</code> breakpoint:
         </p>
 
         <pre><code class = "language-markup"><!--
@@ -393,9 +418,74 @@
             </div>
         --></code></pre>
 
+        <h2>The nexus</h2>
+
         <p>
-            It is also possible to disable all grid gutters, when necessary, in order to create a tight grid and use all the space inside the columns. We call this grid a <strong>nexus</strong>.
+            It is also possible to disable all grid gutters, when necessary, in order to create a tight grid and use all the space inside the columns. We call this grid a <strong>nexus</strong> and we define it by setting a <code>nexus</code> class in the container like this.
         </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="container nexus">
+                <div class="row">
+                    <div class="column-25">...</div>
+                    <div class="column-25">...</div>
+                    <div class="column-25">...</div>
+                    <div class="column-25">...</div>
+                </div>
+                <div class="row">
+                    <div class="column-50">...</div>
+                    <div class="column-50">...</div>
+                </div>
+            </div>
+        --></code></pre>
+
+        <p>
+            Note how this produces a grid with no horizontal breathing space between columns.
+        </p>
+
+        <div class = "grid-showcase nexus">
+            <div class = "row" data-info = ".row">
+                <div class = "column-25" data-info = ".column-25"></div>
+                <div class = "column-25" data-info = ".column-25"></div>
+                <div class = "column-25" data-info = ".column-25"></div>
+                <div class = "column-25" data-info = ".column-25"></div>
+            </div>
+            <div class = "row" data-info = ".row">
+                <div class = "column-50" data-info = ".column-50"></div>
+                <div class = "column-50" data-info = ".column-50"></div>
+            </div>
+        </div>
+
+
+
+        <h2>Nesting columns</h2>
+
+        <p>
+            As we mentioned before, nesting columns causes their gutters to add up. This happens because columns contain their columns inside them so, if one simply puts a column inside another column, then the internal column will appear to have double the usual gutters. And if one puts another column inside the internal column, then that column will appear to have triple the usual columns.
+        </p>
+
+        <p>
+            Of course, if you know what you are doing, you may nest columns any way you like, but if you  want your grid to trully align its contents vertically throughout the page, then you must wrap your columns again into rows. What rows do is cancel the gutters of columns by adding equal negative margins to the grid. For instance:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="container nexus">
+                <div class="row">
+                    <div class="column-50">...</div>
+                    <div class="column-50">...</div>
+                </div>
+                <div class="row">
+                    <div class="column-50">...</div>
+                    <div class="column-50">
+                        <div class="row">
+                            <div class="column-33">...</div>
+                            <div class="column-33">...</div>
+                            <div class="column-33">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        --></code></pre>
 
 
 

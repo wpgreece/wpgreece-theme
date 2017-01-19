@@ -351,32 +351,37 @@ Responsiville.Slideshow.autoRun = function () {
 
 Responsiville.Slideshow.prototype.setupEvents = function () {
 
+    var k;
+
+    var breakpointsEnter;
+
     // Register to be enabled on the required breakpoints.
     
     if ( this.options.wait ) {
 
-        var breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
+        breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
 
-        for ( var k = 0, length=breakpointsEnter.length; k<length; k++ ) {
+        for ( k=0, length=breakpointsEnter.length; k<length; k++ ) {
             this.responsiville.on( 'enter.' + breakpointsEnter[k], this.getBoundFunction( this.enableOnFirstSlideLoad ) );
         }
 
     } else {
         
-        var breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
+        breakpointsEnter = Responsiville.splitAndTrim( this.options.enter );
 
-        for ( var k = 0, length=breakpointsEnter.length; k<length; k++ ) {
+        for ( k=0, length=breakpointsEnter.length; k<length; k++ ) {
             this.responsiville.on( 'enter.' + breakpointsEnter[k], this.getBoundFunction( this.enable ) );
         }
 
     }
 
 
+
     // Register to be disabled on the required breakpoints.
 
     var breakpointsLeave = Responsiville.splitAndTrim( this.options.leave );
 
-    for ( var k = 0, length=breakpointsLeave.length; k<length; k++ ) {
+    for ( k=0, length=breakpointsLeave.length; k<length; k++ ) {
         this.responsiville.on( 'enter.' + breakpointsLeave[k], this.getBoundFunction( this.disable ) );
     }
 

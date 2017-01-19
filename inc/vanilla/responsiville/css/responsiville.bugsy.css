@@ -15,14 +15,14 @@
         position: fixed;
         padding: 0.5rem;
         max-width: 25rem;
-        background: rgb(245, 245, 245);
+        background: var(--color-gray-light-x);
         color: rgb(60, 60, 60);
         font-family: Consolas, "Courier New", monospace;
         font-size: 1.2rem;
-        border: 0.5rem solid rgb(165, 165, 165);
+        border: 0.5rem solid var(--color-gray);
         border-radius: 0.5rem;
         text-align: right;
-        box-shadow: 0 0 1rem rgb(165, 165, 165); 
+        box-shadow: 0 0 1rem var(--color-gray); 
         z-index: 999;
         opacity: 0.75;
         backface-visibility: hidden;
@@ -55,7 +55,7 @@
 
         .responsiville-debug-controls section {
             padding: 0.3rem 0 0.25rem 0;
-            border-bottom: 0.3rem solid rgba(165, 165, 165, 0.75);
+            border-bottom: 0.3rem solid var(--color-gray);
         }
 
         .responsiville-debug-controls section:last-of-type {
@@ -201,16 +201,16 @@
 
     .responsiville-debug-grid .row,
     .responsiville-debug-grid [class*="column"] {
-        outline: 0.1rem dotted red;
+        outline: 0.1rem dotted var(--color-red);
         position: relative;
     }
 
     .responsiville-debug-grid .row {
-        background: rgb(165, 165, 165) !important;
+        background: var(--color-gray) !important;
     }
 
     .responsiville-debug-grid [class*="column"] {
-        background: rgb(245, 245, 245) !important;
+        background: var(--color-gray-light-x) !important;
     }
 
 
@@ -240,7 +240,7 @@
         width: 100% !important;
         font-size: 1rem !important;
         font-family: Consolas, "Courier New", monospace !important;
-        color: rgb(60, 60, 60) !important;
+        color: var(--color-gray-dark) !important;
         margin: 0 !important;
         padding: 0 !important;
         overflow: hidden !important;
@@ -275,7 +275,7 @@
     .responsiville-debug-blocks pre,
     .responsiville-debug-blocks figure,
     .responsiville-debug-blocks blockquote {
-        outline: 0.1rem dotted red;
+        outline: 0.1rem dotted var(--color-red);
     }
 
     .responsiville-debug-controls .row, 

@@ -522,7 +522,7 @@
         .gfield_error input,
         .gfield_error textarea,
         .gfield_error select {
-            background: repeating-linear-gradient(-45deg, rgb(255, 255, 255) 0px, rgb(255, 244, 244) 1rem) repeat scroll 0 0 rgba(0, 0, 0, 0);
+            background: repeating-linear-gradient(-45deg, var(--color-gray-light-x) 0, var(--color-gray-light) 1rem);
         }
 
         .gform_ajax_spinner {
@@ -577,7 +577,7 @@
 
     pre.vanilla-debug {
         padding: 2rem;
-        outline: 0.1rem dotted red;
+        outline: 0.1rem dotted var(--color-red);
         margin: 0 0 2rem 0;
         position: relative;
         font-size: 90%;
@@ -588,6 +588,6 @@
         top: 0;
         left: 0;
         content: "vanilla";
-        outline: 0.1rem dotted red;
+        outline: 0.1rem dotted var(--color-red);
         font-size: 75%;
     }

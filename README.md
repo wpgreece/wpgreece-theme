@@ -15,6 +15,6 @@ This is the repository of the new Greek WordPress Community theme https://wpgrec
 
 ## Revision History
 
-<ul><li> Version 1.0.0 Initial release</li></ul>
+<ul><li> <a href="https://github.com/wpgreece/wpgreece-theme/releases/tag/V1.0">Version 1.0.0 Initial release</a></li></ul>
 
 

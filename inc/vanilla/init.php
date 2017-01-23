@@ -38,7 +38,6 @@
 
     // Vanilla admin enhancements.
 
-    require_once( 'base/vanilla-admin.php' );
     require_once( 'base/vanilla-wpml.php' );
 
    

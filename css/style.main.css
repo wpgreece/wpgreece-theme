@@ -1825,12 +1825,12 @@
 
     .laptop .rc-anchor-normal {
         width: 100%!important;
-        max-width: 130px;
+        max-width: 130px!important;
     }
 
     .xlarge .rc-anchor-normal {
         width: 100%!important;
-        max-width: 300px;
+        max-width: 300px!important;
     }
 
 /************************************************************************************

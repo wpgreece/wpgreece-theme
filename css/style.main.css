@@ -1823,6 +1823,16 @@
         color: var(--color-blue);
     }
 
+    .laptop .rc-anchor-normal {
+        width: 100%!important;
+        max-width: 130px;
+    }
+
+    .xlarge .rc-anchor-normal {
+        width: 100%!important;
+        max-width: 300px;
+    }
+
 /************************************************************************************
 
  ██████╗     ██████╗         ██████╗     ██████╗     ███████╗    ███████╗    ███████╗

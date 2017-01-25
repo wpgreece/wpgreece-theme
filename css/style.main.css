@@ -553,6 +553,10 @@
         padding-left: 6rem;
     }
 
+    .featured-article-big-container .post-cat.cat-12 a {
+        padding-left: 0rem;
+    }
+
     .featured-article-big-container .post-cat,
     .featured-article-big-container .post-date {
         display: inline-block;

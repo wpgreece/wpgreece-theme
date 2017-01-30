@@ -14,9 +14,9 @@
                 
         <?php endwhile; endif; ?>
 
-    <?php include('inc/left-sidebar.php'); ?>
+    <?php include( 'inc/left-sidebar.php' ); ?>
 
-    <?php include('inc/right-sidebar.php'); ?>
+    <?php include( 'inc/right-sidebar.php' ); ?>
 
 </section>
 

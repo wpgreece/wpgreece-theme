@@ -915,7 +915,7 @@
         text-align: center;
     }
 
-    .featured-article-big-container .text p a {
+    .featured-article-big-container .text a {
         color: var(--color-blue);
     }
 

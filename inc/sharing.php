@@ -40,7 +40,7 @@
                 </li>
 
                  <li>
-                    <a class="mail" href="<?php echo $mailTo ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/web.png" alt = "Pin it!" /></a>
+                    <a class="mail" href="<?php echo $mailTo ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/web.png" alt = "Share by Email" /></a>
                 </li>
 
 

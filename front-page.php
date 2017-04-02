@@ -68,7 +68,7 @@
         
             <div class="post-meta"> 
 
-                <h6 class= "post-author"> <?php _e('Απο', 'wpgc'); ?> <?php the_author(); ?></h6>
+                <h6 class="author-name-link"> <?php _e('Απο', 'wpgc'); ?> <?php the_author_posts_link(); ?></h6>
 
                 <h6 class="post-date"><?php the_time('d/m/y'); ?></h6>
 

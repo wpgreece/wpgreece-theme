@@ -654,6 +654,11 @@
         color: var(--color-blue);
     }
 
+    .post-author a {
+        font-weight: bold;
+        color: var(--color-blue);
+    }
+
     /*.featured-article-small-container*/ .post-date {
         float: right;
         font-family: var(--font-regular);

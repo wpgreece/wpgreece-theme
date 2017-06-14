@@ -1798,6 +1798,7 @@
      .author-box {
         margin-top: 8rem;
         background: #f9f9f9;
+        clear: both;
     }
 
     .author-box img.avatar {

@@ -99,7 +99,12 @@
             <div class="text">
 
                 <?php the_content();?>
-
+                
+                <!-- ACF GALLERY--> 
+                <?php if( get_field('image_grid') ): ?>
+                    <?php the_field('image_grid'); ?>
+                <?php endif; ?>
+                
                 <!-- AUTHOR META -->
 
                 <div class="row author-box">

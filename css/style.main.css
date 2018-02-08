@@ -512,6 +512,13 @@
         top: -15rem;
     }
 
+    @media (min-height: 1023px) {
+    	.single .featured-article-big-container {
+        position: relative;
+        top: -15rem;
+    	}
+    }
+
     .featured-article-big-container h3.featured-article-title {
         font-family: var(--font-regular);
         font-size: 3.5rem;

@@ -515,7 +515,7 @@
     @media (min-height: 1023px) {
     	.single .featured-article-big-container {
         position: relative;
-        top: -15rem;
+        top: 0rem;
     	}
     }
 

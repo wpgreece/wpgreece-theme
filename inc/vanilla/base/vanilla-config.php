@@ -103,7 +103,7 @@
      * 
      * @return void
      */
-
+/*
     function vanilla_config_disable_admin_bar () {
 
         // Sets the admin bar filter to return false.
@@ -111,9 +111,9 @@
         add_filter( 'show_admin_bar', '__return_false' );
 
 
-    }
+    } 
 
-    
+    */
 
     /**
      * Sets up capabilities that this theme supports.

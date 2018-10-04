@@ -477,7 +477,7 @@
     }
 
     .laptop .featured-article-big {
-        margin-bottom: 30rem;
+        margin-bottom: 5rem;
     }
 
         .single .featured-article-big {
@@ -503,8 +503,8 @@
         }
 
         .laptop .featured-article-big-container {
-            position: absolute;
             width: 85%;
+            margin-top: -13rem;
         }
 
     .single .featured-article-big-container {

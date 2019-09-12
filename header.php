@@ -36,7 +36,7 @@
             
             <!-- Main navigation -->
 
-            <div class="small-right laptop-column-55 large-column-60">
+            <div class="small-right laptop-column-55 large-column-50">
                 
                 <nav class="navigation responsiville-mobimenu">
 

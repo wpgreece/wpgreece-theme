@@ -4,5 +4,5 @@
     <a href = "<?php echo get_field( 'speakerdeck', 'option' ); ?>" target="_blank" title = "Speaker Deck"><span class="speakerdeck"></span></a>
     <a href = "<?php echo get_field( 'instagram_page', 'option' ); ?>" target="_blank" title = "Instagram page"><span class="instagram"></span></a>
     <a href = "<?php echo get_field( 'youtube', 'option' ); ?>" target="_blank" title = "Youtube Channel"><span class="youtube"></span></a>
-    <a href = "<?php echo get_field( 'flickr_page', 'option' ); ?>" target="_blank" title = "Flickr"><span class="flickr2"></span></a>
+    <!-- <a href = "<?php echo get_field( 'flickr_page', 'option' ); ?>" target="_blank" title = "Flickr"><span class="flickr2"></span></a> -->
 </p>

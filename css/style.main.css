@@ -310,6 +310,12 @@
         font-size: 3rem;
     }
 
+    span.flickr:before {
+        font-family: var(--font-icon);
+        content: "\eaa4";
+        font-size: 3rem;
+    }
+
     .sub-menu {
         top: 3.5rem;
         border-radius: 0.4rem;

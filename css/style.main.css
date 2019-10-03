@@ -310,7 +310,7 @@
         font-size: 3rem;
     }
 
-    span.flickr:before {
+    span.flickr2:before {
         font-family: var(--font-icon);
         content: "\eaa4";
         font-size: 3rem;

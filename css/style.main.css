@@ -669,7 +669,7 @@
 
     .post-author a {
         font-weight: bold;
-        color: var(--color-blue);
+        color: var(--color-blue) !important;
     }
 
     /*.featured-article-small-container*/ .post-date {

@@ -104,21 +104,18 @@
         background: var(--color-blue);
     }
 
-    .logo {
+    .logo a,
+    .logo h1 {
+        line-height: 1;
+        font-size: 5rem;
+        padding: 0 !important;
+        margin: 0 !important;
     }
-
-        .logo a,
-        .logo h1 {
-            line-height: 1;
-            font-size: 5rem;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
 
     /* Main header navigation menus. */
 
     .laptop header .navigation {
-        margin-top: 5rem;
+        margin-top: 2rem;
     }
 
     .main-navigation li {
@@ -193,7 +190,7 @@
             }
 
     .footer-social {
-        margin-top: 4rem;
+        margin-top: 1.2rem;
     }
 
     /* Fixed menu on scroll.*/
@@ -510,16 +507,15 @@
 
         .laptop .featured-article-big-container {
             width: 85%;
-            margin-top: 7rem;
+            margin-top: -8rem;
         }
 
     .single .featured-article-big-container {
         position: relative;
-        top: -15rem;
     }
 
     @media (min-height: 1023px) {
-    	.single .featured-article-big-container {
+    	.small .single .featured-article-big-container {
         position: relative;
         top: 0rem;
     	}

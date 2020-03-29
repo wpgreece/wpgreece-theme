@@ -104,21 +104,18 @@
         background: var(--color-blue);
     }
 
-    .logo {
+    .logo a,
+    .logo h1 {
+        line-height: 1;
+        font-size: 5rem;
+        padding: 0 !important;
+        margin: 0 !important;
     }
-
-        .logo a,
-        .logo h1 {
-            line-height: 1;
-            font-size: 5rem;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
 
     /* Main header navigation menus. */
 
     .laptop header .navigation {
-        margin-top: 5rem;
+        margin-top: 2rem;
     }
 
     .main-navigation li {
@@ -164,7 +161,7 @@
 
             .main-navigation ul {
                 padding: 1rem;
-                box-shadow: 0 5px 7px #f6f6f6;       
+                box-shadow: 0 0px 5px #1e1e1e2e;     
             }
 
                 .main-navigation ul li a {
@@ -188,12 +185,12 @@
                 border: 1px solid white;
                 color: var(--color-blue);
                 background: white;
-                border-radius: 0.3rem;
+                border-radius: 0em;
                 font-weight: bold;
             }
 
     .footer-social {
-        margin-top: 4rem;
+        margin-top: 1.2rem;
     }
 
     /* Fixed menu on scroll.*/
@@ -318,7 +315,7 @@
 
     .sub-menu {
         top: 3.5rem;
-        border-radius: 0.4rem;
+        border-radius: 0rem;
         margin: 0 0.2rem;
     }
 
@@ -326,6 +323,9 @@
         top: initial;
     }
 
+    .responsiville-mobimenu-burger span {
+        text-transform: uppercase;
+    }
 /***********************************************************************************************************
 
     ██╗  ██╗     ██████╗     ███╗   ███╗    ███████╗        ██████╗      █████╗      ██████╗     ███████╗
@@ -510,16 +510,15 @@
 
         .laptop .featured-article-big-container {
             width: 85%;
-            margin-top: 7rem;
+            margin-top: -8rem;
         }
 
     .single .featured-article-big-container {
         position: relative;
-        top: -15rem;
     }
 
     @media (min-height: 1023px) {
-    	.single .featured-article-big-container {
+    	.small .single .featured-article-big-container {
         position: relative;
         top: 0rem;
     	}

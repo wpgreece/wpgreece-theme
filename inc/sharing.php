@@ -11,8 +11,6 @@
 
             $facebookURL = 'https://www.facebook.com/sharer/sharer.php?u='.$shortURL;
 
-            $googleURL = 'https://plus.google.com/share?url='.$shortURL;
-
             $pinterestURL = 'https://pinterest.com/pin/create/button/?url='.$shortURL. '&amp;media='.$WPGCThumbnail.'&amp;description='.$shortTitle;
 
             $mailTo = 'mailto:?subject=Σου προτείνω να δεις αυτό το άρθρο&amp;body=Ρίξε μια ματιά εδώ: ' .$shortURL;
@@ -29,10 +27,6 @@
 
                 <li>
                     <a class="share-link twitter" href="<?php echo $twitterURL ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/twitter.png" alt = "Share on Twitter" /></a>
-                </li>
-
-                <li>
-                    <a class="share-link google-plus" href="<?php echo $googleURL ?>"><img src = "<?php bloginfo ( 'template_url' ) ?>/img/social/google-plus.png" alt = "Share on Goolge+" /></a>
                 </li>
 
                 <li>

@@ -251,13 +251,13 @@
         } else if ( is_category() ) {
 
             // Category archive.
-            _e( 'News archive - ', 'nevma-theme' );
+            // _e( 'News archive - ', 'nevma-theme' );
             single_cat_title();
 
         } else if ( is_tag() ) {
 
             // Tag archive.
-            _e( 'News archive - ', 'nevma-theme' );
+            // _e( 'News archive - ', 'nevma-theme' );
             single_tag_title();
 
         } else if ( is_post_type_archive() ) {
@@ -273,13 +273,13 @@
         } else if ( is_author() ) {
 
             // Author archive.
-            _e( 'Author archive - ', 'nevma-theme' );
+            // _e( 'Author archive - ', 'nevma-theme' );
             the_author();
 
         } else if ( is_archive() ) {
 
             // Date archive.
-            _e( 'News archive - ', 'nevma-theme' ); 
+            // _e( 'News archive - ', 'nevma-theme' ); 
 
             if ( is_year() ) {
                 echo get_query_var( 'year' );

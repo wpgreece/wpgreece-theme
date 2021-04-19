@@ -1,13 +1,13 @@
 <!-- FEATURED ARTICLE -->
 
 <article class = "featured-article-big column tablet-column-100">
-
+<a href = "<?php the_permalink(); ?>" title = "<?php the_title(); ?>">
     <?php if ( has_post_thumbnail() ) : ?>
 
         <?php the_post_thumbnail( 'featured-post-100' ); ?>
 
     <?php else: ?>
-
+        
         <?php 
             $image_acf = get_field('default_featured_image', 'option');
             $size_img_acf_page = 'featured-post-100';
@@ -16,7 +16,7 @@
              <img src = "<?php echo $link_image_acf; ?>" alt = "<?php the_title(); ?>" />
 
     <?php endif; ?>
-
+        </a>
     <div class="featured-article-big-container <?php if ( is_front_page() ) { echo "homepage-enabled"; } ?>">
 
         <div class="post-meta">

@@ -1,13 +1,21 @@
-/************************************************************************************************************
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
 
-    ███████╗    ██╗         ██╗    ██████╗     ███████╗    ███████╗    ██╗  ██╗     ██████╗     ██╗    ██╗
-    ██╔════╝    ██║         ██║    ██╔══██╗    ██╔════╝    ██╔════╝    ██║  ██║    ██╔═══██╗    ██║    ██║
-    ███████╗    ██║         ██║    ██║  ██║    █████╗      ███████╗    ███████║    ██║   ██║    ██║ █╗ ██║
-    ╚════██║    ██║         ██║    ██║  ██║    ██╔══╝      ╚════██║    ██╔══██║    ██║   ██║    ██║███╗██║
-    ███████║    ███████╗    ██║    ██████╔╝    ███████╗    ███████║    ██║  ██║    ╚██████╔╝    ╚███╔███╔╝
-    ╚══════╝    ╚══════╝    ╚═╝    ╚═════╝     ╚══════╝    ╚══════╝    ╚═╝  ╚═╝     ╚═════╝      ╚══╝╚══╝ 
-                                                                                                          
- ************************************************************************************************************/
+
+
+/*****************************************************************************
+
+    ███████╗██╗     ██╗██████╗ ███████╗███████╗██╗  ██╗ ██████╗ ██╗    ██╗
+    ██╔════╝██║     ██║██╔══██╗██╔════╝██╔════╝██║  ██║██╔═══██╗██║    ██║
+    ███████╗██║     ██║██║  ██║█████╗  ███████╗███████║██║   ██║██║ █╗ ██║
+    ╚════██║██║     ██║██║  ██║██╔══╝  ╚════██║██╔══██║██║   ██║██║███╗██║
+    ███████║███████╗██║██████╔╝███████╗███████║██║  ██║╚██████╔╝╚███╔███╔╝
+    ╚══════╝╚══════╝╚═╝╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝
+
+ *****************************************************************************/
 
 
 
@@ -21,7 +29,7 @@
 
     /* Slideshow loading animation. */
 
-    @keyframes home-slideshow-spinner {
+    @keyframes responsiville-slideshow-spinner {
         0% {
             transform: rotateZ(0deg);
         }
@@ -33,16 +41,42 @@
         }
     }
     
+    .small .responsiville-slideshow-loading::before {
+        font-size: 3rem;
+    }
+    
+    .tablet .responsiville-slideshow-loading::before {
+        font-size: 4rem;
+    }
+
+    .laptop .responsiville-slideshow-loading::before {
+        font-size: 5rem;
+    }
+
     .responsiville-slideshow-loading::before {
         content: "\E811";
-        font-size: 5rem;
+        line-height: 0;
         font-family: 'Responsiville Icons';
         position: absolute;
-        top: 40%;
+        top: 50%;
+        transform: translateY(-50%);
         left: 0;
         width: 100%;
         text-align: center;
-        animation: home-slideshow-spinner 0.5s linear infinite;
+        animation: responsiville-slideshow-spinner 0.5s linear infinite;
+    }
+
+
+
+    /* Slideshow container. */
+
+    .responsiville-slideshow-enabled .responsiville-slideshow-slides-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 
 
@@ -73,43 +107,70 @@
             display: block;
         }
 
+            .small .responsiville-slideshow-next,
+            .small .responsiville-slideshow-previous {
+                font-size: 3rem;
+            }
+
+            .tablet .responsiville-slideshow-next,
+            .tablet .responsiville-slideshow-previous {
+                font-size: 4rem;
+            }
+
+            .laptop .responsiville-slideshow-next,
+            .laptop .responsiville-slideshow-previous {
+                font-size: 5rem;
+            }
+
             .responsiville-slideshow-next,
             .responsiville-slideshow-previous,
             .responsiville-slideshow-next:hover,
             .responsiville-slideshow-previous:hover {
                 padding: 0;
                 margin: 0;
-                background: transparent;
+                width: 1em;
+                height: 1em;
+                line-height: 0.9em;
+                text-align: center;
                 box-shadow: none;
                 position: absolute;
                 z-index: 1;
                 top: 50%;
                 transform: translateY(-50%);
+                border-radius: 50%;
+                color: var(--color-responsiville-gray-dark);
+                background-color: var(--color-responsiville-gray-light);
+            }
+
+            .responsiville-slideshow-next:hover,
+            .responsiville-slideshow-previous:hover {
+                color: var(--color-responsiville-gray-light);
+                background-color: var(--color-responsiville-gray-dark);
             }
 
             .responsiville-slideshow-next {
-                right: calc(2*var(--grid-gutter));
+                right: 2rem;
             }
 
             .responsiville-slideshow-previous {
-                left: calc(2*var(--grid-gutter));
+                left: 2rem;
             }
 
             .responsiville-slideshow-next-icon::before,
             .responsiville-slideshow-previous-icon::before {
                 display: inline-block;
                 font-family: "Responsiville icons";
-                color: var(--color-gray-dark);
-                font-size: 6rem;
-                line-height: 1;
+                position: relative;
             }
             
             .responsiville-slideshow-next-icon::before {
-                content: "\E816";
+                content: "\E848";
+                left: 2px;
             }
 
             .responsiville-slideshow-previous-icon::before {
-                content: "\E817"; 
+                content: "\E847";
+                right: 2px;
             }
 
             .responsiville-slideshow-next-text,
@@ -137,23 +198,37 @@
         }
 
         .responsiville-slideshow-bullets.tl {
-            top: 0;
+            top: 2rem;
             left: 0;
         }
 
         .responsiville-slideshow-bullets.tr {
-            top: 0;
+            top: 2rem;
             right: 0;
         }
 
         .responsiville-slideshow-bullets.bl {
-            bottom: 0;
+            bottom: 2rem;
             left: 0;
         }
 
         .responsiville-slideshow-bullets.br {
-            bottom: 0;
+            bottom: 2rem;
             right: 0;
+        }
+
+        .responsiville-slideshow-bullets.ml,
+        .responsiville-slideshow-bullets.mr {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .responsiville-slideshow-bullets.ml {
+            left: 2rem;
+        }
+
+        .responsiville-slideshow-bullets.mr {
+            right: 2rem;
         }
 
         .responsiville-slideshow-bullets.tc,
@@ -171,28 +246,32 @@
             bottom: 2rem;
         }
 
-        
+
+
             /* The slideshow bullets */     
 
             .responsiville-slideshow-bullet {
                 padding: 0;
                 margin: 0 0.5rem;
-                background: transparent;
+                background-color: transparent;
                 box-shadow: none;
                 position: relative;
                 display: inline-block;
-                width: 3rem;
-                height: 3rem;
-                background-color: var(--color-white);
-                border-width: 0.2rem;
-                border-color: var(--color-gray-dark);
+                width: 2rem;
+                height: 2rem;
+                background-color: var(--color-responsiville-gray-light);
                 border-radius: 50%;
-                border-style: solid;
+            }
+
+            .responsiville-slideshow-bullets.ml .responsiville-slideshow-bullet,
+            .responsiville-slideshow-bullets.mr .responsiville-slideshow-bullet {
+                display: block;
+                margin: 1rem 0;
             }
 
             .responsiville-slideshow-bullet:hover,
             .responsiville-slideshow-bullet.responsiville-slideshow-bullet-selected {
-                background-color: var(--color-gray-dark);
+                background-color: var(--color-responsiville-gray-dark);
             }
 
                 .responsiville-slideshow-bullet-icon,

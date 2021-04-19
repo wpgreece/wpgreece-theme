@@ -1,6 +1,126 @@
+================================================================================
+#                                                                              #
+#    Responsiville changelog                                                   #
+#    -----------------------                                                   #
+#    <developer's cut>                                                         #
+#                                                                              #
+================================================================================
 
-Responsiville changelog <developer's cut>
-=========================================
+
+
+v-1.5
+================
+since 01/12/2018
+
+  - Popup element has been added.
+
+  - Vertical rhythm in text components is now handled on a sibling elements
+    logic. Each text element gets a top margin relative to its previous text
+    element in the DOM. 
+  
+  - Added image loading handling utility and using it in all places where we 
+    need to act after an image or a set of images have finished loading. 
+
+
+
+v-1.4
+================
+since 22/11/2017
+
+  - Parallax element has become mature. 
+
+  - Mobimenu calls Drawers menu inside it automatically. 
+
+  - Bug fixes here and there. 
+
+  - Added more icons to the Responsiville icon font.
+
+  - Added a keyword text search to the icon font demo.
+
+  - Fixed scrollmenu bug, when scrolling up the offsetTop was not taken into
+    account correctly. 
+
+  - Fixed scrollmenu and parallax bug when calculating page scroll position
+    cross browser. 
+
+  - Added $document variable to the list of important cached page elements of
+    each Responsiville module.
+
+  - Fixed a slideshow bug where the module was not actually waiting for the
+    images inside the first slide to load before becoming enabled (when the
+    corresponding wait option had been set to true).
+
+  - Fixed bug in Mobimenu where the element ran on its own cloned element, after
+    it had run from within a Scrollmenu element.
+
+
+
+v-1.3
+================
+since 01/06/2017
+
+  - No upgrade issues. 
+
+  - All Responsiville elements have a 'responsiville-api' data attribute, which
+    is saved on the main DOM element of the Responsiville element, and exposes
+    the full Responsiville object to the developer for custom handling. 
+
+  - Enter/leave values of Responsiville elements can now be used autonomously,
+    without having to set them both, when declaring the elements. Also, 
+    shorthand properties can be used like "laptop >>", "<< tablet", "*".
+
+  - Reduced the default Responsiville throttle time to 100ms, from 250ms.
+
+  - Slideshow slides are wrapped in a container of their own, so that they can
+    be separated from the rest of the slideshow DOM elements. 
+
+  - Fixed an Equalheights bug when the elements that are to be made equalheights
+    simply are not there at all.
+
+  - When Scrollmenu runs automatically, which is the default, has been changed 
+    to run before the Mobimenu and the Megamenu. The reason is that it also
+    checks inside its elements for possible Mobimenus and Megamenus and, if it
+    were left to run after them, it would create them twice. Also, for the same
+    reason, the Mobimenu and the Megamenu, when running on an element, check
+    first if they have possibly already ran on that element and stop.
+
+  - Corrected Responsiville Accordion open/close events.
+
+  - Added a Responsiville custom responsive object facility, via a function
+    Responsiville.createResponsiveObject( obj ), which extends any given object
+    with enter/leave states that correspond to enable/disable functions.
+
+  - Added Slideshow slide left and right transition effect.
+
+  - Added a Megamenu 'slide-ltr' option for left-to-right slide effect of the
+    megamenu element.
+
+  - Megamenu and Mobimenu anchor elements that contain a hash (#) are treated
+    depending on the fact whether their "href" attribute points to an actual
+    page element or is simply there for structural purposes. 
+
+  - Added a Responsiville Parallax effects element.
+
+  - Added a Responsiville Drawers element.
+
+  - Added a Responsivill Responsiveelements module to cater for 
+
+  - Added Mobimenu opening and closing classes.
+
+  - Added Responsiville Accordion panels opening and closing classes.
+
+  - Started a Responsiville Popup element.
+
+  - Element slugs are now defined by automatically advancing counters. Also, 
+    slugs are used in element console logging.
+
+  - Continuously updating icon font files. Check the documentation for changes. 
+
+  - Fixed buttons, inputs and selects box dimensions for all browsers and OSs.
+
+  - Documentation updates. 
+
+  - Bug fixing here and there. 
 
 
 
@@ -8,8 +128,8 @@ v-1.2
 ================
 since 01/01/2017
 
-    Upgrade
-    =======
+    Upgrade notice
+    ==============
     1) All scripts in config.php.
     2) No scripts in theme header or footer.
     3) Responsiville flags in config.php.
@@ -19,14 +139,31 @@ since 01/01/2017
 
     - Added a z-index property to the Scrollmenu module.
 
+    - Added a slug property to all elements to allow for multiple instances of 
+      the same responsiville behaviour.
+
+    - Weird cases appear when a navigation element needs to be a megamenu, a 
+      mobimenu and a scrollmenu at the same time. This is because the mobimenu
+      and the scrollmenu clone the original element and work on the clone, but
+      this way certain selectors coincidentally appear more times that intended
+      inside the DOM. For instance, cloning an element, which is meant to be 
+      used as a megamenu, for mobimenu behaviour (note that mobimenus run before
+      megamenus in Responsiville) makes the element appear twice in the DOM, so,
+      when the actual megamenu runs, it will find two megamenus to run on, but
+      this is prevented. Also, in the same manner, when the megamenu is in an 
+      external container (ie not a sibling of the megamenu activator) and it is 
+      also enabled as a scrollmenu, then the cloned megamenu inside the 
+      scrollmenu container must be take extra precautions to not confuse the 
+      original megamenu container with the megamenu container of the clone.
+
 
 
 v-1.1
 ================
 since 01/09/2016
 
-    Upgrade
-    =======
+    Upgrade notice
+    ==============
     In order for one to upgrade Vanilla to this version of Responsiville one
     needs to follow these three steps:
 

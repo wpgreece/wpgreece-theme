@@ -26,9 +26,7 @@
             <li><strong>Responsiville modules</strong>: scripts that define commom elements.</li>
         </ol>
 
-        <p>
-            Global settings script <strong>(optional)</strong>
-        </p>
+        <h3>1. Global settings script (optional)</h3>
 
         <p>
             Controls whether the framework auto initialises or the developer will manually initialise it when they need and whether the debug mode is on or off. These global variables need to be declared well before the actual scripts are included, but they are totally optional. If they are left out then the framework initialises automatically and the debug mode is off.
@@ -43,7 +41,7 @@
             </script>
         --></code></pre>
 
-        <p>Core scripts <strong>(mandatory)</strong></p>
+        <h3>2. Core scripts (mandatory)</h3>
 
         <p>
             These are the main Responsiville scripts that define the basic framework behaviour and functionality. They can be included in the head or before closing the body element of a web page, but including them in the head helps the framework initialise more quickly, be available during page load before the <code>DOMContentLoaded</code> event, and avoid some potential &quot;floucs&quot;.
@@ -57,7 +55,7 @@
             <script type="text/javascript" charset="utf-8" src="responsiville.main.run.js"></script>
         --></code></pre>
 
-        <p>Responsiville modules <strong>(include what you need)</strong></p>
+        <h3>3. Responsiville modules (include what you need)</h3>
 
         <p>
             Responsiville modules are common, reusable HTML components such as accordions, mobile menus, slideshows, etc, which build upon the Responsiville framework and utilise its responsive behaviour. You may include any of them you need, either right after the Responsiville core scripts, if they are included in the head, or independently before closing the body element.

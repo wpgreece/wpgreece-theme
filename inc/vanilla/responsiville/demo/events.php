@@ -32,6 +32,14 @@
 
             });
 
+            // Do something when window is resized (throttled).
+            responsiville.on( 'resize', function () {
+
+                // The "this" scope refers to the responsiville instance.
+                console.dir( 'The window has been resized' );
+
+            });
+
             // Do something when entering the tablet breakpoint.
             responsiville.on( 'enter.tablet', function () {
 
@@ -47,7 +55,7 @@
             
         <pre><code class = "language-javascript">
             // Create a slideshow on a designated container.
-            var slideshow = Responsiville.Slideshow({container: '#slideshow'});
+            var slideshow = new Responsiville.Slideshow({container: '#slideshow'});
 
             // So something when a slide of the slideshow is shown.
             slideshow.on( 'slideShown', function () {
@@ -72,7 +80,7 @@
             
         <pre><code class = "language-javascript">
             // Create a megamenu on a designated element.
-            var megamenu = Responsiville.Megamenu({activator: '#megamenu'});
+            var megamenu = new Responsiville.Megamenu({activator: '#megamenu'});
 
             // So something when the megamenu is opened.
             megamenu.on( 'menuOpened', function () {
@@ -108,6 +116,31 @@
 
                 // The "this" scope refers to the responsiville instance.
                 console.dir( 'The Responsiville framework has initialised' );
+
+            });
+        </code></pre>
+
+        <p>
+            Be careful, though, if you bind a callback to this event -or any other event, for that matter- after the event has fired, then your callback will not execute. You must always remember the sequence of events for each Responsiville element and bind your callbaks ahead of time.
+        </p>
+
+
+
+        <h2>Main#resize event</h2>
+
+        <p>
+            The Responsiville framework has its own <code>resize</code> event on the <code>Responsiville.Main</code> object. It follows the window resize event and is useful for throttled execution of functions. Also, it runs chronologically after all the core Responsiville elements have run on the window resize event and thus have made any necessary adjustments to their layout, style and functionality.
+        </p>
+
+        <pre><code class = "language-javascript">
+            // Acquire the Responsiville singleton instance.
+            var responsiville = Responsiville.Main.getInstance();
+
+            // Do something when window is resized (throttled).
+            responsiville.on( 'resize', function () {
+
+                // The "this" scope refers to the responsiville instance.
+                console.dir( 'The window has been resized' );
 
             });
         </code></pre>
@@ -177,6 +210,10 @@
 
             });
         </code></pre>
+
+        <p>
+            This is the designated way for you to easily implement <strong>custom responsive behaviour</strong> in your web pages.
+        </p>
 
 
 

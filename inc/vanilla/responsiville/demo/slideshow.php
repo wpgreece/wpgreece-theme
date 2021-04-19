@@ -61,7 +61,7 @@
 
         <pre><code class = "language-javascript">
             var slideshow = new Responsiville.Slideshow({
-                element    : '.responsiville-slideshow',
+                container  : '.responsiville-slideshow',
                 resizeMode : 'maxSlide',
                 enter      : 'laptop, desktop, large, xlarge',
                 leave      : 'small, mobile, tablet'
@@ -74,11 +74,33 @@
 
 
 
-        <h2>Automatic navigation</h2>
+        <h3>Automatic navigation elements</h3>
 
         <p>
-            The navigation elements of the slideshow are created automatically by the module. These are one bullet for each slide, so that the user can choose any slide they like on demand, a next and a previous button, so that the user can move forwards and backwards in the slideshow. The developer needs not create any navigation elements for the slideshow, but they can style the ones that the module creates any way they see fit.
+            The navigation elements of the slideshow are created automatically by the module. These are <strong>one bullet for each slide</strong>, so that the user can choose any slide they like on demand, <strong>a next and a previous button</strong>, so that the user can move forwards and backwards in the slideshow. The developer needs <strong>not</strong> create any navigation elements for the slideshow. They can simply style the ones that the module creates any way they see fit.
         </p>
+
+        <p>
+            However, one can also define their own navigation elements and use the same classes as the original ones. They will function properly as long as they are found inside the slideshow container.
+        </p>
+
+
+
+        <h2>API data attribute</h2>
+
+        <p>
+            If the slideshow has not been created manually, which is the easiest and most common case, one can obtain an instance of the underlying <code>Responsiville.Slideshow</code> Javascript object, so that it can manipulate the slideshow via its API, by accessing its <code>responsiville-slideshow-api</code> data attribute, like this:
+        </p>
+        <pre><code class = "language-javascript">
+            // Obtain the underlying Responsiville.Slideshow Javascript object.
+            var slideshow = $( '.responsiville-slideshow' ).data( 'responsiville-slideshow-api' );
+
+            // Programmatically select the next slide of the slideshow.
+            slideshow.next();
+
+            // Programmatically select the previous slide of the slideshow.
+            slideshow.previous();
+        </code></pre>
 
 
 
@@ -96,6 +118,10 @@
             );
         </script>
 
+        <p>
+            <a href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville Javascript API" target = "_blank" class = "button">Responsiville Javascript API</a>
+        </p>
+
 
 
         <h2>Working examples</h2>
@@ -105,25 +131,30 @@
         </p>
 
         <style type = "text/css">
-            .responsiville-slideshow .slide .excerpt {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                padding: 2em 2em;
-                margin: 0;
-                color: var(--color-white);
-                background-color: var(--color-gray-dark);
+            .responsiville-slideshow-example {
+                margin-bottom: var(--text-rhythm);
             }
+                .responsiville-slideshow .slide .excerpt {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: 0 2em 2em 2em;
+                    margin: 0;
+                    opacity: 0.85;
+                    color: var(--color-gray-dark);
+                    background-color: var(--color-gray-light);
+                }
         </style>
 
         <div class = "responsiville-slideshow responsiville-slideshow-example" 
 
-             data-responsiville-slideshow-bulletspos="tc"
-             data-responsiville-slideshow-resizemode="maxSlide">
+             data-responsiville-slideshow-bulletspos = "bc"
+             data-responsiville-slideshow-effect     = "slide"
+             data-responsiville-slideshow-resizemode = "maxSlide">
 
             <div class = "slide">
-                <img src = "img/photo4.jpg" alt="" />
+                <img src = "img/photo4.jpg" alt = "" />
                 <div class = "excerpt">
                     <h3>This is the title of slide 1</h3>
                     <p>
@@ -132,7 +163,7 @@
                 </div>
             </div>
             <div class = "slide">
-                <img src = "img/photo3.jpg" alt="" />
+                <img src = "img/photo3.jpg" alt = "" />
                 <div class = "excerpt">
                     <h3>This is the title of slide 2</h3>
                     <p>
@@ -141,7 +172,7 @@
                 </div>
             </div>
             <div class = "slide">
-                <img src = "img/photo1.jpg" alt="" />
+                <img src = "img/photo1.jpg" alt = "" />
                 <div class = "excerpt">
                     <h3>This is the title of slide 3</h3>
                     <p>
@@ -149,7 +180,66 @@
                     </p>
                 </div>
             </div>
+            <div class = "slide">
+                <img src = "img/photo2.jpg" alt = "" />
+                <div class = "excerpt">
+                    <h3>This is the title of slide 4</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore odio, recusandae eum quibusdam quasi magnam quo. Animi.
+                    </p>
+                </div>
+            </div>
         </div>
+
+        <p>
+            And the code for this is:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="responsiville-slideshow responsiville-slideshow-example" 
+
+                 data-responsiville-slideshow-bulletspos="bc"
+                 data-responsiville-slideshow-effect="slide"
+                 data-responsiville-slideshow-resizemode="maxSlide">
+
+                <div class="slide">
+                    <img src="img/photo4.jpg" alt="" />
+                    <div class="excerpt">
+                        <h3>This is the title of slide 1</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius a nemo voluptate eligendi dolorem aut minima illum, tenetur earum! Error tenetur et animi fugiat ab.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/photo3.jpg" alt="" />
+                    <div class="excerpt">
+                        <h3>This is the title of slide 2</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam nobis, unde nulla. Magni, delectus facilis saepe praesentium dolor. Voluptate, facere!
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/photo1.jpg" alt="" />
+                    <div class="excerpt">
+                        <h3>This is the title of slide 3</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore odio, recusandae eum quibusdam quasi magnam quo. Animi.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/photo2.jpg" alt="" />
+                    <div class="excerpt">
+                        <h3>This is the title of slide 4</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore odio, recusandae eum quibusdam quasi magnam quo. Animi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        --></code></pre>
 
 
 

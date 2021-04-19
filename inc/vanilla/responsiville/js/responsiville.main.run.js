@@ -7,5 +7,7 @@
  */
 
 if ( Responsiville.Main.AUTO_RUN ) {
+
     Responsiville.Main.autoRun();
+    
 }

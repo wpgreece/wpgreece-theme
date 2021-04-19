@@ -31,6 +31,11 @@
  *                                         function calls as a result of 
  *                                         repeated operations like the browser 
  *                                         resize event.
+ * @property {boolean} options.slug        A special codename for the instance
+ *                                         of the element, to be used as a class
+ *                                         on  its container and as a key in
+ *                                         arrays where it is grouped with other
+ *                                         elements of its kind. 
  * @property {Array}   options.breakpoints Array of extra breakpoints to include
  *                                         to the framework. Each breakpoint is 
  *                                         an associative array like { name: 
@@ -64,12 +69,25 @@ Responsiville.Main = function ( options ) {
     this.options  = jQuery.extend( this.options, Responsiville.Main.defaults, options );
     this.codeName = 'responsiville.main';
 
+    // Page dimensions.
 
+    this.width  = 0;
+    this.height = 0;
 
     // Cache important DOM elements (note that it might be too early for the body here).
 
-    this.$window = jQuery( window );
     this.$html   = jQuery( 'html' );
+    this.$body   = jQuery( 'body' );
+    this.$window = jQuery( window );
+
+
+
+    // Uniquely identify this element.
+    
+    if ( this.options.slug == '' ) {
+        Responsiville.Main.elementsCounter = Responsiville.Main.elementsCounter !== undefined ? ++Responsiville.Main.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Main.elementsCounter;
+    }
 
     
 
@@ -98,7 +116,7 @@ Responsiville.Main = function ( options ) {
 
     toLog += 'breakpoints:\n';
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         var breakpoint = this.options.breakpoints[k];
         toLog += breakpoint.name + '\t' + breakpoint.width + 'px' + ( k < length-1 ? '\n' : '' );
@@ -115,8 +133,21 @@ Responsiville.Main = function ( options ) {
 
 
 
+    // Body initialisation classes.  
+
+    jQuery( (function() {
+        this.$html.addClass( 'responsiville-domcontentloaded');
+    }).bind( this ));
+    
+    this.$window.on( 'load', (function () {
+        this.$html.addClass( 'responsiville-load');
+    } ).bind( this ) );
+
+
+
     // Adjust to the current viewport and device characteristics for the first time.
 
+    this.calculateDimensions();
     this.adjust();
 
 };
@@ -151,7 +182,8 @@ Responsiville.Main.defaults = {
     debug       : false,
     debugUI     : false,
     debugPos    : 'br',
-    throttle    : 250,
+    throttle    : 100,
+    slug        : '',
     breakpoints : [
         { name: 'small',   width:   320, icon: '\uE800' }, // Screens    0 -  320
         { name: 'mobile',  width:   599, icon: '\uE801' }, // Screens  321 -  599
@@ -232,30 +264,29 @@ Responsiville.Main.prototype.init = function () {
 
     // In the case the framework was initialised automatically in the HEAD before the BODY was created.
 
-    var bodyElementNotCreated = typeof this.$body === 'undefined' || this.$body.length === 0;
+    var bodyElementNotYetCreated = typeof this.$body === 'undefined' || this.$body.length === 0;
 
-    if ( bodyElementNotCreated ) {
+    if ( bodyElementNotYetCreated ) {
         this.$body = jQuery( 'body' );
+        this.$document = jQuery( document );
     }
 
 
 
     // Setup the debugging tools of the framework.
 
-    Responsiville.Debug.setupDebug();
+    this.on( 'init', () => {
+    
+        Responsiville.Debug.setupDebug();
+        
+    })
+
 
 
 
     // General debounced resize handler so that the rest of the code hooks to it instead of directly on window resize.
 
     this.$window.on( 'resize', Responsiville.debounce( this.windowResize, this.options.throttle, this ) );
-
-
-
-
-    // Run responsive adjustments once immediately.
-
-    this.adjust();
 
     
 
@@ -294,7 +325,7 @@ Responsiville.Main.prototype.registerBreakpoint = function ( breakpointName, bre
 
     var index = 0;
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         // Breakpoints have to be sorted by ascending screen width.
 
@@ -327,7 +358,7 @@ Responsiville.Main.prototype.registerBreakpoint = function ( breakpointName, bre
 
 Responsiville.Main.prototype.deregisterBreakpoint = function ( breakpointName ) {
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         var breakpoint = this.options.breakpoints[k];
 
@@ -349,6 +380,9 @@ Responsiville.Main.prototype.deregisterBreakpoint = function ( breakpointName ) 
 /**
  * Window resize event handler which takes care of manipulating the breakpoints, 
  * setting and unsetting them accordingly.
+ * 
+ * @fires Responsiville.Main#change
+ * @fires Responsiville.Main#change.breakpoint
  * 
  * @return {void}
  */
@@ -379,11 +413,11 @@ Responsiville.Main.prototype.adjust = function () {
 
     var addClasses = '';
 
-    for ( k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         breakpoint = this.options.breakpoints[k];
 
-        if ( window.innerWidth > breakpoint.width ) {
+        if ( this.width > breakpoint.width ) {
             addClasses += breakpoint.name + ' ';
         } else {
             break;
@@ -391,7 +425,7 @@ Responsiville.Main.prototype.adjust = function () {
 
     }
 
-    if ( window.innerWidth <= breakpoint.width ) {
+    if ( this.width <= breakpoint.width ) {
         addClasses += breakpoint.name + ' ';
     }
 
@@ -409,7 +443,7 @@ Responsiville.Main.prototype.adjust = function () {
 
     // Adds a class that indicates the current browser orientation.
     
-    if ( window.innerWidth >= window.innerHeight ) {
+    if ( this.width >= this.height ) {
         addClasses    += 'landscape ';
         removeClasses += 'portrait ';
     } else {
@@ -473,25 +507,33 @@ Responsiville.Main.prototype.adjust = function () {
         // Run the breakpoint change callbacks.
         
         this.runBreakpointChangeCallbacks();
+        
+        this.adjustCallbacksCalled = true;
 
 
         
         /**
          * Called after a breakpoint change has occured.
-         * 
+         *
          * @event Responsiville.Main#change
          */
 
         this.fireEvent( 'change' );
         
-        this.adjustCallbacksCalled = true;
+        /**
+         * Called after a breakpoint change has occured.
+         *
+         * @event Responsiville.Main#change.breakpoint
+         */
+
+        this.fireEvent( 'change.breakpoint' );
 
     }
 
 
 
     this.log( 
-        'window resized', 'window width: ' + window.innerWidth, 
+        'window resized', 'window width: ' + this.width, 
         ( breakpointChanged ? 'breakpoint changed from: ' + this.previousBreakpoint.name + '' : 'no breakpoint change' ),
         'current breakpoint: ' + this.currentBreakpoint.name
     );
@@ -522,6 +564,21 @@ Responsiville.Main.prototype.runBreakpointChangeCallbacks = function () {
 
 
 /**
+ * Calculates and caches internally the current viewport dimensions.
+ * 
+ * @return void
+ */
+
+Responsiville.Main.prototype.calculateDimensions = function () {
+
+    this.width  = window.innerWidth;
+    this.height = window.innerHeight;
+
+};
+
+
+
+/**
  * Runs all the function callbacks which are attached to the Responsiville Main
  * object's resize event. The call to this function has been registered as
  * throttled to begin with, so that the browser is protected from repeated calls
@@ -533,6 +590,8 @@ Responsiville.Main.prototype.runBreakpointChangeCallbacks = function () {
  */
 
 Responsiville.Main.prototype.windowResize = function () {
+
+    this.calculateDimensions();
 
     this.adjust();
 
@@ -597,6 +656,44 @@ Responsiville.Main.prototype.isDevice = function () {
 
 
 /**
+ * Compares a given breakpoint to the current breakpoint in order to determnine
+ * which one is bigger or if they are equal. Note that the comparison refers to
+ * the general breakpoint notion and not actual dimensions in pixels.
+ * 
+ * @param {string} testBreakpointName The breakpoint name against which to 
+ *                                    check. 
+ * 
+ * @return {boolean} A positive number if the given breakpoint is bigger than
+ *                   the current breakpoint, a negative number if it is smaller
+ *                   and zero if they are equal.
+ */
+
+Responsiville.Main.prototype.compareTo = function ( testBreakpointName ) {
+
+    var testBreakpointIndex    = 0;
+    var currentBreakpointIndex = 0;
+
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
+
+        var breakpoint = this.options.breakpoints[k];
+
+        if ( breakpoint.name == this.currentBreakpoint.name ) {
+            currentBreakpointIndex = k;
+        }
+
+        if ( breakpoint.name == testBreakpointName ) {
+            testBreakpointIndex = k;
+        }
+
+    }
+
+    return currentBreakpointIndex - testBreakpointIndex;
+
+};
+
+
+
+/**
  * Checks whether the current browser window size is currently at the given 
  * breakpoint(s). Useful in order to check if we are inside the range of a 
  * specific breakpoint.
@@ -613,15 +710,13 @@ Responsiville.Main.prototype.isDevice = function () {
 
 Responsiville.Main.prototype.is = function ( breakpointNames ) {
 
-    var k;
-    var testBreakpointName;
     var breakpointNamesArray = Responsiville.splitAndTrim( breakpointNames );
 
-    for ( k in breakpointNamesArray ) {
+    for ( var k=0, length=breakpointNamesArray.length; k<length; k++ ) {
 
-        testBreakpointName = breakpointNamesArray[k];
+        var testBreakpointName = breakpointNamesArray[k];
 
-        if ( this.currentBreakpoint && this.currentBreakpoint.name == testBreakpointName ) {
+        if ( this.compareTo( testBreakpointName ) ) {
             return true;
         }
         
@@ -634,71 +729,57 @@ Responsiville.Main.prototype.is = function ( breakpointNames ) {
 
 
 /**
- * Checks whether the current window is at a size smaller than the given 
+ * Checks whether the current window is at a breakpoint smaller than the given 
  * breakpoint. Remember that we are checking mobile first.
  * 
  * @param {string} testBreakpointName The breakpoint name against which to 
  *                                    check. 
  * 
- * @return {boolean} Whether the browser window is at a smaller breakpoint.
+ * @return {boolean} Whether the browser window is at a smaller breakpoint than 
+ *                   the given one.
  */
 
 Responsiville.Main.prototype.isSmallerThan = function ( testBreakpointName ) {
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
-
-        var breakpoint = this.options.breakpoints[k];
-
-        if ( breakpoint.name == testBreakpointName ) {
-            return window.innerWidth < breakpoint.width;
-        }
-
-    }
+    return this.compareTo( testBreakpointName ) < 0;
 
 };
 
 
 
 /**
- * Checks whether the current window is at a size equal or smaller than the 
- * given breakpoint.
+ * Checks whether the current window is at a breakpoint equal or smaller than 
+ * the given breakpoint.
  *
  * @param {string} testBreakpointName The breakpoint name against which to 
  *                                    check. 
  * 
- * @return {boolean} Whether the browser window is at an equal or smaller 
- *                   breakpoint.
+ * @return {boolean} Whether the browser window is at a breakpoint smaller or
+ *                   equal to the given one.
  */
 
 Responsiville.Main.prototype.isEqualOrSmallerThan = function ( testBreakpointName ) {
 
-    return this.is( testBreakpointName ) || this.isSmallerThan( testBreakpointName );
+    return this.compareTo( testBreakpointName ) <= 0;
 
 };
 
 
 
 /**
- * Checks whether the current window is at a size bigger than the given 
+ * Checks whether the current window is at a breakpoint bigger than the given 
  * breakpoint.
  * 
  * @param {string} testBreakpointName The breakpoint name against which to 
  *                                    check. 
  *                                    
- * @return {boolean} Whether the browser window is at bigger breakpoint. 
+ * @return {boolean} Whether the browser window is at a breakpoint bigger than
+ *                   the given one. 
  */
 
 Responsiville.Main.prototype.isBiggerThan = function ( testBreakpointName ) {
 
-    for ( var k = this.options.breakpoints.length-1; k >= 0; k-- ) {
-
-        var breakpoint = this.options.breakpoints[k];
-
-        if ( breakpoint.name == testBreakpointName ) {
-            return window.innerWidth > breakpoint.width;
-        }
-
-    }
+    return this.compareTo( testBreakpointName ) > 0;
 
 };
 
@@ -711,13 +792,13 @@ Responsiville.Main.prototype.isBiggerThan = function ( testBreakpointName ) {
  * @param {string} testBreakpointName The breakpoint name against which to 
  *                                    check. 
  *                                    
- * @return {boolean} Whether the browser window is at an equal or bigger
- *                   breakpoint. 
+ * @return {boolean} Whether the browser window is at a breakpoint bigger or 
+ *                   equal to the given one. 
  */
 
 Responsiville.Main.prototype.isEqualOrBiggerThan = function ( testBreakpointName ) {
 
-    return this.is( testBreakpointName ) || this.isBiggerThan( testBreakpointName );
+    return this.compareTo( testBreakpointName ) >= 0;
 
 };
 
@@ -743,7 +824,7 @@ Responsiville.Main.prototype.hasGrown = function () {
     var currentBreakpointWidth  = 0;
     var previousBreakpointWidth = 0;
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         var breakpoint = this.options.breakpoints[k];
 
@@ -783,13 +864,13 @@ Responsiville.Main.prototype.calculateCurrentBreakpoint = function () {
 
     var tempBreakpoint;
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         var breakpoint = this.options.breakpoints[k];
         
         // The current breakpoint is the one closest but bigger than the window width.
 
-        if ( window.innerWidth <= breakpoint.width ) {
+        if ( this.width <= breakpoint.width ) {
 
             tempBreakpoint = breakpoint;
             break;
@@ -884,14 +965,14 @@ Responsiville.Main.prototype.printBreakpoints = function () {
 
     var toLog = [ 'Breakpoints' ];
 
-    for ( var k = 0, length = this.options.breakpoints.length; k < length; k++ ) {
+    for ( var k=0, length=this.options.breakpoints.length; k<length; k++ ) {
 
         var breakpoint = this.options.breakpoints[k];
         toLog.push( breakpoint.name + ' - ' + breakpoint.width );
         
     }
 
-    this.log.apply( this, toLog );
+    this.log( toLog.join( '\n' ) );
 
     this.options.debug = debug;
 

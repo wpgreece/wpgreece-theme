@@ -1,32 +1,12 @@
 <?php
-
+    
     /**
-     * Contains functions useful in debugging.
+     * Vanilla debug related enhancements.
      * 
      * @author Nevma, http://www.nevma.gr, info@nevma.gr
      * 
      * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
      */
-
-
-
-    /**
-     * Disallows loading of BWP (Better WordPress Minify) on production websites
-     * and allows it during development based on the VANILLA_DEBUG constant and 
-     * the disable_minification theme option.
-     * 
-     * @return void
-     */
-
-    function vanilla_debug_bwp_minify_is_loadable () {
-
-        if ( get_field( 'disable_minification', 'option' ) == true && is_user_logged_in () ) {
-            return false;
-        } else {
-            return ! ( defined( 'VANILLA_DEBUG' ) && VANILLA_DEBUG );
-        }
-        
-    }
 
 
 
@@ -126,6 +106,8 @@
 
 
 
+        // Gather server request metrics to report.
+
         $time        = str_replace( ',', '.', timer_stop( 0, 2 ) ); 
         $max_ram     = ceil( memory_get_peak_usage( true ) / 1024 / 1024 );
         $num_queries = get_num_queries();
@@ -138,10 +120,16 @@
         } ?>
 
 
+
+        <!--
+        ================================================================================
+        *
+        *   WordPress resource usage in Responsiville debug panel. 
+        *
+        ================================================================================
+        -->
             
         <script type = "text/javascript">
-
-            // Show WordPress resources usage in responsiville debug panel.
 
             jQuery( function () {
 
@@ -149,7 +137,7 @@
 
                     jQuery( '.responsiville-debug-controls' ).append(
 
-                        '<section class = "responsiville-debug-wp">' +
+                        '<section class = "responsiville-debug-control responsiville-debug-wp">' +
                             '<table class = "vanilla" cellspacing = "0" cellpadding = "0"><tbody>' + 
                                 '<tr>' + 
                                     '<td>PHP time</td>' + 

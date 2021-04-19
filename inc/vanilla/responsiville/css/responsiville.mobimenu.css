@@ -1,13 +1,21 @@
-/***********************************************************************************************
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
 
-    ███╗   ███╗ ██████╗ ██████╗ ██╗██╗     ███████╗    ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
-    ████╗ ████║██╔═══██╗██╔══██╗██║██║     ██╔════╝    ████╗ ████║██╔════╝████╗  ██║██║   ██║
-    ██╔████╔██║██║   ██║██████╔╝██║██║     █████╗      ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
-    ██║╚██╔╝██║██║   ██║██╔══██╗██║██║     ██╔══╝      ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║
-    ██║ ╚═╝ ██║╚██████╔╝██████╔╝██║███████╗███████╗    ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
-    ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝╚══════╝╚══════╝    ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝ 
-                                                                                             
- ***********************************************************************************************/
+
+
+/********************************************************************************
+
+    ███╗   ███╗ ██████╗ ██████╗ ██╗    ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
+    ████╗ ████║██╔═══██╗██╔══██╗██║    ████╗ ████║██╔════╝████╗  ██║██║   ██║
+    ██╔████╔██║██║   ██║██████╔╝██║    ██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
+    ██║╚██╔╝██║██║   ██║██╔══██╗██║    ██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║
+    ██║ ╚═╝ ██║╚██████╔╝██████╔╝██║    ██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
+    ╚═╝     ╚═╝ ╚═════╝ ╚═════╝ ╚═╝    ╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
+
+ ********************************************************************************/
 
 
 
@@ -41,6 +49,7 @@
 
     .responsiville-mobimenu-open-body {
         overflow: hidden;
+        position: relative;
     }
 
 
@@ -48,6 +57,7 @@
     /* Mobimenu wrapper clone. */
 
     .responsiville-mobimenu-wrapper-clone {
+        top: 0;
         display: none;
     }
 
@@ -56,12 +66,6 @@
     }
 
 
-
-    /* Original element is hidden while page loading. */
-
-    .responsiville-mobimenu {
-        /*display: none;*/
-    }
 
     /* After page load and after the mobimenu module has run its hiding is undone, for instance because the browser window might have grown. */
 
@@ -85,14 +89,14 @@
     .responsiville-mobimenu-open {
         position: fixed;
         overflow: auto;
-        z-index: 999;
+        z-index: 9999;
         width: 100%;
         min-width: 100%;
         height: 100%;
         max-height: 100%;
         margin: 0;
         padding: 0;
-        background: var(--color-gray-dark);
+        background: var(--color-responsiville-gray-dark);
     }
  
 
@@ -103,6 +107,7 @@
     .responsiville-mobimenu-burger:focus,
     .responsiville-mobimenu-burger:hover {
         border-width: 0;
+        color: var(--color-responsiville-text);
         background: transparent;
         padding: 0;
         margin: 0;
@@ -110,6 +115,8 @@
         display: none;
         position: relative;
         font-size: 4rem;
+        line-height: 1em;
+        height: auto;
     }
 
         .responsiville-mobimenu-burger::before {
@@ -141,23 +148,28 @@
     .responsiville-mobimenu-close,
     .responsiville-mobimenu-close:focus,
     .responsiville-mobimenu-close:hover {
+        position: fixed;
         visibility: hidden;
         border-width: 0;
         background: transparent;
         padding: 0;
         margin: 0;
         box-shadow: none;
-        color: var(--color-white);
+        color: var(--color-responsiville-white);
         font-size: 8rem;
         line-height: 6rem;
         font-family: Georgia, serif;
         text-align: center;
-        position: fixed;
         top: 0;
         right: 0;
         width: 8rem;
         height: 8rem;
-        z-index: 999;
+        z-index: 9999;
+    }
+
+    .responsiville-mobimenu-opening .responsiville-mobimenu-close, 
+    .responsiville-mobimenu-closing .responsiville-mobimenu-close {
+        position: absolute;
     }
 
    .responsiville-mobimenu-close {
@@ -177,42 +189,42 @@
         
     /*
      * Mobimenu contents styling (extended styling).
-     *
+     * 
      * Applied conditionally, depending on the module's instantiation options.
      */
     
-    .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) ul {
+    .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) ul {
         margin: 0;
         padding: 0;
         display: block;
     }
 
-        .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) ul ul {
+        .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) ul ul {
             margin: 0;
             padding: 0;
             position: relative;
             display: inline-block;
         }
 
-    .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) ul,
-    .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) ul li {
+    .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) ul,
+    .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) ul li {
         display: block;
         float: none;
         text-align: center;
     }
 
-    .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) ul ul li {
+    .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) ul ul li {
         display: inline-block;
     }
 
-        .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) a {
-            color: var(--color-white);
+        .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) a {
+            color: var(--color-responsiville-white);
             font-size: 4rem;
             margin: 0;
             padding: 1.5rem;
         }
 
-            .responsiville-mobimenu-wrapper-clone:not( .responsiville-mobimenu-unstyled ) ul ul a {
+            .responsiville-mobimenu-wrapper-clone:not(.responsiville-mobimenu-unstyled) ul ul a {
                 font-size: 2.5rem;
                 padding: 1rem;
             }

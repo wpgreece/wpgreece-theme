@@ -1,13 +1,27 @@
-/******************************************************************************************************************
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
 
-    ███████╗    ████████╗    ██████╗     ██╗   ██╗     ██████╗    ████████╗    ██╗   ██╗    ██████╗     ███████╗
-    ██╔════╝    ╚══██╔══╝    ██╔══██╗    ██║   ██║    ██╔════╝    ╚══██╔══╝    ██║   ██║    ██╔══██╗    ██╔════╝
-    ███████╗       ██║       ██████╔╝    ██║   ██║    ██║            ██║       ██║   ██║    ██████╔╝    █████╗  
-    ╚════██║       ██║       ██╔══██╗    ██║   ██║    ██║            ██║       ██║   ██║    ██╔══██╗    ██╔══╝  
-    ███████║       ██║       ██║  ██║    ╚██████╔╝    ╚██████╗       ██║       ╚██████╔╝    ██║  ██║    ███████╗
-    ╚══════╝       ╚═╝       ╚═╝  ╚═╝     ╚═════╝      ╚═════╝       ╚═╝        ╚═════╝     ╚═╝  ╚═╝    ╚══════╝
+
+
+/************************************************************************************
+
+    ███████╗████████╗██████╗ ██╗   ██╗ ██████╗████████╗██╗   ██╗██████╗ ███████╗
+    ██╔════╝╚══██╔══╝██╔══██╗██║   ██║██╔════╝╚══██╔══╝██║   ██║██╔══██╗██╔════╝
+    ███████╗   ██║   ██████╔╝██║   ██║██║        ██║   ██║   ██║██████╔╝█████╗
+    ╚════██║   ██║   ██╔══██╗██║   ██║██║        ██║   ██║   ██║██╔══██╗██╔══╝
+    ███████║   ██║   ██║  ██║╚██████╔╝╚██████╗   ██║   ╚██████╔╝██║  ██║███████╗
+    ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
                                                                                                                 
-*******************************************************************************************************************/
+ ************************************************************************************/
+
+
+
+    body {
+        overflow-wrap: break-word;
+    }
 
 
 
@@ -16,15 +30,6 @@
     .panel {
         max-width: 1024px;
         padding: 0;
-    }
-
-    /* Sometimes this panel needs to stretch full width. */
-
-    .panel-full {
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
     }
 
 
@@ -45,29 +50,41 @@
     }
 
     .text .alignright {
-        float: right;
         width: auto;
         margin-left: 4rem;
-        margin-top: 0.7rem;
         margin-bottom: 2rem;
+    }
+
+    .small .text .alignright {
+        float: none;
+    }
+
+    .tablet .text .alignright {
+        float: right;
     }
 
     .text .alignleft {
-        float: left;
         width: auto;
         margin-right: 4rem;
-        margin-top: 0.7rem;
         margin-bottom: 2rem;
+    }
+
+    .small .text .alignleft {
+        float: none;
+    }
+
+    .tablet .text .alignleft {
+        float: left;
     }
 
 
 
-    /* 
-        Floated elements inside text should not span more than half their 
-        parent's width. These elements are floated by the core TinyMCE editor 
-        functions and can be images (captioned or not) and tables. Other 
-        elements, which we float ourselves, are found elsewhere.
-    */
+    /**
+     * Floated elements inside text should not span more than half their 
+     * parent's width. These elements are floated by the core TinyMCE editor 
+     * functions and can be images (captioned or not) and tables. Other 
+     * elements, which we float ourselves, are found elsewhere.
+     */
 
     .small .text .alignleft,
     .small .text .alignright,
@@ -75,7 +92,6 @@
     .small .text .wp-caption.alignright {
         width: auto;
         max-width: 100%;
-        margin-top: 0;
         margin-bottom: var(--text-rhythm);
         margin-left: 0;
         margin-right: 0;
@@ -85,42 +101,18 @@
     .tablet .text .alignright,
     .tablet .text .wp-caption.alignleft,
     .tablet .text .wp-caption.alignright {
-        max-width: 50%;
-        margin-bottom: calc(0.5 * var(--text-rhythm));
+        max-width: calc(50% - 1*var(--text-rhythm)) !important;
+        margin-bottom: calc(1*var(--text-rhythm));
     }
 
     .tablet .text .alignleft, 
     .tablet .text .wp-caption.alignleft {
-        margin-right: calc(0.5 * var(--text-rhythm));
+        margin-right: calc(1*var(--text-rhythm));
     }
 
     .tablet .text .alignright,
     .tablet .text .wp-caption.alignright {
-        margin-left: calc(0.5 * var(--text-rhythm));
-    }
-
-
-
-    /* Blockquotes floated. */
-
-    .tablet .text blockquote.alignright {
-        padding-left: 6rem;
-        padding-right: 0;
-    }
-    
-    .tablet .text blockquote.alignleft {
-        margin-left: 0;
-        padding-left: 6rem;
-        padding-right: 2rem;
-    }
-
-    .laptop .text blockquote.alignright {
-        padding-right: 0;
-    }
-    
-    .laptop .text blockquote.alignleft {
-        padding-left: 6rem;
-        padding-right: 4rem;
+        margin-left: calc(1*var(--text-rhythm));
     }
 
     
@@ -129,7 +121,6 @@
 
     .tablet .text table.alignleft,
     .tablet .text table.alignright {
-        margin-top: 1rem;
     }
 
 
@@ -137,11 +128,11 @@
     /* Rows and columns inside text. */
 
     .small .tinymce-row [class*=column] {
-        padding: 0 calc(0.5 * var(--grid-gutter));
+        padding: 0 calc(1*var(--grid-gutter));
     } 
 
     .small .row.tinymce-row {
-        margin: 0 calc(-0.5 * var(--grid-gutter));
+        margin: 0 calc(-1*var(--grid-gutter));
     } 
 
     .small .panel-full .row.tinymce-row {
@@ -185,62 +176,421 @@
     }
 
 
-/*******************************************************************************************************************************
 
-    ████████╗    ██╗   ██╗    ██████╗      ██████╗      ██████╗     ██████╗      █████╗     ██████╗     ██╗  ██╗    ██╗   ██╗
-    ╚══██╔══╝    ╚██╗ ██╔╝    ██╔══██╗    ██╔═══██╗    ██╔════╝     ██╔══██╗    ██╔══██╗    ██╔══██╗    ██║  ██║    ╚██╗ ██╔╝
-       ██║        ╚████╔╝     ██████╔╝    ██║   ██║    ██║  ███╗    ██████╔╝    ███████║    ██████╔╝    ███████║     ╚████╔╝ 
-       ██║         ╚██╔╝      ██╔═══╝     ██║   ██║    ██║   ██║    ██╔══██╗    ██╔══██║    ██╔═══╝     ██╔══██║      ╚██╔╝  
-       ██║          ██║       ██║         ╚██████╔╝    ╚██████╔╝    ██║  ██║    ██║  ██║    ██║         ██║  ██║       ██║   
-       ╚═╝          ╚═╝       ╚═╝          ╚═════╝      ╚═════╝     ╚═╝  ╚═╝    ╚═╝  ╚═╝    ╚═╝         ╚═╝  ╚═╝       ╚═╝   
-                                                                                                                             
- *******************************************************************************************************************************/
+/*****************************************************************************************************************************
+
+    ██╗   ██╗███████╗██████╗ ████████╗██╗ ██████╗ █████╗ ██╗         ██████╗ ██╗  ██╗██╗   ██╗████████╗██╗  ██╗███╗   ███╗
+    ██║   ██║██╔════╝██╔══██╗╚══██╔══╝██║██╔════╝██╔══██╗██║         ██╔══██╗██║  ██║╚██╗ ██╔╝╚══██╔══╝██║  ██║████╗ ████║
+    ██║   ██║█████╗  ██████╔╝   ██║   ██║██║     ███████║██║         ██████╔╝███████║ ╚████╔╝    ██║   ███████║██╔████╔██║
+    ╚██╗ ██╔╝██╔══╝  ██╔══██╗   ██║   ██║██║     ██╔══██║██║         ██╔══██╗██╔══██║  ╚██╔╝     ██║   ██╔══██║██║╚██╔╝██║
+     ╚████╔╝ ███████╗██║  ██║   ██║   ██║╚██████╗██║  ██║███████╗    ██║  ██║██║  ██║   ██║      ██║   ██║  ██║██║ ╚═╝ ██║
+      ╚═══╝  ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝
+
+ *****************************************************************************************************************************/
+
+
+
+    /* Vertical rhythm of elements following headings. */
+
+    .text h1 + .wp-caption,
+    .text h2 + .wp-caption,
+    .text h3 + .wp-caption,
+    .text h4 + .wp-caption,
+    .text h5 + .wp-caption,
+    .text h6 + .wp-caption,
+    .text h1 + .gallery,
+    .text h2 + .gallery,
+    .text h3 + .gallery,
+    .text h4 + .gallery,
+    .text h5 + .gallery,
+    .text h6 + .gallery,
+    .text h1 + .embed-vimeo,
+    .text h2 + .embed-vimeo,
+    .text h3 + .embed-vimeo,
+    .text h4 + .embed-vimeo,
+    .text h5 + .embed-vimeo,
+    .text h6 + .embed-vimeo,
+    .text h1 + twitter-widget,
+    .text h2 + twitter-widget,
+    .text h3 + twitter-widget,
+    .text h4 + twitter-widget,
+    .text h5 + twitter-widget,
+    .text h6 + twitter-widget,
+    .text h1 + .gform_wrapper,
+    .text h2 + .gform_wrapper,
+    .text h3 + .gform_wrapper,
+    .text h4 + .gform_wrapper,
+    .text h5 + .gform_wrapper,
+    .text h6 + .gform_wrapper,
+    .text h1 + .tinymce-row,
+    .text h2 + .tinymce-row,
+    .text h3 + .tinymce-row,
+    .text h4 + .tinymce-row,
+    .text h5 + .tinymce-row,
+    .text h6 + .tinymce-row {
+        margin-top: calc(0.333*var(--text-rhythm));
+    }
+
+
+
+    /**
+     * Galleries pose an exception to the handling of vertical rhythm because 
+     * they contain floated thumbnail items with bottom paddings, so the
+     * vertical distance between the gallery and the next element is split
+     * between the next element and the gallery's thumbnail items.
+     */
+
+    .text p              + .gallery,
+    .text ul             + .gallery,
+    .text ol             + .gallery,
+    .text dl             + .gallery,
+    .text hr             + .gallery,
+    .text pre            + .gallery,
+    .text table          + .gallery,
+    .text blockquote     + .gallery,
+    .text form           + .gallery,
+    .text figure         + .gallery,
+    .text .wp-caption    + .gallery,
+    .text .gallery       + .gallery,
+    .text .embed-vimeo   + .gallery,
+    .text .gform_wrapper + .gallery,
+    .text twitter-widget + .gallery,
+    .text .tinymce-row   + .gallery {
+        margin-top: calc(1*var(--text-rhythm)) !important;
+    }
+    
+    .text .gallery + p,
+    .text .gallery + ul,
+    .text .gallery + ol,
+    .text .gallery + dl,
+    .text .gallery + hr,
+    .text .gallery + pre,
+    .text .gallery + table,
+    .text .gallery + blockquote,
+    .text .gallery + form,
+    .text .gallery + figure,
+    .text .gallery + .wp-caption,
+    .text .gallery + .gallery,
+    .text .gallery + .embed-vimeo,
+    .text .gallery + twitter-widget,
+    .text .gallery + .gform_wrapper,
+    .text .gallery + .tinymce-row,
+    .text .gallery + h1,
+    .text .gallery + h2,
+    .text .gallery + h3,
+    .text .gallery + h4,
+    .text .gallery + h5,
+    .text .gallery + h6 {
+        margin-top: calc(0.5*var(--text-rhythm)) !important;
+    }
+
+
+
+    /* All the rest possible text elements and their combinations. */
+
+    .text p              + .wp-caption,
+    .text ul             + .wp-caption,
+    .text ol             + .wp-caption,
+    .text dl             + .wp-caption,
+    .text hr             + .wp-caption,
+    .text pre            + .wp-caption,
+    .text table          + .wp-caption,
+    .text blockquote     + .wp-caption,
+    .text form           + .wp-caption,
+    .text figure         + .wp-caption,
+    .text .wp-caption    + .wp-caption,
+    .text .embed-vimeo   + .wp-caption,
+    .text twitter-widget + .wp-caption,
+    .text .gform_wrapper + .wp-caption,
+    .text .tinymce-row   + .wp-caption,
+    .text .wp-caption + p,
+    .text .wp-caption + ul,
+    .text .wp-caption + ol,
+    .text .wp-caption + dl,
+    .text .wp-caption + hr,
+    .text .wp-caption + pre,
+    .text .wp-caption + table,
+    .text .wp-caption + blockquote,
+    .text .wp-caption + form,
+    .text .wp-caption + figure,
+    .text .wp-caption + .wp-caption,
+    .text .wp-caption + .embed-vimeo,
+    .text .wp-caption + twitter-widget,
+    .text .wp-caption + .gform_wrapper,
+    .text .wp-caption + .tinymce-row,
+    .text .wp-caption + h1,
+    .text .wp-caption + h2,
+    .text .wp-caption + h3,
+    .text .wp-caption + h4,
+    .text .wp-caption + h5,
+    .text .wp-caption + h6,
+
+    .text p              + .embed-vimeo,
+    .text ul             + .embed-vimeo,
+    .text ol             + .embed-vimeo,
+    .text dl             + .embed-vimeo,
+    .text hr             + .embed-vimeo,
+    .text pre            + .embed-vimeo,
+    .text table          + .embed-vimeo,
+    .text blockquote     + .embed-vimeo,
+    .text form           + .embed-vimeo,
+    .text figure         + .embed-vimeo,
+    .text .wp-caption    + .embed-vimeo,
+    .text .embed-vimeo   + .embed-vimeo,
+    .text twitter-widget + .embed-vimeo,
+    .text .gform_wrapper + .embed-vimeo,
+    .text .tinymce-row   + .embed-vimeo,
+    .text .embed-vimeo + p,
+    .text .embed-vimeo + ul,
+    .text .embed-vimeo + ol,
+    .text .embed-vimeo + dl,
+    .text .embed-vimeo + hr,
+    .text .embed-vimeo + pre,
+    .text .embed-vimeo + table,
+    .text .embed-vimeo + blockquote,
+    .text .embed-vimeo + form,
+    .text .embed-vimeo + figure,
+    .text .embed-vimeo + .wp-caption,
+    .text .embed-vimeo + .embed-vimeo,
+    .text .embed-vimeo + twitter-widget,
+    .text .embed-vimeo + .gform_wrapper,
+    .text .embed-vimeo + .tinymce-row,
+    .text .embed-vimeo + h1,
+    .text .embed-vimeo + h2,
+    .text .embed-vimeo + h3,
+    .text .embed-vimeo + h4,
+    .text .embed-vimeo + h5,
+    .text .embed-vimeo + h6,
+    
+    .text p              + .gform_wrapper,
+    .text ul             + .gform_wrapper,
+    .text ol             + .gform_wrapper,
+    .text dl             + .gform_wrapper,
+    .text hr             + .gform_wrapper,
+    .text pre            + .gform_wrapper,
+    .text table          + .gform_wrapper,
+    .text blockquote     + .gform_wrapper,
+    .text form           + .gform_wrapper,
+    .text figure         + .gform_wrapper,
+    .text .wp-caption    + .gform_wrapper,
+    .text .embed-vimeo   + .gform_wrapper,
+    .text twitter-widget + .gform_wrapper,
+    .text .gform_wrapper + .gform_wrapper,
+    .text .tinymce-row   + .gform_wrapper,
+    .text .gform_wrapper + p,
+    .text .gform_wrapper + ul,
+    .text .gform_wrapper + ol,
+    .text .gform_wrapper + dl,
+    .text .gform_wrapper + hr,
+    .text .gform_wrapper + pre,
+    .text .gform_wrapper + table,
+    .text .gform_wrapper + blockquote,
+    .text .gform_wrapper + form,
+    .text .gform_wrapper + figure,
+    .text .gform_wrapper + .wp-caption,
+    .text .gform_wrapper + .embed-vimeo,
+    .text .gform_wrapper + twitter-widget,
+    .text .gform_wrapper + .gform_wrapper,
+    .text .gform_wrapper + .tinymce-row,
+    .text .gform_wrapper + h1,
+    .text .gform_wrapper + h2,
+    .text .gform_wrapper + h3,
+    .text .gform_wrapper + h4,
+    .text .gform_wrapper + h5,
+    .text .gform_wrapper + h6,
+
+    .text p              + twitter-widget,
+    .text ul             + twitter-widget,
+    .text ol             + twitter-widget,
+    .text dl             + twitter-widget,
+    .text hr             + twitter-widget,
+    .text pre            + twitter-widget,
+    .text table          + twitter-widget,
+    .text blockquote     + twitter-widget,
+    .text form           + twitter-widget,
+    .text figure         + twitter-widget,
+    .text .wp-caption    + twitter-widget,
+    .text .embed-vimeo   + twitter-widget,
+    .text twitter-widget + twitter-widget,
+    .text .gform_wrapper + twitter-widget,
+    .text .tinymce-row   + twitter-widget,
+    .text twitter-widget + p,
+    .text twitter-widget + ul,
+    .text twitter-widget + ol,
+    .text twitter-widget + dl,
+    .text twitter-widget + hr,
+    .text twitter-widget + pre,
+    .text twitter-widget + table,
+    .text twitter-widget + blockquote,
+    .text twitter-widget + form,
+    .text twitter-widget + figure,
+    .text twitter-widget + .wp-caption,
+    .text twitter-widget + .embed-vimeo,
+    .text twitter-widget + twitter-widget,
+    .text twitter-widget + .gform_wrapper,
+    .text twitter-widget + .tinymce-row,
+    .text twitter-widget + h1,
+    .text twitter-widget + h2,
+    .text twitter-widget + h3,
+    .text twitter-widget + h4,
+    .text twitter-widget + h5,
+    .text twitter-widget + h6,
+
+    .text p              + .tinymce-row,
+    .text ul             + .tinymce-row,
+    .text ol             + .tinymce-row,
+    .text dl             + .tinymce-row,
+    .text hr             + .tinymce-row,
+    .text pre            + .tinymce-row,
+    .text table          + .tinymce-row,
+    .text blockquote     + .tinymce-row,
+    .text form           + .tinymce-row,
+    .text .wp-caption    + .tinymce-row,
+    .text .embed-vimeo   + .tinymce-row,
+    .text twitter-widget + .tinymce-row,
+    .text .gform_wrapper + .tinymce-row,
+    .text figure         + .tinymce-row,
+    .text .tinymce-row + .tinymce-row,
+    .text .tinymce-row + p,
+    .text .tinymce-row + ul,
+    .text .tinymce-row + ol,
+    .text .tinymce-row + dl,
+    .text .tinymce-row + hr,
+    .text .tinymce-row + pre,
+    .text .tinymce-row + table,
+    .text .tinymce-row + blockquote,
+    .text .tinymce-row + form,
+    .text .tinymce-row + figure,
+    .text .tinymce-row + .wp-caption,
+    .text .tinymce-row + .embed-vimeo,
+    .text .tinymce-row + twitter-widget,
+    .text .tinymce-row + .gform_wrapper,
+    .text .tinymce-row + .tinymce-row,
+    .text .tinymce-row + h1,
+    .text .tinymce-row + h2,
+    .text .tinymce-row + h3,
+    .text .tinymce-row + h4,
+    .text .tinymce-row + h5,
+    .text .tinymce-row + h6 {
+        margin-top: calc(1*var(--text-rhythm)) !important;
+    }
+
+
+
+    /**
+     * Sibling selector is no good in Gravity forms because an iframe and
+     * possibly some other elements are automatically inserted after the form
+     * by the plugin for functional purposes. 
+     */
+
+     .text .gform_wrapper {
+        margin-bottom: calc(1*var(--text-rhythm)) !important;
+    }
+
+
+
+
+/********************************************************************************************
+
+    ████████╗██╗   ██╗██████╗  ██████╗  ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗██╗   ██╗
+    ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║  ██║╚██╗ ██╔╝
+       ██║    ╚████╔╝ ██████╔╝██║   ██║██║  ███╗██████╔╝███████║██████╔╝███████║ ╚████╔╝
+       ██║     ╚██╔╝  ██╔═══╝ ██║   ██║██║   ██║██╔══██╗██╔══██║██╔═══╝ ██╔══██║  ╚██╔╝
+       ██║      ██║   ██║     ╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║     ██║  ██║   ██║
+       ╚═╝      ╚═╝   ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝
+
+ ********************************************************************************************/
 
 
 
     /* Blockquotes normal. */
 
-    .small .text blockquote {
-        padding-left: 4rem;
-        padding-right: 3rem;
+    .text blockquote {
+        font-size: 1.5em;
+        text-align: center;
+        font-family: var(--font-serif);
     }
 
-        .small .text blockquote::before {
-            font-size: 7rem;
-            left: 0;
-            top: -0.8rem;
-        }
+    .small .text blockquote {
+        padding: 0 2em;
+    }
 
     .tablet .text blockquote {
-        padding-left: 8rem;
-        padding-right: 6rem;
+        padding: 0 3em;
     }
 
-        .tablet .text blockquote::before {
-            font-size: 9rem;
-            left: 1.5rem;
-            top: -1.5rem;
-        }
-
-        .tablet .text blockquote.alignright::before,
-        .tablet .text blockquote.alignleft::before {
-            left: 0;
-        }
-
-
-
-    /* Blockquotes shouting. */
-
-    .small .text blockquote.shout {
-        font-size: 150%;
+    .small .text blockquote.alignleft,
+    .small .text blockquote.alignright {
+        padding: 0 1em;
     }
 
-    .small .text blockquote.shout::before {
-        top: -1.5rem;
+    .tablet .text blockquote.alignleft,
+    .tablet .text blockquote.alignright {
+        padding: 0 2em;
     }
 
-    .tablet .text blockquote.shout {
-        font-size: 250%;
+    .tablet .tinymce-column blockquote {
+        font-size: 1.5em;
+        padding: 0 1em;
+    }
+
+    .text blockquote::before {
+        position: static;
+        display: block;
+        transform: translateY(50%);
+        line-height: 0.5;
+    }
+
+    .small .text blockquote::before {
+        font-size: 3.5em;
+    }
+
+    .tablet .text blockquote::before {
+        font-size: 5em;
+    }
+
+
+
+    /* Shouting blockquote */
+
+    .small .text blockquote.shout
+    .small .text blockquote.alignleft.shout,
+    .small .text blockquote.alignright.shout {
+        font-size: 1.5em;
+        padding-top: 0;
+        padding-right: 1em;
+        padding-bottom: 0;
+        padding-left: 1em;
+    }
+
+    .tablet .text blockquote.shout,
+    .tablet .text blockquote.alignleft.shout,
+    .tablet .text blockquote.alignright.shout {
+        font-size: 2em;
+        padding-right: 2em;
+        padding-left: 2em;
+    }
+
+    .laptop .text blockquote.shout {
+        font-size: 2.25em;
+    }
+
+    .laptop .text blockquote.alignleft.shout,
+    .laptop .text blockquote.alignright.shout {
+        font-size: 2em;
+    }
+
+
+
+    /* Panel blockquote */
+
+    .small .text blockquote.panel {
+        background: var(--color-responsiville-gray-light-x);
+        border-radius: 0.1em;
+        padding-top: 2em;
+        padding-right: 2em;
+        padding-bottom: 3em;
+        padding-left: 2em;
     }
 
 
@@ -286,17 +636,6 @@
         table-layout: inherit;
     }
 
-        .small table td,
-        .small table th {
-            word-break: break-all;
-            word-break: break-word; /* Non-standard, webkit-only, more graceful. */
-        }
-
-        .tablet table td,
-        .tablet table th {
-            word-break: inherit;
-        }
-
 
 
     /* Preformatted content, usually for code. */
@@ -307,66 +646,70 @@
 
 
 
-/*************************************************************************
+/******************************************************
 
-    ██╗    ███╗   ███╗     █████╗      ██████╗     ███████╗    ███████╗
-    ██║    ████╗ ████║    ██╔══██╗    ██╔════╝     ██╔════╝    ██╔════╝
-    ██║    ██╔████╔██║    ███████║    ██║  ███╗    █████╗      ███████╗
-    ██║    ██║╚██╔╝██║    ██╔══██║    ██║   ██║    ██╔══╝      ╚════██║
-    ██║    ██║ ╚═╝ ██║    ██║  ██║    ╚██████╔╝    ███████╗    ███████║
-    ╚═╝    ╚═╝     ╚═╝    ╚═╝  ╚═╝     ╚═════╝     ╚══════╝    ╚══════╝
-                                                                   
- *************************************************************************/
+    ██╗███╗   ███╗ █████╗  ██████╗ ███████╗███████╗
+    ██║████╗ ████║██╔══██╗██╔════╝ ██╔════╝██╔════╝
+    ██║██╔████╔██║███████║██║  ███╗█████╗  ███████╗
+    ██║██║╚██╔╝██║██╔══██║██║   ██║██╔══╝  ╚════██║
+    ██║██║ ╚═╝ ██║██║  ██║╚██████╔╝███████╗███████║
+    ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝
+
+ ******************************************************/
 
 
 
-    .text .wp-caption {
-        margin-bottom: var(--text-rhythm);
+    .text .wp-caption p {
+        margin: 0;
+        padding: 1.5rem 0;
+        line-height: 1.3;
+        font-size: 85%;
+        font-weight: bold;
     }
 
-        .text .wp-caption p {
-            margin: 0;
-            padding: 1.5rem 0;
-            line-height: 1.3;
-            font-size: 85%;
-            font-weight: bold;
-        }
+    .text .wp-caption a {
+        display: block;
+    }
 
-        .text .wp-caption a {
-            display: block;
-        }
+
+    .text figcaption {
+        padding: 0.75em 0.5em;
+        background: var(--color-responsiville-gray-light);
+    }
 
 
 
-/**********************************************************************************************************
+/***************************************************************************
 
-     ██████╗      █████╗     ██╗         ██╗         ███████╗    ██████╗     ██╗    ███████╗    ███████╗
-    ██╔════╝     ██╔══██╗    ██║         ██║         ██╔════╝    ██╔══██╗    ██║    ██╔════╝    ██╔════╝
-    ██║  ███╗    ███████║    ██║         ██║         █████╗      ██████╔╝    ██║    █████╗      ███████╗
-    ██║   ██║    ██╔══██║    ██║         ██║         ██╔══╝      ██╔══██╗    ██║    ██╔══╝      ╚════██║
-    ╚██████╔╝    ██║  ██║    ███████╗    ███████╗    ███████╗    ██║  ██║    ██║    ███████╗    ███████║
-     ╚═════╝     ╚═╝  ╚═╝    ╚══════╝    ╚══════╝    ╚══════╝    ╚═╝  ╚═╝    ╚═╝    ╚══════╝    ╚══════╝
+     ██████╗  █████╗ ██╗     ██╗     ███████╗██████╗ ██╗███████╗███████╗
+    ██╔════╝ ██╔══██╗██║     ██║     ██╔════╝██╔══██╗██║██╔════╝██╔════╝
+    ██║  ███╗███████║██║     ██║     █████╗  ██████╔╝██║█████╗  ███████╗
+    ██║   ██║██╔══██║██║     ██║     ██╔══╝  ██╔══██╗██║██╔══╝  ╚════██║
+    ╚██████╔╝██║  ██║███████╗███████╗███████╗██║  ██║██║███████╗███████║
+     ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝
                                                                                                     
- **********************************************************************************************************/
+ ***************************************************************************/
 
 
 
-    /* General galleries. */
+    /* Common galleries. */
 
     .text .gallery {
+        float: none;
         width: calc(100% + 2rem);
-        margin: 0 -1rem calc(0.5 * var(--text-rhythm)) -1rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
         padding: 0 !important;
     }
 
     .panel-full .text .gallery {
         width: calc(100% + 0rem);
-        margin: 0px 0rem;
+        margin: 0;
     }
 
         .text .gallery-item {
             float: left;
-            margin: 0 0 calc(0.5 * var(--text-rhythm)) 0 !important;
+            margin: 0 0 calc(0.5*var(--text-rhythm)) 0 !important;
             padding: 0 1rem !important;
             border: none;
             width: auto !important;
@@ -391,6 +734,10 @@
             width: 50% !important;
         }
 
+        .tablet .text .gallery-columns-2 .gallery-item:nth-of-type(2n+1) {
+            clear: left;
+        }
+
 
 
         /* Three columns galleries in text responsive. */
@@ -403,8 +750,20 @@
             width: 50% !important;
         }
 
+        .mobile .text .gallery-columns-3 .gallery-item:nth-of-type(2n+1) {
+            clear: left;
+        }
+
         .tablet .text .gallery-columns-3 .gallery-item {
             width: 33.333333% !important;
+        }
+
+        .tablet .text .gallery-columns-3 .gallery-item:nth-of-type(3n+1) {
+            clear: left;
+        }
+
+        .tablet .text .gallery-columns-3 .gallery-item:nth-of-type(2n+1) {
+            clear: none;
         }
 
         
@@ -419,12 +778,32 @@
             width: 50% !important;
         }
 
+        .mobile .text .gallery-columns-4 .gallery-item:nth-of-type(2n+1) {
+            clear: left;
+        }
+
         .tablet .text .gallery-columns-4 .gallery-item {
             width: 33.333333% !important;
         }
 
+        .tablet .text .gallery-columns-4 .gallery-item:nth-of-type(3n+1) {
+            clear: left;
+        }
+
+        .tablet .text .gallery-columns-4 .gallery-item:nth-of-type(2n+1) {
+            clear: none;
+        }
+
         .laptop .text .gallery-columns-4 .gallery-item {
             width: 25% !important;
+        }
+        
+        .laptop .text .gallery-columns-4 .gallery-item:nth-of-type(4n+1) {
+            clear: left;
+        }
+
+        .laptop .text .gallery-columns-4 .gallery-item:nth-of-type(3n+1) {
+            clear: none;
         }
 
 
@@ -439,12 +818,32 @@
             width: 50% !important;
         }
 
+        .mobile .text .gallery-columns-5 .gallery-item:nth-of-type(2n+1) {
+            clear: left;
+        }
+
         .tablet .text .gallery-columns-5 .gallery-item {
             width: 33.333333% !important;
         }
 
+        .tablet .text .gallery-columns-5 .gallery-item:nth-of-type(3n+1) {
+            clear: left;
+        }
+
+        .tablet .text .gallery-columns-5 .gallery-item:nth-of-type(2n+1) {
+            clear: none;
+        }
+
         .laptop .text .gallery-columns-5 .gallery-item {
             width: 20% !important;
+        }
+
+        .laptop .text .gallery-columns-5 .gallery-item:nth-of-type(3n+1) {
+            clear: none;
+        }
+
+        .laptop .text .gallery-columns-5 .gallery-item:nth-of-type(5n+1) {
+            clear: left;
         }
 
 
@@ -463,15 +862,14 @@
 
 
     .gform_wrapper {
-        margin: 0 0 var(--text-rhythm) 0;
         padding: 0;
     }
 
-        /*
-            Silly and annoying!importants are necessary here because Gravity 
-            forms outputs their fields in an unordered list, to which some 
-            margins and paddings are added when they are found inside a text 
-            block.
+        /**
+         * Silly and annoying "!" importants are necessary here because Gravity
+         * forms outputs their fields in an unordered list, to which some 
+         * margins and paddings are added when they are found inside a text 
+         * block.
          */
 
         .gform_wrapper ul {
@@ -481,8 +879,7 @@
         }
 
         .gform_wrapper ul li {
-            margin: 0;
-            padding: 0 0 1.5rem 0;
+            padding: 0 0 1.5rem 0 !important;
         }
 
         .gfield_required {
@@ -499,8 +896,6 @@
             margin-bottom: 0;
             font-size: 80%;
             display: inline-block;
-            border-bottom-width: 0.1rem;
-            border-bottom-style: dotted;
         }
 
         .gfield_description {
@@ -525,53 +920,48 @@
             background: repeating-linear-gradient(-45deg, var(--color-gray-light-x) 0, var(--color-gray-light) 1rem);
         }
 
+        .gform_wrapper .gfield_radio li,
+        .gform_wrapper .gfield_checkbox li {
+            padding-bottom: 0 !important;
+        }
+
+            .gfield_radio input,
+            .gfield_checkbox input,
+            .gfield_radio label,
+            .gfield_checkbox label {
+                display: inline;
+                width: auto;
+                height: auto;
+                line-height: 1;
+            }
+
+            .gfield_radio label,
+            .gfield_checkbox label {
+                padding-left: 0.5em;
+            }
+
         .gform_ajax_spinner {
             width: auto !important;
             height: auto !important;
             margin-left: 2rem;
         }
 
-        .gform_confirmation_message {
-            font-size: 4rem;
-            margin-top: calc(1.25 * var(--text-rhythm));
+        .text .gform_confirmation_message {
+            margin-bottom: var(--text-rhythm);
         }
 
 
 
-/*****************************************************************************
+/*************************************************
 
-    ███████╗    ███╗   ███╗    ██████╗     ███████╗    ██████╗     ███████╗
-    ██╔════╝    ████╗ ████║    ██╔══██╗    ██╔════╝    ██╔══██╗    ██╔════╝
-    █████╗      ██╔████╔██║    ██████╔╝    █████╗      ██║  ██║    ███████╗
-    ██╔══╝      ██║╚██╔╝██║    ██╔══██╗    ██╔══╝      ██║  ██║    ╚════██║
-    ███████╗    ██║ ╚═╝ ██║    ██████╔╝    ███████╗    ██████╔╝    ███████║
-    ╚══════╝    ╚═╝     ╚═╝    ╚═════╝     ╚══════╝    ╚═════╝     ╚══════╝
-                                                                           
- *****************************************************************************/
-
-
-
-    .text .twitter-tweet-rendered {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-    }
-
-    iframe[src*="speakerdeck.com"] {
-        max-width: 100%;
-    }
-
-
-
-/****************************************************************
-
-    ██████╗     ███████╗    ██████╗     ██╗   ██╗     ██████╗ 
-    ██╔══██╗    ██╔════╝    ██╔══██╗    ██║   ██║    ██╔════╝ 
-    ██║  ██║    █████╗      ██████╔╝    ██║   ██║    ██║  ███╗
-    ██║  ██║    ██╔══╝      ██╔══██╗    ██║   ██║    ██║   ██║
-    ██████╔╝    ███████╗    ██████╔╝    ╚██████╔╝    ╚██████╔╝
-    ╚═════╝     ╚══════╝    ╚═════╝      ╚═════╝      ╚═════╝ 
+    ██████╗ ███████╗██████╗ ██╗   ██╗ ██████╗
+    ██╔══██╗██╔════╝██╔══██╗██║   ██║██╔════╝
+    ██║  ██║█████╗  ██████╔╝██║   ██║██║  ███╗
+    ██║  ██║██╔══╝  ██╔══██╗██║   ██║██║   ██║
+    ██████╔╝███████╗██████╔╝╚██████╔╝╚██████╔╝
+    ╚═════╝ ╚══════╝╚═════╝  ╚═════╝  ╚═════╝
                                                           
- ****************************************************************/
+ *************************************************/
 
 
 

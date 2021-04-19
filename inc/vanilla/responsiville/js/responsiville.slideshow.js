@@ -25,12 +25,17 @@
  *                                           behaviour.
  * @property {boolean}  options.debug        Whether to print debug messages in 
  *                                           the browser console.
+ * @property {boolean}  options.slug          A special codename for the instance
+ *                                           of the element, to be used as a
+ *                                           class on  its container and as a
+ *                                           key in arrays where it is grouped
+ *                                           with other elements of its kind. 
  * @property {string}   options.enter        Comma separated list of breakpoints 
- *                                           in which the mobimenu enters, wihch 
- *                                           means it is enabled.
+ *                                           in which the slideshow enters, 
+ *                                           which means it is enabled.
  * @property {string}   options.leave        Comma separated list of breakpoints
- *                                           in which the mobimenu leaves, which 
- *                                           means it is disabled.
+ *                                           in which the slideshow leaves,
+ *                                           which means it is disabled.
  * @property {string}   options.container    The slideshow container element 
  *                                           selector.
  * @property {string}   options.slides       The slideshow slides elements 
@@ -127,10 +132,9 @@ Responsiville.Slideshow = function ( options ) {
 
     // General settings setup.
 
-    this.options = jQuery.extend( this.options, Responsiville.Slideshow.defaults, options );
-
-    this.codeName = 'responsiville.slideshow';
-    
+    this.options       = {};
+    this.options       = jQuery.extend( this.options, Responsiville.Slideshow.defaults, options );
+    this.codeName      = 'responsiville.slideshow';
     this.responsiville = Responsiville.Main.getInstance();
 
 
@@ -151,6 +155,25 @@ Responsiville.Slideshow = function ( options ) {
             this.options[key] = value;
         }
 
+    }
+
+    // Uniqueue element slug.
+    
+    if ( this.options.slug == '' ) {
+        Responsiville.Slideshow.elementsCounter = Responsiville.Slideshow.elementsCounter !== undefined ? ++Responsiville.Slideshow.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Slideshow.elementsCounter;
+    }
+
+    // Take special care for enter/leave breakpoints possibly given as HTML data attributes.
+    
+    var htmlBreakpoints = Responsiville.determineEnableDisableBreakpoints({ 
+        enter: this.$container.data( 'responsiville-slideshow-enter' ),
+        leave: this.$container.data( 'responsiville-slideshow-leave' ) 
+    });
+
+    if ( htmlBreakpoints !== null ) {
+        this.options.enter = htmlBreakpoints.enter;
+        this.options.leave = htmlBreakpoints.leave;
     }
 
 
@@ -174,7 +197,7 @@ Responsiville.Slideshow = function ( options ) {
     // If no slides found then take the container's direct children.
     
     if ( this.$slides.length === 0 ) {
-        this.$slides = this.$container.children().not( this.$navigation );
+        this.$slides = this.$container.children();
     }
 
 
@@ -190,15 +213,30 @@ Responsiville.Slideshow = function ( options ) {
 
 
 
+    // Add this object as a main element's data attribute for API usage.
+    
+    this.$container.data( 'responsiville-api', this );
+    this.$container.data( 'responsiville-slideshow-api', this );
+
+    // Wrap slides in a separate container of their own.
+
+    this.$slides.wrapAll( '<div class = "responsiville-slideshow-slides-container"></div>' );
+
+    // Uniquely identify this element.
+    
+    this.$container.addClass( this.options.slug );
+
+
+
     // Setup slideshow navigation elements.
     
     this.$container.append(
         '<nav class = "responsiville-slideshow-navigation">' +
-            '<button class = "responsiville-slideshow-next">' +
+            '<button class = "responsiville-slideshow-next" title = "' + this.options.nextText + '">' +
                 '<span class = "responsiville-slideshow-next-icon"></span>' +
                 '<span class = "responsiville-slideshow-next-text">' + this.options.nextText + '</span>' +
             '</button>' +
-            '<button class = "responsiville-slideshow-previous">' +
+            '<button class = "responsiville-slideshow-previous" title = "' + this.options.previousText + '">' +
                 '<span class = "responsiville-slideshow-previous-icon"></span>' +
                 '<span class = "responsiville-slideshow-previous-text">' + this.options.previousText + '</span>' +
             '</button>' +
@@ -211,9 +249,9 @@ Responsiville.Slideshow = function ( options ) {
     
     var bulletsHTML = '';
 
-    for ( var k=0, length = this.$slides.length; k<length; k++ ) {
+    for ( var k=0, length=this.$slides.length; k<length; k++ ) {
         bulletsHTML +=
-            '<button class = "responsiville-slideshow-bullet">' +
+            '<button class = "responsiville-slideshow-bullet" title = "' + this.options.bulletText + " " + (k+1) + '">' +
                 '<span class = "responsiville-slideshow-bullet-icon"></span>' +
                 '<span class = "responsiville-slideshow-bullet-text">' + this.options.bulletText + '</span>' +
                 '<span class = "responsiville-slideshow-bullet-number">' + (k+1) + '</span>' +
@@ -284,6 +322,7 @@ Responsiville.Slideshow.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefined
 
 Responsiville.Slideshow.defaults = {
     debug        : false,
+    slug         : '',
     enter        : 'laptop, desktop, large, xlarge',
     leave        : 'tablet, mobile, small',
     container    : '.responsiville-slideshow',
@@ -375,8 +414,6 @@ Responsiville.Slideshow.prototype.setupEvents = function () {
 
     }
 
-
-
     // Register to be disabled on the required breakpoints.
 
     var breakpointsLeave = Responsiville.splitAndTrim( this.options.leave );
@@ -385,11 +422,14 @@ Responsiville.Slideshow.prototype.setupEvents = function () {
         this.responsiville.on( 'enter.' + breakpointsLeave[k], this.getBoundFunction( this.disable ) );
     }
 
-    // Enable right away if necessary.
-    
-    if ( this.responsiville.is( this.options.enter ) ) {
-        this.enable();
-    }
+
+
+    /**
+     * TODO
+     *
+     * The following event handlers should be registered and de-registered
+     * accordingly when the module is enabled and disabled.
+     */
 
 
 
@@ -441,7 +481,7 @@ Responsiville.Slideshow.prototype.enableOnFirstSlideLoad = function () {
 
         if ( ! imageOnFirstSlideLoaded ) {
 
-            imageOnFirstSlide.on( 'load', this.getBoundFunction( this.enable ) );
+            Responsiville.onImagesLoaded( imageOnFirstSlide, { single: this.getBoundFunction( this.enable ) } );
             return;
 
         }
@@ -472,8 +512,6 @@ Responsiville.Slideshow.prototype.enable = function () {
         return;
     }
     
-
-
     this.log( 'enabling the slideshow' );
 
 
@@ -564,8 +602,6 @@ Responsiville.Slideshow.prototype.disable = function () {
         return;
     }
 
-
-
     this.log( 'disabling the slideshow' );
 
 
@@ -573,8 +609,6 @@ Responsiville.Slideshow.prototype.disable = function () {
     // Mark slideshow as disabled.
     
     this.enabled = false;
-    
-    
     
     // Stop the slideshow.
     
@@ -608,10 +642,8 @@ Responsiville.Slideshow.prototype.disable = function () {
 
     }  else if ( this.options.effect == 'slide' ) {
 
-        /**
-         * @todo Slideshow horizontal slide effect.
-         */
-        
+        // The slide transition effect was used.
+                
     }
 
 
@@ -773,7 +805,7 @@ Responsiville.Slideshow.prototype.adjustContainer = function () {
         
         this.$container.velocity({
             properties : { 
-                height : this.$slides.eq( this.index ).height() 
+                height : this.$slides.eq( this.index ).outerHeight() 
             },
             options    : { 
                 duration : this.options.transition/2, 
@@ -809,7 +841,7 @@ Responsiville.Slideshow.prototype.adjustContainer = function () {
         
         for ( var k = 0, length = this.$slides.length; k < length; k++ ) {
             
-            var slideHeight = this.$slides.eq( k ).height();
+            var slideHeight = this.$slides.eq( k ).outerHeight();
             
             maxHeight = slideHeight > maxHeight ? slideHeight : maxHeight ;
 
@@ -885,9 +917,7 @@ Responsiville.Slideshow.prototype.show = function ( index, previous ) {
     // Hides the previous slide.
 
     if ( index != previous && ! this.firstRun ) {
-
-        this.hide( previous );
-
+        this.hide( previous, index );
     }
     
     
@@ -899,9 +929,9 @@ Responsiville.Slideshow.prototype.show = function ( index, previous ) {
 
     this.$slides.removeClass( this.options.selecting );
     this.$slides.eq( index ).addClass( this.options.selecting );
-    
-    
-    
+
+
+
     // Shows the currently selected slide with the correct visual effect.
 
     this.log( 'show slide ' + index );
@@ -910,18 +940,18 @@ Responsiville.Slideshow.prototype.show = function ( index, previous ) {
         
         // No slide transition effect.
 
+        this.adjustContainer();
+
         this.$slides.eq( index ).removeClass( 'responsiville-slideshow-slide-hidden' );
 
-        this.slideShown( index );
+        this.afterSlideShown( index );
 
 
 
         // Schedule the next slide.
 
         if ( this.options.start && ! this.paused ) {
-
             this.timeoutHandler = window.setTimeout( this.getBoundFunction( this.selectNext ), this.options.speed );
-
         }
 
 
@@ -947,9 +977,7 @@ Responsiville.Slideshow.prototype.show = function ( index, previous ) {
                 easing   : 'easeInOutSine',
                 complete : (function () {
 
-                    this.slideShown( index );
-
-
+                    this.afterSlideShown( index );
 
                     // Schedule the next slide.
 
@@ -973,29 +1001,65 @@ Responsiville.Slideshow.prototype.show = function ( index, previous ) {
         
     } else if ( this.options.effect == 'slide' ) {
 
-        /**
-         * @todo Slideshow horizontal slide effect.
-         */
+        // Slide slide transition effect.
         
-        this.slideShown( index );
+        this.adjustContainer();
 
+        var slide_direction = +1;
 
+        /**
+         * TODO
+         *
+         * Decide which one is the best approach.
+         */
 
-        // Schedule the next slide.
-
-        if ( this.options.start && ! this.paused ) {
-            this.timeoutHandler = window.setTimeout( this.getBoundFunction( this.selectNext ), this.options.speed );
+        if ( index == 0 ) {
+            slide_direction = previous == this.$slides.length-1 ? +1 : -1;
+        } /*else if ( index == this.$slides.length-1 ) {
+            slide_direction = previous == 0 ? -1 : +1;
+        }*/ else {
+            slide_direction = index-previous;
         }
 
+        if ( index >= previous && 
+             ! ( index == this.$slides.length-1 && previous == 0 ) || 
+             ( index == 0 && previous == this.$slides.length-1 ) ) {
+            slide_direction = +1;
+        } else {
+            slide_direction = -1;
+        }
+
+        this.$slides.eq( index ).
+            css( slide_direction > 0 ? { left: '100%', right: 'auto' } : { right: '100%', left: 'auto' } ).
+            velocity( 'finish', true ).
+            velocity({ 
+                properties : slide_direction > 0 ? { left: '0' } : { right: '0' },
+                options    : { 
+                    duration : this.options.transition, 
+                    easing   : 'easeInOutSine',
+                    complete : (function () {
+
+                        this.afterSlideShown( index );
+
+                        // Schedule the next slide.
+
+                        if ( this.options.start && ! this.paused ) {
+                            this.timeoutHandler = window.setTimeout( this.getBoundFunction( this.selectNext ), this.options.speed );
+                        }
 
 
-        /**
-         * Called after the slide has been shown.
-         * 
-         * @event Responsiville.Slideshow#slideShown
-         */
-        
-        this.fireEvent( 'slideShown' );
+
+                        /**
+                         * Called after the slide has been shown.
+                         * 
+                         * @event Responsiville.Slideshow#slideShown
+                         */
+                        
+                        this.fireEvent( 'slideShown' );
+
+                    }).bind( this )
+                } 
+            });
 
     }
 
@@ -1005,14 +1069,15 @@ Responsiville.Slideshow.prototype.show = function ( index, previous ) {
 
 /**
  * Runs when the process of showing a slide is complete, thus the slide is fully
- * shown, no matter whether the process took zero or more time.
+ * shown, no matter what the effect was or whether the process took zero or more
+ * time.
  *
  * @param {int} index The index of the slide that was shown.
  *
  * @return {void}
  */
 
-Responsiville.Slideshow.prototype.slideShown = function ( index ) {
+Responsiville.Slideshow.prototype.afterSlideShown = function ( index ) {
 
     // Mark slide elements appropriately.
 
@@ -1034,13 +1099,17 @@ Responsiville.Slideshow.prototype.slideShown = function ( index ) {
  * @fires Responsiville.Slideshow#slideHidden
  * 
  * @param {int}     index       The index of the slide to hide.
+ * @param {int}     next        The index of the slide to be shown while this
+ *                              slide is being hidden. Useful for cases where
+ *                              the transition from one slide to the other
+ *                              depends on the position of both slides.
  * @param {boolean} immediately Whether to hide the slide immediately, without
  *                              using any transition effects, or not.
  *
  * @return {void}
  */
 
-Responsiville.Slideshow.prototype.hide = function ( index, immediately ) {
+Responsiville.Slideshow.prototype.hide = function ( index, next, immediately ) {
 
     // Hides the given slide with the correct visual effect.
 
@@ -1060,6 +1129,8 @@ Responsiville.Slideshow.prototype.hide = function ( index, immediately ) {
     
     if ( this.options.effect == 'none' ) {
 
+        // No slide transition effect.
+
         this.$slides.eq( index ).addClass( 'responsiville-slideshow-slide-hidden' );
 
 
@@ -1072,6 +1143,8 @@ Responsiville.Slideshow.prototype.hide = function ( index, immediately ) {
         this.fireEvent( 'slideHidden' );
 
     } else if ( this.options.effect == 'fade' ) {
+
+        // Slide fade transition effect.
 
         this.$slides.eq( index ).velocity({ 
             properties : { opacity: 0, zIndex: 0 }, 
@@ -1094,9 +1167,53 @@ Responsiville.Slideshow.prototype.hide = function ( index, immediately ) {
 
     } else if ( this.options.effect == 'slide' ) {
 
+        // Slide slide transition effect.
+        
+        var slide_direction = +1;
+
+        if ( next == 0 ) {
+            slide_direction = index == this.$slides.length-1 ? +1 : -1;
+        } /*else if ( next == this.$slides.length-1 ) {
+            slide_direction = index == 0 ? -1 : +1;
+        }*/ else {
+            slide_direction = next-index;
+        }
+
         /**
-         * @todo Slide close effect.
+         * TODO
+         *
+         * Decide which one is the best approach.
          */
+
+        if ( next >= index && 
+             ! ( next == this.$slides.length-1 && index == 0 ) || 
+             ( next == 0 && index == this.$slides.length-1 ) ) {
+            slide_direction = +1;
+        } else {
+            slide_direction = -1;
+        }
+
+        this.$slides.eq( index ).
+            css( slide_direction > 0 ? { left: '0', right: 'auto' } : { right: '0', left: 'auto' } ).
+            velocity( 'finish', true ).
+            velocity({ 
+                properties : slide_direction > 0 ? { left: '-100%' } : { right: '-100%' }, 
+                options    : { 
+                    duration : immediately ? 0 : this.options.transition,
+                    easing   : 'easeInOutSine',
+                    complete : (function () {
+
+                        /**
+                         * Called after the slide has been hidden.
+                         * 
+                         * @event Responsiville.Slideshow#slideHidden
+                         */
+                        
+                        this.fireEvent( 'slideHidden' );
+
+                    }).bind( this )
+                } 
+            });
         
 
 
@@ -1130,7 +1247,7 @@ Responsiville.Slideshow.prototype.hideAll = function ( immediately ) {
     // Hides one slide after the other.
 
     for ( var k = 0, length = this.$slides.length; k < length; k++ ) {
-        this.hide( k, immediately );
+        this.hide( k, -1, immediately );
     }
 
 };
@@ -1309,6 +1426,11 @@ Responsiville.Slideshow.prototype.bulletMouseClick = function ( event ) {
     // Gets the index of the clicked navigation bullet.
 
     var $bullet = jQuery( event.target );
+    
+    if ( ! $bullet.is( '.responsiville-slideshow-bullet' ) ) {
+        $bullet = $bullet.closest( '.responsiville-slideshow-bullet' );
+    }
+
     var index   = $bullet.data( 'responsiville-slideshow-bullet-number' );
     
     // Selects the slide at this index.

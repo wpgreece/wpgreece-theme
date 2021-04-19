@@ -80,7 +80,7 @@ FixCSSVars.getCSSVariablesByElement = function ( element ) {
 
     // Take all CSS rule sets that are effective on the element.
             
-    var cssRules = CSSUtilities.getCSSRules( jQuery( element ).get( 0 ) );
+    var cssRules = CSSUtilities.getCSSRules( jQuery( element ).get( 0 ), 'all', 'properties' );
 
     var cssVariables = {};
 
@@ -116,10 +116,58 @@ FixCSSVars.getCSSVariablesByElement = function ( element ) {
 
     }
 
+
+
+    // Check for nested CSS variables.
+    
+    var nestedCSSVariablesExist = true;
+    var maxNestLevel = 10;
+    var level = 1; 
+
+    while ( nestedCSSVariablesExist ) {
+
+        nestedCSSVariablesExist = false;
+
+        // Iterate all CSS variables and search for CSS variables in them.
+
+        for ( var property in cssVariables ) {
+
+            var value = cssVariables[property];
+            var hasNestedCSSVariables = value.indexOf( 'var(' ) > -1;
+
+            nestedCSSVariablesExist = nestedCSSVariablesExist || hasNestedCSSVariables;
+
+            // CSS variable does contain nested CSS variables. 
+
+            if ( hasNestedCSSVariables ) {
+
+                // Replace all possible CSS variables in its value.
+
+                for ( var p in cssVariables ) {
+
+                    var v = cssVariables[p];
+                    value = value.replace( 'var(' + p + ')', v );
+                    value = value.replace( new RegExp( 'var\\(' + p + '\\)', 'gi' ), v );
+
+                }
+                
+                cssVariables[property] = value;
+
+            }
+
+        }
+
+        level++;
+
+
+        if ( level > maxNestLevel ) {
+            break;
+        }
+
+    }
+
     FixCSSVars.debug && console.log( 'CSS variables for element ' + element + ':' );
     FixCSSVars.debug && console.dir( cssVariables );
-
-
 
     return cssVariables;
 
@@ -189,7 +237,7 @@ FixCSSVars.getCSSSelectorsWithVariables = function () {
  * CSS rules that normally contained CSS variables, only now the CSS variables
  * have been replaced by their actual effective values.
  *
- * @return {void} Nothing!
+ * @return {void}
  */
 
 FixCSSVars.generateShimCSS = function () {
@@ -204,33 +252,31 @@ FixCSSVars.generateShimCSS = function () {
 
     
 
-    var css = '';
+    // Iterate over the CSS rules with variables in their values to generate the shim CSS.
 
-    // Iterate over the CSS rules with variables in their values.
+    var shimCSS = '';
 
     for ( var k = 0; k < selectorsWithVariables.length; k++ ) {
 
         var selectorWithVariables = selectorsWithVariables[k];
 
-        css += selectorWithVariables.name + " { ";
-        css += selectorWithVariables.rule + ": ";
+        shimCSS += selectorWithVariables.name + " { ";
+        shimCSS += selectorWithVariables.rule + ": ";
 
         var value = selectorWithVariables.value;
 
         // Replace every CSS variable with its efffective value based on the root element.
 
         for ( var rootVar in rootVars ) {
-
             value = value.replace( new RegExp( 'var\\(' + rootVar + '\\)', 'gi' ), rootVars[rootVar] );
-
         }
 
-        css += value + "; }\n\n";
+        shimCSS += value + "; }\n\n";
 
     }
 
     FixCSSVars.debug && console.log( 'CSS shim generated: ' );
-    FixCSSVars.debug && console.log( css );
+    FixCSSVars.debug && console.log( shimCSS );
 
 
 
@@ -242,15 +288,21 @@ FixCSSVars.generateShimCSS = function () {
     style.id = FixCSSVars.cssID;
     style.type = 'text/css';
 
+
+
     // Remove previous stylesheet if already generated before.
 
     jQuery( '#' + FixCSSVars.cssID ).remove();
 
     if ( style.styleSheet ) {
-      style.styleSheet.cssText = css;
+        style.styleSheet.cssText = shimCSS;
     } else {
-      style.appendChild( document.createTextNode( css ) );
+        style.appendChild( document.createTextNode( shimCSS ) );
     }
+
+
+
+    // Append shim CSS to head.
 
     head.appendChild( style );
     
@@ -261,7 +313,7 @@ FixCSSVars.generateShimCSS = function () {
 /**
  * Checks if CSS variables are supported and, if not, generates the shim CSS.
  *
- * @return {void} Nothing!
+ * @return {void}
  */
 
 FixCSSVars.exec = function () {
@@ -279,6 +331,12 @@ FixCSSVars.exec = function () {
 
         FixCSSVars.debug && console.log( 'CSSUtilities library loaded' );
         FixCSSVars.generateShimCSS();
+
+        // After the CSS variables have been replaced, run the equalheights script once again, just in case. 
+        
+        jQuery( '.responsiville-equalheights' ).each( function () {
+            jQuery( this ).data( 'responsiville-equalheights-api' ).runElements(); 
+        });
 
     });
 

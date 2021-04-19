@@ -1,13 +1,31 @@
-/***************************************************************
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
 
-    ██████╗     ███████╗    ███████╗    ███████╗    ████████╗
-    ██╔══██╗    ██╔════╝    ██╔════╝    ██╔════╝    ╚══██╔══╝
-    ██████╔╝    █████╗      ███████╗    █████╗         ██║   
-    ██╔══██╗    ██╔══╝      ╚════██║    ██╔══╝         ██║   
-    ██║  ██║    ███████╗    ███████║    ███████╗       ██║   
-    ╚═╝  ╚═╝    ╚══════╝    ╚══════╝    ╚══════╝       ╚═╝   
-                                                             
- ***************************************************************/
+
+
+/****************************************************************************
+
+     ██████╗███████╗███████╗    ██████╗ ███████╗███████╗███████╗████████╗
+    ██╔════╝██╔════╝██╔════╝    ██╔══██╗██╔════╝██╔════╝██╔════╝╚══██╔══╝
+    ██║     ███████╗███████╗    ██████╔╝█████╗  ███████╗█████╗     ██║
+    ██║     ╚════██║╚════██║    ██╔══██╗██╔══╝  ╚════██║██╔══╝     ██║
+    ╚██████╗███████║███████║    ██║  ██║███████╗███████║███████╗   ██║
+     ╚═════╝╚══════╝╚══════╝    ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝   ╚═╝
+
+ ****************************************************************************/
+
+
+
+    :root,
+    .small {
+        --font-icons: 'Responsiville icons';
+        --font-serif: Baskerville, Georgia, serif;
+        --font-sans-serif: 'Helvetica', Arial, sans-serif;
+        --font-monospace: Consolas, 'Courier New', monospace;
+    }
 
 
 
@@ -15,12 +33,18 @@
         width: 100%;
         min-width: 100%;
         box-sizing: border-box;
+        font-size: var(--root-font-size);
     }
 
     body {
         width: 100%;
         min-width: 100%;
+        font-family: var(--font-sans-serif);
+        font-size: var(--base-font-size);
+        color: var(--color-text);
     }
+
+
 
     *, *:before, *:after {
         box-sizing: inherit;
@@ -49,6 +73,8 @@
         outline: none;
     }
 
+
+
     ::selection {
         background: var(--color-text-selection-bg);
         color: var(--color-text-selection);
@@ -59,9 +85,13 @@
         color: var(--color-text-selection);
     }
 
+
+
     @-ms-viewport {
         width: device-width;
     }
+
+
 
     main {
         display: block;
@@ -69,16 +99,16 @@
 
 
 
-/******************************************************************************************************************************************
+/********************************************************************************************
 
-    ████████╗██╗   ██╗██████╗  ██████╗  ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗██╗   ██╗    ██╗███╗   ██╗██╗     ██╗███╗   ██╗███████╗
-    ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║  ██║╚██╗ ██╔╝    ██║████╗  ██║██║     ██║████╗  ██║██╔════╝
-       ██║    ╚████╔╝ ██████╔╝██║   ██║██║  ███╗██████╔╝███████║██████╔╝███████║ ╚████╔╝     ██║██╔██╗ ██║██║     ██║██╔██╗ ██║█████╗  
-       ██║     ╚██╔╝  ██╔═══╝ ██║   ██║██║   ██║██╔══██╗██╔══██║██╔═══╝ ██╔══██║  ╚██╔╝      ██║██║╚██╗██║██║     ██║██║╚██╗██║██╔══╝  
-       ██║      ██║   ██║     ╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║     ██║  ██║   ██║       ██║██║ ╚████║███████╗██║██║ ╚████║███████╗
-       ╚═╝      ╚═╝   ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝       ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝╚═╝  ╚═══╝╚══════╝
+    ████████╗██╗   ██╗██████╗  ██████╗  ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗██╗   ██╗
+    ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║  ██║╚██╗ ██╔╝
+       ██║    ╚████╔╝ ██████╔╝██║   ██║██║  ███╗██████╔╝███████║██████╔╝███████║ ╚████╔╝ 
+       ██║     ╚██╔╝  ██╔═══╝ ██║   ██║██║   ██║██╔══██╗██╔══██║██╔═══╝ ██╔══██║  ╚██╔╝  
+       ██║      ██║   ██║     ╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║     ██║  ██║   ██║   
+       ╚═╝      ╚═╝   ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝   
                                                                                                                                    
- ******************************************************************************************************************************************/
+ ********************************************************************************************/
 
 
 
@@ -86,6 +116,7 @@
         transition-property: opacity, color, background;
         transition-duration: 0.2s;
         transition-timing-function: linear;
+        display: inline-block;
     }
 
     a:hover {
@@ -109,7 +140,7 @@
     code {
         display: inline-block;
         font-size: inherit;
-        font-family: Consolas, "Courier New", monospace;
+        font-family: var(--font-monospace);
     }
 
     p code {
@@ -135,12 +166,13 @@
         margin: 0 0.1rem 0 0.2rem;
         font-size: 150%;
         font-style: italic;
-        font-family: Baskerville, "Palatino Linotype", Georgia, serif;
+        font-family: var(--font-serif);
         opacity: 0.7;
     }
 
     p.oldie:first-letter {
-        font-size: 9rem;
+        font-family: var(--font-serif);
+        font-size: 10rem;
         line-height: 1rem;
         font-weight: 700;
         float: left;
@@ -161,16 +193,16 @@
 
 
 
-/**********************************************************************************************************************************************
+/*******************************************************************************************************************************
 
-    ██╗███╗   ███╗ █████╗  ██████╗ ███████╗███████╗    ████████╗██╗  ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗    ██╗   ██╗██╗██████╗ ███████╗
-    ██║████╗ ████║██╔══██╗██╔════╝ ██╔════╝██╔════╝    ╚══██╔══╝██║  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝    ██║   ██║██║██╔══██╗██╔════╝
-    ██║██╔████╔██║███████║██║  ███╗█████╗  ███████╗       ██║   ███████║██║   ██║██╔████╔██║██████╔╝███████╗    ██║   ██║██║██║  ██║███████╗
-    ██║██║╚██╔╝██║██╔══██║██║   ██║██╔══╝  ╚════██║       ██║   ██╔══██║██║   ██║██║╚██╔╝██║██╔══██╗╚════██║    ╚██╗ ██╔╝██║██║  ██║╚════██║
-    ██║██║ ╚═╝ ██║██║  ██║╚██████╔╝███████╗███████║       ██║   ██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████║     ╚████╔╝ ██║██████╔╝███████║
-    ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝       ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝      ╚═══╝  ╚═╝╚═════╝ ╚══════╝
+    ██╗███╗   ███╗ ██████╗ ███████╗    ████████╗██╗  ██╗██╗   ██╗███╗   ███╗██████╗ ███████╗    ██╗   ██╗██╗██████╗ ███████╗
+    ██║████╗ ████║██╔════╝ ██╔════╝    ╚══██╔══╝██║  ██║██║   ██║████╗ ████║██╔══██╗██╔════╝    ██║   ██║██║██╔══██╗██╔════╝
+    ██║██╔████╔██║██║  ███╗███████╗       ██║   ███████║██║   ██║██╔████╔██║██████╔╝███████╗    ██║   ██║██║██║  ██║███████╗
+    ██║██║╚██╔╝██║██║   ██║╚════██║       ██║   ██╔══██║██║   ██║██║╚██╔╝██║██╔══██╗╚════██║    ╚██╗ ██╔╝██║██║  ██║╚════██║
+    ██║██║ ╚═╝ ██║ ██████╔╝███████║       ██║   ██║  ██║╚██████╔╝██║ ╚═╝ ██║██████╔╝███████║     ╚████╔╝ ██║██████╔╝███████║
+    ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝       ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚═════╝ ╚══════╝      ╚═══╝  ╚═╝╚═════╝ ╚══════╝
                                                                                                                                         
- ***********************************************************************************************************************************************/
+ *******************************************************************************************************************************/
 
 
 
@@ -213,7 +245,9 @@
         padding-bottom: 75%;
     }
 
+    .video-wrapper.ratio-1x1,
     .video-wrapper.ratio-square,
+    .iframe-wrapper.ratio-1x1,
     .iframe-wrapper.ratio-square {
         padding-bottom: 100%;
     }
@@ -233,16 +267,16 @@
 
 
 
-/****************************************************************************************************************************************************
+/*****************************************************************************************************************************
 
-    ████████╗██╗   ██╗██████╗  ██████╗  ██████╗ ██████╗  █████╗ ██████╗ ██╗  ██╗██╗   ██╗    ██████╗ ██╗  ██╗██╗   ██╗████████╗██╗  ██╗███╗   ███╗
-    ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██║  ██║╚██╗ ██╔╝    ██╔══██╗██║  ██║╚██╗ ██╔╝╚══██╔══╝██║  ██║████╗ ████║
-       ██║    ╚████╔╝ ██████╔╝██║   ██║██║  ███╗██████╔╝███████║██████╔╝███████║ ╚████╔╝     ██████╔╝███████║ ╚████╔╝    ██║   ███████║██╔████╔██║
-       ██║     ╚██╔╝  ██╔═══╝ ██║   ██║██║   ██║██╔══██╗██╔══██║██╔═══╝ ██╔══██║  ╚██╔╝      ██╔══██╗██╔══██║  ╚██╔╝     ██║   ██╔══██║██║╚██╔╝██║
-       ██║      ██║   ██║     ╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║     ██║  ██║   ██║       ██║  ██║██║  ██║   ██║      ██║   ██║  ██║██║ ╚═╝ ██║
-       ╚═╝      ╚═╝   ╚═╝      ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝       ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝
-                                                                                                                                                  
- ****************************************************************************************************************************************************/
+    ██╗   ██╗███████╗██████╗ ████████╗██╗ ██████╗ █████╗ ██╗         ██████╗ ██╗  ██╗██╗   ██╗████████╗██╗  ██╗███╗   ███╗
+    ██║   ██║██╔════╝██╔══██╗╚══██╔══╝██║██╔════╝██╔══██╗██║         ██╔══██╗██║  ██║╚██╗ ██╔╝╚══██╔══╝██║  ██║████╗ ████║
+    ██║   ██║█████╗  ██████╔╝   ██║   ██║██║     ███████║██║         ██████╔╝███████║ ╚████╔╝    ██║   ███████║██╔████╔██║
+    ╚██╗ ██╔╝██╔══╝  ██╔══██╗   ██║   ██║██║     ██╔══██║██║         ██╔══██╗██╔══██║  ╚██╔╝     ██║   ██╔══██║██║╚██╔╝██║
+     ╚████╔╝ ███████╗██║  ██║   ██║   ██║╚██████╗██║  ██║███████╗    ██║  ██║██║  ██║   ██║      ██║   ██║  ██║██║ ╚═╝ ██║
+      ╚═══╝  ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝╚═╝     ╚═╝
+
+ *****************************************************************************************************************************/
 
 
 
@@ -251,8 +285,6 @@
     }
 
     body {
-        font-family: "Helvetica", Arial, sans-serif;
-        color: var(--color-gray-dark);
         font-size: var(--base-font-size);
         line-height: var(--base-line-height);
     }
@@ -265,30 +297,343 @@
         line-height: var(--heading-line-height);
     }
 
-    .text h1, 
-    .text h2, 
-    .text h3, 
-    .text h4, 
-    .text h5, 
-    .text h6 {
-        margin-bottom: calc(0.333 * var(--text-rhythm));
+
+
+    /**
+     * Vertical rhythm is accomplished via setting a top margin on any element
+     * that appears in text and follows another element that appears in text 
+     * as well. In short the first element has no top margin, the last element
+     * has no bottom margin and every text element has a top margin to space
+     * away from the element above it.
+     */
+
+    .text h1 + p,
+    .text h1 + ul,
+    .text h1 + ol,
+    .text h1 + dl,
+    .text h1 + hr,
+    .text h1 + pre,
+    .text h1 + table,
+    .text h1 + blockquote,
+    .text h1 + form,
+    .text h1 + figure,
+    .text h1 + h1,
+    .text h1 + h2,
+    .text h1 + h3,
+    .text h1 + h4,
+    .text h1 + h5,
+    .text h1 + h6,
+    .text h1 + .text,
+    .text h2 + p,
+    .text h2 + ul,
+    .text h2 + ol,
+    .text h2 + dl,
+    .text h2 + hr,
+    .text h2 + pre,
+    .text h2 + table,
+    .text h2 + blockquote,
+    .text h2 + form,
+    .text h2 + figure,
+    .text h2 + h1,
+    .text h2 + h2,
+    .text h2 + h3,
+    .text h2 + h4,
+    .text h2 + h5,
+    .text h2 + h6,
+    .text h2 + .text,
+    .text h3 + p,
+    .text h3 + ul,
+    .text h3 + ol,
+    .text h3 + dl,
+    .text h3 + hr,
+    .text h3 + pre,
+    .text h3 + table,
+    .text h3 + blockquote,
+    .text h3 + form,
+    .text h3 + figure,
+    .text h3 + h1,
+    .text h3 + h2,
+    .text h3 + h3,
+    .text h3 + h4,
+    .text h3 + h5,
+    .text h3 + h6,
+    .text h3 + .text,
+    .text h4 + p,
+    .text h4 + ul,
+    .text h4 + ol,
+    .text h4 + dl,
+    .text h4 + hr,
+    .text h4 + pre,
+    .text h4 + table,
+    .text h4 + blockquote,
+    .text h4 + form,
+    .text h4 + figure,
+    .text h4 + h1,
+    .text h4 + h2,
+    .text h4 + h3,
+    .text h4 + h4,
+    .text h4 + h5,
+    .text h4 + h6,
+    .text h4 + .text,
+    .text h5 + p,
+    .text h5 + ul,
+    .text h5 + ol,
+    .text h5 + dl,
+    .text h5 + hr,
+    .text h5 + pre,
+    .text h5 + table,
+    .text h5 + blockquote,
+    .text h5 + form,
+    .text h5 + figure,
+    .text h5 + h1,
+    .text h5 + h2,
+    .text h5 + h3,
+    .text h5 + h4,
+    .text h5 + h5,
+    .text h5 + h6,
+    .text h5 + .text,
+    .text h6 + p,
+    .text h6 + ul,
+    .text h6 + ol,
+    .text h6 + dl,
+    .text h6 + hr,
+    .text h6 + pre,
+    .text h6 + table,
+    .text h6 + blockquote, 
+    .text h6 + form, 
+    .text h6 + figure, 
+    .text h6 + h1,
+    .text h6 + h2,
+    .text h6 + h3,
+    .text h6 + h4,
+    .text h6 + h5,
+    .text h6 + h6,
+    .text h6 + .text {
+        margin-top: calc(0.333*var(--text-rhythm));
     }
 
-    p.text, .text p,
-    ul.text, .text ul, 
-    ol.text, .text ol, 
-    dl.text, .text dl,
-    hr.text, .text hr,
-    pre.text, .text pre,
-    table.text, .text table,
-    blockquote.text, .text blockquote {
-        margin-bottom: var(--text-rhythm);
+    .text p + p,
+    .text p + ul,
+    .text p + ol,
+    .text p + dl,
+    .text p + hr,
+    .text p + pre,
+    .text p + table,
+    .text p + blockquote,
+    .text p + form,
+    .text p + figure,
+    .text p + h1,
+    .text p + h2,
+    .text p + h3,
+    .text p + h4,
+    .text p + h5,
+    .text p + h6,
+    .text p + .text,
+    .text ul + p,
+    .text ul + ul,
+    .text ul + ol,
+    .text ul + dl,
+    .text ul + hr,
+    .text ul + pre,
+    .text ul + table,
+    .text ul + blockquote,
+    .text ul + form,
+    .text ul + figure,
+    .text ul + h1,
+    .text ul + h2,
+    .text ul + h3,
+    .text ul + h4,
+    .text ul + h5,
+    .text ul + h6,
+    .text ul + .text,
+    .text ol + p,
+    .text ol + ul,
+    .text ol + ol,
+    .text ol + dl,
+    .text ol + hr,
+    .text ol + pre,
+    .text ol + table,
+    .text ol + blockquote,
+    .text ol + form,
+    .text ol + figure,
+    .text ol + h1,
+    .text ol + h2,
+    .text ol + h3,
+    .text ol + h4,
+    .text ol + h5,
+    .text ol + h6,
+    .text ol + .text,
+    .text dl + p,
+    .text dl + ul,
+    .text dl + ol,
+    .text dl + dl,
+    .text dl + hr,
+    .text dl + pre,
+    .text dl + table,
+    .text dl + blockquote,
+    .text dl + form,
+    .text dl + figure,
+    .text dl + h1,
+    .text dl + h2,
+    .text dl + h3,
+    .text dl + h4,
+    .text dl + h5,
+    .text dl + h6,
+    .text dl + .text,
+    .text hr + p,
+    .text hr + ul,
+    .text hr + ol,
+    .text hr + dl,
+    .text hr + hr,
+    .text hr + pre,
+    .text hr + table,
+    .text hr + blockquote,
+    .text hr + form,
+    .text hr + figure,
+    .text hr + h1,
+    .text hr + h2,
+    .text hr + h3,
+    .text hr + h4,
+    .text hr + h5,
+    .text hr + h6,
+    .text hr + .text,
+    .text pre + p,
+    .text pre + ul,
+    .text pre + ol,
+    .text pre + dl,
+    .text pre + hr,
+    .text pre + pre,
+    .text pre + table,
+    .text pre + blockquote,
+    .text pre + form,
+    .text pre + figure,
+    .text pre + h1,
+    .text pre + h2,
+    .text pre + h3,
+    .text pre + h4,
+    .text pre + h5,
+    .text pre + h6,
+    .text pre + .text,
+    .text table + p,
+    .text table + ul,
+    .text table + ol,
+    .text table + dl,
+    .text table + hr,
+    .text table + pre,
+    .text table + table,
+    .text table + blockquote,
+    .text table + form,
+    .text table + figure,
+    .text table + h1,
+    .text table + h2,
+    .text table + h3,
+    .text table + h4,
+    .text table + h5,
+    .text table + h6,
+    .text table + .text,
+    .text blockquote + p,
+    .text blockquote + ul,
+    .text blockquote + ol,
+    .text blockquote + dl,
+    .text blockquote + hr,
+    .text blockquote + pre,
+    .text blockquote + table,
+    .text blockquote + blockquote,
+    .text blockquote + form,
+    .text blockquote + figure,
+    .text blockquote + h1,
+    .text blockquote + h2,
+    .text blockquote + h3,
+    .text blockquote + h4,
+    .text blockquote + h5,
+    .text blockquote + h6,
+    .text blockquote + .text,
+    .text form + p,
+    .text form + ul,
+    .text form + ol,
+    .text form + dl,
+    .text form + hr,
+    .text form + pre,
+    .text form + table,
+    .text form + blockquote,
+    .text form + form,
+    .text form + figure,
+    .text form + h1,
+    .text form + h2,
+    .text form + h3,
+    .text form + h4,
+    .text form + h5,
+    .text form + h6,
+    .text form + .text,
+    .text figure + p,
+    .text figure + ul,
+    .text figure + ol,
+    .text figure + dl,
+    .text figure + hr,
+    .text figure + pre,
+    .text figure + table,
+    .text figure + blockquote,
+    .text figure + form,
+    .text figure + figure,
+    .text figure + h1,
+    .text figure + h2,
+    .text figure + h3,
+    .text figure + h4,
+    .text figure + h5,
+    .text figure + h6,
+    .text figure + .text,
+    .text .text + p,
+    .text .text + ul,
+    .text .text + ol,
+    .text .text + dl,
+    .text .text + hr,
+    .text .text + pre,
+    .text .text + table,
+    .text .text + blockquote,
+    .text .text + form,
+    .text .text + figure,
+    .text .text + h1,
+    .text .text + h2,
+    .text .text + h3,
+    .text .text + h4,
+    .text .text + h5,
+    .text .text + h6,
+    .text .text + .text {
+        margin-top: var(--text-rhythm);
     }
 
-    blockquote.text, .text blockquote {
-        margin-top: calc(1*var(--text-rhythm));
-        margin-bottom: calc(2*var(--text-rhythm));
+
+
+    /* Paragraphs inside blockquotes. */
+
+    .text blockquote p + p,
+    .text table      p + p {
+        margin-top: calc(0.5*var(--text-rhythm));
     }
+
+
+
+    /* Last elements of lists. */
+
+    .text ul > li:last-of-type, 
+    .text ol > li:last-of-type,
+    .text dl > dt:last-of-type,
+    .text dl > dd:last-of-type {
+        padding-bottom: 0;
+    } 
+
+
+
+    /* Preformatted code elements. */
+
+    pre code {
+        display: block;
+        line-height: calc(0.8333*var(--base-line-height));
+    }
+
+
+
+    /* A vertical spacer element. */
 
     .spacer {
         display: block;
@@ -296,35 +641,6 @@
         line-height: 0;
         font-size: 0;
         padding-top: var(--text-rhythm);
-    }
-
-    .text blockquote p,
-    .text table td p {
-        margin-bottom: calc(0.5 * var(--text-rhythm));
-    }
-
-    .text blockquote p:only-child,
-    .text blockquote p:last-child,
-    .text table td p:only-child,
-    .text table td p:last-child {
-        margin-bottom: 0;
-    }
-
-    blockquote.citation p:last-of-type,
-    blockquote.frame p:last-of-type {
-        margin-bottom: 0;
-    }
-
-    .text ul > li:last-of-type, 
-    .text ol > li:last-of-type,
-    .text dl > dt:last-of-type,
-    .text dl > dd:last-of-type {
-        margin-bottom: 0;
-    }
-
-    pre code {
-        display: block;
-        line-height: calc(0.8333 * var(--base-line-height));
     }
 
 
@@ -343,33 +659,27 @@
 
 
     h1, h2, h3, h4, h5, h6 {
-        font-family: Baskerville, Georgia, serif;
+        font-family: var(--font-serif);
         font-weight: normal;
     }
 
     h1 {
-        font-size: calc(var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+        font-size: calc(var(--base-font-size)*var(--font-scale)*var(--font-scale)*var(--font-scale)*var(--font-scale)*var(--font-scale)*var(--font-scale));
     }
 
     h2 {
-        font-size: calc(var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+        font-size: calc(var(--base-font-size)*var(--font-scale)*var(--font-scale)*var(--font-scale)*var(--font-scale)*var(--font-scale));
     }
 
     h3 {
-        font-size: calc(var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+        font-size: calc(var(--base-font-size)*var(--font-scale)*var(--font-scale)*var(--font-scale)*var(--font-scale));
     }
 
-    h4 {
-        font-size: calc(var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+    h4, h5, h6 {
+        font-size: calc(var(--base-font-size)*var(--font-scale)*var(--font-scale)*var(--font-scale));
     }
 
-    h5 {
-        font-size: calc(var(--base-font-size) * var(--font-scale) * var(--font-scale));
-    }
 
-    h6 {
-        font-size: calc(var(--base-font-size) * var(--font-scale));
-    }
 
     .text blockquote {
         padding-left: 8rem;
@@ -384,13 +694,13 @@
             left: 1.5rem;
             font-size: 9rem;
             line-height: 1;
-            font-family: Baskerville, Georgia, serif;
+            font-family: var(--font-serif);
         }
 
     blockquote.modern {
         margin-left: 1.5rem;
         padding-left: 2rem;
-        border-left: 1rem solid var(--color-gray);
+        border-left: 1rem solid var(--color-responsiville-gray);
     }
 
         blockquote.modern::before {
@@ -400,9 +710,9 @@
 
     blockquote.citation {
         margin-left: 0;
-        padding: 3rem;
-        border: 0.1rem solid var(--color-gray);
-        box-shadow: inset 0 0 2rem -1rem var(--color-gray);
+        padding: 4rem 4rem 3.5rem 4rem;
+        border: 0.1rem solid var(--color-responsiville-gray);
+        box-shadow: inset 0 0 2rem -1rem var(--color-responsiville-gray);
     }
 
         blockquote.citation::before {
@@ -413,8 +723,8 @@
     blockquote.frame {
         margin: 4.7rem 0.7rem;
         padding: 2rem 2.5rem;
-        border: 0.7rem double var(--color-gray);
-        outline: 0.7rem double var(--color-gray);
+        border: 0.7rem double var(--color-responsiville-gray);
+        outline: 0.7rem double var(--color-responsiville-gray);
     }
 
         blockquote.frame::before {
@@ -425,7 +735,7 @@
     blockquote.shout {
         font-size: 250%;
         line-height: 1.25;
-        font-family: Baskerville, Georgia, serif;
+        font-family: var(--font-serif);
     }
 
         blockquote.shout::before {
@@ -433,12 +743,16 @@
             font-size: 12rem;
         }
 
+
+
     pre {
         font-family: inherit;
         font-size: inherit;
         max-width: 100%;
         overflow: auto;
     }
+
+
 
     hr { 
         position: relative;
@@ -449,6 +763,8 @@
         padding: 0;
         clear: both;
     }
+
+
 
     .text-center {
         text-align: center;
@@ -468,16 +784,16 @@
 
 
 
-/**********************************************************
+/*******************************************
 
-    ██╗         ██╗    ███████╗    ████████╗    ███████╗
-    ██║         ██║    ██╔════╝    ╚══██╔══╝    ██╔════╝
-    ██║         ██║    ███████╗       ██║       ███████╗
-    ██║         ██║    ╚════██║       ██║       ╚════██║
-    ███████╗    ██║    ███████║       ██║       ███████║
-    ╚══════╝    ╚═╝    ╚══════╝       ╚═╝       ╚══════╝
-                                                        
- **********************************************************/
+    ██╗     ██╗███████╗████████╗███████╗
+    ██║     ██║██╔════╝╚══██╔══╝██╔════╝
+    ██║     ██║███████╗   ██║   ███████╗
+    ██║     ██║╚════██║   ██║   ╚════██║
+    ███████╗██║███████║   ██║   ███████║
+    ╚══════╝╚═╝╚══════╝   ╚═╝   ╚══════╝
+                                        
+ *******************************************/
 
 
     ul li {
@@ -503,8 +819,8 @@
     .text ul li, 
     .text ol li,
     .text dl dd {
-        padding-left: calc(var(--text-rhythm) / 4);
-        padding-bottom: calc(var(--text-rhythm) / 4);
+        padding-left: calc(var(--text-rhythm)/4);
+        padding-bottom: calc(var(--text-rhythm)/4);
         list-style-type: inherit;
     }
 
@@ -531,16 +847,16 @@
 
 
 
-/************************************************************************************************************************
+/*************************************************************************************
 
-    ███╗   ██╗     █████╗     ██╗   ██╗    ██╗     ██████╗      █████╗     ████████╗    ██╗     ██████╗     ███╗   ██╗
-    ████╗  ██║    ██╔══██╗    ██║   ██║    ██║    ██╔════╝     ██╔══██╗    ╚══██╔══╝    ██║    ██╔═══██╗    ████╗  ██║
-    ██╔██╗ ██║    ███████║    ██║   ██║    ██║    ██║  ███╗    ███████║       ██║       ██║    ██║   ██║    ██╔██╗ ██║
-    ██║╚██╗██║    ██╔══██║    ╚██╗ ██╔╝    ██║    ██║   ██║    ██╔══██║       ██║       ██║    ██║   ██║    ██║╚██╗██║
-    ██║ ╚████║    ██║  ██║     ╚████╔╝     ██║    ╚██████╔╝    ██║  ██║       ██║       ██║    ╚██████╔╝    ██║ ╚████║
-    ╚═╝  ╚═══╝    ╚═╝  ╚═╝      ╚═══╝      ╚═╝     ╚═════╝     ╚═╝  ╚═╝       ╚═╝       ╚═╝     ╚═════╝     ╚═╝  ╚═══╝
+    ███╗   ██╗ █████╗ ██╗   ██╗██╗ ██████╗  █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+    ████╗  ██║██╔══██╗██║   ██║██║██╔════╝ ██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+    ██╔██╗ ██║███████║██║   ██║██║██║  ███╗███████║   ██║   ██║██║   ██║██╔██╗ ██║
+    ██║╚██╗██║██╔══██║╚██╗ ██╔╝██║██║   ██║██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
+    ██║ ╚████║██║  ██║ ╚████╔╝ ██║╚██████╔╝██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
+    ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
                                                                                                                   
- ************************************************************************************************************************/
+ *************************************************************************************/
 
 
 
@@ -560,16 +876,16 @@
 
 
 
-/***************************************************************************
+/********************************************************
 
-    ████████╗     █████╗     ██████╗     ██╗         ███████╗    ███████╗
-    ╚══██╔══╝    ██╔══██╗    ██╔══██╗    ██║         ██╔════╝    ██╔════╝
-       ██║       ███████║    ██████╔╝    ██║         █████╗      ███████╗
-       ██║       ██╔══██║    ██╔══██╗    ██║         ██╔══╝      ╚════██║
-       ██║       ██║  ██║    ██████╔╝    ███████╗    ███████╗    ███████║
-       ╚═╝       ╚═╝  ╚═╝    ╚═════╝     ╚══════╝    ╚══════╝    ╚══════╝
+    ████████╗ █████╗ ██████╗ ██╗     ███████╗███████╗
+    ╚══██╔══╝██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
+       ██║   ███████║██████╔╝██║     █████╗  ███████╗
+       ██║   ██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║
+       ██║   ██║  ██║██████╔╝███████╗███████╗███████║
+       ╚═╝   ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
                                                                      
- ***************************************************************************/
+ ********************************************************/
 
 
 
@@ -583,7 +899,7 @@
         caption-side: top;
         padding: 1rem;
         position: relative;
-        background: var(--color-gray-light-x);
+        background: var(--color-responsiville-gray-light-x);
     }
 
     caption.bottom {
@@ -601,13 +917,23 @@
     thead td,
     tfoot td, 
     tfoot th {
-        background: var(--color-gray-light);
+        background: var(--color-responsiville-gray);
         font-weight: bold;
     }
 
     tbody tr:nth-child(odd) td,
     tbody tr:nth-child(odd) th {
-        background: var(--color-gray-light-x);
+        background: var(--color-responsiville-gray-light-x);
+    }
+
+    tbody tr:nth-child(odd):hover td,
+    tbody tr:nth-child(odd):hover th {
+        background: none;
+    }
+
+    tbody tr:hover,
+    tbody tr:hover {
+        background: var(--color-responsiville-gray);
     }
 
     thead:first-child tr:first-child td,
@@ -699,16 +1025,16 @@
 
 
 
-/******************************************************************
+/***************************************************
 
-    ███████╗     ██████╗     ██████╗     ███╗   ███╗    ███████╗
-    ██╔════╝    ██╔═══██╗    ██╔══██╗    ████╗ ████║    ██╔════╝
-    █████╗      ██║   ██║    ██████╔╝    ██╔████╔██║    ███████╗
-    ██╔══╝      ██║   ██║    ██╔══██╗    ██║╚██╔╝██║    ╚════██║
-    ██║         ╚██████╔╝    ██║  ██║    ██║ ╚═╝ ██║    ███████║
-    ╚═╝          ╚═════╝     ╚═╝  ╚═╝    ╚═╝     ╚═╝    ╚══════╝
-                                                                
- ******************************************************************/
+    ███████╗ ██████╗ ██████╗ ███╗   ███╗███████╗
+    ██╔════╝██╔═══██╗██╔══██╗████╗ ████║██╔════╝
+    █████╗  ██║   ██║██████╔╝██╔████╔██║███████╗
+    ██╔══╝  ██║   ██║██╔══██╗██║╚██╔╝██║╚════██║
+    ██║     ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████║
+    ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝
+                                                    
+ ***************************************************/
 
 
 
@@ -716,12 +1042,72 @@
     textarea,
     select {
         border-width: 0.1rem;
-        padding: 1rem 1.25rem;
+        padding: 0 1em;
+        height: 3em;
+        line-height: 3em;
         font-size: inherit;
         font-family: inherit;
-        color: var(--color-text);
+        color: inherit;
         border-color: currentColor;
         border-radius: 0.2rem;
+    }
+
+    textarea {
+        height: unset;
+    }
+
+
+
+    /* All but Internet Explorer. */
+
+    @supports (-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none) {
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEABAMAAACuXLVVAAAAFVBMVEUAAABkZGRkZGRkZGRkZGRkZGRkZGT2B6oaAAAABnRSTlMAAQQkQMX4ly5wAAACXUlEQVR42u3U201DQQyEYZNe0gEFWIgaUsER/ZfAAyGcy97tsSU0fwMefdKuCGOMMcYYY4wxxhhjjDHGGGOMMcaye/9M7UPuX6mp3B6Z9zeRXAIVSSXYRHIJVCSVYHu+xDQCfQ7IIthen1ESgb4G5BBsu/84hUB3AzII9gApBHoYEE9wBEgg0NOAaIIzQDiBXgbEElwBggm0MCCSoAQQSqDFAXEEZYBAAq0MiCKoAYQRaHVADEEdIIhAGwMiCFoAIQTaHIAnaAMEEGhnAJqgBwAn6AGgCfoAYII+AJZgBABKMAKAJBgDABKMAeAIRgFgBKMAKIJxABDBOACGYAYAQjADgCCYAwAQzAH4E8wCuBPMAngTzAM4E8wD+BKsALgSrAB4EqwBOBKsAfgRrAK4EawCeBGsAzgRrAP4EFgAXAgsAB4ENgAHAhuAncAKYCawAlgJ7ABGAjuAjcADwETgAWAh8AEwEPgArBN4ASwTeAGsEvgBLBL4AawReAIsEXgCrBD4AiwQ+ALME3gDTBN4A8wS+ANMEvgDzBEgAKYIEAAzBBiACQIMwDgBCmCYAAUwSoADGCTAAYwRIAGGCJAAIwRYgAECLECfAA3QJUAD9AjwAB0CPECbIAKgSRAB0CKIAWgQxADUCaIAqgRRADWCOIAKQRxAmSASoEgQCVAiiAUoEMQCXAmiAS4E0QBngniAE0E8wJEgA+BAkAGwJ8gB2BHkAPwRZAG8CLIAfgnyAJ4EeQA/BJkAIvdcAJHbIxdA5J4LIPKWfJ8xxhhjjDHGGGOMMcYYY4wxxhhj/6BvKWrE9J1FGooAAAAASUVORK5CYII=);
+            background-size: auto 0.75em;
+            background-position: calc(100% - 0.75em) 50%;
+            background-repeat: no-repeat;
+            background-color: var(--color-responsiville-white);
+            padding-right: 2em !important;
+        }
+
+    }
+
+
+
+    option {
+        padding: 0;
+        margin: 0;
+        line-height: inherit;
+    }
+
+    .input-large {
+        font-size: 110%;
+        padding: 0 2em;
+        height: 3.5em;
+        line-height: 3.5em;
+    }
+
+    .input-medium {
+        font-size: 90%;
+        padding: 0 1em;
+        height: 2.5em;
+        line-height: 2.5em;
+    }
+
+    .input-small {
+        font-size: 80%;
+        padding: 0 0.6em;
+        height: 2em;
+        line-height: 2em;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        height: auto;
     }
 
     input, 
@@ -730,20 +1116,17 @@
         vertical-align: middle;
     }
 
-    select {
-        padding: 0.9rem 1.5rem;
-    }
-
-    option {
-        padding: 0.5rem 1.5rem;
+    input[type="radio"],
+    input[type="checkbox"] {
+        vertical-align: baseline;
     }
 
     input:disabled {
-        background: var(--color-gray);
+        background: var(--color-responsiville-gray);
     }
 
     input:invalid {
-        background: repeating-linear-gradient(-45deg, var(--color-gray-light-x) 0, var(--color-gray-light) 1rem);
+        background: repeating-linear-gradient(-45deg, var(--color-responsiville-gray-light-x) 0, var(--color-responsiville-gray-light) 1rem);
     }
 
     label,
@@ -794,14 +1177,6 @@
     }
 
     @-moz-document url-prefix() { 
-        input[type="color"] {
-            padding: 0;
-            position: relative;
-            top: 1.225rem;
-        }
-    }
-
-    @-moz-document url-prefix() { 
         input[type="range"] {
             padding-top: 2.5rem;
         }
@@ -829,15 +1204,27 @@
         appearance: textfield;
     }
 
-    :-moz-placeholder,
-    ::-webkit-input-placeholder,
     :-ms-input-placeholder {
-        color: var(--color-gray-dark);
+        color: var(--color-responsiville-gray-dark);
+    }
+    ::-ms-input-placeholder {
+        color: var(--color-responsiville-gray-dark);
+    }
+    ::-webkit-input-placeholder {
+        color: var(--color-responsiville-gray-dark);
+    }
+    ::placeholder {
+        color: var(--color-responsiville-gray-dark);
+    }
+    :placeholder-shown {
+        color: var(--color-responsiville-gray-dark);
     }
 
     ::-webkit-validation-bubble-message {
         padding: 2rem;
     }
+
+    
 
     /* Make them all block level to fit inside a grid. */
 
@@ -869,60 +1256,73 @@
 
 
 
-/********************************************************************************************
+/*********************************************************************
 
-    ██████╗     ██╗   ██╗    ████████╗    ████████╗     ██████╗     ███╗   ██╗    ███████╗
-    ██╔══██╗    ██║   ██║    ╚══██╔══╝    ╚══██╔══╝    ██╔═══██╗    ████╗  ██║    ██╔════╝
-    ██████╔╝    ██║   ██║       ██║          ██║       ██║   ██║    ██╔██╗ ██║    ███████╗
-    ██╔══██╗    ██║   ██║       ██║          ██║       ██║   ██║    ██║╚██╗██║    ╚════██║
-    ██████╔╝    ╚██████╔╝       ██║          ██║       ╚██████╔╝    ██║ ╚████║    ███████║
-    ╚═════╝      ╚═════╝        ╚═╝          ╚═╝        ╚═════╝     ╚═╝  ╚═══╝    ╚══════╝
-                                                                                          
- ********************************************************************************************/
+    ██████╗ ██╗   ██╗████████╗████████╗ ██████╗ ███╗   ██╗███████╗
+    ██╔══██╗██║   ██║╚══██╔══╝╚══██╔══╝██╔═══██╗████╗  ██║██╔════╝
+    ██████╔╝██║   ██║   ██║      ██║   ██║   ██║██╔██╗ ██║███████╗
+    ██╔══██╗██║   ██║   ██║      ██║   ██║   ██║██║╚██╗██║╚════██║
+    ██████╔╝╚██████╔╝   ██║      ██║   ╚██████╔╝██║ ╚████║███████║
+    ╚═════╝  ╚═════╝    ╚═╝      ╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+
+ *********************************************************************/
 
 
 
     button,
     .button,
     input[type="button"],
+    input[type="reset"],
     input[type="submit"] {
         display: inline-block;
+        vertical-align: middle;
         width: auto;
         text-align: center;
-        padding: 1.1rem 2rem;
+        padding: 0 1.5em;
+        height: 3em;
+        line-height: 3em;
         border: none;
         outline: none;
         text-decoration: none;
         cursor: hand;
         cursor: pointer;
-        line-height: inherit;
         font-size: inherit;
         font-family: inherit;
         font-weight: normal;
-        color: var(--color-gray-dark);
-        background: var(--color-gray);
+        color: var(--color-responsiville-gray-dark);
+        background: var(--color-responsiville-gray);
         transition-property: opacity, color, background;
         transition-duration: 0.2s;
         transition-timing-function: linear;
     }
 
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
     button:hover,
     .button:hover,
     input[type="button"]:hover,
+    input[type="reset"]:hover,
     input[type="submit"]:hover {
-        color: var(--color-gray-light-x);
-        background: var(--color-gray-dark);
+        color: var(--color-responsiville-gray-light-x);
+        background: var(--color-responsiville-gray-dark);
     }
 
     button:active,
     .button:active,
     input[type="button"]:active,
+    input[type="reset"]:active,
     input[type="submit"]:active {
         outline: none;
     }
 
     button::-moz-focus-inner,
     .button::-moz-focus-inner,
+    input[type="reset"]::-moz-focus-inner,
     input[type="button"]::-moz-focus-inner,
     input[type="submit"]::-moz-focus-inner {
         outline: none;
@@ -931,15 +1331,21 @@
 
     .button-large {
         font-size: 110%;
-        padding: 1.7rem 3rem;
+        padding: 0 2.5em;
+        height: 3.5em;
+        line-height: 3.5em;
     }
 
     .button-medium {
         font-size: 90%;
-        padding: 1rem 2rem;
+        padding: 0 1em;
+        height: 2.5em;
+        line-height: 2.5em;
     }
 
     .button-small {
-        padding: 0.75rem 1.25rem;
         font-size: 80%;
+        padding: 0 0.6em;
+        height: 2em;
+        line-height: 2em;
     }

@@ -40,6 +40,53 @@
             The Responsiville framework is responsible to add the class <code>mobile</code> to the HTML element of the web page when the screen size is between 321 and 600 pixels. It is also responsible for updating this class if and when the screen changes ie the mobile phone or tablet orientation changes or the browser window is resized. Then the developer can use this class in order to target each element to each breakpoint.
         </p>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Breakpoint name</th>
+                    <th>Screen range from</th>
+                    <th>Screen range to</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>small</code></td>
+                    <td>0</td>
+                    <td>319</td>
+                </tr>
+                <tr>
+                    <td><code>mobile</code></td>
+                    <td>320</td>
+                    <td>599</td>
+                </tr>
+                <tr>
+                    <td><code>tablet</code></td>
+                    <td>600</td>
+                    <td>1023</td>
+                </tr>
+                <tr>
+                    <td><code>laptop</code></td>
+                    <td>1024</td>
+                    <td>1279</td>
+                </tr>
+                <tr>
+                    <td><code>desktop</code></td>
+                    <td>1280</td>
+                    <td>1439</td>
+                </tr>
+                <tr>
+                    <td><code>large</code></td>
+                    <td>1440</td>
+                    <td>1679</td>
+                </tr>
+                <tr>
+                    <td><code>xlarge</code></td>
+                    <td>1680</td>
+                    <td>up</td>
+                </tr>
+            </tbody>
+        </table>
+
 
 
         <h2>Mobile first</h2>
@@ -80,6 +127,17 @@
         <p>
             These breakpoint names are what defines the world of Responsiville, be it HTML elements, CSS rules or Javascript modules. One needs to know these by heart, in order to be able to comprehend how everything works from here and on.
         </p>
+
+        <p>
+            However there is a small CSS workaround in order to reference a breakpoint in a <strong>mobile last</strong> (we could call this <strong>desktop first</strong>) way by using the CSS <code>:not(...)</code> pseudo-class:
+        </p>
+
+        <pre><code class = "language-css">
+            /* Defines how the element will look from the tablet breakpoint (not including) and above. */
+            html:not(.tablet) .element {
+                padding: 5rem;
+            }
+        </code></pre>
 
 
 
@@ -421,7 +479,7 @@
         <h2>The nexus</h2>
 
         <p>
-            It is also possible to disable all grid gutters, when necessary, in order to create a tight grid and use all the space inside the columns. We call this grid a <strong>nexus</strong> and we define it by setting a <code>nexus</code> class in the container like this.
+            It is also possible to <strong>disable all grid gutters</strong>, where necessary, in order to create a <strong>tight grid</strong> and use all the space inside the columns. We call this grid a <strong>nexus</strong> and we define it by setting a <code>nexus</code> class in the container like this.
         </p>
 
         <pre><code class = "language-markup"><!--
@@ -440,7 +498,7 @@
         --></code></pre>
 
         <p>
-            Note how this produces a grid with no horizontal breathing space between columns.
+            Note how this produces a grid with no horizontal breathing space between columns. But one can always include the breathing space within the grid columns, if they wish. 
         </p>
 
         <div class = "grid-showcase nexus">

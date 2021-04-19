@@ -1,14 +1,13 @@
 <?php
 
     /**
-     * Contains functions useful in theme coding like head meta output, favicon
-     * hell, getting images, handling greek text peculiarities, etc.
+     * Vanilla theme related enhancements.
      * 
      * @author Nevma, http://www.nevma.gr, info@nevma.gr
      * 
      * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
      */
-    
+
 
 
     /**
@@ -32,8 +31,9 @@
 
         <!-- Your regular png favicon. -->
         <link rel = "icon" href = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon.png" /> 
+        <link rel = "icon" href = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon.png" sizes = "256x256"/> 
 
-        <?php // The rest of the favicon sizes. ?>
+        <!-- The rest of the favicon sizes. -->
         <link rel = "icon" type = "image/png" href = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon-16x16.png"   sizes = "16x16" />
         <link rel = "icon" type = "image/png" href = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon-32x32.png"   sizes = "32x32" />
         <link rel = "icon" type = "image/png" href = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon-64x64.png"   sizes = "64x64" />
@@ -50,7 +50,7 @@
         <meta name = "msapplication-TileColor" content = "#ffffff" />
         <meta name = "msapplication-TileImage" content = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon.png" />
         
-        <?php // IE10 icon with all 4 dimensions inside. ?>
+        <!-- IE10 icon with all 4 dimensions inside. -->
         <link rel = "shortcut icon" type = "image/ico" href = "<?php echo get_stylesheet_directory_uri(); ?>/img/favicons/favicon.ico" /> <?php
 
     }
@@ -66,29 +66,27 @@
     
     function vanilla_theme_enqueue_css () {
 
-        // Utility variables.
-        
-        $version = '';
+        $csss = array(
+            array( 'id' => 'style',                    'file' => '/style.css' ),
+            array( 'id' => 'responsiville-def',        'file' => '/inc/vanilla/responsiville/css/responsiville.def.css' ),
+            array( 'id' => 'responsiville-bugsy',      'file' => '/inc/vanilla/responsiville/css/responsiville.bugsy.css' ),
+            array( 'id' => 'responsiville-moressette', 'file' => '/inc/vanilla/responsiville/css/responsiville.moressette.css' ),
+            array( 'id' => 'responsiville-ingrid',     'file' => '/inc/vanilla/responsiville/css/responsiville.ingrid.css' ),
+            array( 'id' => 'responsiville-accordion',  'file' => '/inc/vanilla/responsiville/css/responsiville.accordion.css' ),
+            array( 'id' => 'responsiville-drawers',    'file' => '/inc/vanilla/responsiville/css/responsiville.drawers.css' ),
+            array( 'id' => 'responsiville-megamenu',   'file' => '/inc/vanilla/responsiville/css/responsiville.megamenu.css' ),
+            array( 'id' => 'responsiville-mobimenu',   'file' => '/inc/vanilla/responsiville/css/responsiville.mobimenu.css' ),
+            array( 'id' => 'responsiville-popup',      'file' => '/inc/vanilla/responsiville/css/responsiville.popup.css' ),
+            array( 'id' => 'responsiville-scrollmenu', 'file' => '/inc/vanilla/responsiville/css/responsiville.scrollmenu.css' ),
+            array( 'id' => 'responsiville-slideshow',  'file' => '/inc/vanilla/responsiville/css/responsiville.slideshow.css' ),
+            array( 'id' => 'vanilla-theme',            'file' => '/inc/vanilla/base/css/vanilla.theme.css' ),
+            array( 'id' => 'nevma-popup',              'file' => '/inc/vanilla/base/css/jquery.nevma.popup-1.2.css' ),
+            array( 'id' => 'nevma-anchorPopup',        'file' => '/inc/vanilla/base/css/jquery.nevma.anchorPopup-1.0.css' )
+        );
 
-
-
-        wp_enqueue_style( 'style-css',                  get_bloginfo( 'stylesheet_url' ),                                                               array(), $version, 'all' );
-
-        wp_enqueue_style( 'responsiville',              get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.def.css',          array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-bugsy',        get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.bugsy.css',        array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-moressette',   get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.moressette.css',   array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-ingrid',       get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.ingrid.css',       array(), $version, 'all' );
-
-        wp_enqueue_style( 'responsiville-accordion',    get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.accordion.css',    array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-megamenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.megamenu.css',     array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-mobimenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.mobimenu.css',     array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-scrollmenu',   get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.scrollmenu.css',   array(), $version, 'all' );
-        wp_enqueue_style( 'responsiville-slideshow',    get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.slideshow.css',    array(), $version, 'all' );
-
-        wp_enqueue_style( 'vanilla-theme',              get_template_directory_uri() . '/inc/vanilla/base/css/vanilla.theme.css',                       array(), $version, 'all' );
-        
-        wp_enqueue_style( 'nevma-popup',                get_template_directory_uri() . '/inc/vanilla/base/css/jquery.nevma.popup-1.2.css',              array(), $version, 'all' );
-        wp_enqueue_style( 'nevma-anchorPopup',          get_template_directory_uri() . '/inc/vanilla/base/css/jquery.nevma.anchorPopup-1.0.css',        array(), $version, 'all' );
+        foreach ( $csss as $css ) {
+            wp_enqueue_style( $css['id'],  get_template_directory_uri() . $css['file'],  array(), filemtime( get_template_directory() . $css['file'] ), 'all' );
+        }
 
     }
 
@@ -105,52 +103,73 @@
 
         // Utility variables.
         
-        $version   = '';
         $in_header = false;
         $in_footer = true;
 
 
 
-        // JQuery output in the head.
-        
-        wp_enqueue_script( 'jquery' ); 
+        // Polyfill.io library to minimise general browser incompatibilies.
 
-        wp_enqueue_script( 'polyfill-io', 'https://cdn.polyfill.io/v2/polyfill.min.js', array(), $version, $in_header );
+        wp_enqueue_script( 'polyfill-io', 'https://cdn.polyfill.io/v2/polyfill.min.js', array(), null, $in_header );
 
-        // General purpose and third-party Javascript libraries.
 
-        wp_enqueue_script( 'velocity',                   get_template_directory_uri() . '/inc/vanilla/base/js/velocity.min.js',                        array( 'jquery' ),                   $version, $in_footer );
-        wp_enqueue_script( 'hammer',                     get_template_directory_uri() . '/inc/vanilla/base/js/hammer.min.js',                          array( 'jquery' ),                   $version, $in_footer );
-        wp_enqueue_script( 'hammer-jquery',              get_template_directory_uri() . '/inc/vanilla/base/js/jquery.hammer.js',                       array( 'hammer' ),                   $version, $in_footer );
-        wp_enqueue_script( 'cssutilities',               get_template_directory_uri() . '/inc/vanilla/base/js/cssutilities.nevma.min.js',              array( 'jquery' ),                   $version, $in_footer );
-        wp_enqueue_script( 'nevma-fixcssvars',           get_template_directory_uri() . '/inc/vanilla/base/js/nevma.fixcssvars.js',                    array( 'cssutilities' ),             $version, $in_footer );
-        wp_enqueue_script( 'nevma-fixcssvars-run',       get_template_directory_uri() . '/inc/vanilla/base/js/nevma.fixcssvars.run.js',                array( 'nevma-fixcssvars' ),         $version, $in_footer );
 
-        wp_enqueue_script( 'nevma-greekUppercase',       get_template_directory_uri() . '/inc/vanilla/base/js/jquery.nevma.greekUppercase-1.0.min.js', array( 'jquery' ),                   $version, $in_footer );
-        wp_enqueue_script( 'nevma-noScrollLayer',        get_template_directory_uri() . '/inc/vanilla/base/js/jquery.nevma.noScrollLayer-1.0.min.js',  array( 'jquery' ),                   $version, $in_footer );
-        wp_enqueue_script( 'nevma-popup',                get_template_directory_uri() . '/inc/vanilla/base/js/jquery.nevma.popup-1.2.min.js',          array( 'jquery' ),                   $version, $in_footer );
-        wp_enqueue_script( 'nevma-anchorPopup',          get_template_directory_uri() . '/inc/vanilla/base/js/jquery.nevma.anchorPopup-1.0.min.js',    array( 'nevma-popup' ),              $version, $in_footer );
-        
-        // Responsiville flags for auto init and debug.
+        // Manually enqueue jQuery and jQuery migrate so they can be concatenated and minified in the head. 
 
-        wp_enqueue_script( 'responsiville-flags',        get_template_directory_uri() . '/inc/vanilla/base/js/responsiville.flags.js',                 array( 'jquery' ),                   $version, $in_header );
+        global $wp_scripts;
 
-        // Responsiville scripts.
+        $jquery_core    = array( 'src' => $wp_scripts->registered['jquery-core']->src,    'ver' => $wp_scripts->registered['jquery-core']->ver );
+        $jquery_migrate = array( 'src' => $wp_scripts->registered['jquery-migrate']->src, 'ver' => $wp_scripts->registered['jquery-migrate']->ver );
 
-        wp_enqueue_script( 'responsiville',              get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.def.js',          array( 'jquery' ),                   $version, $in_header );
-        wp_enqueue_script( 'responsiville-bugsy',        get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.bugsy.js',        array( 'responsiville' ),            $version, $in_header );
-        wp_enqueue_script( 'responsiville-events',       get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.events.js',       array( 'responsiville-bugsy' ),      $version, $in_header );
-        wp_enqueue_script( 'responsiville-main',         get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.main.js',         array( 'responsiville-events' ),     $version, $in_header );
-        wp_enqueue_script( 'responsiville-main-run',     get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.main.run.js',     array( 'responsiville-main' ),       $version, $in_header );
+        wp_dequeue_script( 'jquery' );
+        wp_dequeue_script( 'jquery-migrate' );
 
-        wp_enqueue_script( 'responsiville-accordion',    get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.accordion.js',    array( 'responsiville-main-run' ),   $version, $in_footer );
-        wp_enqueue_script( 'responsiville-equalheights', get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.equalheights.js', array( 'responsiville-main-run' ),   $version, $in_footer );
-        wp_enqueue_script( 'responsiville-megamenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.megamenu.js',     array( 'responsiville-main-run' ),   $version, $in_footer );
-        wp_enqueue_script( 'responsiville-mobimenu',     get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.mobimenu.js',     array( 'responsiville-main-run' ),   $version, $in_footer );
-        wp_enqueue_script( 'responsiville-scrollmenu',   get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.scrollmenu.js',   array( 'responsiville-main-run' ),   $version, $in_footer );
-        wp_enqueue_script( 'responsiville-slideshow',    get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.slideshow.js',    array( 'responsiville-main-run' ),   $version, $in_footer );
+        wp_deregister_script( 'jquery' );
+        wp_deregister_script( 'jquery-migrate' );
 
-        wp_enqueue_script( 'responsiville-run',          get_template_directory_uri() . '/inc/vanilla/responsiville/js/responsiville.run.js',          array( 'responsiville-main-run' ),   $version, $in_footer );
+        wp_enqueue_script( 'jquery',           $jquery_core['src'],    array( 'polyfill-io' ), $jquery_core['ver'],    $in_header );
+        wp_enqueue_script( 'jquery-migrate-x', $jquery_migrate['src'], array( 'jquery' ),      $jquery_migrate['ver'], $in_header );
+
+
+
+        // Vanilla enqueued scripts (the order is important).
+
+        $jsss = array(
+            array( 'id' => 'cssutils',                   'file' => '/inc/vanilla/base/js/cssutilities.nevma.min.js',                  'deps' => array( 'jquery' ),                 'place' => $in_header ),
+            array( 'id' => 'fixcssvars',                 'file' => '/inc/vanilla/base/js/nevma.fixcssvars.js',                        'deps' => array( 'cssutils' ),               'place' => $in_header ),
+            array( 'id' => 'fixcssvars-run',             'file' => '/inc/vanilla/base/js/nevma.fixcssvars.run.js',                    'deps' => array( 'fixcssvars' ),             'place' => $in_header ),
+            array( 'id' => 'responsiville-flags',        'file' => '/inc/vanilla/base/js/responsiville.flags.js',                     'deps' => array( 'jquery' ),                 'place' => $in_header ),
+            array( 'id' => 'responsiville',              'file' => '/inc/vanilla/responsiville/js/responsiville.def.js',              'deps' => array( 'responsiville-flags' ),    'place' => $in_header ),
+            array( 'id' => 'responsiville-bugsy',        'file' => '/inc/vanilla/responsiville/js/responsiville.bugsy.js',            'deps' => array( 'responsiville' ),          'place' => $in_header ),
+            array( 'id' => 'responsiville-events',       'file' => '/inc/vanilla/responsiville/js/responsiville.events.js',           'deps' => array( 'responsiville-bugsy' ),    'place' => $in_header ),
+            array( 'id' => 'responsiville-main',         'file' => '/inc/vanilla/responsiville/js/responsiville.main.js',             'deps' => array( 'responsiville-events' ),   'place' => $in_header ),
+            array( 'id' => 'responsiville-main-run',     'file' => '/inc/vanilla/responsiville/js/responsiville.main.run.js',         'deps' => array( 'responsiville-main' ),     'place' => $in_header ),
+            array( 'id' => 'velocity',                   'file' => '/inc/vanilla/base/js/velocity.min.js',                            'deps' => array( 'jquery' ),                 'place' => $in_footer ),
+            array( 'id' => 'hammer',                     'file' => '/inc/vanilla/base/js/hammer.min.js',                              'deps' => array( 'jquery' ),                 'place' => $in_footer ),
+            array( 'id' => 'hammer-jquery',              'file' => '/inc/vanilla/base/js/jquery.hammer.js',                           'deps' => array( 'hammer' ),                 'place' => $in_footer ),
+            array( 'id' => 'responsiville-accordion',    'file' => '/inc/vanilla/responsiville/js/responsiville.accordion.js',        'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-drawers',      'file' => '/inc/vanilla/responsiville/js/responsiville.drawers.js',          'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-equalheights', 'file' => '/inc/vanilla/responsiville/js/responsiville.equalheights.js',     'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-lazyimage',    'file' => '/inc/vanilla/responsiville/js/responsiville.lazymg.js',           'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-megamenu',     'file' => '/inc/vanilla/responsiville/js/responsiville.megamenu.js',         'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-mobimenu',     'file' => '/inc/vanilla/responsiville/js/responsiville.mobimenu.js',         'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-parallax',     'file' => '/inc/vanilla/responsiville/js/responsiville.parallax.js',         'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-popup',        'file' => '/inc/vanilla/responsiville/js/responsiville.popup.js',            'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-resp-element', 'file' => '/inc/vanilla/responsiville/js/responsiville.responsiveelement.js','deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-scrollmenu',   'file' => '/inc/vanilla/responsiville/js/responsiville.scrollmenu.js',       'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-slideshow',    'file' => '/inc/vanilla/responsiville/js/responsiville.slideshow.js',        'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'responsiville-run',          'file' => '/inc/vanilla/responsiville/js/responsiville.run.js',              'deps' => array( 'responsiville-main-run' ), 'place' => $in_footer ),
+            array( 'id' => 'nevma-greekuppercase',       'file' => '/inc/vanilla/base/js/jquery.nevma.greekUppercase-1.0.min.js',     'deps' => array( 'jquery' ),                 'place' => $in_footer ),
+            array( 'id' => 'nevma-noscrolllayer',        'file' => '/inc/vanilla/base/js/jquery.nevma.noScrollLayer-1.0.min.js',      'deps' => array( 'jquery' ),                 'place' => $in_footer ),
+            array( 'id' => 'nevma-popup',                'file' => '/inc/vanilla/base/js/jquery.nevma.popup-1.2.min.js',              'deps' => array( 'jquery' ),                 'place' => $in_footer ),
+            array( 'id' => 'nevma-anchorPopup',          'file' => '/inc/vanilla/base/js/jquery.nevma.anchorPopup-1.0.min.js',        'deps' => array( 'nevma-popup' ),            'place' => $in_footer )
+        );
+
+        foreach ( $jsss as $js ) {
+            wp_enqueue_script( $js['id'], get_template_directory_uri() . $js['file'], $js['deps'], filemtime( get_template_directory() . $js['file'] ), $js['place'] );
+        }
+
+        vanilla_theme_head_js_localise();
 
     }
 
@@ -168,26 +187,16 @@
 
         global $LANG;
 
-        wp_localize_script( 'jquery', 'THEME', 
+        wp_localize_script( 'responsiville-flags', 'VANILLA', 
             array( 
-                'LANG'         => $LANG, 
-                'BLOG_URL'     => home_url(), 
-                'TEMPLATE_URL' => get_template_directory_uri(),
-                'AJAX_URL'     => admin_url( 'admin-ajax.php' ),
-                'WP_DEBUG'     => defined( 'WP_DEBUG' ) && WP_DEBUG ? true : false,
-            )
-        );
-
-        wp_localize_script( 'jquery', 'VANILLA', 
-            array( 
-                'DEBUG' => defined( 'VANILLA_DEBUG' ) && VANILLA_DEBUG ? true : false
-            )
-        );
-
-        wp_localize_script( 'jquery', 'RESPONSIVILLE', 
-            array( 
-                'DEBUG'     => defined( 'RESPONSIVILLE_DEBUG' ) && RESPONSIVILLE_DEBUG ? true : false,
-                'AUTO_INIT' => defined( 'RESPONSIVILLE_AUTO_INIT' ) && RESPONSIVILLE_AUTO_INIT ? true : false
+                'LANG'                    => $LANG, 
+                'BLOG_URL'                => home_url(), 
+                'TEMPLATE_URL'            => get_template_directory_uri(),
+                'AJAX_URL'                => admin_url( 'admin-ajax.php' ),
+                'WP_DEBUG'                => defined( 'WP_DEBUG' )                && WP_DEBUG                ? true : false,
+                'VANILLA_DEBUG'           => defined( 'VANILLA_DEBUG' )           && VANILLA_DEBUG           ? true : false,
+                'RESPONSIVILLE_DEBUG'     => defined( 'RESPONSIVILLE_DEBUG' )     && RESPONSIVILLE_DEBUG     ? true : false,
+                'RESPONSIVILLE_AUTO_INIT' => defined( 'RESPONSIVILLE_AUTO_INIT' ) && RESPONSIVILLE_AUTO_INIT ? true : false
             )
         );
 
@@ -196,16 +205,12 @@
 
 
     /**
-     * 
+     * Enqueues Vanilla head scripts and styles.
      * 
      * @return void
      */
 
     function vanilla_theme_head_scripts_and_styles () {
-
-        // First output global Javascript variables.
-        
-        vanilla_theme_head_js_localise();
 
         // Then enqueue Vanilla CSS stylesheets.
         
@@ -228,80 +233,53 @@
 
     function vanilla_theme_index_title () {
 
-        if ( is_single() ) {
+        if ( is_single() || is_page() || is_home() || is_front_page() ) {
 
             // Single post.
-            single_post_title();
+            $title = single_post_title( '', false );
 
-        } else if ( is_page() ) {
-
-            // Single page.
-            single_post_title();
-
-        } else if ( is_home() ) {
-
-            // Blog page.
-            single_post_title();
-
-        } else if ( is_front_page() ) {
-
-            // Front page.
-            single_post_title();
-
-        } else if ( is_category() ) {
+        } else if ( is_category() || is_tag() ) {
 
             // Category archive.
-            // _e( 'News archive - ', 'nevma-theme' );
-            single_cat_title();
-
-        } else if ( is_tag() ) {
-
-            // Tag archive.
-            // _e( 'News archive - ', 'nevma-theme' );
-            single_tag_title();
-
-        } else if ( is_post_type_archive() ) {
-
-            // Post type archive.
-            post_type_archive_title();
+            $title = single_cat_title( '', false );
 
         } else if ( is_tax() ) {
 
             // Taxonomy archive.
-            single_term_title();
+            $title = single_term_title( '', false );
+
+        } else if ( is_post_type_archive() ) {
+
+            // Post type archive.
+            $title = post_type_archive_title( '', false );
 
         } else if ( is_author() ) {
 
             // Author archive.
-            // _e( 'Author archive - ', 'nevma-theme' );
-            the_author();
+            $title = the_author( '', false );
 
         } else if ( is_archive() ) {
 
             // Date archive.
-            // _e( 'News archive - ', 'nevma-theme' ); 
-
-            if ( is_year() ) {
-                echo get_query_var( 'year' );
-            } else if ( is_month() ) {
-                single_month_title( ' ' );
-            }
+            $title = the_archive_title( '', false );
 
         } else if ( is_search() ) {
 
             // Search page.
             global $wp_query; 
 
-            echo __( 'You searched for: ', 'nevma-theme' ) . '&quot;' . $_GET['s'] . '&quot;'; 
-            echo '<br><small>' . __( 'we found', 'nevma-theme' ) . ' ' . $wp_query->found_posts . __( ' result(s)', 'nevma-theme' ) . '</small>';
+            $title = 
+                __( 'You searched for: ', 'nevma-theme' ) . '&quot;' . $_GET['s'] . '&quot; <br />' . 
+               '<small>' . __( 'we found', 'nevma-theme' ) . ' ' . $wp_query->found_posts . __( ' result(s)', 'nevma-theme' ) . '</small>';
 
         } else {
 
             // Whateva.
-            echo '-';
-            wp_title( '' );
+            $title = wp_title( '', false );
 
         }
+
+        echo apply_filters( 'vanilla_theme_index_title', $title );
     
     }
 
@@ -370,6 +348,55 @@
 
 
     /**
+     * Same as `get_the_date()` but outputs the date in Genitive correctly
+     * declined, if the current active translation supports it. 
+     * 
+     * @param string   $date_format The format of the date to be output. 
+     * @param int|null $timestamp   The timestamp of the date to be output. If 
+     *                              left null then the date is obtained from the
+     *                              current WordPress loop. 
+     * 
+     * @return string
+     */
+    
+    function vanilla_theme_get_the_date_declined ( $date_format, $timestamp=NULL ) {
+
+        global $wp_locale;
+
+        if ( $timestamp == NULL ) {
+            $date = get_the_date( $date_format );
+        } else {  
+            $date = date_i18n( $date_format, $timestamp );
+        }
+
+        if ( 'on' == _x( 'off', 'decline months names: on or off' ) ) {
+
+            $months          = $wp_locale->month;
+            $months_genitive = $wp_locale->month_genitive;
+             
+            foreach ( $months as $key => $month ) {
+                $months[ $key ] = $month;
+            }
+             
+            foreach ( $months_genitive as $key => $month ) {
+                $months_genitive[ $key ] = ' ' . $month;
+            }
+           
+            $date = str_replace( $months, $months_genitive, $date );
+
+            return $date;
+
+        } else {
+
+            return $date;
+            
+        }
+
+    }
+
+
+
+    /**
      * Gets the url of a given image. Convenience function because WordPress 
      * does not have a direct way of returning this in one single function call.
      * 
@@ -387,13 +414,125 @@
         $image_data = wp_get_attachment_image_src( $image_ID, $image_size );
 
         if ( $image_data ) {
-
-            // The image url
             return $image_data[0]; 
-
         } else {
             return false;
         }
+    }
+
+
+
+    /**
+     * Gets the alt of a given image as it is registered as an attachment meta.
+     * 
+     * @param int $image_ID The ID of the image as a WordPress attachment in the
+     *                      media library.
+     * 
+     * @return string The alt of the image.
+     */
+
+    function vanilla_theme_get_image_alt ( $image_ID ) {
+
+        return get_post_meta( $image_ID, '_wp_attachment_image_alt', true );
+        
+    }
+
+
+
+    /**
+     * Gets the title of a given image as it is registered as an attachemnt
+     * post.
+     * 
+     * @param int $image_ID The ID of the image as a WordPress attachment in the
+     *                      media library.
+     * 
+     * @return string The title of the image.
+     */
+
+    function vanilla_theme_get_image_title ( $image_ID ) {
+
+        return get_the_title( $image_ID );
+
+    }
+
+
+
+    /**
+     * Gets the description of a given image as it is registered as the content
+     * of an attachment post
+     * 
+     * @param int $image_ID The ID of the image as a WordPress attachment in the
+     *                      media library.
+     * 
+     * @return string The description of the image.
+     */
+
+    function vanilla_theme_get_image_description ( $image_ID ) {
+
+        $image = get_post( $image_ID );
+        $image_description = $image->post_content;
+
+        return $image_description;
+
+    }
+
+
+
+    /**
+     * Gets the caption of a given image as it is registered as an image 
+     * attachment meta.
+     * 
+     * @param int $image_ID The ID of the image as a WordPress attachment in the
+     *                      media library.
+     * 
+     * @return string The caption of the image.
+     */
+
+    function vanilla_theme_get_image_caption ( $image_ID ) {
+
+        return wp_get_attachment_caption( $image_ID );
+
+    }
+
+
+
+    /**
+     * Gets the best available string to be used as the alt attribute of an
+     * image in HTML. Returns one of the following, whichever is found first:
+     * alt, description, caption, title.
+     * 
+     * @param int $image_ID The ID of the image as a WordPress attachment in the
+     *                      media library.
+     * 
+     * @return string The alt of the image.
+     */
+
+    function vanilla_theme_get_image_alt_html ( $image_ID ) {
+
+        $image_alt = vanilla_theme_get_image_alt( $image_ID );
+
+        if ( $image_alt ) {
+            return $image_alt;
+        }
+
+        $image_description = vanilla_theme_get_image_description( $image_ID );
+
+        if ( $image_description ) {
+            return $image_description;
+        }
+
+        $image_caption = vanilla_theme_get_image_caption( $image_ID );
+
+        if ( $image_caption ) {
+            return $image_caption;
+        }
+
+        $image_title = vanilla_theme_get_image_title( $image_ID );
+
+        if ( $image_title ) {
+            return $image_title;
+        }
+
     }
 
 
@@ -435,21 +574,26 @@
      *       which will be included by default when no other image is found.
      */
 
-	function vanilla_theme_get_first_available_image () {
+    function vanilla_theme_get_first_available_image () {
 
-		global $post;
-		
-		$first_img = '';
-		$output    = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
-		$first_img = count( $matches[1] ) > 0 ? $matches[1][0] : false;
+        global $post;
+        
+        $first_img = '';
 
-		if ( ! $first_img ) { 
-			$first_img = vanilla_theme_get_site_logo_url();
-		}
+        if ( ! $post ) {
+            return $first_img;
+        }
 
-		return $first_img;
+        $output    = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
+        $first_img = count( $matches[1] ) > 0 ? $matches[1][0] : false;
 
-	}
+        if ( ! $first_img ) { 
+            $first_img = vanilla_theme_get_site_logo_url();
+        }
+
+        return $first_img;
+
+    }
 
 
 
@@ -486,7 +630,7 @@
      * Returns the URL of the website's logo image, after passing it through a 
      * filter to allow overrides by child themes. The default logo of the
      * website is expected to be found inside the active theme in the path
-     * `img/logo.png`. The filter is `vanilla_get_site_logo_url`.
+     * 'img/logo.png'. The filter is 'vanilla_get_site_logo_url'.
      * 
      * @return string The site's logo URL.
      */
@@ -503,11 +647,12 @@
      * Adds a class to the anchor elements inside WP Nav Menu items, so as to
      * enable Responsiville Megamenu for a particular menu. The class is added
      * (and thus the Megamenu is enabled) only if 'responsiville_megamenu'
-     * custom arg is set in the args of `wp_nav_menu`, it resolves to true, AND
+     * custom arg is set in the args of 'wp_nav_menu', it resolves to true, AND
      * the particular menu item being processed has children (so that a Megamenu
      * behavior makes sense).
      *
-     * @param  array  $atts HTML attributes of the anchor elements in an associative array.
+     * @param  array  $atts HTML attributes of the anchor elements in an 
+     *                      associative array.
      * @param  Object $item Object containing item details.
      * @param  Object $args Nav menu arguments
      * 
@@ -516,12 +661,20 @@
     
     function vanilla_theme_enable_responsiville_megamenus ( $atts, $item, $args ) {
 
-        if ( ! empty( $args->responsiville_megamenu ) && ! empty( $item->classes ) && in_array( 'menu-item-has-children', $item->classes ) ) {
+        if ( ! empty( $args->responsiville_megamenu ) && 
+             ! empty( $item->classes ) && 
+             in_array( 'menu-item-has-children', $item->classes ) ) {
 
             if ( empty( $atts['class'] ) ) {
                 $atts['class'] = 'responsiville-megamenu';
             } else {
                 $atts['class'] .= ' responsiville-megamenu';
+            }
+
+            if ( is_array( $args->responsiville_megamenu ) ) {
+                foreach( $args->responsiville_megamenu as $key => $value) {
+                    $atts['data-' . $key] = $value;
+                }
             }
 
         }

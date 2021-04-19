@@ -1,8 +1,9 @@
 /**
  * The Debug scope of the Responsiville framework. Contains debugging methods
  * and properties which assist in the development of responsive web pages with 
- * the Responsiville framework. Not meant to be used autonomously.
-
+ * the Responsiville framework. Not meant to be used autonomously even inside 
+ * the scope of the framework.
+ *
  * @namespace Responsiville.Debug
  */
 
@@ -133,13 +134,11 @@ Responsiville.Debug.Extensions.log = function () {
 
     // The current log entry is wrapped in a group in console.
 
-    console.group( '[' + this.codeName + ']' );
-
-
+    console.group( '[' + this.codeName + '/' + this.options.slug  + ']' );
 
     // Logs all given arguments one afer the other.
 
-    for ( var k in arguments ) {
+    for ( var k=0, length=arguments.length; k<length; k++ ) {
         console.log( arguments[k] );
     }
 
@@ -173,20 +172,20 @@ Responsiville.Debug.Extensions.dir = function () {
 
     // The current dir entry is wrapped in a group in console.
 
-    console.group( '[' + this.codeName + ']' );
-
-
+    console.group( '[' + this.codeName + '/' + this.options.slug + ']' );
 
     // Dirs all given arguments one afer the other.
 
-    for ( var k in arguments ) {
-        
+    for ( var k=0, length=arguments.length; k<length; k++ ) {
+
+        var argument = arguments[k];
+
         if ( jQuery.type( arguments[k] ) == 'string' ) {
-            console.log( arguments[k] );
-        } else if ( jQuery.isFunction( arguments[k] ) ) {
-            console.log( arguments[k] );
+            console.log( argument );
+        } else if ( jQuery.isFunction( argument ) ) {
+            console.log( argument );
         } else {
-            console.dir( arguments[k] );
+            console.dir( argument );
         }
 
     }
@@ -216,10 +215,6 @@ Responsiville.Debug.setupDebug = function () {
         return;
     }
 
-    // Mark debug state in the body.
-
-    responsiville.$body.addClass( 'responsiville-debug-grid responsiville-debug-blocks' );
-
 
 
     // Create the debug panel.
@@ -230,7 +225,7 @@ Responsiville.Debug.setupDebug = function () {
 
             // For debugging the grid.
 
-            '<section class = "responsiville-debug-layout">' +
+            '<section class = "responsiville-debug-control responsiville-debug-layout">' +
                 '<p>' +
                     '<label for = "responsiville-debug-grid">' +
                         'Grid debug <input type = "checkbox" id = "responsiville-debug-grid" name = "responsiville-debug-grid" value = "responsiville-debug-grid">' +
@@ -241,37 +236,38 @@ Responsiville.Debug.setupDebug = function () {
                         'Text debug <input type = "checkbox" id = "responsiville-debug-blocks" name = "responsiville-debug-blocks" value = "responsiville-debug-blocks">' +
                     '</label>' +
                 '</p>' +
+                '<p>' +
+                    '<label for = "responsiville-debug-semantic">' +
+                        'Semantic debug <input type = "checkbox" id = "responsiville-debug-semantic" name = "responsiville-debug-semantic" value = "responsiville-debug-semantic">' +
+                    '</label>' +
+                '</p>' +
+                '<p>' +
+                    '<label for = "responsiville-debug-wpadminbar">' +
+                        'WP admin bar <input type = "checkbox" id = "responsiville-debug-wpadminbar" name = "responsiville-debug-wpadminbar" value = "responsiville-debug-wpadminbar">' +
+                    '</label>' +
+                '</p>' +
             '</section>' +
             
             // For debugging screen sizes.
 
-            '<section class = "responsiville-debug-dimensions">' +
-                '<p>...</p>' +
+            '<section class = "responsiville-debug-control responsiville-debug-dimensions">' +
+                '<p>[please wait&hellip;]</p>' +
             '</section>' +
 
             // For monitoring browser performance.
 
-            '<section class = "responsiville-debug-performance">' +
-                '<p>&hellip;</p>' +
+            '<section class = "responsiville-debug-control responsiville-debug-performance">' +
+                '<p>[please wait&hellip;]</p>' +
             '</section>' +
 
             // Link to the responsiville test page, if we are in a page of the theme.
 
-            '<section class = "responsiville-debug-text">' +
+            '<section class = "responsiville-debug-control responsiville-debug-text">' +
                 '<p>' + 
-                    '<a class = "button" href = "http://codex.wordpress.org/Function_Reference/" title = "WordPress function reference" target = "_blank">Codex functions</a>' +
-                    '<a class = "button" href = "http://codex.wordpress.org/Plugin_API/Action_Reference" title = "Codex hooks reference" target = "_blank">Codex hooks</a>' +
-                    '<a class = "button" href = "https://codex.wordpress.org/Plugin_API/Filter_Reference" title = "Codex filters reference" target = "_blank">Codex filters</a>' +
-                    '<a class = "button" href = "http://www.advancedcustomfields.com/resources/" title = "ACF docs" target = "_blank">ACF docs</a>' + 
-                    '<a class = "button" href = "http://www.php.net/" title = "PHP.net documentation" target = "_blank">PHP.net</a> <br />' + 
-                    '<a class = "button" href = "http://devdocs.io/html/" title = "Devdocs HTML" target = "_blank">Devdocs HTML</a>' + 
-                    '<a class = "button" href = "http://devdocs.io/css/" title = "Devdocs CSS" target = "_blank">Devdocs CSS</a>' + 
-                    '<a class = "button" href = "http://devdocs.io/javascript/" title = "Devdocs JS" target = "_blank">Devdocs JS</a> <br />' + 
-                    '<a class = "button" href = "http://vanilla.nevma.gr/" title = "Vanilla website" target = "_blank">Vanilla</a>' + 
-                    '<a class = "button" href = "http://vanilla.nevma.gr/wp-content/docs/vanilla-apigen/" title = "Vanilla documentation" target = "_blank">Vanilla docs</a>' + 
-                    '<a class = "button" href = "http://vanilladev.nevma.gr/" title = "Vanilla demo" target = "_blank">Vanilla demo</a> <br />' + 
-                    '<a class = "button" href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville documentation" target = "_blank">Responsiville docs</a>' +
-                    '<a class = "button" href = "http://vanilla.nevma.gr/wp-content/themes/vforvanilla/inc/vanilla/responsiville/demo" title = "Responsiville demo page" target = "_blank">Responsiville demo</a>' +
+                    '<a class = "button button-small" href = "http://vanilla.nevma.gr/wp-content/docs/vanilla-apigen/" title = "Vanilla documentation" target = "_blank">Vanilla docs</a>' + 
+                    '<a class = "button button-small" href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville documentation" target = "_blank">Responsiville docs</a>' +
+                    '<a class = "button button-small" href = "http://vanilladev.nevma.gr/" title = "Vanilla demo" target = "_blank">Vanilla demo</a>' + 
+                    '<a class = "button button-small" href = "http://vanilla.nevma.gr/wp-content/themes/vforvanilla/inc/vanilla/responsiville/demo" title = "Responsiville demo page" target = "_blank">Responsiville demo</a>' +
                 '</p>' +
             '</section>' +
 
@@ -293,7 +289,7 @@ Responsiville.Debug.setupDebug = function () {
 
 
 
-    // Handlers for grid layout debugging.
+    // Handlers for debugging.
 
     jQuery( '.responsiville-debug-layout input[type="checkbox"]' ).on( 'change', function () {
 
@@ -305,11 +301,40 @@ Responsiville.Debug.setupDebug = function () {
 
     }).trigger( 'change' );
 
-    jQuery( '[class*="column"], .row' ).each( function () {
+    jQuery( '.row' ).each( function () {
 
         jQuery( this ).
-            append( '<p class = "class-info start">' + this.tagName.toLowerCase() + '.&ldquo;' + jQuery( this ).attr( 'class' ) + '&rdquo; start</p>' ).
-            append(  '<p class = "class-info end">'  + this.tagName.toLowerCase() + '.&ldquo;' + jQuery( this ).attr( 'class' ) + '&rdquo; end  </p>' );
+            append( '<p class = "class-info start">&lt;row&gt;</p>' ).
+            append(  '<p class = "class-info end">&lt;/row&gt;</p>' );
+
+    });
+    
+    jQuery( '[class*="column"]' ).each( function () {
+
+        var classString = '';
+        var classList = jQuery( this ).get( 0 ).classList.value.split( ' ' );
+        for ( var k=0, length=classList.length; k<length; k++ ) {
+            var className = classList[k];
+            if ( className.indexOf( 'column' ) > -1 ) {
+                classString += className + ' ';
+            }
+        }
+        classString = jQuery.trim( classString );
+
+        jQuery( this ).
+            append( '<p class = "class-info start">&lt;' + classString + '&gt;</p>' ).
+            append(  '<p class = "class-info end">&lt;/'  + classString + '&gt;</p>' );
+
+    });
+
+    jQuery( 'header, footer, nav, main, aside, article, section, h1, h2, h3, h4, h5, h6' ).each( function () {
+
+        if ( jQuery( this ).is( '.responsiville-debug-controls' ) ||
+             jQuery( this ).parent( '.responsiville-debug-controls' ).length > 0 ) {
+            return;
+        }
+
+        jQuery( this ).append( '<p class = "semantic-info">' + this.tagName.toLowerCase() + '</p>' )
 
     });
 
@@ -335,7 +360,7 @@ Responsiville.Debug.setupDebug = function () {
 
 
 
-    // Shows load performance data on page load (use jQuery ready function to make sure).
+    // Shows load performance data on page load.
     
     responsiville.$window.on( 'load', (function () {
 
@@ -424,33 +449,40 @@ Responsiville.Debug.showDebugLoadPerformance = function () {
     
     jQuery( '.responsiville-debug-performance' ).html( 
 
-        '<table class = "vanilla" cellspacing = "0" cellpadding = "0"><tbody>' + 
+        '<table class = "vanilla" cellspacing = "0" cellpadding = "0">' +
+            '<thead>' +
+                '<tr>' +
+                    '<th></th><th></th><th>Time</th><th>dt</th>' +
+                '<tr>' +
+            '</thead>' +
+            '<tbody>' + 
+                
+                // Request sent.
+
+                '<tr title = "Browser sends the request">' + 
+                    '<td>Request Start</td><td>&mdash;&gt;' + '</td><td>' + '0.00' + '</td><td>' + '&mdash;' + '</td>' + 
+                '</tr>' + 
+
+                // Requested started receiving.
+
+                '<tr title = "Time to first byte - browser received the first byte of the response">' + 
+                    '<td>TtFB</td><td>&mdash;&gt;' + '</td><td>' + responseStart + '</td><td>' + responseStartDiff + '</td>' + 
+                '</tr>' + 
+                            
+                // DOM and CSSOM is ready.
+
+                '<tr title = "Synchronous scripts run, DOM &amp; CSSOM ready, render tree formed">' + 
+                    '<td>DOMContentLoaded</td><td>&mdash;&gt;' + '</td><td>' + domContentLoaded + '</td><td>' + domContentLoadedDiff + '</td>' + 
+                '</tr>' + 
+
+                // Page fully loaded.
+
+                '<tr title = "Page is fully loaded and rendered, images are loaded">' + 
+                    '<td>Load</td><td>&mdash;&gt;' + '</td><td>' + load + '</td><td>' + loadDiff + '</td>' +
+                '</tr>' +
             
-            // Request sent.
-
-            '<tr title = "Browser sends the request">' + 
-                '<td>Request Start</td><td>&mdash;&gt;' + '</td><td>' + '0.00' + '</td><td>' + '&mdash;' + '</td>' + 
-            '</tr>' + 
-
-            // Requested statred receiving.
-
-            '<tr title = "Time to first byte - browser received the first byte of the response">' + 
-                '<td>TtFB</td><td>&mdash;&gt;' + '</td><td>' + responseStart + '</td><td>' + responseStartDiff + '</td>' + 
-            '</tr>' + 
-                        
-            // DOM and CSSOM is ready.
-
-            '<tr title = "Synchronous scripts run, DOM &amp; CSSOM ready, render tree formed">' + 
-                '<td>DOMContentLoaded</td><td>&mdash;&gt;' + '</td><td>' + domContentLoaded + '</td><td>' + domContentLoadedDiff + '</td>' + 
-            '</tr>' + 
-
-            // Page fully loaded.
-
-            '<tr title = "Page is fully loaded and rendered, images are loaded">' + 
-                '<td>Load</td><td>&mdash;&gt;' + '</td><td>' + load + '</td><td>' + loadDiff + '</td>' +
-            '</tr>' +
-        
-        '</tbody></table>'
+            '</tbody>' + 
+        '</table>'
 
     );
 

@@ -35,7 +35,7 @@
         <h5>This an H5 heading</h5>
 
         <p>
-            lorem45
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur fuga sint placeat qui laborum illo sit laboriosam quia ipsa, suscipit, perspiciatis vero eligendi necessitatibus accusamus quae nobis repellendus doloribus earum aperiam quod tempora, omnis! Assumenda explicabo accusantium laudantium commodi quibusdam dolorem eum impedit, reiciendis tenetur!
         </p>
 
         <h6>This an H6 heading</h6>
@@ -54,6 +54,10 @@
 
         <h2>Lists</h2>
 
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reprehenderit nesciunt quas facere sapiente fugiat maxime. Repellendus iure consectetur hic alias distinctio commodi quibusdam culpa dolor quam modi repellat at nulla saepe laboriosam aliquid exercitationem reiciendis quidem doloribus error cumque. Tempora dolore debitis ipsam aliquid perspiciatis sit assumenda porro dolorem quos ducimus vero nemo adipisci quibusdam reprehenderit impedit dolores a. Officia unde voluptates amet reiciendis dolor non facere modi quae?
+        </p>
+
         <ul>
             <li>An <strong>unordered list</strong>.</li>
             <li>Saepe laborum sit quasi iure ipsa dolores quos unde quisquam!</li>
@@ -71,7 +75,7 @@
         </ol>
 
         <ul>
-            <li>A mixed list.</li>
+            <li>A <strong>mixed</strong> list.</li>
             <li>Saepe laborum sit quasi iure ipsa dolores quos unde quisquam!</li>
             <li>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis illum quae illo explicabo!
@@ -150,7 +154,7 @@
 
         <blockquote class = "modern">
             <p>
-                A modern blockquote. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptates ratione quasi praesentium quas unde consequuntur dicta molestias blanditiis aut error iusto magni eveniet culpa beatae adipisci esse! Nisi neque beatae recusandae totam fugit ad incidunt ducimus enim quas pariatur.
+                A <strong>modern</strong> blockquote. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptates ratione quasi praesentium quas unde consequuntur dicta molestias blanditiis aut error iusto magni eveniet culpa beatae adipisci esse! Nisi neque beatae recusandae totam fugit ad incidunt ducimus enim quas pariatur.
             </p>
         </blockquote>
 
@@ -273,22 +277,24 @@
                 <p><video src = "vid/video.mp4" controls = "controls"></video></p>
             </div>
             <div class = "small-column-100 laptop-column-50">
-                <p>HTML5 video as thumbnail</p>
-                <p><video src = "vid/video.mp4" controls = "controls"></video></p>
+                <p>Youtube video</p>
+                <p class = "video-wrapper ratio-16x9">
+                    <iframe src = "https://www.youtube.com/embed/pgwjGrdieIY?rel=0&amp;hd=1" frameborder = "0" allowfullscreen></iframe>
+                </p>
             </div>
         </div>
 
         <div class = "row">
             <div class = "small-column-100 laptop-column-50">
-                <p>Youtube video</p>
+                <p>Vimeo video</p>
                 <p class = "video-wrapper ratio-16x9">
-                    <iframe src = "http://www.youtube.com/embed/pgwjGrdieIY?rel=0&amp;hd=1" frameborder = "0" allowfullscreen></iframe>
+                    <iframe src = "https://player.vimeo.com/video/5471915" frameborder = "0" allowfullscreen></iframe>
                 </p>
             </div>
             <div class = "small-column-100 laptop-column-50">
-                <p>Vimeo video</p>
+                <p>Google map</p>
                 <p class = "video-wrapper ratio-16x9">
-                    <iframe src = "http://player.vimeo.com/video/5471915" frameborder = "0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d12588.943625328047!2d23.74542095!3d37.92491895!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sel!2sgr!4v1536406142818" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </p>
             </div>
         </div>
@@ -535,7 +541,6 @@
                         </tr>
                     </tfoot>
                 </table>
-                <p>Table <code>liner</code></p>
                 <p>Table <code>vanilla</code></p>
                 <table class = "vanilla">
                     <caption class = "bottom">This is a nice responsive table (caption)</caption>
@@ -581,6 +586,7 @@
                 </table>
             </div>
             <div class = "small-column-100 laptop-column-50">
+                <p>Table <code>liner</code></p>
                 <table class = "liner">
                     <thead>
                         <tr>
@@ -651,7 +657,7 @@
                 </div>
                 <div class = "small-column-100 laptop-column-33">
                     <p>
-                        <label for = "file">File upload input;</label>
+                        <label for = "file">File upload input:</label>
                         <input id = "file" type = "file" />
                     </p>
                 </div>
@@ -666,28 +672,28 @@
                 <div class = "small-column-100 laptop-column-33">
                     <p>
                         <label for = "radio1">
+                            <input id = "radio1" name = "radio1" type = "radio" class = "radio" />
                             Radio input 1:
-                            <input id = "radio1" name = "radio1" type = "radio" class = "radio" /> 
                         </label>
                         <label for = "radio2">
+                            <input id = "radio2" name = "radio1" type = "radio" class = "radio" />
                             Radio input 2:
-                            <input id = "radio2" name = "radio1" type = "radio" class = "radio" /> 
                         </label>
                         <label for = "radio3">
-                            Radio input 3:
                             <input id = "radio3" name = "radio1" type = "radio" class = "radio" />
+                            Radio input 3:
                         </label>
                     </p>
                 </div>
                 <div class = "small-column-100 laptop-column-33">
                     <p>
                         <label for = "checkbox1">
-                            Checkbox input 1:
                             <input id = "checkbox1" name = "checkbox1" type = "checkbox" class = "checkbox" />
+                            Checkbox input 1:
                         </label> 
                         <label for = "checkbox2">
-                            Checkbox input 2:
                             <input id = "checkbox2" name = "checkbox2" type = "checkbox" class = "checkbox" />
+                            Checkbox input 2:
                         </label> 
                     </p>
                 </div>
@@ -824,41 +830,50 @@
             </p>
             <p>
                 A text input and a button side by side: 
-                <input class = "inline" type = "text" name = "input20" id = "input-inline" value = "" />
+                <input class = "inline" type = "text" name = "input-inline" id = "input-inline" value = "" />
                 <button>Button</button>
             </p>
         </form>
 
         <h2>Buttons</h2>
 
-        <div class = "row">
-            <div class = "small-column-100 laptop-column-25">
-                <p>
-                    Input button <input value = "Input button" type = "button" class = "submit" />
-                </p>
-            </div>
-            <div class = "small-column-100 laptop-column-25">
-                <p>
-                    Input submit <input value = "Input submit" type = "submit" class = "submit" />
-                </p>
-            </div>
-            <div class = "small-column-100 laptop-column-25">
-                <p>
-                    Actual button <button>Button</button>
-                </p>
-            </div>
-            <div class = "small-column-100 laptop-column-25">
-                <p>
-                    Anchor button <a class = "button" href = "#forms" title = "Submit">Link button</a>
-                </p>
-            </div>
-        </div>
+        <p>
+            Types: 
+            <input value = "&lt;Input&gt; type button" type = "button" class = "submit" />
+            <input value = "&lt;Input&gt; type submit" type = "submit" class = "submit" />
+            <input value = "&lt;Input&gt; type reset"  type = "reset"  class = "submit" />
+            <button>&lt;Button&gt; button</button>
+            <a class = "button" href = "#forms" title = "Submit">&lt;A&gt;nchor button</a>
+        </p>
 
         <p>
+            Sizes: 
             <button class = "inline button-large">Button large</button>
             <button class = "inline button">Button normal</button>
             <button class = "inline button-medium">Button medium</button>
             <button class = "inline button-small">Button small</button>
+        </p>
+
+        <p>
+            Combinations with inputs: <br />
+            <button class = "inline button-large">Button large</button>
+            <input type = "text" class = "inline input-large" name = "input-for-button1" id = "input-for-button1" value = "" placeholder = "Input large" />
+            <select name = "select-for-button-1" class = "inline input-large"><option value = "option1">Option 1</option><option value = "option2">Option 2</option></select>
+            <br /><br />
+
+            <button class = "inline button">Button normal</button>
+            <input type = "text" class = "inline" name = "input-for-button2" id = "input-for-button2" value = "" placeholder = "Input normal" />
+            <select name = "select-for-button-2" class = "inline"><option value = "option1">Option 1</option><option value = "option2">Option 2</option></select>
+            <br /><br />
+            
+            <button class = "inline button-medium">Button medium</button>
+            <input type = "text" class = "inline input-medium" name = "input-for-button3" id = "input-for-button3" value = "" placeholder = "Input medium" />
+            <select name = "select-for-button-3" class = "inline input-medium"><option value = "option1">Option 1</option><option value = "option2">Option 2</option></select>
+            <br /><br />
+            
+            <button class = "inline button-small">Button small</button>
+            <input type = "text" class = "inline input-small" name = "input-for-button4" id = "input-for-button4" value = "" placeholder = "Input small" />
+            <select name = "select-for-button-4" class = "inline input-small"><option value = "option1">Option 1</option><option value = "option2">Option 2</option></select>
         </p>
 
 

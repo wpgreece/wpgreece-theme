@@ -15,6 +15,8 @@
     /**
      * Sets actions and filters necessary for the Vanilla TinyMCE accordion
      * plugin.
+     * 
+     * @return void
      */
     
     function vanilla_tinymce_accordion_add_plugin_action () {
@@ -35,12 +37,12 @@
      * 
      * @param array $plugin_array The array with the TinyMCE plugins to load.
      * 
-     * @return void
+     * @return array The array enhanced.
      */
 
     function vanilla_tinymce_accordion_add_plugin_js ( $plugin_array ) {
 
-        $plugin_array['vanillaaccordion'] = get_template_directory_uri() . '/inc/vanilla/tinymce/vanilla-tinymce-accordion.js';
+        $plugin_array['vanillaaccordion'] = get_template_directory_uri() . '/inc/vanilla/tinymce/js/vanilla-tinymce-accordion.js';
 
         return $plugin_array;
 
@@ -50,11 +52,13 @@
 
     /**
      * Adds the CSS styles for the Vanilla TinyMCE accordion plugin.
+     * 
+     * @return void
      */
 
     function vanilla_tinymce_accordion_add_plugin_css () { 
 
-        wp_enqueue_style( 'vanilla-tinymce-accordion', get_template_directory_uri() . '/inc/vanilla/tinymce/vanilla-tinymce-accordion.css', false ); 
+        wp_enqueue_style( 'vanilla-tinymce-accordion', get_template_directory_uri() . '/inc/vanilla/tinymce/css/vanilla-tinymce-accordion.css', false ); 
 
     }
 
@@ -65,6 +69,8 @@
      * 
      * @param array $button The array with the TinyMCE buttons of the current 
      *                      editor toolbar row to load.
+     * 
+     * @return void
      */
 
     function vanilla_tinymce_accordion_add_button ( $buttons ) {

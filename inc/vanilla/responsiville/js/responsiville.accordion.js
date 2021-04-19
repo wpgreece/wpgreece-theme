@@ -15,47 +15,59 @@
  *            container which can be open one or many at a time.
  *
  * @param {Object} options The initialisation options of the module.
- * 
- * @property {Object}  options           The options that define the object
- *                                       behaviour.
- * @property {boolean} options.exclusive Whether multiple accordion panels 
- *                                       accordion can be simultaneously open or
- *                                       not. 
- * @property {boolean} options.debug     Whether to print debug messages in the 
- *                                       browser console.
- * @property {string}  options.container Selector for the element that contains
- *                                       the accordion contents. It is also
- *                                       possible to pass a DOM element or a 
- *                                       jQuery object here as well.
- * @property {string}  options.panel     Selector for the element that contains
- *                                       each independent accordion part. 
- * @property {string}  options.openClass Class added to each accordion panel 
- *                                       when it is opened.
- * @property {string}  options.header    Selector for the header element of each
- *                                       accordion panel. 
- * @property {string}  options.excerpt   Selector for the optional excerpt 
- *                                       element of each panel.
- * @property {string}  options.content   Selector for the content element of
- *                                       each panel.
- * @property {string}  options.footer    Selector for the footer element of each
- *                                       accordion panel. 
- * @property {string}  options.effect    The effect to use when opening and 
- *                                       closing each accordion panel (none, 
- *                                       slide, fade).
- * @property {int}     options.duration  The amount of time that the opening and
- *                                       closing of each accordion panel takes.
- * @property {int}     options.delay     The amount of time to delay before
- *                                       beginning opening or closing each
- *                                       accordion panel.
- * @property {int}     options.startAt   The index of the panel to show as open
- *                                       in the beginning (zero or negative for
- *                                       none).
- * @property {string}  options.enter     Comma separated list of breakpoints in 
- *                                       which the accordion enters, wihch means
- *                                       it is enabled.
- * @property {string}  options.leave     Comma separated list of breakpoints in 
- *                                       which the accordion leaves, which means 
- *                                       it is disabled.
+ *
+ * @property {Object}  options              The options that define the object
+ *                                          behaviour.
+ * @property {boolean} options.exclusive    Whether multiple accordion panels 
+ *                                          accordion can be simultaneously open
+ *                                          or not. 
+ * @property {boolean} options.slug         A special codename for the instance
+ *                                          of the element, to be used as a
+ *                                          class on its container and as a key
+ *                                          in arrays where it is grouped with
+ *                                          other elements of its kind. 
+ * @property {boolean} options.debug        Whether to print debug messages in
+ *                                          the browser console.
+ * @property {string}  options.container    Selector for the element that
+ *                                          contains the accordion contents. It
+ *                                          is also possible to pass a DOM
+ *                                          element or a  jQuery object here as
+ *                                          well.
+ * @property {string}  options.panel        Selector for the element that 
+ *                                          contains each independent accordion
+ *                                          part. 
+ * @property {string}  options.openClass    Class added to each accordion panel 
+ *                                          when it is opened.
+ * @property {string}  options.openingClass Class added to an open accordion
+ *                                          panel while it is being closed.
+ * @property {string}  options.closingClass Class added to a closed accordion
+ *                                          panel while it is being opened.
+ * @property {string}  options.header       Selector for the header element of
+ *                                          each accordion panel. 
+ * @property {string}  options.excerpt      Selector for the optional excerpt 
+ *                                          element of each panel.
+ * @property {string}  options.content      Selector for the content element of
+ *                                          each panel.
+ * @property {string}  options.footer       Selector for the footer element of
+ *                                          each accordion panel. 
+ * @property {string}  options.effect       The effect to use when opening and 
+ *                                          closing each accordion panel (none, 
+ *                                          slide, fade).
+ * @property {int}     options.duration     The amount of time that the opening
+ *                                          and closing of each accordion panel
+ *                                          takes.
+ * @property {int}     options.delay        The amount of time to delay before
+ *                                          beginning opening or closing each
+ *                                          accordion panel.
+ * @property {int}     options.startAt      The index of the panel to show as
+ *                                          open in the beginning (zero or
+ *                                          negative for none).
+ * @property {string}  options.enter        Comma separated list of breakpoints
+ *                                          in which the accordion enters, wihch
+ *                                          means it is enabled.
+ * @property {string}  options.leave        Comma separated list of breakpoints
+ *                                          in which the accordion leaves, which
+ *                                          means it is disabled.
  */
 
 Responsiville.Accordion = function ( options ) {
@@ -72,20 +84,18 @@ Responsiville.Accordion = function ( options ) {
 
     // General settings setup.
 
-    this.options = jQuery.extend( this.options, Responsiville.Accordion.defaults, options );
-
-    this.codeName = 'responsiville.accordion';
-
+    this.options       = {};
+    this.options       = jQuery.extend( this.options, Responsiville.Accordion.defaults, options );
+    this.codeName      = 'responsiville.accordion';
     this.responsiville = Responsiville.Main.getInstance();
 
 
 
     // Cache important DOM elements.
 
-    this.$html   = this.responsiville.$html;
-    this.$body   = this.responsiville.$body;
-    this.$window = this.responsiville.$window;
-
+    this.$body      = this.responsiville.$body;
+    this.$document  = this.responsiville.$document;
+    this.$window    = this.responsiville.$window;
     this.$container = jQuery( this.options.container );
     this.$panels    = this.$container.find( this.options.panel );
 
@@ -102,7 +112,32 @@ Responsiville.Accordion = function ( options ) {
         }
 
     }
+
+
+
+    // Uniquely identify this element.
     
+    if ( this.options.slug == '' ) {
+        Responsiville.Accordion.elementsCounter = Responsiville.Accordion.elementsCounter !== undefined ? ++Responsiville.Accordion.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Accordion.elementsCounter;
+    }
+
+    this.$container.addClass( this.options.slug );
+
+    
+
+    // Take special care for enter/leave breakpoints possibly given as HTML data attributes.
+    
+    var htmlBreakpoints = Responsiville.determineEnableDisableBreakpoints({ 
+        enter: this.$container.data( 'responsiville-accordion-enter' ),
+        leave: this.$container.data( 'responsiville-accordion-leave' ) 
+    });
+
+    if ( htmlBreakpoints !== null ) {
+        this.options.enter = htmlBreakpoints.enter;
+        this.options.leave = htmlBreakpoints.leave;
+    }
+
     
     
     // If no accordion found raise an error.
@@ -110,20 +145,25 @@ Responsiville.Accordion = function ( options ) {
     if ( this.$container.length === 0 ) {
 
         this.log( 'Responsiville.Accordion instantiation error: no accordions found (' + this.options.container + ').' );
-
         return;
 
     }
 
-    this.log( 'creating accordion' );
+
+
+    // Add this object as a main element's data attribute for API usage.
+    
+    this.$container.data( 'responsiville-api', this );
+    this.$container.data( 'responsiville-accordion-api', this );
 
 
 
     // Initialises the accordion.
         
     this.enabled = false;
-
     this.setupEvents();
+
+    this.log( 'accordion initialised' );
 
 
 
@@ -164,21 +204,24 @@ Responsiville.Accordion.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefined
  */
 
 Responsiville.Accordion.defaults = {
-    debug     : false, 
-    exclusive : false, 
-    container : '.responsiville-accordion',
-    panel     : '.responsiville-accordion-panel',
-    openClass : 'responsiville-accordion-panel-open',
-    header    : '.responsiville-accordion-header',
-    excerpt   : '.responsiville-accordion-excerpt',
-    content   : '.responsiville-accordion-content',
-    footer    : '.responsiville-accordion-footer',
-    effect    : 'slide',
-    duration  : 300,
-    delay     : 50,
-    startAt   : -1,
-    enter     : 'small, mobile, tablet, laptop, desktop, large, xlarge',
-    leave     : ''
+    debug        : false, 
+    exclusive    : false, 
+    slug         : '',
+    container    : '.responsiville-accordion',
+    panel        : '.responsiville-accordion-panel',
+    openClass    : 'responsiville-accordion-panel-open',
+    openingClass : 'responsiville-accordion-panel-opening',
+    closingClass : 'responsiville-accordion-panel-closing',
+    header       : '.responsiville-accordion-header',
+    excerpt      : '.responsiville-accordion-excerpt',
+    content      : '.responsiville-accordion-content',
+    footer       : '.responsiville-accordion-footer',
+    effect       : 'slide',
+    duration     : 300,
+    delay        : 50,
+    startAt      : -1,
+    enter        : 'small, mobile, tablet, laptop, desktop, large, xlarge',
+    leave        : ''
 };
 
 
@@ -219,6 +262,8 @@ Responsiville.Accordion.autoRun = function () {
 Responsiville.Accordion.prototype.setupEvents = function () {
 
     var k, length;
+
+
 
     // Register to be enabled on the required breakpoints.
     
@@ -369,8 +414,6 @@ Responsiville.Accordion.prototype.headerClick = function ( event ) {
         
     } else {
 
-        this.openPanel( $panel );
-
         if ( this.options.exclusive ) {
 
             for ( var k = 0, length = this.$panels.length; k < length; k++ ) {
@@ -386,6 +429,8 @@ Responsiville.Accordion.prototype.headerClick = function ( event ) {
 
         }
 
+        this.openPanel( $panel );
+
     }
 
     return false;
@@ -397,8 +442,8 @@ Responsiville.Accordion.prototype.headerClick = function ( event ) {
 /**
  * Opens and shows the contents of an accordion panel.
  * 
- * @fires Responsiville.Accordion#panelOpened
- * @fires Responsiville.Accordion#panelOpening
+ * @fires Responsiville.Accordion#opening
+ * @fires Responsiville.Accordion#opened
 
  * @param {jQuery} $panel The accordion panel jQuery object whose contents are
  *                        to be shown.
@@ -415,54 +460,81 @@ Responsiville.Accordion.prototype.openPanel = function ( $panel ) {
     /**
      * Called before opening the panel.
      * 
-     * @event Responsiville.Accordion#panelOpening
+     * @event Responsiville.Accordion#opening
      */
     
-    this.fireEvent( 'panelOpening' );
+    this.fireEvent( 'opening' );
 
-    
+
 
     $content = $panel.find( this.options.content );
 
+    $panel.addClass( this.options.openingClass );
+
     if ( this.options.effect == 'slide' ) {
 
-        $content.velocity( 
-            'slideDown', { 
-                delay: this.options.delay, 
-                duration: this.options.duration 
-            }
-        );
+        $content.velocity( 'slideDown', { 
+            delay    : this.options.delay, 
+            duration : this.options.duration,
+            complete : (function () {
+
+                $panel.removeClass( this.options.openingClass );
+                $panel.addClass( this.options.openClass );
+
+                /**
+                 * Called after the panel has been opened.
+                 * 
+                 * @event Responsiville.Accordion#opened
+                 */
+                
+                this.fireEvent( 'opened' );
+
+            }).bind( this )
+        });
         
     } else if ( this.options.effect == 'fade' ) {
 
-        $content.velocity( 
-            'fadeIn', { 
-                delay: this.options.delay,
-                duration: this.options.duration
-            }
-        );
+        $content.velocity( 'fadeIn', { 
+            delay    : this.options.delay,
+            duration : this.options.duration,
+            complete : (function () {
+
+                $panel.removeClass( this.options.openingClass );
+                $panel.addClass( this.options.openClass );
+
+                /**
+                 * Called after the panel has been opened.
+                 * 
+                 * @event Responsiville.Accordion#opened
+                 */
+                
+                this.fireEvent( 'opened' );
+
+            }).bind( this )
+        });
         
     } else if ( this.options.effect == 'none' ) {
 
-        $content.velocity(
-            'slideDown', { 
-                delay: this.options.delay, 
-                duration: 0 
+        $content.velocity( 'slideDown', { 
+            delay    : this.options.delay, 
+            duration : 0,
+            complete : (function () {
+
+                $panel.removeClass( this.options.openingClass );
+                $panel.addClass( this.options.openClass );
+
+                /**
+                 * Called after the panel has been opened.
+                 * 
+                 * @event Responsiville.Accordion#opened
+                 */
+                
+                this.fireEvent( 'opened' );
+
+            }).bind( this )
         });
         
     }
-
-    $panel.addClass( this.options.openClass );
-
-
-
-    /**
-     * Called after the panel has been opened.
-     * 
-     * @event Responsiville.Accordion#panelOpened
-     */
-    
-    this.fireEvent( 'panelOpened' );
 
 };
 
@@ -471,8 +543,8 @@ Responsiville.Accordion.prototype.openPanel = function ( $panel ) {
 /**
  * Closes and hides the contents of an accordion panel.
  * 
- * @fires Responsiville.Accordion#panelClosing
- * @fires Responsiville.Accordion#panelClosed
+ * @fires Responsiville.Accordion#closing
+ * @fires Responsiville.Accordion#closed
  * 
  * @param {jQuery} $panel The accordion panel jQuery object whose contents are
  *                        to be hidden.
@@ -489,39 +561,80 @@ Responsiville.Accordion.prototype.closePanel = function ( $panel ) {
     /**
      * Called before closing the panel.
      * 
-     * @event Responsiville.Accordion#panelClosing
+     * @event Responsiville.Accordion#closing
      */
     
-    this.fireEvent( 'panelClosing' );
+    this.fireEvent( 'closing' );
 
 
 
     $content = $panel.find( this.options.content );
 
+    $panel.addClass( this.options.closingClass );
+
     if ( this.options.effect == 'slide' ) {
 
-        $content.velocity( 'slideUp', { delay: this.options.delay, duration: this.options.duration });
+        $content.velocity( 'slideUp', {
+            delay    : this.options.delay,
+            duration : this.options.duration,
+            complete : (function () {
+
+                $panel.removeClass( this.options.closingClass );
+                $panel.removeClass( this.options.openClass );
+
+                /**
+                 * Called after the panel has closed.
+                 * 
+                 * @event Responsiville.Accordion#closed
+                 */
+
+                this.fireEvent( 'closed' );
+
+            }).bind( this )
+        });
 
     } else if ( this.options.effect == 'fade' ) {
 
-        $content.velocity( 'fadeOut', { delay: this.options.delay, duration: this.options.duration });
+        $content.velocity( 'fadeOut', {
+            delay    : this.options.delay,
+            duration : this.options.duration,
+            complete : (function () {
+
+                $panel.removeClass( this.options.closingClass );
+                $panel.removeClass( this.options.openClass );
+
+                /**
+                 * Called after the panel has closed.
+                 * 
+                 * @event Responsiville.Accordion#closed
+                 */
+
+                this.fireEvent( 'closed' );
+
+            }).bind( this )
+        });
         
     } else if ( this.options.effect == 'none' ) {
 
-        $content.velocity( 'slideUp', { delay: this.options.delay, duration: 0 });
+        $content.velocity( 'slideUp', {
+            delay    : this.options.delay,
+            duration : 0,
+            complete : (function () {
+
+                $panel.removeClass( this.options.closingClass );
+                $panel.removeClass( this.options.openClass );
+
+                /**
+                 * Called after the panel has closed.
+                 * 
+                 * @event Responsiville.Accordion#closed
+                 */
+
+                this.fireEvent( 'closed' );
+
+            }).bind( this )
+        });
         
     }
-
-    $panel.removeClass( this.options.openClass );
-
-
-
-    /**
-     * Called after the panel has closed.
-     * 
-     * @event Responsiville.Accordion#panelClosed
-     */
-
-    this.fireEvent( 'panelClosed' );
 
 };

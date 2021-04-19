@@ -1,3 +1,11 @@
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
+
+
+
 /************************************************************************************
 
 	███╗   ███╗███████╗ ██████╗  █████╗     ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
@@ -23,10 +31,9 @@
 	 		position: absolute;
 	 		left: 0;
 	 		top: 100%;
-	 		z-index: 999;
+	 		z-index: 9999;
 	 		margin: 0;
 	 		padding: 0;
-	 		display: none;
 	 		overflow: hidden;
 	 	}
 
@@ -64,5 +71,6 @@
 	  	.responsiville-megamenu-calculating {
 	 		visibility: hidden !important;
 	 		display: block !important;
+	 		width: auto !important;
 	 		height: auto !important;
 	 	}

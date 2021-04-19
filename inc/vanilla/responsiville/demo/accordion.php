@@ -54,12 +54,24 @@
 
         <pre><code class = "language-javascript">
             var accordion = new Responsiville.Accordion({
-                container : 'responsiville-accordion',
+                container : '.responsiville-accordion',
                 duration  : 300,
                 delay     : 50,
                 enter     : 'laptop, desktop, large, xlarge',
                 leave     : 'small, mobile, tablet'
             });
+        </code></pre>
+
+
+
+        <h2>API data attribute</h2>
+
+        <p>
+            If the accordion has not been created manually, which is the easiest and most common case, one can obtain an instance of the underlying <code>Responsiville.Accordion</code> Javascript object, so that it can manipulate the accordion via its API, by accessing its <code>responsiville-accordion-api</code> data attribute, like this:
+        </p>
+        <pre><code class = "language-javascript">
+            // Obtain the underlying Responsiville.Accordion Javascript object.
+            var accordion = $( '.responsiville-accordion' ).data( 'responsiville-accordion-api' );
         </code></pre>
 
 
@@ -78,10 +90,12 @@
             );
         </script>
 
+
+
         <h2>Working example</h2>
 
         <p>
-            Here is a full working example:
+            Here is a full working example which showcases all the possible building blocks of an accordion:
         </p>
 
         <div class = "grid-showcase">
@@ -133,7 +147,138 @@
                 </div>
             </div>
         </div>
-        
+
+
+
+        <h3>A clearer example</h3>
+
+        <p>
+            In this example you see the final output of the accordion without outlining its building blocks.
+        </p>
+
+        <style type = "text/css">
+            .responsiville-accordion2 .responsiville-accordion-panel {
+                border: 1px solid var(--color-gray);
+                border-radius: 3px;
+                padding: var(--text-rhythm);
+                padding-bottom: 0;
+                margin-bottom: calc(0.5*var(--text-rhythm))
+            }
+
+            .responsiville-accordion2 .responsiville-accordion-header {
+                margin: 0;
+                padding: 0;
+                margin-bottom: var(--text-rhythm);
+            }
+        </style>
+
+        <div class = "responsiville-accordion responsiville-accordion2">
+            <div class = "responsiville-accordion-panel">
+                <h4 class = "responsiville-accordion-header">
+                    This is the accordion panel header. Click it to open/close it.
+                </h4>
+                <p class = "responsiville-accordion-excerpt">
+                    <em>This is the accordion panel excerpt. It is visible at all times as an excerpt of the accordion panel content. It is an optional element.</em>
+                </p>
+                <div class = "responsiville-accordion-content">
+                    <p>
+                        This is the accordion panel contents. It can be any HTML content you like. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque natus consequuntur animi perspiciatis impedit, inventore porro, repudiandae molestias, voluptates quae sapiente placeat aspernatur voluptatibus doloremque iste itaque culpa accusantium, hic officiis voluptas provident neque officia. 
+                    </p>
+                    <p>
+                        Dignissimos maiores! Vitae, reprehenderit hic nobis voluptatem mollitia ab numquam distinctio possimus aliquam animi pariatur neque, dolores modi repellat ut quos, quae cumque voluptatibus eligendi a sint odio assumenda ratione natus! Quibusdam beatae consequatur eligendi aspernatur, praesentium neque, harum adipisci ex. Corporis dignissimos laudantium quia laboriosam fugiat reiciendis iusto mollitia sequi esse cum. Laborum voluptatem explicabo unde reiciendis iusto quaerat quibusdam atque, veniam, illum sed!
+                    </p>
+                </div>
+                <p class = "responsiville-accordion-footer">
+                    <em>This is the accordion panel footer. Follows the same logic as the excerpt.</em>
+                </p>
+            </div>
+            <div class = "responsiville-accordion-panel">
+                <h4 class = "responsiville-accordion-header">
+                    This is the accordion panel header. Click it to open/close it.
+                </h4>
+                <p class = "responsiville-accordion-excerpt">
+                    <em>This is the accordion panel excerpt. It is visible at all times as an excerpt of the accordion panel content. It is an optional element.</em>
+                </p>
+                <div class = "responsiville-accordion-content">
+                    <p>
+                        This is the accordion panel contents. It can be any HTML content you like. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque natus consequuntur animi perspiciatis impedit, inventore porro, repudiandae molestias, voluptates quae sapiente placeat aspernatur voluptatibus doloremque iste itaque culpa accusantium officia. 
+                    </p>
+                    <p>
+                        Dignissimos maiores! Vitae, reprehenderit hic nobis voluptatem mollitia ab numquam distinctio possimus aliquam animi pariatur neque, dolores modi repellat ut quos, quae cumque voluptatibus eligendi a sint odio assumenda ratione natus! Quibusdam beatae consequatur eligendi aspernatur, praesentium. Corporis laudantium quia laboriosam fugiat reiciendis iusto mollitia sequi esse cum. Laborum voluptatem explicabo unde reiciendis iusto quaerat quibusdam atque, veniam, illum sed!
+                    </p>
+                </div>
+                <p class = "responsiville-accordion-footer">
+                    <em>This is the accordion panel footer. Follows the same logic as the excerpt.</em>
+                </p>
+            </div>
+            <div class = "responsiville-accordion-panel">
+                <h4 class = "responsiville-accordion-header">
+                    This is the accordion panel header. Click it to open/close it.
+                </h4>
+                <p class = "responsiville-accordion-excerpt">
+                    <em>This is the accordion panel excerpt. It is visible at all times as an excerpt of the accordion panel content. It is an optional element.</em>
+                </p>
+                <div class = "responsiville-accordion-content">
+                    <p>
+                        This is the accordion panel contents. It can be any HTML content you like. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque natus consequuntur animi perspiciatis impedit, inventore porro, repudiandae molestias, voluptates quae sapiente placeat aspernatur voluptatibus doloremque iste itaque culpa accusantium, hic officiis voluptas provident neque officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis tenetur beatae adipisci atque?
+                    </p>
+                    <p>
+                        Dignissimos maiores! Vitae, reprehenderit hic nobis voluptatem mollitia ab numquam distinctio possimus aliquam animi pariatur neque, dolores modi repellat ut quos, quae cumque voluptatibus eligendi a sint odio assumenda ratione natus! Quibusdam beatae consequatur eligendi aspernatur, praesentium neque, harum adipisci ex. Corporis dignissimos laudantium quia laboriosam fugiat reiciendis iusto mollitia sequi esse cum. Laborum voluptatem explicabo unde reiciendis iusto quaerat quibusdam atque, veniam, illum sed!
+                    </p>
+                </div>
+                <p class = "responsiville-accordion-footer">
+                    <em>This is the accordion panel footer. Follows the same logic as the excerpt.</em>
+                </p>
+            </div>
+        </div>
+
+
+
+        <h3>The simplest, yet most common example</h3>
+
+        <p>
+            In this example the accordion panels consist of only their headers and contents. There are no excerpts or footers.
+        </p>
+
+        <div class = "responsiville-accordion responsiville-accordion2">
+            <div class = "responsiville-accordion-panel">
+                <h4 class = "responsiville-accordion-header">
+                    This is the accordion panel header. Click it to open/close it.
+                </h4>
+                <div class = "responsiville-accordion-content">
+                    <p>
+                        Dignissimos maiores! Vitae, reprehenderit hic nobis voluptatem mollitia ab numquam distinctio possimus aliquam animi pariatur neque, dolores modi repellat ut quos, quae cumque voluptatibus eligendi a sint odio assumenda ratione natus! Quibusdam beatae consequatur eligendi aspernatur, praesentium neque, harum adipisci ex. Corporis dignissimos laudantium quia laboriosam fugiat reiciendis iusto mollitia sequi esse cum. Laborum voluptatem explicabo unde reiciendis iusto quaerat quibusdam atque, veniam, illum sed!
+                    </p>
+                </div>
+            </div>
+            <div class = "responsiville-accordion-panel">
+                <h4 class = "responsiville-accordion-header">
+                    This is the accordion panel header. Click it to open/close it.
+                </h4>
+                <div class = "responsiville-accordion-content">
+                    <p>
+                        This is the accordion panel contents. It can be any HTML content you like. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque natus consequuntur animi perspiciatis impedit, inventore porro, repudiandae molestias, voluptates quae sapiente placeat aspernatur voluptatibus doloremque iste itaque culpa accusantium, hic officiis voluptas provident neque officia. 
+                    </p>
+                    <p>
+                        Dignissimos maiores! Vitae, reprehenderit hic nobis voluptatem mollitia ab numquam distinctio possimus aliquam animi pariatur neque, dolores modi repellat ut quos, quae cumque voluptatibus eligendi a sint odio assumenda ratione natus! Quibusdam beatae consequatur eligendi aspernatur, praesentium neque, harum adipisci ex. Corporis dignissimos laudantium quia laboriosam fugiat reiciendis iusto mollitia sequi esse cum. Laborum voluptatem explicabo unde reiciendis iusto quaerat quibusdam atque, veniam, illum sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam inventore cupiditate, distinctio magni provident repellendus.
+                    </p>
+                </div>
+            </div>
+            <div class = "responsiville-accordion-panel">
+                <h4 class = "responsiville-accordion-header">
+                    This is the accordion panel header. Click it to open/close it.
+                </h4>
+                <div class = "responsiville-accordion-content">
+                    <p>
+                        This is the accordion panel contents. It can be any HTML content you like. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque natus consequuntur animi perspiciatis impedit, inventore porro, repudiandae molestias, voluptates quae sapiente placeat aspernatur voluptatibus doloremque iste itaque culpa accusantium, hic officiis voluptas provident neque officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quis doloremque architecto nisi quidem, expedita, maiores aliquid recusandae ex laborum reiciendis? Perferendis porro quo magni aut sed accusantium maiores nemo mollitia, recusandae ipsum voluptate quisquam.
+                    </p>
+                    <p>
+                        Dignissimos maiores! Vitae, reprehenderit hic nobis voluptatem mollitia ab numquam distinctio possimus aliquam animi pariatur neque, dolores modi repellat ut quos, quae cumque voluptatibus eligendi a sint odio assumenda ratione natus! Quibusdam beatae consequatur eligendi aspernatur, praesentium neque, harum adipisci ex. Corporis dignissimos laudantium quia laboriosam fugiat reiciendis iusto mollitia sequi esse cum. Laborum voluptatem explicabo unde reiciendis iusto quaerat quibusdam atque, veniam, illum sed!
+                    </p>
+                </div>
+            </div>
+        </div>
+
 
 
     </article>

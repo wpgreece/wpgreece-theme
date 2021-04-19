@@ -339,7 +339,7 @@
 
 
 
-        <h>Clearing floats</h2>
+        <h2>Clearing floats</h2>
 
         <p>
             The Responsiville grid is based on floated columns. Therefore the classic problem of clearing these floats regardless of their heights exists, unless one tackles it. Responsiville defines a way of clearing floated columns no matter what their heights is. The developer is required to declare the way the columns are grouped in their rows in each breakpoint and the framework takes care of clearing them appropriately.

@@ -22,8 +22,17 @@
  *                                          behaviour.
  * @property {boolean} options.debug        Whether to print debug messages in 
  *                                          the browser console.
+ * @property {boolean} options.slug         A special codename for the instance
+ *                                          of the element, to be used as a 
+ *                                          class on its container and as a key
+ *                                          in arrays where it is grouped with
+ *                                          other elements of its kind. 
  * @property {string}  options.activator    Selector for the element on whose 
  *                                          mouse over the megamenu opens.
+ * @property {boolean} options.external     Whether the element that is the
+ *                                          megamenu lies externally, ie 
+ *                                          somewhere in the rest of the page or
+ *                                          or it is a sibling of the activator.
  * @property {string}  options.element      Selector for the element that 
  *                                          actually is the megamenu. Has to be
  *                                          a sibling of the activator. If left
@@ -37,7 +46,9 @@
  *                                          in which the megamenu leaves, which
  *                                          means it is disabled.
  * @property {string}  options.effect       The effect to use when opening and 
- *                                          closing the megamenu (eg 'slide').
+ *                                          closing the megamenu. Possible 
+ *                                          values are: none, slide, slide-ltr,
+ *                                          fade. 
  * @property {string}  options.elementClass Class to add to the megamenu element
  *                                          when it is enabled.
  * @property {string}  options.parentClass  Class to add to the parent element
@@ -59,8 +70,14 @@
  *                                          the closing of the megamenu.
  * @property {int}     options.duration     The amount of time that the opening 
  *                                          and closing of the megamenu lasts.
+ * @property {string}  options.detectHash   Detects whether the mobimenu treats 
+ *                                          anchor elements inside the menu
+ *                                          which start with a "#" in a special
+ *                                          way. This means that when they are
+ *                                          clicked they should do nothing and
+ *                                          simply return false;
  * 
- * @todo Activate on hover or click, as a parameter.
+ * @todo Activate on click (not on hover) as a parameter.
  * @todo What strategy do we follow for cases where a device has a big enough 
  *       screen to be classified among the desktop devices but does not support 
  *       mouse events? Facts: there are tablets with 1024 and 1280 wide screens 
@@ -72,22 +89,24 @@ Responsiville.Megamenu = function ( options ) {
     // Responsiville must be initialised.
 
     if ( ! Responsiville.Main.getInstance() ) {
-
         throw new Error( 'Responsiville instantiation error: the framework has not been initialised, call new Responsiville::Main() and then Responsiville::init().' );
-
     }
 
 
 
     // General settings setup.
 
-    this.options = {};
-
-    this.options = jQuery.extend( this.options, Responsiville.Megamenu.defaults, options );
-
-    this.codeName = 'responsiville.megamenu';
-
+    this.options       = {};
+    this.options       = jQuery.extend( this.options, Responsiville.Megamenu.defaults, options );
+    this.codeName      = 'responsiville.megamenu';
     this.responsiville = Responsiville.Main.getInstance();
+
+
+    // Cache important DOM elements.
+
+    this.$body     = this.responsiville.$body;
+    this.$document = this.responsiville.$document;
+    this.$window   = this.responsiville.$window;
 
 
 
@@ -119,21 +138,72 @@ Responsiville.Megamenu = function ( options ) {
 
     }
 
+    // Uniqueue element slug.
+
+    if ( this.options.slug == '' ) {
+        Responsiville.Megamenu.elementsCounter = Responsiville.Megamenu.elementsCounter !== undefined ? ++Responsiville.Megamenu.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Megamenu.elementsCounter;
+    }
+
+    // Take special care for enter/leave breakpoints possibly given as HTML data attributes.
+    
+    var htmlBreakpoints = Responsiville.determineEnableDisableBreakpoints({ 
+        enter: this.$menuActivator.data( 'responsiville-megamenu-enter' ),
+        leave: this.$menuActivator.data( 'responsiville-megamenu-leave' ) 
+    });
+
+    if ( htmlBreakpoints !== null ) {
+        this.options.enter = htmlBreakpoints.enter;
+        this.options.leave = htmlBreakpoints.leave;
+    }
+
 
     
     // Cache other important DOM elements.
-    
-    this.$body        = this.responsiville.$body;
-    this.$menuElement = this.$menuActivator.siblings( this.options.element );
+
+    if ( this.options.external ) {
+
+        // Megamenu element is not a sibling of the activator.
+        
+        if ( this.$menuActivator.closest( '.responsiville-scrollmenu-wrapper' ).length > 0 ) {
+
+            // Megamenu element is cloned inside a scrollmenu wrapper.
+            
+            this.$menuElement = this.$menuActivator.closest( '.responsiville-scrollmenu-wrapper' ).find( this.options.element );
+
+        } else {
+
+            // Megamenu element lies somewhere else in the page DOM.
+
+            this.$menuElement = jQuery( this.options.element ).not( function () {
+
+                // Exclude megamenu elements inside cloned wrappers because they have been selected by coincidence.
+                
+                if ( jQuery( this ).closest( '.responsiville-mobimenu-wrapper-clone' ).length > 0 || 
+                     jQuery( this ).closest( '.responsiville-scrollmenu-wrapper' ).length > 0 ) {
+                    return true;
+                }
+
+                return false;
+
+            });
+            
+        }
+
+    } else {
+
+        // Megamenu element is a sibling of the activator, which is the default case.
+        
+        this.$menuElement = this.$menuActivator.siblings( this.options.element );
+
+    }
 
 
 
     // If no menu element is found take the first sibling of the activator as a best guess.
     
     if ( this.$menuElement.length === 0 ) {
-
         this.$menuElement = this.$menuActivator.siblings().eq( 0 );
-
     }
     
     
@@ -141,12 +211,29 @@ Responsiville.Megamenu = function ( options ) {
     // If no menu element found raise an error.
     
     if ( this.$menuElement.length === 0 ) {
-
         this.log( 'Responsiville.Megamenu instantiation error: no menu found (' + this.options.element + ').' );
-
         return;
-
     }
+
+    
+
+    // Check if this element has already been enhanced as a Megamenu (perhaps by a very intuitive scrollmenu).
+
+    if ( typeof this.$menuActivator.data( 'responsiville-megamenu-api' ) !== 'undefined' ) {
+        this.log( 'Responsiville.Megamenu has already run for: ' + this.options.activator + '.' );
+        return;
+    }
+
+
+
+    // Add this object as a main element's data attribute for API usage.
+    
+    this.$menuActivator.data( 'responsiville-api', this );
+    this.$menuActivator.data( 'responsiville-megamenu-api', this );
+
+    // Uniquely identify this element.
+
+    this.$menuElement.addClass( this.options.slug );
 
 
 
@@ -154,9 +241,7 @@ Responsiville.Megamenu = function ( options ) {
     
     this.setupEvents();
 
-
-
-    this.log( 'creating megamenu' );
+    this.log( 'megamenu initialised' );
 
 
 
@@ -193,15 +278,14 @@ Responsiville.Megamenu.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefined'
 
 
 /**
- * @property {Object} defaults Default values for this module settings. Watch
- *                             out for the WordPress-aware activator option, 
- *                             which takes into account WordPress menus that
- *                             contain submenu. 
+ * @property {Object} defaults Default values for this module settings. 
  */
 
 Responsiville.Megamenu.defaults = {
     debug        : false,
+    slug         : '',
     activator    : '.responsiville-megamenu',
+    external     : false,
     element      : '.responsiville-megamenu-element',
     enter        : 'laptop, desktop, large, xlarge',
     leave        : 'small, mobile, tablet',
@@ -214,7 +298,8 @@ Responsiville.Megamenu.defaults = {
     closingClass : 'responsiville-megamenu-closing',
     delayShow    : 200,
     delayHide    : 200,
-    duration     : 500 
+    duration     : 300,
+    detectHash : true
 };
 
 
@@ -235,6 +320,12 @@ Responsiville.Megamenu.autoRun = function () {
 
     jQuery( Responsiville.Megamenu.defaults.activator ).each( function () {
 
+        // We do not want megamenus to run inside mobimenu clones, because that will result in awkward behaviour.
+
+        if ( jQuery( this ).closest( '.responsiville-mobimenu-wrapper-clone' ).length > 0 ) {
+            return;
+        }
+
         new Responsiville.Megamenu({
             debug     : Responsiville.Main.getInstance().options.debug,
             activator : this
@@ -253,6 +344,16 @@ Responsiville.Megamenu.autoRun = function () {
  */
 
 Responsiville.Megamenu.prototype.setupEvents = function () {
+
+    // If menu activator leads nowhere then prevent its click event.
+    
+    if ( this.$menuActivator.attr( 'href' ) == '#' ) {
+        this.$menuActivator.on( 'click', function () {
+            return false;
+        });
+    }
+
+
 
     var k, length;
 
@@ -290,6 +391,14 @@ Responsiville.Megamenu.prototype.setupEvents = function () {
 
     this.$menuElement.on( 'mouseenter', this.getBoundFunction( this.elementMouseEnter ) );
     this.$menuElement.on( 'mouseleave', this.getBoundFunction( this.elementMouseLeave ) );
+
+
+
+    // Check if the menu activator is an internal anchor. 
+
+    if ( this.options.detectHash && this.$menuActivator.is( 'a[href*="#"]' ) ) {
+        this.$menuActivator.on( 'click', this.getBoundFunction( this.anchorHashClick ) ); 
+    }
 
 };
 
@@ -523,6 +632,32 @@ Responsiville.Megamenu.prototype.elementMouseLeave = function () {
 
 
 /**
+ * Handles the click event on an anchor element inside the megamenu which has an
+ * internal link, ie starts with a "#". If the anchor points to an existing
+ * element then nothing is done, so that the page may freely scroll to the
+ * element, otherwise false is returned, because the anchor is probably there
+ *  only as a structural menu element. 
+ * 
+ * @param {Event} event The mouse click event that fired.
+ * 
+ * @return {boolean} Whether the event should propagate and allow default
+ *                   behaviour.
+ */
+
+Responsiville.Megamenu.prototype.anchorHashClick = function ( event ) {
+
+    var anchorPointsToExistingElement = jQuery( jQuery( event.target ).attr( 'href' ) ).length > 0;
+
+    if ( ! anchorPointsToExistingElement ) {
+        return false;
+    }
+    
+};
+
+
+
+
+/**
  * Opens the megamenu. Actually opens and shows the megamenu with the required
  * visual effect.
  * 
@@ -568,6 +703,19 @@ Responsiville.Megamenu.prototype.open = function () {
 
         this.$menuElement.velocity({
             properties : { height: this.calculateHeight() }, 
+            options : { 
+                duration: this.options.duration,
+                display : '',
+                complete: this.getBoundFunction( this.afterOpening )
+            }
+        });
+
+    } else if ( this.options.effect == 'slide-ltr' ) {
+
+        // Menu slide left to right effect.
+
+        this.$menuElement.velocity({
+            properties : { width: this.calculateWidth() }, 
             options : { 
                 duration: this.options.duration,
                 display : '',
@@ -651,6 +799,19 @@ Responsiville.Megamenu.prototype.close = function () {
             } 
         });
 
+    } else if ( this.options.effect == 'slide-ltr' ) {
+
+        // Menu slide left to right effect.
+
+        this.$menuElement.velocity({
+            properties : { width: 0 }, 
+            options    : { 
+                duration: this.options.duration, 
+                display : '',
+                complete: this.getBoundFunction( this.afterClosing )
+            } 
+        });
+
     } else if ( this.options.effect == 'fade' ) {
 
         // Menu fade effect.
@@ -679,7 +840,7 @@ Responsiville.Megamenu.prototype.close = function () {
 /**
  * Runs just before the megamenu begins opening.
  * 
- * @fires Responsiville.Megamenu#menuOpening
+ * @fires Responsiville.Megamenu#opening
  * 
  * @return {void}
  */
@@ -689,10 +850,10 @@ Responsiville.Megamenu.prototype.beforeOpening = function () {
     /**
      * Called before opening the menu.
      * 
-     * @event Responsiville.Megamenu#menuOpening
+     * @event Responsiville.Megamenu#opening
      */
     
-    this.fireEvent( 'menuOpening' );
+    this.fireEvent( 'opening' );
 
 
 
@@ -715,7 +876,7 @@ Responsiville.Megamenu.prototype.beforeOpening = function () {
 /**
  * Runs right after the megamenu has opened.
  * 
- * @fires Responsiville.Megamenu#menuOpened
+ * @fires Responsiville.Megamenu#opened
  * 
  * @return {void}
  */
@@ -732,10 +893,10 @@ Responsiville.Megamenu.prototype.afterOpening = function () {
     /**
      * Called after opening the menu.
      * 
-     * @event Responsiville.Megamenu#menuOpened
+     * @event Responsiville.Megamenu#opened
      */
     
-    this.fireEvent( 'menuOpened' );
+    this.fireEvent( 'opened' );
 
 };
 
@@ -744,7 +905,7 @@ Responsiville.Megamenu.prototype.afterOpening = function () {
 /**
  * Runs right before the megamenu begins to closing.
  * 
- * @fires Responsiville.Megamenu#menuClosing
+ * @fires Responsiville.Megamenu#closing
  * 
  * @return {void}
  */
@@ -754,12 +915,15 @@ Responsiville.Megamenu.prototype.beforeClosing = function () {
     /**
      * Called before closing the menu.
      * 
-     * @event Responsiville.Megamenu#menuClosing
+     * @event Responsiville.Megamenu#closing
      */
     
-    this.fireEvent( 'menuClosing' );
+    this.fireEvent( 'closing' );
 
 
+    // In case a previous opening operation was unfinished.
+     
+    this.$menuElement.removeClass( this.options.openingClass );
 
     // Set the closing menu container CSS class.
 
@@ -772,7 +936,7 @@ Responsiville.Megamenu.prototype.beforeClosing = function () {
 /**
  * Runs right after the megamenu has been closed.
  * 
- * @fires Responsiville.Megamenu#menuClosed
+ * @fires Responsiville.Megamenu#closed
  * 
  * @return {void}
  */
@@ -792,25 +956,15 @@ Responsiville.Megamenu.prototype.afterClosing = function () {
     this.$menuElement.removeClass( this.options.closingClass );
     this.$menuElement.removeClass( this.options.openClass );
 
-    // Make sure megamenu is restored to its natural dimensions after being disabled. 
-
-    if ( this.responsiville.is( this.options.leave.split( ', ' ) ) ) {
-
-        // Its height has probably been set to zero.
-
-         this.$menuElement.css( 'height', 'auto' );
-
-    }
-
 
 
     /**
      * Called after closing the menu.
      * 
-     * @event Responsiville.Megamenu#menuClosed
+     * @event Responsiville.Megamenu#closed
      */
     
-    this.fireEvent( 'menuClosed' );
+    this.fireEvent( 'closed' );
 
 };
 
@@ -818,7 +972,7 @@ Responsiville.Megamenu.prototype.afterClosing = function () {
 
 /**
  * Calculates the height of the menu element dynamically at the particular time
- * it is being requested..
+ * it is being requested.
  *
  * @return {int} The height of the menu element.
  */
@@ -829,15 +983,33 @@ Responsiville.Megamenu.prototype.calculateHeight = function () {
 
     this.$menuElement.addClass( 'responsiville-megamenu-calculating' );
 
-    var height = 
-        this.$menuElement.height() + 
-        parseInt( this.$menuElement.css( 'border-top-width' ) ) + 
-        parseInt( this.$menuElement.css( 'border-bottom-width' ) ) + 
-        parseInt( this.$menuElement.css( 'padding-top' ) ) + 
-        parseInt( this.$menuElement.css( 'padding-bottom' ) );
+    var height = this.$menuElement.outerHeight();
 
     this.$menuElement.removeClass( 'responsiville-megamenu-calculating' );
 
     return height;
+
+};
+
+
+
+/**
+ * Calculates the width of the menu element dynamically at the particular time
+ * it is being requested.
+ *
+ * @return {int} The width of the menu element.
+ */
+
+Responsiville.Megamenu.prototype.calculateWidth = function () {
+
+    // Forces the menu to momentarily gain dimensions so that its width may be calculated.
+
+    this.$menuElement.addClass( 'responsiville-megamenu-calculating' );
+
+    var width = this.$menuElement.outerWidth();
+
+    this.$menuElement.removeClass( 'responsiville-megamenu-calculating' );
+
+    return width;
 
 };

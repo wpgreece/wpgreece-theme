@@ -19,36 +19,45 @@
  *
  * @param {Object} options The initialisation options of the module.
  * 
- * @property {Object}  options           The options that define the object 
- *                                       behaviour.
- * @property {boolean} options.debug     Whether to print debug messages in the 
- *                                       browser console.
- * @property {string}  options.container The parent element under which the 
- *                                       elements will be found. If null then 
- *                                       the direct parent of the elements will
- *                                       be taken into account.
- * @property {string}  options.elements  The element that contains the elements
- *                                       which will eventually take up the same 
- *                                       height. If left null then the direct 
- *                                       elements if the parent will be taken 
- *                                       into account.
- * @property {string}  options.children  Sometimes it's not the actual elements
- *                                       themselves that we want to make equal
- *                                       height but some other elements inside
- *                                       them, so that we can have consistent
- *                                       rows of of content. This option is a 
- *                                       selector that defines which children
- *                                       inside the specified elements should
- *                                       become equal height.
- * @property {string}  options.resize    Whether to also run on window resize,
- *                                       as well as each breakpoint change. Of 
- *                                       course, throttled.
- * @property {string}  options.enter     Comma separated list of breakpoints in 
- *                                       which the module enters, wihch means it
- *                                       is enabled.
- * @property {string}  options.leave     Comma separated list of breakpoints in 
- *                                       which the module leaves, which means it
- *                                       is disabled.
+ * @property {boolean} options.debug       Whether to print debug messages in
+ *                                         the  browser console.
+ * @property {boolean} options.slug        A special codename for the instance
+ *                                         of the element, to be used as a class
+ *                                         on its container and as a key in
+ *                                         arrays where it is grouped with other
+ *                                         elements of its kind. 
+ * @property {string}  options.container   The parent element under which the 
+ *                                         elements will be found. If null then 
+ *                                         the direct parent of the elements
+ *                                         will be taken into account.
+ * @property {string}  options.elements    The element that contains the
+ *                                         elements which will eventually take
+ *                                         up the same  height. If left null
+ *                                         then the direct elements if the
+ *                                         parent will be taken into account.
+ * @property {string}  options.children    Sometimes it's not the actual
+ *                                         elements themselves that we want to
+ *                                         make equal height but some other
+ *                                         elements inside them, so that we can
+ *                                         have consistent rows of of content.
+ *                                         This option is a selector that
+ *                                         defines which children inside the
+ *                                         specified elements should become
+ *                                         equal height.
+ * @property {string}  options.resize      Whether to also run on window resize,
+ *                                         as well as each breakpoint change. Of
+ *                                         course, throttled.
+ * @property {string}  options.checkImages Whether to check for images inside
+ *                                         the elements that are going to get
+ *                                         equal heights and run when the images
+ *                                         have all been loaded and all element
+ *                                         heights have been finalised.
+ * @property {string}  options.enter       Comma separated list of breakpoints
+ *                                         in which the module enters, wihch
+ *                                         means it is enabled.
+ * @property {string}  options.leave       Comma separated list of breakpoints
+ *                                         in which the module leaves, which
+ *                                         means it is disabled.
  */
 
 Responsiville.Equalheights = function ( options ) {
@@ -74,7 +83,9 @@ Responsiville.Equalheights = function ( options ) {
 
     // Cache important DOM elements.
 
-    this.$body = this.responsiville.$body;
+    this.$body     = this.responsiville.$body;
+    this.$document = this.responsiville.$document;
+    this.$window   = this.responsiville.$window;
 
     this.$container = jQuery( this.options.container );
 
@@ -91,15 +102,42 @@ Responsiville.Equalheights = function ( options ) {
         }
 
     }
+
+    // Uniqueue element slug.
+
+    if ( this.options.slug == '' ) {
+        Responsiville.Equalheights.elementsCounter = Responsiville.Equalheights.elementsCounter !== undefined ? ++Responsiville.Equalheights.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Equalheights.elementsCounter;
+    }
+
+    // Take special care for enter/leave breakpoints possibly given as HTML data attributes.
+    
+    var htmlBreakpoints = Responsiville.determineEnableDisableBreakpoints({ 
+        enter: this.$container.data( 'responsiville-equalheights-enter' ),
+        leave: this.$container.data( 'responsiville-equalheights-leave' ) 
+    });
+
+    if ( htmlBreakpoints !== null ) {
+        this.options.enter = htmlBreakpoints.enter;
+        this.options.leave = htmlBreakpoints.leave;
+    }
     
 
 
     // Main equal heights elements.
     
-    this.$elements = this.$container.find( this.options.elements );
+    if ( options.elements === undefined ) {
 
-    if ( this.$elements.length === 0 ) {
-        this.$elements = this.$container.children();
+        this.$elements = this.$container.find( this.options.elements );
+
+        if ( this.$elements.length === 0 ) {
+            this.$elements = this.$container.children();
+        }
+        
+    } else {
+        
+        this.$elements = this.$container.find( this.options.elements );
+        
     }
 
     
@@ -115,17 +153,29 @@ Responsiville.Equalheights = function ( options ) {
 
 
 
+    // Add this object as a main element's data attribute for API usage.
+    
+    this.$container.data( 'responsiville-api', this );
+    this.$container.data( 'responsiville-equalheights-api', this );
+
+    // Uniquely identify this element.
+    
+    this.$container.addClass( this.options.slug );
+
+
+
     // Images inside equal heights elements.
 
-    this.$images = this.$elements.find( 'img' );
+    this.$images = [];
 
 
 
     // Initialises the equalheights.
-        
+
+    this.enabled = false;        
     this.setupEvents();
 
-    this.log( 'creating equalheights' );
+    this.log( 'equalheights initialised' );
 
 
 
@@ -166,13 +216,15 @@ Responsiville.Equalheights.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefi
  */
 
 Responsiville.Equalheights.defaults = {
-    debug     : false,
-    container : '.responsiville-equalheights',
-    elements  : '.responsiville-equalheights-element',
-    children  : null,
-    resize    : true,
-    enter     : 'small, mobile, tablet, laptop, desktop, large, xlarge',
-    leave     : ''
+    debug       : false,
+    slug        : '',
+    container   : '.responsiville-equalheights',
+    elements    : '.responsiville-equalheights-element',
+    children    : null,
+    resize      : true,
+    checkImages : true,
+    enter       : 'small, mobile, tablet, laptop, desktop, large, xlarge',
+    leave       : ''
 };
 
 
@@ -236,39 +288,6 @@ Responsiville.Equalheights.prototype.setupEvents = function () {
         this.enable();
     }
 
-
-
-    // Re-arrange elements on breakpoint change.
-    
-    this.responsiville.on( 'change', this.getBoundFunction( this.runElements ) );
-
-    // Also on window resize if requested.
-    
-    if ( this.options.resize ) {
-        this.responsiville.on( 'resize', this.getBoundFunction( this.runElements ) );
-    }
-
-
-
-    // Check which images have loaded and wait for the rest of them.
-    
-    for ( k=0, length=this.$images.length; k < length; k++ ) {
-
-        var image = this.$images.eq( k ).get( 0 );
-
-        if ( Responsiville.hasImageLoaded( image ) ) {
-
-            this.imagesLoaded++;
-
-        } else {
-
-            image.onload  = this.getBoundFunction( this.imageLoaded );
-            image.onerror = this.getBoundFunction( this.imageError );
-
-        }
-
-    }
-
 };
 
 
@@ -287,6 +306,54 @@ Responsiville.Equalheights.prototype.enable = function () {
 
 
 
+    // Avoid registering the same handlers more than once. 
+
+    if ( ! this.enabled ) {
+
+        // Run on breakpoint change. 
+        
+        this.responsiville.on( 'change', this.getBoundFunction( this.runElements ) );
+
+        // Also run on window resize if set to do so.
+        
+        if ( this.options.resize ) {
+            this.responsiville.on( 'resize', this.getBoundFunction( this.runElements ) );
+        }
+
+        // Run once as well now.
+
+        this.runElements();
+
+        // Mark module as enabled.
+        
+        this.enabled = true;
+
+        // Check which images have loaded and wait for the rest of them.
+    
+        if ( this.options.checkImages ) {
+
+            this.$images = this.$elements.find( 'img' );
+
+            var images = [];
+
+            for ( k=0, length=this.$images.length; k < length; k++ ) {
+
+                var image = this.$images.eq( k ).attr( 'src' );
+                images.push( image );
+                if ( Responsiville.hasImageLoaded( image ) ) {
+                    this.imagesLoaded++;
+                } 
+
+            }
+
+            Responsiville.onImagesLoaded( images, { single: this.getBoundFunction( this.imageLoaded ) } );
+            
+        }
+
+    }
+
+
+
     /**
      * Called after the module has been enabled.
      * 
@@ -294,8 +361,6 @@ Responsiville.Equalheights.prototype.enable = function () {
      */
 
     this.fireEvent( 'enabled' );
-    
-    this.runElements();
 
 };
 
@@ -315,12 +380,32 @@ Responsiville.Equalheights.prototype.disable = function () {
 
 
 
-    // Restore elements' height to auto.
+    // Avoid de-registering the same handlers more than once. 
+    
+    if ( this.enabled ) {
 
-    if ( this.options.children ) {
-        this.$elements.find( this.options.children ).css( 'height', 'auto' );
-    } else {
-        this.$elements.css( 'height', 'auto' );
+        // Stop running on breakpoint change. 
+        
+        this.responsiville.off( 'change', this.getBoundFunction( this.runElements ) );
+
+        // Also stop runing on window resize if it had been set to do so.
+        
+        if ( this.options.resize ) {
+            this.responsiville.off( 'resize', this.getBoundFunction( this.runElements ) );
+        }
+
+        // Restore elements' height to auto.
+
+        if ( this.options.children ) {
+            this.$elements.find( this.options.children ).css( 'height', 'auto' );
+        } else {
+            this.$elements.css( 'height', 'auto' );
+        }
+
+        // Mark module as disabled.
+
+        this.enabled = false;
+
     }
 
 
@@ -341,7 +426,7 @@ Responsiville.Equalheights.prototype.disable = function () {
  * Callback that runs when an image inside an element in the equal heights 
  * module has successfully loaded.
  * 
- * @fires Responsiville.Equalheights#imageLoaded
+ * @fires Responsiville.Equalheights#image.loaded
  * 
  * @param {Event} event The image loaded event that originally fired.
  * 
@@ -350,23 +435,24 @@ Responsiville.Equalheights.prototype.disable = function () {
 
 Responsiville.Equalheights.prototype.imageLoaded = function ( event ) {
 
+    // If all images have finished ther run once.
+
     this.imagesLoaded++;
 
     if ( this.imagesLoaded == this.$images.length ) {
-
         this.runElements();
-
     }
 
 
 
     /**
-     * Called after an image inside an equal heights element has loaded.
+     * Called after an image inside an equal heights element has loaded. Passes
+     * the image event as an argument.
      * 
-     * @event Responsiville.Equalheights#imageLoaded
+     * @event Responsiville.Equalheights#image.loaded
      */
 
-    this.fireEvent( 'imageLoaded', [ event ] );
+    this.fireEvent( 'image.loaded', [ event ] );
 
 };
 
@@ -376,7 +462,7 @@ Responsiville.Equalheights.prototype.imageLoaded = function ( event ) {
  * Runs when an image inside an element in the equal heights module has aborted
  * loading due to any error.
  * 
- * @fires Responsiville.Equalheights#imageError
+ * @fires Responsiville.Equalheights#image.error
  * 
  * @param {Event} event The image error event that originally fired.
  * 
@@ -385,24 +471,24 @@ Responsiville.Equalheights.prototype.imageLoaded = function ( event ) {
 
 Responsiville.Equalheights.prototype.imageError = function ( event ) {
 
+    // If all images have finished ther run once.
+    
     this.imagesLoaded++;
 
     if ( this.imagesLoaded == this.$images.length ) {
-
         this.runElements();
-
     }
 
 
 
     /**
      * Called after an image inside an equal heights element was unable to load
-     * due to an error.
+     * due to an error. Passes the image event as an argument.
      * 
-     * @event Responsiville.Equalheights#imageError
+     * @event Responsiville.Equalheights#image.error
      */
 
-    this.fireEvent( 'imageError', [ event ] );
+    this.fireEvent( 'image.error', [ event ] );
 
 };
 
@@ -419,20 +505,20 @@ Responsiville.Equalheights.prototype.imageError = function ( event ) {
  * @return {void}
  */
 
-Responsiville.Equalheights.prototype.equalise = function ( startIndex, endIndex ) {
+Responsiville.Equalheights.prototype.equalise = function ( $elements ) {
 
     var k                = 0;
     var m                = 0;
     var height           = 0;
     var maxHeight        = 0;
     var $element         = null;
-    var childrenSelector = null;
 
     if ( this.options.children ) {
 
         // Case where children of the elements inside the container are to be equalised.
         
         var childrenSelectors = Responsiville.splitAndTrim( this.options.children );
+    	var childrenSelector  = null;
 
         for ( m = 0, length = childrenSelectors.length; m < length; m++ ) {
 
@@ -440,19 +526,16 @@ Responsiville.Equalheights.prototype.equalise = function ( startIndex, endIndex 
 
             maxHeight = 0;
 
-            for ( k = startIndex; k <= endIndex; k++ ) {
+            for ( k = 0, length = $elements.length; k < length; k++ ) {
 
-                $element = this.$elements.eq( k ).find( childrenSelector );
+                $element = $elements.eq( k ).find( childrenSelector );
                 $element.css( 'height', 'auto' );
                 height = $element.outerHeight();
                 maxHeight = height > maxHeight ? height : maxHeight;
 
             }
 
-            this.$elements.
-                slice( startIndex, endIndex+1 ).
-                find( childrenSelector ).
-                css( 'height', maxHeight + 'px' );
+            $elements.find( childrenSelector ).css( 'height', maxHeight + 'px' );
 
         }
 
@@ -460,18 +543,16 @@ Responsiville.Equalheights.prototype.equalise = function ( startIndex, endIndex 
 
         // Case where the elements inside the container themselves are to be equalised.
 
-        for ( k = startIndex; k <= endIndex; k++ ) {
+        for ( k = 0, length = $elements.length; k < length; k++ ) {
 
-            $element = this.$elements.eq( k );
+            $element = $elements.eq( k );
             $element.css( 'height', 'auto' );
             height = $element.outerHeight();
             maxHeight = height > maxHeight ? height : maxHeight;
 
         }
 
-        this.$elements.
-            slice( startIndex, endIndex+1 ).
-            css( 'height', maxHeight + 'px' );
+        $elements.css( 'height', maxHeight + 'px' );
 
     }
 
@@ -487,103 +568,97 @@ Responsiville.Equalheights.prototype.equalise = function ( startIndex, endIndex 
  * of elements has begun (row refers to what the user sees according to what the
  * browser has rendered).
  *
- * @fires Responsiville.Equalheights#runningElements
- * @fires Responsiville.Equalheights#runElements
+ * @fires Responsiville.Equalheights#running.elements
+ * @fires Responsiville.Equalheights#run.elements
  * 
  * @return {void}
  */
 
 Responsiville.Equalheights.prototype.runElements = function () {
 
-    // Check if the call is inside a breakpoint where the modules should not run. 
-
-    if ( this.responsiville.is( Responsiville.splitAndTrim( this.options.leave ) ) ) {
-
-        this.log( 'not equalising heights' );
-        return;
-
-    }
-
     this.log( 'equalising heights' );
-
-
 
     /**
      * Called before running through the elements to equalise heights.
      * 
-     * @event Responsiville.Equalheights#runningElements
+     * @event Responsiville.Equalheights#running.elements
      */
 
-    this.fireEvent( 'runningElements' );
+    this.fireEvent( 'running.elements' );
 
 
 
-    var k             = 0;
-    var length        = 0;
-    var startIndex    = 0;
-    var endIndex      = 0;
-    var isLastElement = false;
-    var stopWhile     = false;
-
-    // Calculate elements that take up whole rows of elements dynamically.
+    // Split the elements in rows which will be equalised, until all the elements are exhausted.
     
-    while ( ! stopWhile ) {
+    var k         = 0;
+    var $elements = this.$elements;
 
-        for ( k = startIndex, length = this.$elements.length; k < length; k++ ) {
+    while ( $elements.length > 0 ) {
 
-            isLastElement = (k == length-1);
-            stopWhile     = isLastElement;
+    	// Create an empty set of elements which will be the current row of elements.
 
-            // Bypass the first element of each row.
+    	var $row = jQuery();
+
+
+
+    	// Run through the remaining elements.
+
+    	while ( $elements.length > 0 ) {
+
+			var $currentElement = $elements.eq( 0 );
+
+            // Skip any hidden elements that will hinder the row change detection.
             
-            if ( k == startIndex ) {
-                continue;
-            }
+    		if ( ! $currentElement.is( ':visible' ) ) {
+
+    			$elements = $elements.slice( 1 );
+    			continue;
+
+    		}
 
 
 
-            var $currentElement     = this.$elements.eq( k );
-            var currentElementRect  = $currentElement.get( 0 ).getBoundingClientRect();
-            var $previousElement    = this.$elements.eq( k-1 );
-            var previousElementRect = $previousElement.get( 0 ).getBoundingClientRect();
+    		// If the row is empty add the current (visible) element unconditionally.
+    		
+    		if ( $row.length == 0 ) {
 
-            var isChangingRow = Math.round( currentElementRect.left ) < Math.round( previousElementRect.right );
+    			$row      = $row.add( $currentElement );
+    			$elements = $elements.slice( 1 );
+				continue;    			
 
+    		}
+
+
+
+    		// Check if a row change has occured.
+    		
+    		var currentElementRect  = $currentElement.get( 0 ).getBoundingClientRect();
+    		var previousElementRect = $row.eq( $row.length - 1 ).get( 0 ).getBoundingClientRect();
+
+    		var isChangingRow = Math.round( currentElementRect.left ) < Math.round( previousElementRect.right );
+            
             if ( isChangingRow ) {
 
-                endIndex = k-1;
-                break;
-                
-            }
+    			// The element will be handled at the next iteration as part of the next row.
+    			break;
 
-            if ( isLastElement ) {
-                
-                endIndex = k;
-                break;
+    		} else {
 
-            }
+                // Add the element to the elements of the current row.
 
-        }
+    			$row = $row.add( $currentElement );
+    			$elements = $elements.slice( 1 );
+    			continue;
+
+    		}
+
+    	}
 
 
 
-        // Make the selected range of elements, which fill up a row, take up equal height.
-        
-        this.equalise( startIndex, endIndex );
-
-        if ( stopWhile ) {
-
-            if ( endIndex < length-1 ) {
-                this.equalise( endIndex+1, length-1 );
-            }
-
-            break;
-
-        }
-
-        // Continue to the rest of the elements or stop altogether.
-
-        startIndex = endIndex + 1;
+        // Equalise this complete row!
+          
+    	this.equalise( $row );
 
     }
 
@@ -592,9 +667,9 @@ Responsiville.Equalheights.prototype.runElements = function () {
     /**
      * Called after running through the elements to equalise heights.
      * 
-     * @event Responsiville.Equalheights#runElements
+     * @event Responsiville.Equalheights#run.elements
      */
 
-    this.fireEvent( 'runElements' );
+    this.fireEvent( 'run.elements' );
 
 };

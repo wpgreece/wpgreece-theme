@@ -74,6 +74,18 @@
 
 
 
+        <h2>API data attribute</h2>
+
+        <p>
+            If the mobimenu has not been created manually, which is the easiest and most common case, one can obtain an instance of the underlying <code>Responsiville.Mobimenu</code> Javascript object, so that it can manipulate the mobimenu via its API, by accessing its <code>responsiville-mobimenu-api</code> data attribute, like this:
+        </p>
+        <pre><code class = "language-javascript">
+            // Obtain the underlying Responsiville.Mobimenu Javascript object.
+            var mobimenu = $( '.responsiville-mobimenu' ).data( 'responsiville-mobimenu-api' );
+        </code></pre>
+
+
+
         <h2>Default values</h2>
 
         <p>
@@ -87,6 +99,10 @@
                 '</code></pre>'
             );
         </script>
+
+        <p>
+            <a href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville Javascript API" target = "_blank" class = "button">Responsiville Javascript API</a>
+        </p>
 
 
 
@@ -108,15 +124,14 @@
             /* A tiny bit of robbery here! */
             .responsiville-mobimenu-wrapper {
                 margin-bottom: var(--text-rhythm);
+                background-color: white;
+                z-index: 1000;
             }
-                .responsiville-mobimenu-wrapper nav {
-                    min-height: 100%;
-                    background-color: white;
-                }
                 .responsiville-mobimenu-wrapper button {
                     color: var(--color-gray-dark) ! important;
                 }
                 .responsiville-megamenu-example {
+                    margin-top: var(--text-rhythm);
                     margin-bottom: var(--text-rhythm);
                 }
                     .responsiville-megamenu-example ul ul {
@@ -182,6 +197,48 @@
         <p>
             Note that the above example <strong>combines a megamenu as well as a mobimenu</strong> both of them implemented on the same original element. This is totally possible and, actually, quite commonly necessary in responsive web design. However, one has to be extra careful about styling all these three states (original state, megamenu state, mobimenu state) and also about the breakpoints where each of them is enabled and disabled. For instance the megamenu is meaningful in big screens, where the user has a mouse, while the mobimenu is meaningful in small, touch enabled, screens.
         </p>
+
+        <p>
+            Let's look at the same example, but have it activated for all breakpoints, even in bigger screens.
+        </p>
+
+        <style type = "text/css">
+        </style>
+
+        <nav class = "navigation horizontal responsiville-mobimenu2 responsiville-mobimenu responsiville-megamenu-example clear"
+             data-responsiville-mobimenu-enter = "small >>">
+            <ul>
+                <li>
+                    <a href = "#" class = "responsiville-megamenu">Menu 1</a>
+                    <ul>
+                        <li><a href = "#">Menu 1-1</a></li>
+                        <li><a href = "#">Menu 1-2</a></li>
+                        <li><a href = "#">Menu 1-3</a></li>
+                        <li><a href = "#">Menu 1-4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href = "#" class = "responsiville-megamenu">Menu 2</a>
+                    <ul>
+                        <li><a href = "#">Menu 2-1</a></li>
+                        <li><a href = "#">Menu 2-2</a></li>
+                        <li><a href = "#">Menu 2-3</a></li>
+                        <li><a href = "#">Menu 2-4</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href = "#" class = "responsiville-megamenu">Menu 3</a>
+                    <ul>
+                        <li><a href = "#">Menu 3-1</a></li>
+                        <li><a href = "#">Menu 3-2</a></li>
+                        <li><a href = "#">Menu 3-3</a></li>
+                        <li><a href = "#">Menu 3-4</a></li>
+                        <li><a href = "#">Menu 3-5</a></li>
+                        <li><a href = "#">Menu 3-6</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
 
 
 

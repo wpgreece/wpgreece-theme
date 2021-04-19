@@ -1,3 +1,11 @@
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
+
+
+ 
 /******************************************************************************
 
      █████╗  ██████╗ ██████╗ ██████╗ ██████╗ ██████╗ ██╗ ██████╗ ███╗   ██╗
@@ -26,8 +34,21 @@
             .responsiville-accordion-header {
                 cursor: hand;
                 cursor: pointer;
+                position: relative;
             }
-            
+
+                .responsiville-accordion-header::after {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    font-family: 'Responsiville icons';
+                    content: '\e816';
+                    transform: rotateZ(90deg) translateX(-150%);
+                }
+                .responsiville-accordion-panel-open .responsiville-accordion-header::after {
+                    transform: rotateZ(270deg) translateX(150%);
+                }
+
             .responsiville-accordion-excerpt {
             }
 

@@ -65,6 +65,18 @@
 
 
 
+        <h2>API data attribute</h2>
+
+        <p>
+            If the equalheights has not been created manually, which is the easiest and most common case, one can obtain an instance of the underlying <code>Responsiville.Equalheights</code> Javascript object, so that it can manipulate the equalheights via its API, by accessing its <code>responsiville-equalheights-api</code> data attribute, like this:
+        </p>
+        <pre><code class = "language-javascript">
+            // Obtain the underlying Responsiville.Equalheights Javascript object.
+            var equalheights = $( '.responsiville-equalheights' ).data( 'responsiville-equalheights-api' );
+        </code></pre>
+
+
+
         <h2>Automatic row detection</h2>
 
         <p>
@@ -85,8 +97,8 @@
 
         <pre><code class = "language-javascript">
             var equalheights = new Responsiville.Equalheights({
-                container : 'responsiville-equalheights',
-                elements  : 'responsiville-equalheights-element',
+                container : '.responsiville-equalheights',
+                elements  : '.responsiville-equalheights-element',
                 enter     : 'laptop, desktop, large, xlarge',
                 leave     : 'small, mobile, tablet'
             });
@@ -107,6 +119,10 @@
                 '</code></pre>'
             );
         </script>
+
+        <p>
+            <a href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville Javascript API" target = "_blank" class = "button">Responsiville Javascript API</a>
+        </p>
 
 
 
@@ -197,12 +213,13 @@
         <h2>Children</h2>
 
         <p>
-            The equalheights module has an extra mode where it can run, not on the defined elements themselves, but on certain child elements of theirs. For instance, let&apos; say that you have a set of columns, which have a title, an excerpt and an image and you want their titles and experts to get equal heights. Here comes the <code>children</code> settings of the equalheights module to the rescue:
+            The equalheights module has an extra mode where it can run, not on the defined elements themselves, but on certain child elements of theirs. For instance, let&apos; say that you have a set of columns, which have a title, an excerpt and an image, and you want their titles and excerpt to get equal heights. Here comes the <code>children</code> settings of the equalheights module to the rescue: 
         </p>
 
         <div class = "grid-showcase">
             <div class = "row responsiville-equalheights"
-                 data-responsiville-equalheights-children=".title, .excerpt" 
+                 data-responsiville-equalheights-enter="desktop >>" 
+                 data-responsiville-equalheights-children=".title, .excerpt, .the-contents" 
                  data-info = ".row .responsiville-equalheights">
                 <div class = "small-column-50 laptop-column-33 with-contents" data-info = ".small-column-50 .laptop-column-33">
                     <div class = "the-contents">
@@ -219,7 +236,7 @@
                         <p class = "excerpt">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt dolores, nostrum minima perspiciatis aut sunt voluptates eius delectus accusamus dicta illo dolor voluptatem numquam blanditiis facilis, quod illum natus sed eveniet praesentium laboriosam. Exercitationem quas quibusdam dignissimos, necessitatibus inventore quaerat!
                         </p>
-                        <img src = "img/photo1.jpg" />
+                        <img src = "img/photo4.jpg" />
                     </div>
                 </div>
                 <div class = "small-column-100 laptop-column-33 with-contents" data-info = ".small-column-100 .laptop-column-33">
@@ -228,7 +245,7 @@
                         <p class = "excerpt">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea vero autem alias dolor maxime dicta cupiditate, et, beatae debitis recusandae ut minima asperiores excepturi expedita, maiores. Corrupti quisquam officiis, sed voluptate suscipit autem..
                         </p>
-                        <img src = "img/photo1.jpg" />
+                        <img src = "img/photo5.jpg" />
                     </div>
                 </div>
             </div>

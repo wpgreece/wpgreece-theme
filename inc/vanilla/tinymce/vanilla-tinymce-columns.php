@@ -1,8 +1,9 @@
 <?php
 
     /**
-     * This plugin adds capabilities for adding rows and columns of the
-     * Responsiville framework inside the TinyMCE editor.
+     * This plugin adds capabilities for adding rows and columns from the
+     * Responsiville framework inside the TinyMCE editor in the WordPress 
+     * /wp-admin area.
      * 
      * @author Nevma, http://www.nevma.gr, info@nevma.gr
      * 
@@ -18,7 +19,7 @@
      * @return void
      */
     
-    function vanilla_tinymce_columns_add_plugin_action () {
+    function vanilla_tinymce_columns_add_action () {
 
         add_filter( 'mce_buttons_2',        'vanilla_tinymce_columns_add_buttons' );
         add_filter( 'mce_external_plugins', 'vanilla_tinymce_columns_add_plugin_js' );
@@ -27,7 +28,7 @@
 
     }
 
-    add_action( 'admin_init', 'vanilla_tinymce_columns_add_plugin_action' );
+    add_action( 'admin_init', 'vanilla_tinymce_columns_add_action' );
 
 
 
@@ -37,12 +38,12 @@
      * @param array $plugin_array The array that holds the plugins added to 
      *                            TinyMCE editor so far.
      * 
-     * @return array The array enhanced with the Vanilla TinyMCE columns plugin.
+     * @return array The array enhanced.
      */
 
     function vanilla_tinymce_columns_add_plugin_js ( $plugin_array ) {
 
-        $plugin_array['vanillacolumns'] = get_template_directory_uri() . '/inc/vanilla/tinymce/vanilla-tinymce-columns.js';
+        $plugin_array['vanillacolumns'] = get_template_directory_uri() . '/inc/vanilla/tinymce/js/vanilla-tinymce-columns.js';
 
         return $plugin_array;
 
@@ -58,7 +59,7 @@
 
     function vanilla_tinymce_columns_add_plugin_css () { 
 
-        wp_enqueue_style( 'vanilla-tinymce-columns', get_template_directory_uri() . '/inc/vanilla/tinymce/vanilla-tinymce-columns.css', false ); 
+        wp_enqueue_style( 'vanilla-tinymce-columns', get_template_directory_uri() . '/inc/vanilla/tinymce/css/vanilla-tinymce-columns.css', false ); 
 
     }
 
@@ -70,8 +71,7 @@
      * @param array $buttons The array that holds the buttons added to the 
      *                       TinyMCE editor so far.
      * 
-     * @return array The array enhanced with the Vanilla TinyMCE buttons for
-     *               rows and columns.
+     * @return array The array enhanced .
      */
 
     function vanilla_tinymce_columns_add_buttons ( $buttons ) {

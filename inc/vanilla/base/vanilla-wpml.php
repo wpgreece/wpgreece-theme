@@ -1,6 +1,16 @@
 <?php
 
     /**
+     * Vanilla WMPL related enhancements.
+     * 
+     * @author Nevma, http://www.nevma.gr, info@nevma.gr
+     * 
+     * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+     */
+
+
+
+    /**
      * Define language settings for WPML.
      */
 
@@ -50,16 +60,17 @@
      * @return string The HTML UL element string of the available languages.
      */
      
-    function vanilla_wpml_language_switcher ( $args = array( 'id' => null, 'class' => null, 'languages' => array() ) ) {
+    function vanilla_wpml_language_switcher ( $args ) {
 
         if ( ! function_exists( 'icl_get_languages' ) ) { 
             return '';
         }
 
+        $args = array_merge( $args, array( 'id' => null, 'class' => null, 'languages' => array(), 'skip_missing' => 1 ) );
+        
         $output = '';
 
-        $languages = icl_get_languages( 'skip_missing=1' );
-
+        $languages = icl_get_languages( 'skip_missing=' . $args['skip_missing'] );
 
         if ( $languages ) {
 
@@ -84,6 +95,7 @@
         }
 
         return $output;
+
     }
 
 

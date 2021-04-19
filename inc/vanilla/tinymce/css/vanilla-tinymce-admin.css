@@ -1,0 +1,32 @@
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
+
+
+
+/*****************************************************************************
+
+    ██╗ ██████╗ ██████╗ ███╗   ██╗    ███████╗ ██████╗ ███╗   ██╗████████╗
+    ██║██╔════╝██╔═══██╗████╗  ██║    ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝
+    ██║██║     ██║   ██║██╔██╗ ██║    █████╗  ██║   ██║██╔██╗ ██║   ██║
+    ██║██║     ██║   ██║██║╚██╗██║    ██╔══╝  ██║   ██║██║╚██╗██║   ██║
+    ██║╚██████╗╚██████╔╝██║ ╚████║    ██║     ╚██████╔╝██║ ╚████║   ██║
+    ╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝
+
+ *****************************************************************************/
+
+
+
+    @font-face {
+        font-family: "Responsiville Icons";
+        src: url("../../responsiville/fonts/font/responsiville.eot?14661597");
+        src: url("../../responsiville/fonts/font/responsiville.eot?14661597#iefix") format("embedded-opentype"),
+             url("../../responsiville/fonts/font/responsiville.woff2?14661597") format("woff2"),
+             url("../../responsiville/fonts/font/responsiville.woff?14661597") format("woff"),
+             url("../../responsiville/fonts/font/responsiville.ttf?14661597") format("truetype"),
+             url("../../responsiville/fonts/font/responsiville.svg?14661597#responsiville")  format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }

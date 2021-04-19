@@ -1,0 +1,135 @@
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
+
+
+
+/*************************************************
+
+    ██████╗  ██████╗ ██████╗ ██╗   ██╗██████╗
+    ██╔══██╗██╔═══██╗██╔══██╗██║   ██║██╔══██╗
+    ██████╔╝██║   ██║██████╔╝██║   ██║██████╔╝
+    ██╔═══╝ ██║   ██║██╔═══╝ ██║   ██║██╔═══╝
+    ██║     ╚██████╔╝██║     ╚██████╔╝██║
+    ╚═╝      ╚═════╝ ╚═╝      ╚═════╝ ╚═╝
+
+ *************************************************/
+
+
+
+    .responsiville-popup-body-opening {
+    }
+    
+    .responsiville-popup-body-open {
+        overflow: hidden;
+        padding-right:  17px;
+    }
+
+    .responsiville-popup-body-closing {
+    }
+
+
+    
+    /* The popup contents wrapper. */
+
+    .responsiville-popup-contents-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        background-color: rgba(60, 60, 60, 0.85);
+    }
+
+    .responsiville-popup-open {
+    }
+
+
+
+    /* The popup contents. */
+
+    .responsiville-popup-contents {
+        padding: 0 !important;
+        border:  none !important;
+        background: var(--color-responsiville-white);
+        box-shadow: 0 0 0.25em 0 var(--color-responsiville-gray);
+        overflow: auto;
+    }
+
+    .responsiville-popup-resizing {
+        overflow: hidden;
+    }
+
+    .responsiville-popup-overflow {
+    }
+
+    .responsiville-popup-calculate-dimensions {
+        position: relative !important;
+        z-index: -1 !important;
+        opacity: 0 !important;
+        float: left !important;
+        visibility: hidden !important;
+    }
+    
+    .responsiville-popup-contents-inner {
+        padding: 5rem;
+    }
+
+
+    /* The popup close button. */
+    
+    .responsiville-popup-contents-wrapper > .responsiville-popup-close,
+    .responsiville-popup-contents         > .responsiville-popup-close {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 2rem;
+        padding: 0;
+        margin: 0;
+        background: var(--color-gray-dark);
+        color: var(--color-white);
+        box-shadow: none;
+        display: none;
+    }
+
+    .responsiville-popup-open .responsiville-popup-close {
+        display: block;
+    }
+
+    .responsiville-popup-calculate-dimensions .responsiville-popup-close {
+        display: none;
+    }
+
+    .responsiville-popup-contents-wrapper > .responsiville-popup-close:hover,
+    .responsiville-popup-contents         > .responsiville-popup-close:hover {
+        background: var(--color-white);
+        color: var(--color-gray-dark);
+    }
+
+        .responsiville-popup-contents-wrapper > .responsiville-popup-close span,
+        .responsiville-popup-contents         > .responsiville-popup-close span {
+            display: none;
+        }
+
+        .responsiville-popup-contents-wrapper > .responsiville-popup-close::after,
+        .responsiville-popup-contents         > .responsiville-popup-close::after {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            text-indent: 0;
+            font-family: 'Responsiville icons';
+            content: '\e80d';
+            line-height: 4rem;
+            font-size: 1.5rem;
+        }

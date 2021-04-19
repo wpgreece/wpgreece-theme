@@ -17,7 +17,7 @@
         <h2>Copyright</h2>
 
         <p>
-            Responsiville is being developed with tons of love, coffee and late nights by the fine lads of <a href = "http://www.nevma.gr" title = "Nevma.gr">Nevma.gr</a> &copy; 2014-<?php echo date( 'Y' ); ?> in Athens, Greece, (yes, apart from wine, oil, sun, sea, philosophy and democracy, now we produce responsive web frameworks, as well.
+            Responsiville is being developed with tons of love, coffee and late nights by the fine lads of <a href = "http://www.nevma.gr" title = "Nevma.gr">Nevma.gr</a> &copy; 2014-<?php echo date( 'Y' ); ?> in Athens, Greece, (yes, apart from wine, oil, sun, beaches, theatre, philosophy and democracy, now we produce responsive web frameworks, as well).
         </p>
 
 

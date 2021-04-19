@@ -9,19 +9,11 @@
         <h1>Responsiville API</h1>
 
         <p>
-            Here is the Responsiville Javascript API:
+            Here is the Responsiville Javascript API documentation:
         </p>
 
         <p>
             <a href = "http://vanilla.nevma.gr/wp-content/docs/responsiville-jsdoc/" title = "Responsiville Javascript API" target = "_blank" class = "button">Responsiville Javascript API</a>
-        </p>
-
-        <p>
-            You can find the Responsiville icon fonts here:
-        </p>
-
-        <p>
-            <a href = "../fonts/demo.html" title = "Responsiville icon fonts" target = "_blank" class = "button">Responsiville icon fonts</a>
         </p>
 
 
@@ -47,12 +39,17 @@
 
         <pre><code class = "language-javascript">
             // Do something when the current breakpoint changes.
-            responsiville.on( 'change', function () {
+            responsiville.on( 'change.breakpoint', function () {
 
                 // The "this" scope refers to the responsiville instance.
                 console.dir( 'The breakpoint has changed to => ' + this.currentBreakpoint.name );
 
             });
+
+            // This works as well, same as the above, but is deprecated.
+            responsiville.on( 'change', function () {
+                ...
+            }
 
             // Do something when entering the tablet breakpoint.
             responsiville.on( 'enter.tablet', function () {

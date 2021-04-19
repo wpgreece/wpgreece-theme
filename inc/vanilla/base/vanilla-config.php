@@ -1,8 +1,7 @@
 <?php
 
     /**
-     * Sets up default base theme behaviour like cleaning up unused scripts, 
-     * adding support for HTML5, registering a custom error handler page, etc.
+     * Vanilla various configurations.
      * 
      * @author Nevma, http://www.nevma.gr, info@nevma.gr
      * 
@@ -96,24 +95,7 @@
 
     }
 
-    
-
-    /**
-     * Disables the admin bar in the frontend.
-     * 
-     * @return void
-     */
-/*
-    function vanilla_config_disable_admin_bar () {
-
-        // Sets the admin bar filter to return false.
-
-        add_filter( 'show_admin_bar', '__return_false' );
-
-
-    } 
-
-    */
+       
 
     /**
      * Sets up capabilities that this theme supports.
@@ -135,7 +117,6 @@
                 'caption' 
             )
         );
-
 
         // Use post thumbnails.
 

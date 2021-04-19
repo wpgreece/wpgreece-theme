@@ -82,3 +82,30 @@ Font license info
    Homepage:  http://thedesignoffice.org/project/modern-pictograms/
 
 
+## Brandico
+
+   (C) 2012 by Vitaly Puzrin
+
+   Author:    Crowdsourced, for Fontello project
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  
+
+
+## Elusive
+
+   Copyright (C) 2013 by Aristeides Stathopoulos
+
+   Author:    Aristeides Stathopoulos
+   License:   SIL (http://scripts.sil.org/OFL)
+   Homepage:  http://aristeides.com/
+
+
+## Zocial
+
+   Copyright (C) 2012 by Sam Collins
+
+   Author:    Sam Collins
+   License:   MIT (http://opensource.org/licenses/mit-license.php)
+   Homepage:  http://zocial.smcllns.com/
+
+

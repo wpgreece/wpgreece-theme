@@ -1,3 +1,11 @@
+/**
+ * @author Nevma, http://www.nevma.gr, info@nevma.gr
+ * 
+ * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+ */
+
+
+
 /************************************************************************************************************
 
      ██████╗██╗   ██╗███████╗████████╗ ██████╗ ███╗   ███╗    ███████╗ ██████╗ ███╗   ██╗████████╗███████╗
@@ -5,7 +13,7 @@
     ██║     ██║   ██║███████╗   ██║   ██║   ██║██╔████╔██║    █████╗  ██║   ██║██╔██╗ ██║   ██║   ███████╗
     ██║     ██║   ██║╚════██║   ██║   ██║   ██║██║╚██╔╝██║    ██╔══╝  ██║   ██║██║╚██╗██║   ██║   ╚════██║
     ╚██████╗╚██████╔╝███████║   ██║   ╚██████╔╝██║ ╚═╝ ██║    ██║     ╚██████╔╝██║ ╚████║   ██║   ███████║
-    ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝    ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝
+     ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝    ╚═╝      ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝
 
  ************************************************************************************************************/
 
@@ -38,40 +46,60 @@
                                                                         
  **************************************************************************/
 
-
-
-    :root {
-        --font-scale              : 1.2;     /* How the headings font size scales up. */
-        --root-font-size          : 10px;    /* The root element, ie HTML, font size. */
-        --base-font-size          : 1.6rem;  /* The body element base font size. */
-        --base-line-height        : 1.5;     /* The default line height of all elements. */
-        --text-line-height        : 1.75;    /* The line height of block text elements. */
-        --heading-line-height     : 1.2;     /* The line height of heading elements. */
-        
-        --text-rhythm             : 3rem;    /* Vertical margins between text elements. */
-        --grid-gutter             : 1rem;    /* Paddings between columns, the grid gutters. */
-        --vertical-rhythm         : 5rem;    /* Vertical margins between major grid sections. */
-        
-        --panel-width             : 1024px;  /* The max width of the panel element. */
-
-        --color-text              : #646464; /* The colour of the text.*/
-        --color-text-selection    : #fafafa; /* The colour of the selected text.*/
-        --color-text-selection-bg : #646464; /* The colour of the selected text background.*/
-    }
-
     
 
-    /* Some useful default colours. */
+    /* Some default global colours. */
 
     :root {
-        --color-red          : rgb(255,   0,   0);
-        --color-green        : rgb(  0, 255,   0);
-        --color-blue         : rgb(  0,   0, 255);
+        --responsiville-red                : 255,   0,   0;
+        --responsiville-green              :   0, 255,   0;
+        --responsiville-blue               :   0,   0, 255;
 
-        --color-white        : rgb(255, 255, 255);
-        --color-gray-light-x : rgb(250, 250, 250);
-        --color-gray-light   : rgb(240, 240, 240);
-        --color-gray         : rgb(220, 220, 220);
-        --color-gray-dark    : rgb(100, 100, 100);
-        --color-black        : rgb(  0,   0,   0);
+        --responsiville-white              : 255, 255, 255;
+        --responsiville-gray-light-x       : 250, 250, 250;
+        --responsiville-gray-light         : 240, 240, 240;
+        --responsiville-gray               : 220, 220, 220;
+        --responsiville-gray-dark          : 100, 100, 100;
+        --responsiville-black              :   0,   0,   0;
+
+        --color-responsiville-red          : rgb(var(--responsiville-red));
+        --color-responsiville-green        : rgb(var(--responsiville-green));
+        --color-responsiville-blue         : rgb(var(--responsiville-blue));
+
+        --color-responsiville-white        : rgb(var(--responsiville-white));
+        --color-responsiville-gray-light-x : rgb(var(--responsiville-gray-light-x));
+        --color-responsiville-gray-light   : rgb(var(--responsiville-gray-light));
+        --color-responsiville-gray         : rgb(var(--responsiville-gray));
+        --color-responsiville-gray-dark    : rgb(var(--responsiville-gray-dark));
+        --color-responsiville-black        : rgb(var(--responsiville-black));
+    }
+
+
+    
+    /* Text and vertical rhythm variables. */
+
+    :root {
+        --font-scale              : 1.2;    /* How the headings font size scales up. */
+        --root-font-size          : 10px;   /* The root element, ie HTML, font size. */
+        --base-font-size          : 1.6rem; /* The body element base font size. */
+        --base-line-height        : 1.5;    /* The default line height of all elements. */
+        --text-line-height        : 1.75;   /* The line height of block text elements. */
+        --heading-line-height     : 1.2;    /* The line height of heading elements. */
+        
+        --text-rhythm             : 3rem;   /* Vertical margins between text elements. */
+        --grid-gutter             : 1rem;   /* Paddings between columns, the grid gutters. */
+        --vertical-rhythm         : 5rem;   /* Vertical margins between major grid sections. */
+        
+        --panel-width             : 1024px; /* The max width of the panel element. */
+    }
+
+
+
+    /* Text color main variables. */
+    
+    :root {
+        --color-text              : var(--color-responsiville-gray-dark);    /* The colour of the text.*/
+        --color-text-link         : var(--color-responsiville-blue);         /* The colour of the links.*/
+        --color-text-selection    : var(--color-responsiville-gray-light-x); /* The colour of the selected text.*/
+        --color-text-selection-bg : var(--color-responsiville-gray-dark);    /* The colour of the selected text background.*/
     }

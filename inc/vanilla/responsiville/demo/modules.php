@@ -122,10 +122,6 @@
         --></code></pre>
 
         <p>
-            One has to specify <strong>all</strong> the available breakpoints of the Responsiville framework as either <code>enter</code> or <code>leave</code> when overriding the default values.
-        </p>
-
-        <p>
             When created on demand, it would be something like:
         </p>
 
@@ -136,6 +132,118 @@
                 leave   : 'small, mobile, tablet'
             });
         </code></pre>
+
+        <p>
+            Up until Responsiville version 1.2 one had to specify <strong>all</strong> the available breakpoints of the Responsiville framework of both the <code>enter</code> and the <code>leave</code> properties. As of version 1.3 and forward this has been abbreviated so that one only has to specify the <code>enter</code> or the <code>leave</code> property and the framework will deduct the other one.
+        </p>
+
+        <p>
+            Here only the enter property is set and the leave property will be populated with the rest of the breakpoints:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="responsiville-module"
+
+                 data-responsiville-module-enter="laptop, desktop, large, xlarge">
+
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+
+            </div>
+        --></code></pre>
+
+        <p>
+            Here only the leave property is set and the enter property will be populated with the rest of the breakpoints:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="responsiville-module"
+
+                 data-responsiville-module-leave="laptop, desktop, large, xlarge">
+
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+
+            </div>
+        --></code></pre>
+
+        <h3>Shorthand enter/leave values</h3>
+
+        <p>
+            Moreove, from Responsiville version 1.3 and upwards, the enter and leave properties can take some code-named shorthand values, so that one does not need to specify all the breakpoints they need. So, if you want to make a Responsiville module enabled (or disabled) in the <strong>laptop</strong> breakpoint and up, you could specify its <strong>enter</strong> (or leave) property as <code>laptop &gt;&gt;</code>. 
+        </p>
+
+        <p>
+            Similarly, if you want to make a Responsiville module enabled (or disabled) in the <strong>laptop</strong> breakpoint and down, you could specify its <strong>enter</strong> (or leave) property as <code>&lt;&lt; laptop</code>.
+        </p>
+
+        <p>
+            Lastly, if you want to make a Responsiville module enabled (or disabled) in <strong>all</strong> breakpoint and down, you could specify its <strong>enter</strong> (or leave) property simply as <code>*</code>.
+        </p>
+
+        <p>
+            Here the enter property means <strong>from the laptop breakpoint and upwards</strong> and the leave breakpoint will be populated with the rest of the breakpoints:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="responsiville-module"
+
+                 data-responsiville-module-enter="laptop >>">
+
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+
+            </div>
+        --></code></pre>
+
+        <p>
+            Here the enter property means <strong>from the laptop breakpoint and downwards</strong> and the leave breakpoint will be populated with the rest of the breakpoints:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="responsiville-module"
+
+                 data-responsiville-module-enter="<< laptop">
+
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+
+            </div>
+        --></code></pre>
+
+        <p>
+            Here the enter property means <strong>enable the module for all breakpoints</strong>:
+        </p>
+
+        <pre><code class = "language-markup"><!--
+            <div class="responsiville-module"
+
+                 data-responsiville-module-enter="*">
+
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+                <div class="responsiville-module-child"></div>
+
+            </div>
+        --></code></pre>
+
+        <h3>Caution</h3>
+
+        <p>
+            If you specify conflicting enter/leave properties then unpredictable behaviour might occur! For instance, setting <code>enter=&quot;&lt;&lt; laptop&quot;</code> and <code>leave=&quot;tablet &gt;&gt;&quot;</code> at the same time makes no sense. 
+        </p>
+
+        <p>
+            If you fail to provide enough information on how each module shoud handle <strong>all</strong> breakpoints, then unpredictable behaviour might occur. For instance setting <strong>some</strong> breakpoints in the <code>enter</code> property and <strong>some</strong> other breakpoints in the <code>leave</code> property, but leaving one or more breakpoints unmentioned.
+        </p>
+
+        <blockquote class = "citation citation-x">
+            <p>The framework needs to know what to do with <strong>all of its modules</strong> at all times and for <strong>all of its breakpoints</strong>. You need to provide it with the least necessary info to help it do that!</p>
+        </blockquote>
 
 
 

@@ -21,6 +21,11 @@
  *                                          behaviour.
  * @property {boolean} options.debug        Whether to print debug messages in
  *                                          the browser console.
+ * @property {boolean} options.slug         A special codename for the instance
+ *                                          of the element, to be used as a
+ *                                          class on its container and as a key
+ *                                          in arrays where it is grouped with
+ *                                          other elements of its kind. 
  * @property {string}  options.element      Selector for the element that
  *                                          actually is the element to be fixed.
  * @property {string}  options.wrapper      The class of the wrapper element
@@ -72,18 +77,18 @@ Responsiville.Scrollmenu = function ( options ) {
 
     // General settings setup.
 
-    this.options  = jQuery.extend( this.options, Responsiville.Scrollmenu.defaults, options );
-    this.codeName = 'responsiville.scrollmenu';
-
+    this.options       = {};
+    this.options       = jQuery.extend( this.options, Responsiville.Scrollmenu.defaults, options );
+    this.codeName      = 'responsiville.scrollmenu';
     this.responsiville = Responsiville.Main.getInstance();
 
     
 
     // Cache important DOM elements.
 
-    this.$body   = this.responsiville.$body;
-    this.$window = this.responsiville.$window;
-
+    this.$body     = this.responsiville.$body;
+    this.$document = this.responsiville.$document;
+    this.$window   = this.responsiville.$window;
     this.$element = jQuery( this.options.element );
 
 
@@ -99,6 +104,25 @@ Responsiville.Scrollmenu = function ( options ) {
         }
 
     }
+
+    // Uniqueue element slug.
+    
+    if ( this.options.slug == '' ) {
+        Responsiville.Scrollmenu.elementsCounter = Responsiville.Scrollmenu.elementsCounter !== undefined ? ++Responsiville.Scrollmenu.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Scrollmenu.elementsCounter;
+    }
+
+    // Take special care for enter/leave breakpoints possibly given as HTML data attributes.
+    
+    var htmlBreakpoints = Responsiville.determineEnableDisableBreakpoints({ 
+        enter: this.$element.data( 'responsiville-scrollmenu-enter' ),
+        leave: this.$element.data( 'responsiville-scrollmenu-leave' ) 
+    });
+
+    if ( htmlBreakpoints !== null ) {
+        this.options.enter = htmlBreakpoints.enter;
+        this.options.leave = htmlBreakpoints.leave;
+    }
     
     
     
@@ -111,7 +135,12 @@ Responsiville.Scrollmenu = function ( options ) {
 
     }
 
-    this.log( 'creating scrollmenu' );
+
+
+    // Add this object as a main element's data attribute for API usage.
+    
+    this.$element.data( 'responsiville-api', this );
+    this.$element.data( 'responsiville-scrollmenu-api', this );
 
 
 
@@ -120,28 +149,41 @@ Responsiville.Scrollmenu = function ( options ) {
     this.$elementCloned = this.$element.clone( false ).
                                         wrap( '<div class = "' + this.options.wrapper + '" ' + ( this.options.zIndex > 0 ? 'style="z-index: ' + this.options.zIndex + ';"' : '' ) + '>' ).
                                         parent().
+                                        addClass( this.options.slug ).
                                         appendTo( this.$body );
 
 
 
     // Initialises the scroll element.
     
-    this.$element.data( 'offsetTop', Math.ceil( this.$element.offset().top ) );
-        
     this.enabled   = false;
     this.activated = false;
-
     this.setupEvents();
-
-
 
     // Cache element initial position.
     
     this.$element.data( 'offsetTop', Math.ceil( this.$element.offset().top ) );
 
+    this.log( 'scrollmenu initialised' );
 
 
-    // Search for a megamenu inside the cloned scroll element.
+
+    // Search for a possible mobimenu inside the cloned scroll element.
+    
+    this.$elementCloned.
+        find( Responsiville.Mobimenu.defaults.element ).
+        each( function () {
+
+            new Responsiville.Mobimenu({ 
+                debug   : Responsiville.Main.getInstance().options.debug,
+                element : this 
+            });
+            
+        });
+
+
+
+    // Search for a possible megamenu inside the cloned scroll element.
     
     this.$elementCloned.
         find( Responsiville.Megamenu.defaults.activator ).
@@ -154,17 +196,19 @@ Responsiville.Scrollmenu = function ( options ) {
             
         });
 
-    // Search for a mobimenu inside the cloned scroll element.
+
+
+    // Search for a possible drawers menu inside the cloned scroll element.
     
     this.$elementCloned.
-        find( Responsiville.Mobimenu.defaults.element ).
+        find( Responsiville.Drawers.defaults.container ).
         each( function () {
 
-            new Responsiville.Mobimenu({ 
-                debug   : Responsiville.Main.getInstance().options.debug,
-                element : this 
+            new Responsiville.Drawers({
+                debug     : Responsiville.Main.getInstance().options.debug,
+                container : this
             });
-            
+                        
         });
 
 
@@ -207,6 +251,7 @@ Responsiville.Scrollmenu.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefine
 
 Responsiville.Scrollmenu.defaults = {
     debug        : false, 
+    slug         : '',
     element      : '.responsiville-scrollmenu',
     wrapper      : 'responsiville-scrollmenu-wrapper',
     enabled      : 'responsiville-scrollmenu-enabled',
@@ -383,8 +428,6 @@ Responsiville.Scrollmenu.prototype.activate = function () {
         return;
     }
 
-
-
     this.log( 'activate scrollmenu' );
 
     
@@ -402,6 +445,16 @@ Responsiville.Scrollmenu.prototype.activate = function () {
     this.$body.addClass( this.options.activeBody );
     this.$elementCloned.addClass( this.options.active );
     this.activated = true;
+
+
+
+    /**
+     * Called after the scrollmenu has been activated.
+     * 
+     * @event Responsiville.Scrollmenu#activated
+     */
+    
+    this.fireEvent( 'activated' );
 
 };
 
@@ -425,8 +478,6 @@ Responsiville.Scrollmenu.prototype.deactivate = function () {
     if ( ! this.activated )    {
         return;
     }
-
-
 
     this.log( 'deactivate scrollmenu' );
 
@@ -473,17 +524,17 @@ Responsiville.Scrollmenu.prototype.scroll = function () {
         return;
     }
 
-
-
     this.log( 'scrollmenu scroll' );
 
-    
 
-    if ( this.$window.get( 0 ).scrollY > this.$element.data( 'offsetTop' ) + this.options.offsetTop ) {
+
+    var scrollY = window.pageYOffset !== undefined ? window.pageYOffset : this.$window.get( 0 ).scrollY;
+
+    if ( scrollY > this.$element.data( 'offsetTop' ) + this.options.offsetTop - this.options.offsetBottom ) {
 
         this.activate();
         
-    } else if ( this.$window.get( 0 ).scrollY <= this.$element.data( 'offsetTop' ) + this.options.offsetBottom ) {
+    } else if ( scrollY <= this.$element.data( 'offsetTop' ) + this.options.offsetTop - this.options.offsetBottom ) {
 
         this.deactivate();
         this.$element.data( 'offsetTop', Math.ceil( this.$element.offset().top ) );

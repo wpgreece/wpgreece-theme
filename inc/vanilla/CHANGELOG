@@ -1,6 +1,101 @@
+================================================================================
+#                                                                              #
+#    Vanilla changelog                                                         #
+#    -----------------                                                         #
+#    <developer's cut>                                                         #
+#                                                                              #
+================================================================================
 
-Vanilla changelog <developer's cut>
-===================================
+
+
+v-1.5
+=====
+
+  - Added an extra, more flexible greek months declined function.
+
+  - Added a full set of functions to retrieve an image's alt for HTML looking
+    up all its possible string attributes.
+  
+  - Cleaned up the Vanilla base TinyMCE files.
+
+  - Replaced CSS property break-word with overflow-wrap (value break-word).
+
+  - Re-arranged directories inside /inc so that code is separated a little 
+    better.
+
+  - Started adding Vanilla PHP constants that control various settings. 
+
+  - Enqueueing JS and CSS has become more compact, with only one declaration of
+    each file at each point. 
+
+  - BWP minification has become as compact as possible (one file in the head
+    and one file in the footer).
+
+
+
+v-1.4
+=====
+
+  - Updated Responsiville to version 1.4.
+
+  - Patched the CSSUtilities library so that it does not replaces new lines in
+    minified files with a space. Before it simply stripped them away, thus
+    making strings to stick to one another.
+
+  - Added SVGs to the list of allowed upload mime types.
+
+  - Enhanced frontend search is not activated by default. Its filter must be
+    manually set to rerun true. It is preferred to use plugins which do the same
+    instead. The functionality is kept here for specific cases. 
+
+  - Enhanced frontend search in order to be able to search inside all the 
+    postmeta at once with a "*" notation.
+
+  - Responsiville megamenus that automatically run on WordPress menus can now 
+    propagate their initialisation attributes.
+
+  - Added Jetpack disable frontend CSS concatenation filter, so that Jetpack
+    features' CSS files are loaded separately and only when a feature is
+    actually enabled. 
+
+  - Hid Post types order and Taxonomies order plugins little images that
+    appeared in admin menus. 
+
+  - Changed the `vanilla_search_` filters to `vanilla_frontend_search_`.
+
+
+
+v-1.3
+=====
+
+  - No upgrade issues. 
+
+  - Updated Responsiville to version 1.3.
+
+  - Moved fallback Facebook featured image to the bottom of the HEAD so that
+    wp_head should get the chance to set it first. 
+
+  - Removed the frontend admin bar global cancellation.
+
+  - Patched the CSSUtilities library so that when CSS files from third party 
+    domains are requested and the request fails the error is caught and the 
+    script casually contnues in order to handle the current domain's CSS.
+
+  - Enhanced our usage of the CSSUtilities library to handle nested CSS
+    variables as well. Previously it could not handle a CSS variable that
+    contained another CS variable inside it. However, CSS variables are still 
+    only taken care of in the root element!
+
+  - Added a "skip_missing" argument to the vanilla_wpml_language_switcher
+    function so that it is exposed to the theme developer.
+
+  - Corrected a bug in CSS variables replacement script, where the equalheights
+    element needed to run once more, after the CSS variables had been replaced
+    and caused the heights of elements to change as well. 
+
+  - Added a hook that protects direct file access to Gravity Forms uploads.
+
+
 
 v-1.2
 =====
@@ -21,10 +116,10 @@ v-1.1
 
     Upgrade
     =======
-    In order for one to upgrade Vanilla to this version one needs to add the PHP
-    RESPONSIVILLE_AUTO_INIT definition to config.php and move the Javascript 
-    global variables RESPONSIVILLE_DEBUG and RESPONSIVILLE_AUTO_INIT to the head
-    element.
+    In order for one to upgrade Vanilla to this version one needs to add the
+    PHP RESPONSIVILLE_AUTO_INIT definition to config.php and move the
+    Javascript global variables RESPONSIVILLE_DEBUG and RESPONSIVILLE_AUTO_INIT
+    to the head element.
 
     - The Responsiville auto init settings is now controlled via a PHP flag
       named RESPONSIVILLE_AUTO_INIT, which is set in config.php. This way the
@@ -51,8 +146,8 @@ v-1.1
       true in order for the respective responsiville megamenu element to be
       activated on it.
 
-    - Put the fix CSS vars script inside Vanilla and removed it from the theme's
-      functions.js file for future conistency.
+    - Put the fix CSS vars script inside Vanilla and removed it from the
+      theme's functions.js file for future conistency.
 
 v-1.0
 =====

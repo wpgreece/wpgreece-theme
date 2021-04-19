@@ -23,6 +23,11 @@
  *                                        behaviour.
  * @property {boolean} options.debug      Whether to print debug messages in the 
  *                                        browser console.
+ * @property {boolean} options.slug       A special codename for the instance of
+ *                                        the element, to be used as a class on 
+ *                                        its container and as a key in arrays 
+ *                                        where it is grouped with other 
+ *                                        elements of its kind. 
  * @property {string}  options.element    The element that contains the whole of
  *                                        the mobimenu.
  * @property {string}  options.enter      Comma separated list of breakpoints in 
@@ -43,19 +48,23 @@
  * @property {string}  options.closeTitle The title of the anchor element which
  *                                        will hold the burger menu when it is
  *                                        enabled. 
- * @property {bool}    options.styled     Controls if extended (more than the
+ * @property {boolean} options.styled     Controls if extended (more than the
  *                                        absolutely necessary) styling will be
- *                                        applied, for example on <ul> and <li>
- *                                        elements and their contents.
- *                                        Default: true.
+ *                                        applied, for example on UL and LI
+ *                                        elements of the menu and their
+ *                                        contents. Default: true.
+ * @property {string}  options.effect     The visual animation effect to use
+ *                                        when opening and closing the mobimenu.
  * @property {int}     options.transition The speed of the transitions of the 
  *                                        mobimenu.
- * @property {string}  options.detectHash Detects whether the mobimenu treats 
- *                                        anchor elements inside the menu which
- *                                        start with a "#" in a special way.
- *                                        This means that when they are clicked
- *                                        the mobile menu needs to close because
- *                                        no new page will be loaded.
+ * @property {string}  options.detectHash Detects whether the module should 
+                                          treat anchor elements inside the menu
+                                          which start with a "#" in a special
+                                          way. This means that when they are
+                                          clicked the mobile menu needs to close
+                                          because these links are internal and
+                                          no new page will be loaded, but the 
+                                          element still need to close.
  */
 
 Responsiville.Mobimenu = function ( options ) {
@@ -77,13 +86,15 @@ Responsiville.Mobimenu = function ( options ) {
     this.codeName      = 'responsiville.mobimenu';
     this.responsiville = Responsiville.Main.getInstance();
     this.enabled       = false;
-
     
+
 
     // Cache important DOM elements.
 
-    this.$body = this.responsiville.$body;
-    this.$menu = jQuery( this.options.element );
+    this.$body     = this.responsiville.$body;
+    this.$document = this.responsiville.$document;
+    this.$window   = this.responsiville.$window;
+    this.$menu     = jQuery( this.options.element );
 
 
 
@@ -98,8 +109,31 @@ Responsiville.Mobimenu = function ( options ) {
         }
 
     }
+
+    // Uniqueue element slug.
+
+    if ( this.options.slug == '' ) {
+        
+        Responsiville.Mobimenu.elementsCounter = Responsiville.Mobimenu.elementsCounter !== undefined ? ++Responsiville.Mobimenu.elementsCounter : 0;
+        this.options.slug = this.codeName.replace( '.', '-' ) + '-' + Responsiville.Mobimenu.elementsCounter;
+
+    }
+
+    // Take special care for enter/leave breakpoints possibly given as HTML data attributes.
     
-    
+    var htmlBreakpoints = Responsiville.determineEnableDisableBreakpoints({ 
+        enter: this.$menu.data( 'responsiville-mobimenu-enter' ),
+        leave: this.$menu.data( 'responsiville-mobimenu-leave' ) 
+    });
+
+    if ( htmlBreakpoints !== null ) {
+
+        this.options.enter = htmlBreakpoints.enter;
+        this.options.leave = htmlBreakpoints.leave;
+
+    }
+
+
     
     // If no menu found raise an error.
     
@@ -110,38 +144,81 @@ Responsiville.Mobimenu = function ( options ) {
 
     }
 
+    
+
+    // Check if this element has already been enhanced as a mobimenu (perhaps by a very intuitive scrollmenu).
+
+    if ( typeof this.$menu.data( 'responsiville-mobimenu-api' ) != 'undefined' ) {
+        
+        this.log( 'Responsiville.Mobimenu has already run for element: (' + this.options.element + ').' );
+        return;
+
+    }
+
+    // Check if this code is running on a clone produced by some other mobimenu that has previously run. 
+
+    if ( this.$menu.closest( '.responsiville-mobimenu-wrapper-clone' ).length > 0 ) {
+        
+        this.log( 'Responsiville.Mobimenu cannot run on its own cloned element: (' + this.options.element + ').' );
+        return;
+
+    }
+
+
+
+    // Add this object as a main element's data attribute for API usage.
+    
+    this.$menu.data( 'responsiville-api', this );
+    this.$menu.data( 'responsiville-mobimenu-api', this );
+
     // Ensure that the appropriate class is assigned to the menu element (in case the module is called on an arbitrary element)
+    
     this.$menu.addClass( 'responsiville-mobimenu' );
 
-    // Wrap the original menu in a container wrapper.
+
     
-    this.$wrapper = this.$menu.wrap( '<div class = "responsiville-mobimenu-wrapper" />' ).parent();
+    // Wrap the original menu in a container wrapper.
+
+    this.$menu.wrap( '<div class = "responsiville-mobimenu-wrapper" />' )
+    this.$wrapper = this.$menu.parent();
 
     // Clone the wrapper so that it's the clone that actually opens and closes.
     
     this.$wrapperCloned = this.$wrapper.clone( false ).addClass( 'responsiville-mobimenu-wrapper-clone' ).appendTo( this.$body );
 
+    // Decide whether the element should keep its default styling or not. 
+
     if ( ! this.options.styled ) {
-
-    	this.$wrapperCloned.addClass( 'responsiville-mobimenu-unstyled' );
-
+        this.$wrapperCloned.addClass( 'responsiville-mobimenu-unstyled' );
     }
 
+    // Uniquely identify this element.
+
+    this.$wrapperCloned.addClass( this.options.slug );
+
+    // Add the class that controls its visual effects. 
+
+    this.$wrapperCloned.addClass( 'responsiville-mobimenu-effect-' + this.options.effect );
 
 
-    // Remove possible scrollmenu selector from cloned menu so as no cloned scrollmenu is triggered.
 
-    if ( typeof Responsiville.Scrollmenu !== 'undefined' ) {
+    // Search for a possible drawers menu inside the cloned mobimenu element.
+    
+    this.$wrapperCloned.
+        find( Responsiville.Drawers.defaults.container ).
+        each( function () {
 
-        var scrollMenuSelectorClass = Responsiville.Scrollmenu.defaults.element.replace( '.', '' );
-        this.$wrapperCloned.find( '.' + scrollMenuSelectorClass ).removeClass( scrollMenuSelectorClass );
-
-    }
+            new Responsiville.Drawers({
+                debug     : Responsiville.Main.getInstance().options.debug,
+                container : this
+            });
+                        
+        });
 
     
 
     // Add the burger menu next to the original menu.
-    
+
     this.$menu.before( 
        '<button class = "responsiville-mobimenu-burger" title = "' + this.options.menuTitle + '">' + 
            '<span>' + this.options.menuText + '</span>' + 
@@ -162,7 +239,7 @@ Responsiville.Mobimenu = function ( options ) {
     
     this.setupEvents();
 
-    this.log( 'creating mobimenu' );
+    this.log( 'mobimenu initialised' );
 
 
 
@@ -205,6 +282,7 @@ Responsiville.Mobimenu.AUTO_RUN = typeof RESPONSIVILLE_AUTO_INIT !== 'undefined'
 
 Responsiville.Mobimenu.defaults = {
     debug      : false,
+    slug       : '',
     element    : '.responsiville-mobimenu',
     enter      : 'small, mobile, tablet',
     leave      : 'laptop, desktop, large, xlarge',
@@ -213,10 +291,10 @@ Responsiville.Mobimenu.defaults = {
     closeTitle : 'Close',
     closeText  : '&times;',
     styled     : true,
+    effect     : 'slide',
     transition : 500,
     detectHash : true
 };
-
 
 
 
@@ -293,16 +371,10 @@ Responsiville.Mobimenu.prototype.setupEvents = function () {
 
     this.$body.on( 'keyup', this.getBoundFunction( this.escapeKeyUp ) );
 
-    // Clicking anywhere, not on a link, closes the menu.
-
-    this.$wrapperCloned.on( 'click', this.getBoundFunction( this.menuContainerClick ) );
-
-
-
     // Clicking on anchor elements with a "#" closes the menu to allow for in-page navigation.
 
     if ( this.options.detectHash ) {
-        this.$wrapperCloned.find( 'a[href^="#"]' ).on( 'click', this.getBoundFunction( this.anchorHashClick ) ); 
+        this.$wrapperCloned.find( 'a[href*="#"]' ).on( 'click', this.getBoundFunction( this.anchorHashClick ) ); 
     }
 
 };
@@ -324,8 +396,6 @@ Responsiville.Mobimenu.prototype.enable = function () {
     if ( this.enabled ) {
         return;
     }
-
-
 
     this.log( 'enable mobimenu' );
 
@@ -355,8 +425,6 @@ Responsiville.Mobimenu.prototype.disable = function () {
         return;
     }
 
-
-
     this.log( 'disable mobimenu' );
 
 
@@ -368,8 +436,6 @@ Responsiville.Mobimenu.prototype.disable = function () {
     this.$wrapper.removeClass( 'responsiville-mobimenu-enabled' );
     this.$wrapperCloned.removeClass( 'responsiville-mobimenu-enabled' );
 
-    return false;
-
 };
 
 
@@ -378,6 +444,9 @@ Responsiville.Mobimenu.prototype.disable = function () {
  * Opens the mobimenu. Actually opens and shows the mobimenu with the required 
  * visual effect.
  * 
+ * @fires Responsiville.Mobimenu#opening
+ * @fires Responsiville.Mobimenu#opened
+ * 
  * @return {void}
  */
 
@@ -385,20 +454,45 @@ Responsiville.Mobimenu.prototype.open = function () {
 
     this.log( 'open mobimenu' );
 
+    /**
+     * Called before the mobimenu has started opening.
+     * 
+     * @event Responsiville.Mobimenu#opening
+     */
+
+    this.fireEvent( 'opening' );
+
+
+
     this.$body.addClass( 'responsiville-mobimenu-open-body' );
+    this.$wrapperCloned.addClass( 'responsiville-mobimenu-opening' );
     this.$wrapperCloned.addClass( 'responsiville-mobimenu-open' );
 
+
+
+    // Mobimenu slide effect
+
     this.$wrapperCloned.
-        css({
-            top  : 0,
-            left : '-100%'
-        }).
+        css({ left : '-100%' }).
         velocity({
-            properties : { 
-                left : 0
-            },
+            properties : { left : 0 },
             options : { 
-                duration : this.options.transition
+                duration : this.options.transition,
+                complete: (function () {
+
+                    this.$wrapperCloned.removeClass( 'responsiville-mobimenu-opening' );
+
+                    
+
+                    /**
+                     * Called after the mobimenu has been opened.
+                     * 
+                     * @event Responsiville.Mobimenu#opened
+                     */
+
+                    this.fireEvent( 'opened' );
+                                    
+                }).bind( this )
             }
          });
 
@@ -413,12 +507,29 @@ Responsiville.Mobimenu.prototype.open = function () {
  * @param {Event} event The event that fired on the element which closes the 
  *                      mobimenu.
  * 
+ * @fires Responsiville.Mobimenu#closing
+ * @fires Responsiville.Mobimenu#closed
+ * 
  * @return {void}
  */
 
 Responsiville.Mobimenu.prototype.close = function ( event ) {
 
     this.log( 'close mobimenu' );
+
+    /**
+     * Called before the mobimenu has started closing.
+     * 
+     * @event Responsiville.Mobimenu#closing
+     */
+
+    this.fireEvent( 'closing' );
+
+
+
+    this.$wrapperCloned.addClass( 'responsiville-mobimenu-closing' );
+
+
 
     this.$wrapperCloned.velocity({
         properties : { 
@@ -429,8 +540,19 @@ Responsiville.Mobimenu.prototype.close = function ( event ) {
             duration : this.options.transition, 
             complete : (function () { 
 
+                this.$wrapperCloned.removeClass( 'responsiville-mobimenu-closing' );
                 this.$wrapperCloned.removeClass( 'responsiville-mobimenu-open' );
                 this.$body.removeClass( 'responsiville-mobimenu-open-body' );
+
+
+
+                /**
+                 * Called after the mobimenu has been closed.
+                 * 
+                 * @event Responsiville.Mobimenu#closed
+                 */
+
+                this.fireEvent( 'closed' );
 
             }).bind( this )
         }
@@ -459,16 +581,25 @@ Responsiville.Mobimenu.prototype.openButtonClick = function ( event ) {
 
 /**
  * Handles the click event on an anchor element inside the mobimenu which has an
- * internal link, ie starts with a "#". The menu is closed and the handler
- * always returns true.
+ * internal link, ie starts with a "#". If the anchor points to an existing
+ * element then the menu is closed so that the page can be scrolled to that
+ * element. 
  * 
+ * @param {Event} event The mouse click event that fired.
+ *
  * @return {boolean} Whether the event should propagate and allow default
  *                   behaviour.
  */
 
-Responsiville.Mobimenu.prototype.anchorHashClick = function () {
+Responsiville.Mobimenu.prototype.anchorHashClick = function ( event ) {
 
-    this.close();
+    // Check if the anchor points to an existing element. 
+
+    var anchorPointsToExistingElement = jQuery( jQuery( event.target ).attr( 'href' ) ).length > 0;
+
+    if ( anchorPointsToExistingElement ) {
+        this.close();
+    }
     
 };
 

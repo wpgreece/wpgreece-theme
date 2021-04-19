@@ -1,151 +1,145 @@
 <?php
 
-	if ( ! defined( 'ABSPATH' ) ) {
-		exit;
-	}
+	/**
+     * Vanilla widgets enhanced with ACF.
+     * 
+     * @author Nevma, http://www.nevma.gr, info@nevma.gr
+     * 
+     * @license http://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
+     */
 
 
 
-	if ( ! class_exists( 'Vanilla_Widget' ) ) {
+	/**
+	 * Vanilla Widget class. Implements a general-purpose widget, mainly but not
+	 * necessarily, intended to be used in combination with ACF.
+	 *
+	 * @extends WP_Widget
+	 */
+	
+	abstract class Vanilla_Widget extends WP_Widget {
 
 		/**
-		 * Vanilla Widget class.
-		 *
-		 * Implements a general-purpose widget, mainly (but not necessarily!)
-		 * intended to be used in combination with ACF plugin.
-		 *
-		 * @extends WP_Widget
+		 * Class constructor.
 		 */
 		
-		abstract class Vanilla_Widget extends WP_Widget {
+		function __construct () {
 
-			/**
-			 * Class constructor.
-			 */
+			// The name of the class that the user ended up creating by dynamically extending this class
 			
-			function __construct() {
+			$child_class = get_called_class();
 
-				// The name of the class that the user ended up creating by dynamically extending this class
-				
-				$child_class = get_called_class();
+			$widget_id = strtolower( $child_class );
+			$widget_name = $child_class;
 
-				$widget_id = strtolower( $child_class );
-				$widget_name = $child_class;
+			parent::__construct(
+				$widget_id,
+				str_ireplace( '_', ' ', $widget_name ),
+				array( 'description' => __( 'A general purpose widget customisable via ACF.', 'nevma-theme' ), )
+			);
 
-				parent::__construct(
-					$widget_id,
-					str_ireplace( '_', ' ', $widget_name ),
-					array( 'description' => __( 'A general purpose widget customisable via ACF.', 'nevma-theme' ), )
-				);
+		}
+
+
+
+		/**
+		 * Displays the widget's output on the front-end.
+		 * 
+		 * @param array $args The widget args, passed by WordPress.
+		 * @param array $instance The widget instance, passed by WordPress.
+		 */
+		
+		public function widget ( $args, $instance ) {
+
+			// Before and after widget arguments are defined by themes
+			
+			echo $args['before_widget'];
+
+			$title = apply_filters( 'widget_title', $instance['title'] );
+			
+			if ( ! empty( $title ) ) {
+
+				// Before and after title arguments are defined by themes
+			
+				echo $args['before_title'] . $title . $args['after_title'];
 
 			}
 
+			$user_callback = static::$vanilla_callback;
 
+			$widget_id = $args['widget_id'];
 
-			/**
-			 * Displays the widget's output on the front-end.
-			 * 
-			 * @param array $args The widget args, passed by WordPress.
-			 * @param array $instance The widget instance, passed by WordPress.
-			 */
-			
-			public function widget( $args, $instance ) {
-
-				// Before and after widget arguments are defined by themes
-				
-				echo $args['before_widget'];
-
-				$title = apply_filters( 'widget_title', $instance['title'] );
-				
-				if ( ! empty( $title ) ) {
-
-					// Before and after title arguments are defined by themes
-				
-					echo $args['before_title'] . $title . $args['after_title'];
-
-				}
-
-				$user_callback = static::$vanilla_callback;
-
-				$widget_id = $args['widget_id'];
-
-				if ( function_exists( $user_callback) ) {
-					call_user_func( $user_callback, $widget_id );
-				} else {
-					echo '<p>' . __( 'Callback function does not exist.', 'nevma-theme' ) . '</p>';
-				}
-
-				// Before and after widget arguments are defined by themes
-				
-				echo $args['after_widget'];
-
+			if ( function_exists( $user_callback) ) {
+				call_user_func( $user_callback, $widget_id );
+			} else {
+				echo '<p>' . __( 'Callback function does not exist.', 'nevma-theme' ) . '</p>';
 			}
 
-
-
-			/**
-			 * Displays the markup for the widget back-end.
-			 * 
-			 * @param  array $instance The widget instance.
-			 */
+			// Before and after widget arguments are defined by themes
 			
-			public function form( $instance ) {
+			echo $args['after_widget'];
 
-				// Display the title if set, or a default one otherwise.
-				
-				$title = isset( $instance['title'] ) ? $instance['title'] : '';  
-
-				?>
-
-					<p>
-						<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-
-						<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-					</p> 
-
-				<?php
-
-			}
+		}
 
 
-			 
-			/**
-			 * Sanitizes the new widget settings during update.
-			 * 
-			 * @param array $new_instance The new widget instance.
-			 * @param array $old_instance The old widget instance, prior to
-			 *                            updating.
-			 * 
-			 * @return array|boolean The new instance, sanitized.
-			 */
+
+		/**
+		 * Displays the markup for the widget back-end.
+		 * 
+		 * @param  array $instance The widget instance.
+		 */
+		
+		public function form ( $instance ) {
+
+			// Display the title if set, or a default one otherwise.
 			
-			public function update( $new_instance, $old_instance ) {
+			$title = isset( $instance['title'] ) ? $instance['title'] : ''; ?>
 
-				$instance = array();
+			<p>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
 
-				$instance['title'] = ! empty( $new_instance['title'] ) ? strip_tags( $new_instance['title'] ) : '';
+				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+			</p> <?php
 
-				return $instance;
-
-			}
-
+		}
 
 
-			/**
-			 * Registers the widget in WordPress.
-			 */
+		 
+		/**
+		 * Sanitizes the new widget settings during update.
+		 * 
+		 * @param array $new_instance The new widget instance.
+		 * @param array $old_instance The old widget instance, prior to
+		 *                            updating.
+		 * 
+		 * @return array|boolean The new instance, sanitized.
+		 */
+		
+		public function update ( $new_instance, $old_instance ) {
+
+			$instance = array();
+
+			$instance['title'] = ! empty( $new_instance['title'] ) ? strip_tags( $new_instance['title'] ) : '';
+
+			return $instance;
+
+		}
+
+
+
+		/**
+		 * Registers the widget in WordPress.
+		 */
+		
+		public static function register () {
+
+			// Invoke the child class at registration!
 			
-			public static function register() {
+			register_widget( get_called_class() );
 
-				// Invoke the child class at registration!
-				
-				register_widget( get_called_class() );
-
-			}
-			
-		} // Class definition
-
-	} // Class_exists
+		}
+		
+	}
 
 
 
@@ -161,7 +155,7 @@
 	 *              the widget name is invalid.
 	 */
 	
-	function vanilla_widgets_register( $widget_name, $callback ) {
+	function vanilla_widgets_register ( $widget_name, $callback ) {
 
 		$class_name = 'Vanilla_Widget_' . $widget_name;
 
@@ -199,29 +193,19 @@
 	 * @return string The class declaration.
 	 */
 	
-	function vanilla_widgets_get_class_declaration( $class_name, $callback ) {
+	function vanilla_widgets_get_class_declaration ( $class_name, $callback ) {
 
-		ob_start();
+		ob_start(); ?>
 
-		?>
+		class <?php echo $class_name; ?> extends Vanilla_Widget {
 
-			if ( ! class_exists( '<?php echo $class_name; ?>' ) ) {
+			protected static $vanilla_callback = '<?php echo $callback; ?>';
 
-				class <?php echo $class_name; ?> extends Vanilla_Widget {
+			function __construct() {
+				parent::__construct();
+			}
 
-					// Hold the callback as a protected class member, used by Vanilla_Widget class.
-					protected static $vanilla_callback = '<?php echo $callback; ?>';
-
-					function __construct() {
-
-						parent::__construct();
-					}
-
-				} // Class definition
-
-			} // Class_exists
-
-		<?php
+		} <?php
 
 		return ob_get_clean();
 

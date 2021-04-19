@@ -1,46 +1,13 @@
-/********************************************************************************************************
+/******************************************************************
 
-    ██╗   ██╗     █████╗     ██████╗     ██╗     █████╗     ██████╗     ██╗         ███████╗    ███████╗
-    ██║   ██║    ██╔══██╗    ██╔══██╗    ██║    ██╔══██╗    ██╔══██╗    ██║         ██╔════╝    ██╔════╝
-    ██║   ██║    ███████║    ██████╔╝    ██║    ███████║    ██████╔╝    ██║         █████╗      ███████╗
-    ╚██╗ ██╔╝    ██╔══██║    ██╔══██╗    ██║    ██╔══██║    ██╔══██╗    ██║         ██╔══╝      ╚════██║
-     ╚████╔╝     ██║  ██║    ██║  ██║    ██║    ██║  ██║    ██████╔╝    ███████╗    ███████╗    ███████║
-      ╚═══╝      ╚═╝  ╚═╝    ╚═╝  ╚═╝    ╚═╝    ╚═╝  ╚═╝    ╚═════╝     ╚══════╝    ╚══════╝    ╚══════╝
+     ██████╗ ██████╗ ██╗      ██████╗ ██╗   ██╗██████╗ ███████╗
+    ██╔════╝██╔═══██╗██║     ██╔═══██╗██║   ██║██╔══██╗██╔════╝
+    ██║     ██║   ██║██║     ██║   ██║██║   ██║██████╔╝███████╗
+    ██║     ██║   ██║██║     ██║   ██║██║   ██║██╔══██╗╚════██║
+    ╚██████╗╚██████╔╝███████╗╚██████╔╝╚██████╔╝██║  ██║███████║
+     ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
-*********************************************************************************************************/
-
-
-
-    :root {
-        --font-scale              : 1.2;     /* How the headings font size scales up. */
-        --root-font-size          : 10px;    /* The root element, ie HTML, font size. */
-        --base-font-size          : 1.8rem;  /* The body element base font size. */
-        --base-line-height        : 1.5;     /* The default line height of all elements. */
-        --text-line-height        : 1.75;    /* The line height of block text elements. */
-        --heading-line-height     : 1.2;     /* The line height of heading elements. */
-
-        --text-rhythm             : 3rem;    /* Vertical margins between text elements. */
-        --grid-gutter             : 3rem;    /* Paddings between columns, the grid gutters. */
-        --vertical-rhythm         : 3rem;    /* Vertical margins between major grid sections. */
-        --panel-width             : 1024px;  /* The width of the panel element. */
-
-        --color-text              : #3c3c3c; /* The colour of the text.*/
-        --color-text-selection    : #fafafa; /* The colour of the selected text.*/
-        --color-text-selection-bg : #646464; /* The colour of the selected text background.*/
-    }
-
-
-
-/***************************************************************************************
-
-     ██████╗     ██████╗     ██╗          ██████╗     ██╗   ██╗    ██████╗     ███████╗
-    ██╔════╝    ██╔═══██╗    ██║         ██╔═══██╗    ██║   ██║    ██╔══██╗    ██╔════╝
-    ██║         ██║   ██║    ██║         ██║   ██║    ██║   ██║    ██████╔╝    ███████╗
-    ██║         ██║   ██║    ██║         ██║   ██║    ██║   ██║    ██╔══██╗    ╚════██║
-    ╚██████╗    ╚██████╔╝    ███████╗    ╚██████╔╝    ╚██████╔╝    ██║  ██║    ███████║
-     ╚═════╝     ╚═════╝     ╚══════╝     ╚═════╝      ╚═════╝     ╚═╝  ╚═╝    ╚══════╝
-
-****************************************************************************************/
+ ******************************************************************/
 
 
 
@@ -59,22 +26,73 @@
         --color-gray-light-x : rgb(250, 250, 250);
         --color-gray-light   : rgb(240, 240, 240);
         --color-gray         : rgb(220, 220, 220);
-        --color-gray-dark    : rgb(100, 100, 100);
-        --color-black        : rgb( 60,  60,  60);
+        --color-gray-dark    : rgb( 80,  80,  80);
+        --color-black        : rgb( 20,  20,  20);
     }
 
 
 
-/**************************************************************************************
+/***************************************************************************
 
-     ██████╗     ███████╗    ███╗   ██╗    ███████╗    ██████╗      █████╗     ██╗
-    ██╔════╝     ██╔════╝    ████╗  ██║    ██╔════╝    ██╔══██╗    ██╔══██╗    ██║
-    ██║  ███╗    █████╗      ██╔██╗ ██║    █████╗      ██████╔╝    ███████║    ██║
-    ██║   ██║    ██╔══╝      ██║╚██╗██║    ██╔══╝      ██╔══██╗    ██╔══██║    ██║
-    ╚██████╔╝    ███████╗    ██║ ╚████║    ███████╗    ██║  ██║    ██║  ██║    ███████╗
-     ╚═════╝     ╚══════╝    ╚═╝  ╚═══╝    ╚══════╝    ╚═╝  ╚═╝    ╚═╝  ╚═╝    ╚══════╝
+    ██╗   ██╗ █████╗ ██████╗ ██╗ █████╗ ██████╗ ██╗     ███████╗███████╗
+    ██║   ██║██╔══██╗██╔══██╗██║██╔══██╗██╔══██╗██║     ██╔════╝██╔════╝
+    ██║   ██║███████║██████╔╝██║███████║██████╔╝██║     █████╗  ███████╗
+    ╚██╗ ██╔╝██╔══██║██╔══██╗██║██╔══██║██╔══██╗██║     ██╔══╝  ╚════██║
+     ╚████╔╝ ██║  ██║██║  ██║██║██║  ██║██████╔╝███████╗███████╗███████║
+      ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝╚══════╝
 
-****************************************************************************************/
+ ***************************************************************************/
+
+
+
+    :root {
+        --font-scale              : 1.25;   /* How the headings font size scales up. */
+        --root-font-size          : 10px;   /* The root element, ie HTML, font size. */
+        --base-font-size          : 1.4rem; /* The body element base font size. */
+        --base-line-height        : 1.5;    /* The default line height of all elements. */
+        --text-line-height        : 1.6;    /* The line height of block text elements. */
+        --heading-line-height     : 1.2;    /* The line height of heading elements. */
+
+        --text-rhythm             : 3rem;   /* Vertical margins between text elements. */
+        --grid-gutter             : 3rem;   /* Paddings between columns, the grid gutters. */
+        --vertical-rhythm         : 3rem;   /* Vertical margins between major grid sections. */
+
+        --panel-width             : 1024px;  /* The width of the panel element. */
+
+        --color-text              : var(--color-black);        /* The colour of the text.*/
+        --color-text-link         : var(--color-gray-dark);    /* The colour of the links.*/
+        --color-text-selection    : var(--color-gray-light-x); /* The colour of the selected text.*/
+        --color-text-selection-bg : var(--color-gray-dark);    /* The colour of the selected text background.*/
+    }
+
+    .small {
+        --base-font-size          : 1.5rem; /* The body element base font size. */
+    }
+
+    .tablet {
+        --base-font-size          : 1.6rem; /* The body element base font size. */
+    }
+
+    .laptop {
+        --base-font-size          : 1.7rem; /* The body element base font size. */
+    }
+
+    .desktop {
+        --base-font-size          : 1.8rem; /* The body element base font size. */
+    }
+
+
+
+/******************************************************************
+
+     ██████╗ ███████╗███╗   ██╗███████╗██████╗  █████╗ ██╗
+    ██╔════╝ ██╔════╝████╗  ██║██╔════╝██╔══██╗██╔══██╗██║
+    ██║  ███╗█████╗  ██╔██╗ ██║█████╗  ██████╔╝███████║██║
+    ██║   ██║██╔══╝  ██║╚██╗██║██╔══╝  ██╔══██╗██╔══██║██║
+    ╚██████╔╝███████╗██║ ╚████║███████╗██║  ██║██║  ██║███████╗
+     ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
+
+ ******************************************************************/
 
 
     * {
@@ -85,13 +103,17 @@
         font-weight: 400;
     }
     
-    body, a, input {
-        color: var(--color-gray-dark);
+    body {
         font-family: 'Lato', Arial, sans-serif;
+        font-size: var(--base-font-size);
+        color: var(--color-gray-dark);
+    }
+    
+    a, input {
+        color: var(--color-gray-dark);
     }
 
-    a {
-        display: inline-block;
+    .text a:not(.button) {
         border-bottom: 1px dotted currentColor;
     }
 
@@ -100,65 +122,70 @@
     }
 
     h1 {
-        font-size: calc( 2rem + var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+        font-size: calc(-0.5rem + var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+    }
+
+    h2 {
+        font-size: calc(-1rem + var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+    }
+
+    h3 {
+        font-size: calc(-1.5rem + var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+    }
+
+    h4 {
+        font-size: calc(-2.5rem + var(--base-font-size) * var(--font-scale) * var(--font-scale) * var(--font-scale) * var(--font-scale));
+    }
+
+    .text h1, .text h2, .text h3, .text h4, .text h5, .text h6 {
+        margin-bottom: calc(0.5*var(--text-rhythm));
     }
 
 
 
-/***************************************************
+/******************************************
 
-    ██╗          ██████╗      ██████╗      ██████╗
-    ██║         ██╔═══██╗    ██╔════╝     ██╔═══██╗
-    ██║         ██║   ██║    ██║  ███╗    ██║   ██║
-    ██║         ██║   ██║    ██║   ██║    ██║   ██║
-    ███████╗    ╚██████╔╝    ╚██████╔╝    ╚██████╔╝
-    ╚══════╝     ╚═════╝      ╚═════╝      ╚═════╝
+    ██╗      ██████╗  ██████╗  ██████╗
+    ██║     ██╔═══██╗██╔════╝ ██╔═══██╗
+    ██║     ██║   ██║██║  ███╗██║   ██║
+    ██║     ██║   ██║██║   ██║██║   ██║
+    ███████╗╚██████╔╝╚██████╔╝╚██████╔╝
+    ╚══════╝ ╚═════╝  ╚═════╝  ╚═════╝
 
-****************************************************/
+ ******************************************/
 
 
 
     .responsiville-logo {
         color: var(--color-gray-dark);
-        width: 4em;
-        height: 4em;
         display: block;
-        margin: 2em auto 4em auto;
-        border-radius: 100%;
-        background-color: var(--color-gray-dark);
         text-align: center;
-        position: relative;
-        animation-name: responsiville-logo-animation;
-        animation-duration: 40s;
-        animation-timing-function: cubic-bezier(0.8,0,1,0);
-        animation-iteration-count: infinite;
     }
 
         .responsiville-logo::before {
             content: '<{[]}>';
             font-family: 'Anonymous Pro', Consolas, monospace;
             color: var(--color-white);
-            font-weight: 600;
-            letter-spacing: -1.5px;
-            display: block;
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
+            display: inline-block;
+            font-size: 1.3em;
+            background-color: var(--color-gray-dark);
+            width: 4.5em;
+            height: 4.5em;
+            line-height: 4.5em;
+            border-radius: 100%;
+            animation-name: responsiville-logo-animation;
+            animation-duration: 40s;
+            animation-timing-function: cubic-bezier(0.8,0,1,0);
+            animation-iteration-count: infinite;
         }
 
         .responsiville-logo::after {
             content: 'Responsiville';
-            font-family: 'Lato', Arial, sans-serif;
-            font-size: 150%;
+            font-family: 'Averia Serif Libre', Georgia, serif; 
+            font-size: 2.3em;
+            line-height: 1;
             font-weight: 600;
             display: block;
-            width: auto;
-            position: absolute;
-            top: 125%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
         }
 
         @keyframes responsiville-logo-animation {
@@ -188,21 +215,29 @@
 
     
 
-/****************************************************************************
+/***********************************************************
 
-    ██╗          █████╗     ██╗   ██╗     ██████╗     ██╗   ██╗    ████████╗
-    ██║         ██╔══██╗    ╚██╗ ██╔╝    ██╔═══██╗    ██║   ██║    ╚══██╔══╝
-    ██║         ███████║     ╚████╔╝     ██║   ██║    ██║   ██║       ██║
-    ██║         ██╔══██║      ╚██╔╝      ██║   ██║    ██║   ██║       ██║
-    ███████╗    ██║  ██║       ██║       ╚██████╔╝    ╚██████╔╝       ██║
-    ╚══════╝    ╚═╝  ╚═╝       ╚═╝        ╚═════╝      ╚═════╝        ╚═╝
+    ██╗      █████╗ ██╗   ██╗ ██████╗ ██╗   ██╗████████╗
+    ██║     ██╔══██╗╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝
+    ██║     ███████║ ╚████╔╝ ██║   ██║██║   ██║   ██║
+    ██║     ██╔══██║  ╚██╔╝  ██║   ██║██║   ██║   ██║
+    ███████╗██║  ██║   ██║   ╚██████╔╝╚██████╔╝   ██║
+    ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝
 
-*****************************************************************************/
+ ***********************************************************/
 
 
 
-    .sidebar {
-        position: fixed;
+ 
+     .small .sidebar {
+         position: static;
+     }
+
+     .laptop .sidebar {
+         position: fixed;
+     }
+
+     .sidebar {
         height: 100%;
         max-height: 100%;
         overflow: auto;
@@ -214,34 +249,36 @@
 
     .content {
         padding: 0;
-        font-size: 2rem;
     }
 
         .content article {
             position: relative;
         }
 
-        .content article::before {
-            position: absolute;
-            content: "<{[]}>";
-            font-family: 'Averia Serif Libre', Georgia, serif;
-            color: var(--color-gray-light-x);
-            font-size: 60rem;
-            font-weight: 600;
-            line-height: 1;
-            top: -22rem;
-            left: 50%;
-            z-index: -1;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-
         .small .content article {
-            margin: calc(2*var(--text-rhythm)) 10rem;
+            margin-top: calc(1*var(--text-rhythm));
+            margin-bottom: calc(1*var(--text-rhythm));
+            margin-left: 5rem;
+            margin-right: 5rem;
         }
 
-        .desktop .content article {
-            margin: calc(2*var(--text-rhythm)) 20rem;
+        .laptop .content article {
+            margin-left: 10rem;
+            margin-right: 10rem;
+        }
+
+        .large .content article {
+            margin-left: 15rem;
+            margin-right: 15rem;
+        }
+
+        .xlarge .content article {
+            margin-left: 20rem;
+            margin-right: 20rem;
+        }
+
+        .text .text {
+            margin-top: var(--text-rhythm);
         }
 
     footer {
@@ -250,16 +287,16 @@
 
 
 
-/************************************************************************
+/*******************************************************
 
-    ██╗  ██╗    ███████╗     █████╗     ██████╗     ███████╗    ██████╗
-    ██║  ██║    ██╔════╝    ██╔══██╗    ██╔══██╗    ██╔════╝    ██╔══██╗
-    ███████║    █████╗      ███████║    ██║  ██║    █████╗      ██████╔╝
-    ██╔══██║    ██╔══╝      ██╔══██║    ██║  ██║    ██╔══╝      ██╔══██╗
-    ██║  ██║    ███████╗    ██║  ██║    ██████╔╝    ███████╗    ██║  ██║
-    ╚═╝  ╚═╝    ╚══════╝    ╚═╝  ╚═╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝
+    ██╗  ██╗███████╗ █████╗ ██████╗ ███████╗██████╗
+    ██║  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗
+    ███████║█████╗  ███████║██║  ██║█████╗  ██████╔╝
+    ██╔══██║██╔══╝  ██╔══██║██║  ██║██╔══╝  ██╔══██╗
+    ██║  ██║███████╗██║  ██║██████╔╝███████╗██║  ██║
+    ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
 
-*************************************************************************/
+ *******************************************************/
 
 
 
@@ -279,16 +316,16 @@
 
 
 
-/***************************************************************************
+/**********************************************************
 
-    ███████╗     ██████╗      ██████╗     ████████╗    ███████╗    ██████╗
-    ██╔════╝    ██╔═══██╗    ██╔═══██╗    ╚══██╔══╝    ██╔════╝    ██╔══██╗
-    █████╗      ██║   ██║    ██║   ██║       ██║       █████╗      ██████╔╝
-    ██╔══╝      ██║   ██║    ██║   ██║       ██║       ██╔══╝      ██╔══██╗
-    ██║         ╚██████╔╝    ╚██████╔╝       ██║       ███████╗    ██║  ██║
-    ╚═╝          ╚═════╝      ╚═════╝        ╚═╝       ╚══════╝    ╚═╝  ╚═╝
+    ███████╗ ██████╗  ██████╗ ████████╗███████╗██████╗
+    ██╔════╝██╔═══██╗██╔═══██╗╚══██╔══╝██╔════╝██╔══██╗
+    █████╗  ██║   ██║██║   ██║   ██║   █████╗  ██████╔╝
+    ██╔══╝  ██║   ██║██║   ██║   ██║   ██╔══╝  ██╔══██╗
+    ██║     ╚██████╔╝╚██████╔╝   ██║   ███████╗██║  ██║
+    ╚═╝      ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═╝
 
-****************************************************************************/
+ **********************************************************/
 
 
 
@@ -316,16 +353,16 @@
 
 
 
-/*******************************************************************************
+/**********************************************************
 
-    ███████╗    ██╗    ██████╗     ███████╗    ██████╗      █████╗     ██████╗
-    ██╔════╝    ██║    ██╔══██╗    ██╔════╝    ██╔══██╗    ██╔══██╗    ██╔══██╗
-    ███████╗    ██║    ██║  ██║    █████╗      ██████╔╝    ███████║    ██████╔╝
-    ╚════██║    ██║    ██║  ██║    ██╔══╝      ██╔══██╗    ██╔══██║    ██╔══██╗
-    ███████║    ██║    ██████╔╝    ███████╗    ██████╔╝    ██║  ██║    ██║  ██║
-    ╚══════╝    ╚═╝    ╚═════╝     ╚══════╝    ╚═════╝     ╚═╝  ╚═╝    ╚═╝  ╚═╝
+    ███████╗██╗██████╗ ███████╗██████╗  █████╗ ██████╗
+    ██╔════╝██║██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔══██╗
+    ███████╗██║██║  ██║█████╗  ██████╔╝███████║██████╔╝
+    ╚════██║██║██║  ██║██╔══╝  ██╔══██╗██╔══██║██╔══██╗
+    ███████║██║██████╔╝███████╗██████╔╝██║  ██║██║  ██║
+    ╚══════╝╚═╝╚═════╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 
-********************************************************************************/
+ **********************************************************/
 
 
 
@@ -335,71 +372,76 @@
     }
 
         .sidebar-header {
-            padding: 0.3rem 0;
-            font-size: 1.6rem;
-            text-align: center;
+            padding: 3rem 3rem 1rem 3rem;
             color: var(--color-white);
-            border-bottom: 3px solid var(--color-gray-light);
             margin-bottom: 2rem !important;
+            text-align: center;
         }
 
         .responsiville-logo {
             font-size: 1.5rem;
         }
 
-        .sidebar ul {
-            line-height: 1.4;
+        .main-navigation {
+            margin: 0rem 2rem;
         }
-
-            .sidebar a,
-            .sidebar a:link,
-            .sidebar a:visited {
-                display: block;
-                border-radius: 2px;
-                padding: 0.2rem 1rem;
-                border-bottom: none;
-                transition-property: none;
-            }
-
-            .sidebar a:hover {
-                color: var(--color-white);
-                background-color: var(--color-red-light);
-            }
-
-            .sidebar a:focus,
-            .sidebar a:active {
-                color: var(--color-white);
-                background-color: var(--color-green-light);
-            }
             
-            .sidebar .selected-parent {
-                color: var(--color-white);
-                background-color: var(--color-green-light);
+            .main-navigation ul {
+                line-height: 1.4;
             }
 
-            .sidebar .selected {
-                color: var(--color-white);
-                background-color: var(--color-blue-light);
-            }
+                .main-navigation a,
+                .main-navigation a:link,
+                .main-navigation a:visited {
+                    display: block;
+                    border-radius: 2px;
+                    padding: 0.2rem 0;
+                    border-bottom: none;
+                    transition-property: none;
+                }
 
-            .sidebar ul ul a,
-            .sidebar ul ul a:link,
-            .sidebar ul ul a:visited {
-                padding-left: 3rem;
-            }
+                .main-navigation ul ul a,
+                .main-navigation ul ul a:link,
+                .main-navigation ul ul a:visited {
+                    padding-left: 3rem;
+                }
+
+                .main-navigation a:hover {
+                    color: var(--color-white);
+                    background-color: var(--color-red-light);
+                    padding-left: 0.5rem;
+                }
+
+                .main-navigation a:focus,
+                .main-navigation a:active {
+                    color: var(--color-white);
+                    background-color: var(--color-green-light);
+                }
+                
+                .main-navigation a.selected-parent {
+                    color: var(--color-white);
+                    background-color: var(--color-green-light);
+                    padding-left: 0.5rem;
+                }
+
+                .main-navigation a.selected {
+                    color: var(--color-white);
+                    background-color: var(--color-blue-light);
+                    padding-left: 0.5rem;
+                }
 
 
 
-/*******************************************************************************************
+/**********************************************************************
 
-     ██████╗     ██████╗     ███╗   ██╗    ████████╗    ███████╗    ███╗   ██╗    ████████╗
-    ██╔════╝    ██╔═══██╗    ████╗  ██║    ╚══██╔══╝    ██╔════╝    ████╗  ██║    ╚══██╔══╝
-    ██║         ██║   ██║    ██╔██╗ ██║       ██║       █████╗      ██╔██╗ ██║       ██║
-    ██║         ██║   ██║    ██║╚██╗██║       ██║       ██╔══╝      ██║╚██╗██║       ██║
-    ╚██████╗    ╚██████╔╝    ██║ ╚████║       ██║       ███████╗    ██║ ╚████║       ██║
-     ╚═════╝     ╚═════╝     ╚═╝  ╚═══╝       ╚═╝       ╚══════╝    ╚═╝  ╚═══╝       ╚═╝
+     ██████╗ ██████╗ ███╗   ██╗████████╗███████╗███╗   ██╗████████╗
+    ██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔════╝████╗  ██║╚══██╔══╝
+    ██║     ██║   ██║██╔██╗ ██║   ██║   █████╗  ██╔██╗ ██║   ██║
+    ██║     ██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██║╚██╗██║   ██║
+    ╚██████╗╚██████╔╝██║ ╚████║   ██║   ███████╗██║ ╚████║   ██║
+     ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═══╝   ╚═╝
 
-********************************************************************************************/
+ **********************************************************************/
 
 
 
@@ -437,8 +479,8 @@
             }
 
     .responsiville-scrollmenu-wrapper .navigation-inner {
-        width: 85%;
-        margin-left: 15%;
+        width: 80%;
+        margin-left: 20%;
         font-size: 95%;
     }
 
@@ -446,29 +488,38 @@
 
     .text h1, 
     .text h2, 
-    .text h3, 
-    .text h4, 
-    .text h5, 
-    .text h6 {
+    .text h3 {
         border-bottom: 2px solid var(--color-gray-light);
     }
 
-    button,
-    .button,
-    input[type="button"],
-    input[type="submit"] {
-        border-radius: 3px;
-        background-color: var(--color-yellow);
+    .text button,
+    .text .button,
+    .text input[type="button"],
+    .text input[type="reset"],
+    .text input[type="submit"] {
+        border-radius: 2px;
+        background-color: var(--color-gray-dark);
         color: var(--color-white);
     }
 
-    button:hover,
-    .button:hover,
-    input[type="button"]:hover,
-    input[type="submit"]:hover {
-        background-color: var(--color-yellow-light);
+    .text button:hover,
+    .text .button:hover,
+    .text input[type="button"]:hover,
+    .text input[type="reset"]:hover,
+    .text input[type="submit"]:hover {
+        background-color: var(--color-gray);
         color: var(--color-gray-dark);
+        opacity: 1;
     }
+
+    .text a[name] {
+        height: 0;
+        line-height: 0;
+        font-size: 0;
+        display: block;
+        border: none;
+    }
+
 
     thead th, 
     thead td, 
@@ -498,13 +549,36 @@
     code {
         font-family: "Anonymous Pro", Consolas, monospace;
         font-size: 90%;
-        display: inline-block;
         background-color: var(--color-gray-light-x);
         border: 1px solid var(--color-gray-light);
-        padding: 0 0.5rem;
+        padding: 0.25rem 0.5rem;
         border-radius: 3px;
         line-height: 1.2;
     }
+
+
+
+    blockquote.citation-x {
+        position: relative;
+        padding: 7rem 10rem 8rem 13rem;
+        font-size: 140%;
+    }
+
+        blockquote.citation-x::before {
+            display: inline-block;
+            content: '\e80f';
+            font-family: 'Responsiville icons';
+            line-height: 1;
+            font-size: 3rem;
+            position: absolute;
+            top: 3rem;
+            left: 5rem;
+            transition: transform 0.25s linear;
+        }
+
+        blockquote.citation-x:hover::before {
+            transform: rotateZ(45deg);
+        }
 
 
 
@@ -573,16 +647,16 @@
 
 
 
-/***********************************************************
+/*********************************************
 
-    ██████╗     ██████╗     ██╗    ███████╗    ███╗   ███╗
-    ██╔══██╗    ██╔══██╗    ██║    ██╔════╝    ████╗ ████║
-    ██████╔╝    ██████╔╝    ██║    ███████╗    ██╔████╔██║
-    ██╔═══╝     ██╔══██╗    ██║    ╚════██║    ██║╚██╔╝██║
-    ██║         ██║  ██║    ██║    ███████║    ██║ ╚═╝ ██║
-    ╚═╝         ╚═╝  ╚═╝    ╚═╝    ╚══════╝    ╚═╝     ╚═╝
+    ██████╗ ██████╗ ██╗███████╗███╗   ███╗
+    ██╔══██╗██╔══██╗██║██╔════╝████╗ ████║
+    ██████╔╝██████╔╝██║███████╗██╔████╔██║
+    ██╔═══╝ ██╔══██╗██║╚════██║██║╚██╔╝██║
+    ██║     ██║  ██║██║███████║██║ ╚═╝ ██║
+    ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝     ╚═╝
 
-***********************************************************/
+ *********************************************/
 
 
 

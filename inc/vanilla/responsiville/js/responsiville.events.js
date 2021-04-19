@@ -15,6 +15,8 @@ Responsiville.Events = {};
  * object aware of that particular event and prepares its structures.
  * 
  * @param {String} eventName The name of the event to register.
+ *
+ * @return {void}
  */
 
 Responsiville.Events.registerEvent = function ( eventName ) {
@@ -36,6 +38,8 @@ Responsiville.Events.registerEvent = function ( eventName ) {
  * object no longer aware of that particular event and cleans its structures.
  * 
  * @param {String} eventName The name of the event to deregister.
+ *
+ * @return {void}
  */
 
 Responsiville.Events.deregisterEvent = function ( eventName ) {
@@ -55,6 +59,8 @@ Responsiville.Events.deregisterEvent = function ( eventName ) {
  * @param {String}   eventName The name of the event in which to attach the
  *                             callback function.
  * @param {Function} callback  The callback function to attach to the event.
+ *
+ * @return {void}
  */
 
 Responsiville.Events.on = function ( eventName, callback ) {
@@ -73,6 +79,8 @@ Responsiville.Events.on = function ( eventName, callback ) {
  * @param {String}   eventName The name of the event in which to detach the
  *                             callback function.
  * @param {Function} callback  The callback function to detach to the event.
+ *
+ * @return {void}
  */
 
 Responsiville.Events.off = function ( eventName, callback ) {
@@ -94,6 +102,8 @@ Responsiville.Events.off = function ( eventName, callback ) {
  *                           functions when they are called. It is up to the 
  *                           callback function to know what these arguments are
  *                           and how to use them in runtime.
+ *
+ * @return {void}
  */
 
 Responsiville.Events.fireEvent = function ( eventName, args ) {
@@ -120,6 +130,8 @@ Responsiville.Events.fireEvent = function ( eventName, args ) {
  *
  * @param {Function} theFunction The function to bind to the current object 
  *                               scope.
+ *
+ * @return {void}
  */
 
 Responsiville.Events.getBoundFunction = function ( theFunction ) {

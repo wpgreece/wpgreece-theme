@@ -17,7 +17,6 @@
 <head>
 
     <!-- GENERAL META TAGS -->
-
 	<meta http-equiv = "Content-Type" content = "text/html; charset=utf-8" />
 
     <title><?php _e( 'Error', 'nevma-theme' ); ?> &mdash; <?php echo bloginfo ( 'name' ); ?></title>
@@ -35,19 +34,13 @@
 
 
     <!-- FAVICONS, THE WORKS -->
-
-    <?php
-        // Output all favicons.
-        vanilla_theme_head_favicons();
-    ?>
+    <?php vanilla_theme_head_favicons(); ?>
 
     
 
     <!-- CSS STYLESHEETS -->
-      
     <link rel = "stylesheet" href = "<?php echo get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.def.css' ?>" />
     <link rel = "stylesheet" href = "<?php echo get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.bugsy.css' ?>" />
-    <link rel = "stylesheet" href = "<?php echo get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.main.css' ?>" />
     <link rel = "stylesheet" href = "<?php echo get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.moressette.css' ?>" />
     <link rel = "stylesheet" href = "<?php echo get_template_directory_uri() . '/inc/vanilla/responsiville/css/responsiville.ingrid.css' ?>" />
 
@@ -79,15 +72,17 @@
                     <!-- Title and message are injected by WordPress -->
 
                     <?php if ( ! empty( $title ) ) : ?>
-
                         <h2><?php echo $title; ?></h2>
-
                     <?php endif; ?>
                     
                     <?php if ( ! empty( $message ) ) : ?>
-
-                        <p class = "error-message"><?php echo $message; ?></p>
-
+                        <?php if ( is_a( $message, 'WP_Error' ) ) : ?>
+                            <?php foreach( $message->errors as $error ) : ?>
+                                <p class = "error-message"><?php echo implode( ' ', $error ); ?></p>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <p class = "error-message"><?php echo $message; ?></p>
+                        <?php endif; ?>
                     <?php endif; ?>
 
                 </blockquote>
@@ -101,7 +96,7 @@
 
                 <p><?php bloginfo( 'name' ); ?> &mdash; <?php bloginfo( 'description' ); ?></p>
                 
-                <div class = "logo column-80 margin-10">
+                <div class = "logo column-60 margin-20">
                     <p>
                         <a href = "<?php echo bloginfo ( 'url' ) ?>" title = "<?php echo bloginfo ( 'name' ); ?> - <?php _e( 'Home page', 'nevma-theme' ); ?>">
                             <img src = "<?php echo vanilla_theme_get_site_logo_url(); ?>" alt = "<?php echo bloginfo ( 'name' ) ?>" />

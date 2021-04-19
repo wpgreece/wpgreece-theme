@@ -54,12 +54,12 @@
                 --text-rhythm             : 3rem;    /* Vertical margins between text elements. */
                 --grid-gutter             : 1rem;    /* Paddings between columns, the grid gutters. */
                 --vertical-rhythm         : 5rem;    /* Vertical margins between major grid sections. */
-                
                 --panel-width             : 1024px;  /* The max width of the panel element. */
 
-                --color-text              : #3c3c3c; /* The colour of the text.*/
-                --color-text-selection    : #fafafa; /* The colour of the selected text.*/
-                --color-text-selection-bg : #646464; /* The colour of the selected text background.*/
+                --color-text              : var(--color-responsiville-gray-dark);    /* The colour of the text.*/
+                --color-text-link         : var(--color-responsiville-blue);         /* The colour of the links.*/
+                --color-text-selection    : var(--color-responsiville-gray-light-x); /* The colour of the selected text.*/
+                --color-text-selection-bg : var(--color-responsiville-gray-dark);    /* The colour of the selected text background.*/
             }
         </code></pre>
 
@@ -68,59 +68,86 @@
         </p>
 
         <dl>
-            <dt>--font-scale</dt>
+            <dt>font-scale</dt>
             <dd>
                 The default way in which headings scale in Responsiville is by multiplying the font size by a factor for each heading level with th previous one. This is that factor. You are free to changes this logic at will.
             </dd>
-            <dt>--root-font-size</dt>
+            <dt>root-font-size</dt>
             <dd>
                 The font size of the HTML (:root) element. We prefer to let this at <code>10px</code> as a default, so that we can have a nice base for our calculations and we use it extensively with <code>rem</code> units.
             </dd>
-            <dt>--base-font-size</dt>
+            <dt>base-font-size</dt>
             <dd>
                 The font size of the BODY element. Useful for setting a general rhythm for the zoom level of our web page. As you shift from one breakpoint to another, you may change its value and the less changes you need to make to your design, after this one, the better.
             </dd>
-            <dt>--base-line-height</dt>
+            <dt>base-line-height</dt>
             <dd>
                 The default line height of all our HTML elements. It is important to set it to some level that we control because it affects our vertical rhythm. Note that there is a different base line height for content that is text-heavy and needs typographic enhancements (see below).
             </dd>
-            <dt>--text-line-height</dt>
+            <dt>text-line-height</dt>
             <dd>
                 The line height of elements which are text-heavy and need all the typographic goodies we can give them. We denote them with the <code>.text</code> class.
             </dd>
-            <dt>--heading-line-height</dt>
+            <dt>heading-line-height</dt>
             <dd>
                 The line height of heading elements, because they need their own special line height, althought they are important typographic elements themselves.
             </dd>
-            <dt>--text-rhythm</dt>
+        </dl>
+        <dl>
+            <dt>text-rhythm</dt>
             <dd>
                 The way the <code>.text</code> elements flow vertically. The vertical magins between block level elements of text.
             </dd>
-            <dt>--grid-gutter</dt>
+            <dt>grid-gutter</dt>
             <dd>
                 The horizontal margin between the columns of the grid. Remember that grid columns have their gutters inside them!
             </dd>
-            <dt>--vertical-rhytm</dt>
+            <dt>vertical-rhytm</dt>
             <dd>
                 An optional CSS variable, that we encourage you to use in order to keep a consistent vertical rhythm between the major sections of your grid.
             </dd>
-            <dt>--panel-width</dt>
+            <dt>panel-width</dt>
             <dd>
                 The maximum width of the <code>.panel</code> element -if you are using it- which is used to keep a general maximum width for your contents, even in very wide screens. Also optional.
             </dd>
-            <dt>--color-text</dt>
+        </dl>
+        <dl>
+            <dt>color-text</dt>
             <dd>
                 The default colour for all text elements of your web page.
             </dd>
-            <dt>--color-text-selection</dt>
+            <dt>color-text-link</dt>
+            <dd>
+                The default colour for all links (anchor elements) of your web page.
+            </dd>
+            <dt>color-text-selection</dt>
             <dd>
                 The colour of the text when the user has selected it for copying and pasting.
             </dd>
-            <dt>--color-text-selection-bg</dt>
+            <dt>color-text-selection-bg</dt>
             <dd>
                 The colour of the background of the text when the user has selected it for copying and pasting.
             </dd>
         </dl>
+
+        <p>
+            And some pretty self-explanatory predefined colours:
+        </p>
+
+        <pre><code class = "language-css">
+            :root {
+                --color-responsiville-red          : rgb(255,   0,   0); /* Red colour. */
+                --color-responsiville-green        : rgb(  0, 255,   0); /* Green colour. */
+                --color-responsiville-blue         : rgb(  0,   0, 255); /* Blue colour. */
+
+                --color-responsiville-white        : rgb(255, 255, 255); /* White coulour. */
+                --color-responsiville-gray-light-x : rgb(250, 250, 250); /* Very light gray colour. */
+                --color-responsiville-gray-light   : rgb(240, 240, 240); /* Light gray colour. */
+                --color-responsiville-gray         : rgb(220, 220, 220); /* Gray colour. */
+                --color-responsiville-gray-dark    : rgb(100, 100, 100); /* Dark gray colour. */
+                --color-responsiville-black        : rgb(  0,   0,   0); /* Black colour. */
+            }
+        </code></pre>
 
 
 

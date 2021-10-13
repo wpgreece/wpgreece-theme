@@ -1,6 +1,6 @@
 # wpgreece.org theme
 
-<strong>Version 1.0.3</strong>
+<strong>Version 1.0.4</strong>
 
 <strong>License:</strong> GPL (GNU General Public License)
 

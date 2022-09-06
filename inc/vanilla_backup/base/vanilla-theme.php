@@ -284,7 +284,7 @@
             // Search page.
             global $wp_query; 
 
-            echo __( 'You searched for: ', 'nevma-theme' ) . '&quot;' . $_GET['s'] . '&quot;'; 
+            echo __( 'You searched for: ', 'nevma-theme' ) . '&quot;' . esc_html( $_GET['s'] ) . '&quot;'; 
             echo '<br><small>' . __( 'we found', 'nevma-theme' ) . ' ' . $wp_query->found_posts . __( ' result(s)', 'nevma-theme' ) . '</small>';
 
         } else {

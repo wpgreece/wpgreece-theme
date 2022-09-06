@@ -1,5 +1,10 @@
 # wpgreece.org theme
 
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=wpgreece_wpgreece-theme&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=wpgreece_wpgreece-theme)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=wpgreece_wpgreece-theme&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=wpgreece_wpgreece-theme)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=wpgreece_wpgreece-theme&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=wpgreece_wpgreece-theme)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=wpgreece_wpgreece-theme&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=wpgreece_wpgreece-theme)
+
 <strong>Version 1.0.4</strong>
 
 <strong>License:</strong> GPL (GNU General Public License)
